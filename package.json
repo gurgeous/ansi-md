@@ -1,0 +1,37 @@
+{
+  "name": "ansi.md",
+  "type": "module",
+  "private": true,
+  "version": "0.0.1",
+  "prettier": {
+    "astroAllowShorthand": true,
+    "bracketSameLine": true,
+    "overrides": [
+      {
+        "files": "*.astro",
+        "options": {
+          "parser": "astro"
+        }
+      }
+    ],
+    "plugins": [
+      "prettier-plugin-astro",
+      "prettier-plugin-tailwindcss"
+    ],
+    "printWidth": 120
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/mdx": "^5.0.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^25.5.0",
+    "astro": "^6.1.2",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "vite": "^7.3.1"
+  },
+  "packageManager": "yarn@4.14.1"
+}

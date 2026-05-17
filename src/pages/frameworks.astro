@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const docClass = "w-full px-4 py-5 md:px-8 xl:px-14";
+const headClass = "mb-7 max-w-[78ch] border-b border-neutral-200 pb-4";
+const h1Class = "text-balance text-4xl leading-tight font-bold text-neutral-950 md:text-5xl xl:text-6xl";
+const h2Class = "mt-9 mb-3 max-w-[78ch] border-b border-neutral-200 pb-1 text-xl font-bold text-neutral-950";
+const proseClass = "mb-3 max-w-[78ch] [overflow-wrap:anywhere] leading-relaxed text-neutral-950";
+---
+
+<Layout title="Frameworks moved - ansi.md" description="The frameworks page is now the library recommendations page.">
+  <article class={docClass}>
+    <header class={headClass}>
+      <h1 class={h1Class}>Frameworks</h1>
+    </header>
+
+    <section id="description">
+      <h2 class={h2Class}>Description</h2>
+      <p class={proseClass}>
+        The CLI and TUI framework recommendations now live at
+        <a class="text-blue-700 underline underline-offset-2" href="/libraries">/libraries</a>.
+      </p>
+    </section>
+  </article>
+</Layout>

@@ -1,0 +1,10 @@
+[env]
+_.path = ["{{config_root}}/node_modules/.bin", "{{config_root}}/bin"]
+_.file = { path = ".env.local", redact = true }
+
+[hooks]
+postinstall = ["npx corepack enable", "yarn"]
+
+[tools]
+just = "latest"
+node = "lts"

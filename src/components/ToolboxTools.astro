@@ -1,0 +1,239 @@
+<section class="max-w-6xl border-t border-neutral-200 pt-1" id="ansi256">
+  <h2 class="mt-9 mb-3 max-w-[78ch] border-b border-neutral-200 pb-1 text-xl font-bold text-neutral-950">
+    Nearest ANSI 256 Color
+  </h2>
+  <label class="mb-1 block font-mono text-sm font-bold" for="hex-input">Hex color</label>
+  <div class="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+    <input
+      class="w-full max-w-72 border border-neutral-300 bg-white px-3 py-2 font-mono text-[0.95rem] text-neutral-950"
+      id="hex-input"
+      value="#38bdf8"
+      inputmode="text"
+    />
+    <output
+      class="inline-block min-h-6 max-w-full font-mono [overflow-wrap:anywhere] text-amber-800"
+      id="ansi-output"
+      for="hex-input"></output>
+  </div>
+  <div class="mb-4 flex flex-wrap items-center gap-3">
+    <svg class="h-7 w-12 border border-neutral-300" viewBox="0 0 48 28" aria-hidden="true">
+      <rect id="ansi-swatch" width="48" height="28" fill="#00afff"></rect>
+    </svg>
+    <code class="bg-neutral-100 px-1 font-mono" id="ansi-escape"></code>
+  </div>
+</section>
+
+<section class="max-w-6xl border-t border-neutral-200 pt-1" id="tailwind">
+  <h2 class="mt-9 mb-3 max-w-[78ch] border-b border-neutral-200 pb-1 text-xl font-bold text-neutral-950">
+    Tailwind Color To ANSI
+  </h2>
+  <p class="mb-3 max-w-[78ch] leading-relaxed [overflow-wrap:anywhere] text-neutral-950">
+    Small built-in map for common Tailwind colors. Use a token such as
+    <code class="bg-neutral-100 px-1 font-mono">sky-500</code> or
+    <code class="bg-neutral-100 px-1 font-mono">rose-600</code>.
+  </p>
+  <label class="mb-1 block font-mono text-sm font-bold" for="tailwind-input">Tailwind token</label>
+  <div class="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+    <input
+      class="w-full max-w-72 border border-neutral-300 bg-white px-3 py-2 font-mono text-[0.95rem] text-neutral-950"
+      id="tailwind-input"
+      value="sky-500"
+      inputmode="text"
+    />
+    <output
+      class="inline-block min-h-6 max-w-full font-mono [overflow-wrap:anywhere] text-amber-800"
+      id="tailwind-output"
+      for="tailwind-input"></output>
+  </div>
+</section>
+
+<section class="max-w-6xl border-t border-neutral-200 pt-1" id="contrast">
+  <h2 class="mt-9 mb-3 max-w-[78ch] border-b border-neutral-200 pb-1 text-xl font-bold text-neutral-950">
+    Contrast Check
+  </h2>
+  <div class="mb-3 grid grid-cols-1 gap-3 md:grid-cols-2 md:[&>*]:max-w-72">
+    <label class="mb-1 block font-mono text-sm font-bold">
+      Foreground
+      <input
+        class="mt-1 block w-full border border-neutral-300 bg-white px-3 py-2 font-mono text-[0.95rem] text-neutral-950"
+        id="fg-input"
+        value="#f8fafc"
+        inputmode="text"
+      />
+    </label>
+    <label class="mb-1 block font-mono text-sm font-bold">
+      Background
+      <input
+        class="mt-1 block w-full border border-neutral-300 bg-white px-3 py-2 font-mono text-[0.95rem] text-neutral-950"
+        id="bg-input"
+        value="#0f172a"
+        inputmode="text"
+      />
+    </label>
+  </div>
+  <output class="inline-block min-h-6 max-w-full font-mono [overflow-wrap:anywhere] text-amber-800" id="contrast-output"
+  ></output>
+  <svg class="mt-2 h-12 w-full max-w-xs border border-neutral-300" viewBox="0 0 320 48" role="img">
+    <title>Contrast preview</title>
+    <rect id="contrast-preview-bg" width="320" height="48" fill="#0f172a"></rect>
+    <text id="contrast-preview-fg" x="16" y="30" fill="#f8fafc" class="font-mono text-base">
+      sample terminal text
+    </text>
+  </svg>
+</section>
+
+<script>
+  type Rgb = [number, number, number];
+
+  const xterm16: Rgb[] = [
+    [0, 0, 0],
+    [128, 0, 0],
+    [0, 128, 0],
+    [128, 128, 0],
+    [0, 0, 128],
+    [128, 0, 128],
+    [0, 128, 128],
+    [192, 192, 192],
+    [128, 128, 128],
+    [255, 0, 0],
+    [0, 255, 0],
+    [255, 255, 0],
+    [0, 0, 255],
+    [255, 0, 255],
+    [0, 255, 255],
+    [255, 255, 255],
+  ];
+
+  const tailwind: Record<string, string> = {
+    "slate-900": "#0f172a",
+    "slate-100": "#f1f5f9",
+    "red-500": "#ef4444",
+    "rose-600": "#e11d48",
+    "orange-500": "#f97316",
+    "amber-500": "#f59e0b",
+    "yellow-400": "#facc15",
+    "green-500": "#22c55e",
+    "emerald-500": "#10b981",
+    "cyan-500": "#06b6d4",
+    "sky-500": "#0ea5e9",
+    "blue-500": "#3b82f6",
+    "violet-500": "#8b5cf6",
+    "purple-500": "#a855f7",
+    "pink-500": "#ec4899",
+  };
+
+  function $<T extends Element>(id: string): T {
+    const element = document.getElementById(id);
+    if (!element) throw new Error(`missing #${id}`);
+    return element as unknown as T;
+  }
+
+  function parseHex(value: string): Rgb | undefined {
+    const match = value.trim().match(/^#?([0-9a-f]{3}|[0-9a-f]{6})$/i);
+    if (!match) return;
+    let hex = match[1];
+    if (hex.length === 3)
+      hex = hex
+        .split("")
+        .map((part) => part + part)
+        .join("");
+    return [parseInt(hex.slice(0, 2), 16), parseInt(hex.slice(2, 4), 16), parseInt(hex.slice(4, 6), 16)];
+  }
+
+  function toHex(rgb: Rgb): string {
+    return `#${rgb.map((value) => value.toString(16).padStart(2, "0")).join("")}`;
+  }
+
+  function ansi256ToRgb(code: number): Rgb {
+    if (code < 16) return xterm16[code];
+    if (code >= 232) {
+      const gray = 8 + (code - 232) * 10;
+      return [gray, gray, gray];
+    }
+    const index = code - 16;
+    const levels = [0, 95, 135, 175, 215, 255];
+    return [levels[Math.floor(index / 36)], levels[Math.floor((index % 36) / 6)], levels[index % 6]];
+  }
+
+  function nearestAnsi256(rgb: Rgb): { code: number; distance: number; rgb: Rgb } {
+    let best = { code: 0, distance: Infinity, rgb: xterm16[0] };
+    for (let code = 0; code < 256; code += 1) {
+      const candidate = ansi256ToRgb(code);
+      const distance = (candidate[0] - rgb[0]) ** 2 + (candidate[1] - rgb[1]) ** 2 + (candidate[2] - rgb[2]) ** 2;
+      if (distance < best.distance) best = { code, distance, rgb: candidate };
+    }
+    return best;
+  }
+
+  function relativeLuminance(rgb: Rgb): number {
+    const values = rgb.map((value) => {
+      const channel = value / 255;
+      return channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * values[0] + 0.7152 * values[1] + 0.0722 * values[2];
+  }
+
+  function contrastRatio(foreground: Rgb, background: Rgb): number {
+    const a = relativeLuminance(foreground);
+    const b = relativeLuminance(background);
+    const light = Math.max(a, b);
+    const dark = Math.min(a, b);
+    return (light + 0.05) / (dark + 0.05);
+  }
+
+  function updateAnsi() {
+    const rgb = parseHex($<HTMLInputElement>("hex-input").value);
+    const output = $<HTMLOutputElement>("ansi-output");
+    if (!rgb) {
+      output.textContent = "invalid hex";
+      return;
+    }
+    const nearest = nearestAnsi256(rgb);
+    $("ansi-swatch").setAttribute("fill", toHex(nearest.rgb));
+    $("ansi-escape").textContent = `ESC[38;5;${nearest.code}m`;
+    output.textContent = `code ${nearest.code}, ${toHex(nearest.rgb)}`;
+  }
+
+  function updateTailwind() {
+    const token = $<HTMLInputElement>("tailwind-input").value.trim();
+    const hex = tailwind[token];
+    const output = $<HTMLOutputElement>("tailwind-output");
+    if (!hex) {
+      output.textContent = "unknown token";
+      return;
+    }
+    const rgb = parseHex(hex);
+    if (!rgb) {
+      output.textContent = "invalid mapped color";
+      return;
+    }
+    const nearest = nearestAnsi256(rgb);
+    output.textContent = `${hex} -> ANSI 256 code ${nearest.code} (${toHex(nearest.rgb)})`;
+  }
+
+  function updateContrast() {
+    const foreground = parseHex($<HTMLInputElement>("fg-input").value);
+    const background = parseHex($<HTMLInputElement>("bg-input").value);
+    const output = $<HTMLOutputElement>("contrast-output");
+    if (!foreground || !background) {
+      output.textContent = "invalid color";
+      return;
+    }
+    const ratio = contrastRatio(foreground, background);
+    output.textContent = `${ratio.toFixed(2)}:1 ${ratio >= 4.5 ? "AA text" : "low contrast"}`;
+    $("contrast-preview-fg").setAttribute("fill", toHex(foreground));
+    $("contrast-preview-bg").setAttribute("fill", toHex(background));
+  }
+
+  for (const id of ["hex-input", "tailwind-input", "fg-input", "bg-input"]) {
+    $(id).addEventListener("input", () => {
+      updateAnsi();
+      updateTailwind();
+      updateContrast();
+    });
+  }
+
+  updateAnsi();
+  updateTailwind();
+  updateContrast();
+</script>

@@ -1,0 +1,46 @@
+---
+layout: ../layouts/DocLayout.astro
+title: Toolbox
+description: toolbox - small helpers for color, contrast, escape strings, and terminal feature checks
+---
+
+import ToolboxTools from "../components/ToolboxTools.astro";
+
+export const probeCommands = `printf 'truecolor: \\033[38;2;255;120;0mRGB24\\033[0m\\n'
+printf 'hyperlink: \\033]8;;https://ansi.md\\033\\\\ansi.md\\033]8;;\\033\\\\\\n'
+printf 'cursor: hide for one second\\033[?25l'; sleep 1; printf '\\033[?25h\\n'
+printf 'clear line: before'; sleep 1; printf '\\r\\033[2Kafter\\n'
+tput colors
+infocmp "$TERM" | sed -n '1,12p'`;
+
+<p className="mb-3 max-w-[78ch] leading-relaxed [overflow-wrap:anywhere] text-neutral-950">
+  The toolbox is the practical side of <code className="bg-neutral-100 px-1 font-mono">ansi.md</code>: small references
+  and calculators that answer the questions people run into while building terminal output.
+</p>
+
+<ToolboxTools />
+
+<h2 className="mt-9 mb-3 max-w-[78ch] border-b border-neutral-200 pb-1 text-xl font-bold text-neutral-950">
+  Terminal Probes
+</h2>
+
+<p className="mb-3 max-w-[78ch] leading-relaxed [overflow-wrap:anywhere] text-neutral-950">
+  Paste these into the terminal you are testing. They are deliberately plain shell fragments.
+</p>
+
+<pre className="mb-5 max-w-full overflow-x-auto border-l-4 border-neutral-200 bg-neutral-50 p-4 font-mono leading-relaxed">
+  <code>{probeCommands}</code>
+</pre>
+
+<h2 className="mt-9 mb-3 max-w-[78ch] border-b border-neutral-200 pb-1 text-xl font-bold text-neutral-950">
+  Planned Tools
+</h2>
+
+<ul className="mb-4 max-w-[78ch] list-disc space-y-1 pl-6 leading-relaxed">
+  <li>ANSI color generator for 8-color, 16-color, 256-color, and truecolor output.</li>
+  <li>Terminal capability probes for hyperlinks, Unicode width, alternate screen, and OSC 52 clipboard behavior.</li>
+  <li>Spinner and progress bar previewer with ASCII fallbacks.</li>
+  <li>
+    <code className="bg-neutral-100 px-1 font-mono">printf</code> and shell escaping playground.
+  </li>
+</ul>

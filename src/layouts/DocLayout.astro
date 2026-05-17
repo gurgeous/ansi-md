@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+type Frontmatter = {
+  title: string;
+  description: string;
+};
+
+const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
+---
+
+<Layout title={`${frontmatter.title} - ansi.md`} description={frontmatter.description}>
+  <article class="w-full px-4 py-5 md:px-8 xl:px-14">
+    <header class="mb-7 max-w-[78ch] border-b border-neutral-200 pb-4">
+      <h1 class="text-4xl leading-tight font-bold text-balance text-neutral-950 md:text-5xl xl:text-6xl">
+        {frontmatter.title}
+      </h1>
+    </header>
+    <slot />
+  </article>
+</Layout>
