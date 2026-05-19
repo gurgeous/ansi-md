@@ -15,25 +15,30 @@ Save tokens: keep this file short. Add durable rules only; do not duplicate obvi
 ## Design
 
 - Text-first technical reference, not a product site.
+- Visual reference: fil-c.org/calling_convention; borrow structure only, not palette.
+- Brand color/font live in `src/main.css` `@theme`; use `brand` tokens as accents, not body copy.
 - Fluid layout; left TOC on desktop, below header on mobile.
-- Header: logo/wordmark only.
 - Avoid heroes, cards, gradients, decorative imagery, marketing copy, and per-page subtitles.
 - Use color sparingly and only to explain terminal behavior.
+- Prefer top margins for document flow; avoid bottom margins except deliberate heading typography.
 
 ## Code
 
 - Keep source under `src/`; never use `public/`.
 - Assets belong in `src/assets/` and should be imported through Astro/Vite.
 - Prefer semantic HTML for docs: `article`, `section`, `nav`, `table`, `pre`, `code`, `dl`, `ol`, `ul`.
+- Use classes, not IDs; use named anchors only when fragment links need targets.
 - Use MDX for authored long-form pages when useful; embed interactive islands as Astro components.
 - Keep client JS rare.
 
 ## Tailwind
 
-- Use Tailwind utilities in markup/components. Raw CSS selectors are a code smell.
-- `src/styles/main.css` should normally contain only `@import "tailwindcss";`.
+- Prefer semantic HTML plus Tailwind `@apply` in `src/main.css` for repeated doc/site elements.
+- Keep one-off component layout classes small; do not hide Tailwind utility lists in JS/TS constants.
+- Components/pages may add local styles when they are clearer than bloating global element rules.
+- CSS should use nesting for related rules; avoid pointless `body` nesting.
 - Avoid inline `style` attributes and DOM `.style` writes; use SVG attributes or component state for dynamic previews.
-- Use arbitrary Tailwind values only when needed.
+- Avoid arbitrary Tailwind bracket values/variants; use standard scale classes.
 
 ## Data
 

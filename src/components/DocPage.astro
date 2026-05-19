@@ -2,90 +2,70 @@
 import type { DocPage } from "@/data/site";
 
 const { page } = Astro.props as { page: DocPage };
-
-const docClass = "w-full px-4 py-5 md:px-8 xl:px-14";
-const headClass = "mb-7 max-w-[78ch] border-b border-neutral-200 pb-4";
-const h1Class = "text-balance text-4xl leading-tight font-bold text-neutral-950 md:text-5xl xl:text-6xl";
-const h2Class = "mt-9 mb-3 max-w-[78ch] border-b border-neutral-200 pb-1 text-xl font-bold text-neutral-950";
-const proseClass = "mb-3 max-w-[78ch] [overflow-wrap:anywhere] leading-relaxed text-neutral-950";
-const listClass = "mb-4 max-w-[78ch] list-disc space-y-1 pl-6 leading-relaxed";
-const preClass =
-  "mb-5 max-w-full overflow-x-auto border-l-4 border-neutral-200 bg-neutral-50 p-4 font-mono leading-relaxed";
-const tableWrapClass = "my-4 max-w-full overflow-x-auto";
-const tableClass = "w-full border-collapse font-mono text-sm";
-const thClass = "border border-neutral-200 bg-neutral-50 px-3 py-2 text-left align-top font-bold";
-const tdClass = "border border-neutral-200 px-3 py-2 text-left align-top";
 ---
 
-<article class={docClass}>
-  <header class={headClass}>
-    <h1 class={h1Class}>{page.title}</h1>
+<article>
+  <header>
+    <h1>{page.title}</h1>
   </header>
 
-  <section id="synopsis">
-    <h2 class={h2Class}>Synopsis</h2>
-    <pre class={preClass}><code>{page.synopsis.join("\n")}</code></pre>
+  <section class="synopsis">
+    <a class="section-anchor" name="synopsis"></a>
+    <h2>Synopsis</h2>
+    <pre><code>{page.synopsis.join("\n")}</code></pre>
   </section>
 
-  <section id="description">
-    <h2 class={h2Class}>Description</h2>
-    {page.description.map((paragraph) => <p class={proseClass}>{paragraph}</p>)}
+  <section class="description">
+    <a class="section-anchor" name="description"></a>
+    <h2>Description</h2>
+    {page.description.map((paragraph) => <p>{paragraph}</p>)}
   </section>
 
   {
     page.sections.map((section) => (
-      <section id={section.id}>
-        <h2 class={h2Class}>{section.title}</h2>
+      <section class={section.id}>
+        <a class="section-anchor" name={section.id} />
+        <h2>{section.title}</h2>
         {section.body?.map((paragraph) => (
-          <p class={proseClass}>{paragraph}</p>
+          <p>{paragraph}</p>
         ))}
         {section.items && (
-          <ul class={listClass}>
+          <ul>
             {section.items.map((item) => (
               <li>{item}</li>
             ))}
           </ul>
         )}
         {section.terms && (
-          <dl class="mb-4 grid max-w-[96ch] grid-cols-1 gap-x-4 gap-y-1 leading-relaxed md:grid-cols-[minmax(8rem,15rem)_minmax(0,1fr)]">
+          <dl>
             {section.terms.map((term) => (
               <>
-                <dt class="font-mono font-bold">{term.term}</dt>
-                <dd class="m-0 [overflow-wrap:anywhere]">{term.description}</dd>
+                <dt>{term.term}</dt>
+                <dd>{term.description}</dd>
               </>
             ))}
           </dl>
         )}
         {section.table && (
-          <div class={tableWrapClass}>
-            <table class={tableClass}>
+          <div class="table-wrap">
+            <table>
               <thead>
                 <tr>
                   {section.table.headers.map((header) => (
-                    <th class={thClass}>{header}</th>
+                    <th>{header}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {section.table.rows.map((row) => (
-                  <tr>
-                    {row.map((cell, index) =>
-                      index === 0 ? (
-                        <th class={thClass} scope="row">
-                          {cell}
-                        </th>
-                      ) : (
-                        <td class={tdClass}>{cell}</td>
-                      ),
-                    )}
-                  </tr>
+                  <tr>{row.map((cell, index) => (index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>))}</tr>
                 ))}
               </tbody>
             </table>
           </div>
         )}
         {section.code && (
-          <pre class={preClass}>
+          <pre>
             <code>{section.code}</code>
           </pre>
         )}
@@ -95,9 +75,17 @@ const tdClass = "border border-neutral-200 px-3 py-2 text-left align-top";
 
   {
     page.seeAlso && (
-      <section id="see-also">
-        <h2 class={h2Class}>See Also</h2>
-        <p class={proseClass}>{page.seeAlso.join(", ")}</p>
+      <section class="see-also">
+        <a class="section-anchor" name="see-also" />
+        <h2>See Also</h2>
+        <p>
+          {page.seeAlso.map((item, index) => (
+            <>
+              {index > 0 && ", "}
+              <a href={item.href}>{item.label}</a>
+            </>
+          ))}
+        </p>
       </section>
     )
   }

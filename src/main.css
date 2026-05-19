@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #0c4a6e;
+  --color-brand-dark: #082f49;
+  --color-brand-soft: #e0f2fe;
+  --font-brand:
+    var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+}
+
+@layer base {
+  body {
+    @apply font-brand m-0 min-w-80 bg-white text-base tracking-normal text-neutral-950;
+  }
+
+  body > div {
+    @apply min-h-screen md:flex;
+
+    > aside {
+      @apply border-brand border-b-2 bg-neutral-50 px-4 py-4 md:w-64 md:shrink-0 md:border-r-2 md:border-b-0 md:px-5 md:py-10;
+    }
+
+    > div {
+      @apply min-w-0 flex-1;
+    }
+  }
+
+  header {
+    @apply border-brand-dark bg-brand w-full border-b-4 px-5 py-5 text-white md:px-10;
+
+    a {
+      @apply inline-flex items-center gap-3 text-4xl leading-none font-bold text-white no-underline md:text-5xl;
+    }
+
+    img {
+      @apply size-9 bg-white p-1 md:size-10;
+    }
+
+    p {
+      @apply text-brand-soft mt-2 text-sm leading-relaxed md:text-base;
+    }
+  }
+
+  aside {
+    nav {
+      @apply grid min-w-0 content-start gap-4 text-sm md:sticky md:top-6;
+    }
+
+    section {
+      @apply min-w-0;
+
+      div {
+        @apply flex min-w-0 flex-wrap gap-x-3 gap-y-1 md:grid md:gap-y-1;
+      }
+    }
+
+    h2 {
+      @apply w-full text-xs font-bold text-neutral-600 uppercase;
+    }
+
+    h3 {
+      @apply mt-4 text-xs font-bold tracking-normal text-neutral-600 uppercase;
+    }
+
+    a {
+      @apply border-brand text-brand hover:text-brand-dark block w-full border-b border-dotted py-1 no-underline hover:border-solid;
+
+      &[aria-current="page"] {
+        @apply border-solid font-bold text-neutral-950;
+      }
+    }
+  }
+
+  footer {
+    @apply flex w-full max-w-4xl flex-wrap justify-between gap-x-4 gap-y-1 border-t border-neutral-200 px-5 py-4 text-xs text-neutral-600 md:px-10;
+  }
+
+  article {
+    @apply w-full max-w-4xl px-5 py-10 md:px-10;
+
+    > header {
+      @apply border-brand border-b-4 bg-transparent p-0 text-inherit;
+    }
+
+    h1 {
+      @apply text-brand text-4xl leading-tight font-bold text-balance md:text-5xl;
+    }
+
+    h2 {
+      @apply text-brand mt-10 border-b border-neutral-200 pb-1 text-3xl font-bold;
+    }
+
+    h3 {
+      @apply mt-5 text-sm font-bold text-neutral-600 uppercase;
+    }
+
+    p {
+      @apply mt-4 leading-relaxed break-words text-neutral-950;
+    }
+
+    ul {
+      @apply mt-4 list-disc space-y-2 pl-6 leading-relaxed;
+    }
+
+    dl {
+      @apply mt-4 grid grid-cols-1 gap-x-4 gap-y-2 leading-relaxed md:grid-cols-4;
+    }
+
+    dt {
+      @apply text-brand font-bold md:col-span-1;
+    }
+
+    dd {
+      @apply m-0 break-words md:col-span-3;
+    }
+
+    a {
+      @apply border-brand text-brand hover:text-brand-dark border-b border-dotted no-underline hover:border-solid;
+    }
+
+    pre {
+      @apply border-l-brand mt-4 max-w-full overflow-x-auto border border-l-4 border-neutral-200 bg-neutral-50 p-4 text-sm leading-relaxed;
+
+      code {
+        @apply bg-transparent p-0;
+      }
+    }
+
+    code {
+      @apply bg-neutral-100 px-1;
+    }
+
+    table {
+      @apply font-brand w-full border-collapse text-sm;
+    }
+
+    th {
+      @apply text-brand border border-neutral-200 bg-neutral-50 px-3 py-2 text-left align-top font-bold;
+    }
+
+    td {
+      @apply border border-neutral-200 px-3 py-2 text-left align-top;
+    }
+
+    label {
+      @apply mt-4 block text-sm font-bold;
+    }
+
+    input {
+      @apply font-brand border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-950;
+    }
+
+    output {
+      @apply text-brand inline-block min-h-6 max-w-full break-words;
+    }
+  }
+}
+
+@layer components {
+  .table-wrap {
+    @apply mt-4 max-w-full overflow-x-auto;
+  }
+
+  .tool-row {
+    @apply mt-2 flex flex-wrap items-center gap-x-4 gap-y-2;
+  }
+
+  .tool-swatch-row {
+    @apply mt-3 flex flex-wrap items-center gap-3;
+  }
+
+  .tool-grid {
+    @apply mt-3 grid grid-cols-1 gap-3 md:grid-cols-2;
+  }
+
+  .tool-input {
+    @apply mt-1 block w-full max-w-72;
+  }
+
+  .tool-label {
+    @apply md:max-w-72;
+
+    input {
+      @apply mt-1 block w-full;
+    }
+  }
+
+  .ansi256 {
+    svg {
+      @apply h-7 w-12 border border-neutral-300;
+    }
+  }
+
+  .contrast {
+    svg {
+      @apply mt-2 h-12 w-full max-w-xs border border-neutral-300;
+    }
+  }
+
+  .contrast-preview-fg {
+    @apply font-brand text-base;
+  }
+
+  .section-anchor {
+    @apply hidden;
+  }
+}
