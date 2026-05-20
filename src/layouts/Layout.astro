@@ -1,6 +1,6 @@
 ---
 import "../main.css";
-import TableOfContents from "@/components/TableOfContents.astro";
+import Nav from "@/components/Nav.astro";
 import logoUrl from "@/assets/logo.png?url";
 import { Font } from "astro:assets";
 
@@ -23,7 +23,7 @@ const { title = "Ansi.md" } = Astro.props;
 
     <!-- left/right -->
     <div>
-      <TableOfContents />
+      <Nav />
       <main>
         <slot />
       </main>

@@ -24,7 +24,7 @@ Ansi.md
   sequin
   echo
   (note: how does this stuff end up using ncurses/terminfo?)
-  https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h3-Functions-using-CSI-*-ordered-by-the-final-character*s*
+  https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
 - palettes / themes
   ansi 256
@@ -54,11 +54,13 @@ Ansi.md
   printf (and 16m detection)
 
 - modern terminals
-  ghostty
   alacritty
+  ghostty
   kitty
   iterm
   ConEmu
+  vscode/zed
+  https://github.com/dalance/termbg
 
 - libraries
   cli args / ansicolor / tui / detection / spinner / progressbar / react-like libs
@@ -87,7 +89,37 @@ Ansi.md
   ascii art
   proper images ("kitty graphics")
 
+- renessaince
+
 - also see
   12 factor cli apps
   https://clig.dev/
   charmbracelet
+
+```
+atuin
+bat
+chafa
+doggo
+dust
+eza
+fd
+fx
+ghostty
+gron
+gum
+hexyl
+oh-my-posh
+pastel
+rg
+sd
+sequin
+tennis
+trippy
+vd
+vhs
+yazi
+zmx
+```
+
+- articles should have dates

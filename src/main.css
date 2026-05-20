@@ -15,10 +15,10 @@
   }
 
   body > div {
-    @apply min-h-screen md:flex;
+    @apply min-h-screen lg:flex;
 
     > aside {
-      @apply border-brand hidden border-b-2 bg-neutral-50 px-4 py-4 md:block md:w-64 md:shrink-0 md:border-r-2 md:border-b-0 md:px-5 md:py-10;
+      @apply border-brand hidden border-b-2 bg-neutral-50 px-4 py-4 lg:block lg:w-64 lg:shrink-0 lg:border-r-2 lg:border-b-0 lg:px-5 lg:py-10;
     }
 
     > div {
@@ -27,10 +27,10 @@
   }
 
   header {
-    @apply border-brand-dark bg-brand w-full border-b-4 px-5 py-5 text-white md:px-10;
+    @apply border-brand-dark bg-brand w-full border-b-4 px-5 py-5 text-white sm:px-10;
 
     a {
-      @apply text-4xl leading-none font-bold text-white no-underline md:text-5xl;
+      @apply text-4xl leading-none font-bold text-white no-underline sm:text-5xl;
     }
   }
 
@@ -43,7 +43,7 @@
       @apply min-w-0;
 
       div {
-        @apply flex min-w-0 flex-wrap gap-x-3 gap-y-1 md:grid md:gap-y-1;
+        @apply flex min-w-0 flex-wrap gap-x-3 gap-y-1 lg:grid lg:gap-y-1;
       }
     }
 
@@ -65,14 +65,14 @@
   }
 
   article {
-    @apply w-full max-w-4xl px-5 py-10 md:px-10;
+    @apply w-full max-w-4xl px-5 py-10 sm:px-10;
 
     > header {
       @apply border-brand border-b-4 bg-transparent p-0 text-inherit;
     }
 
     h1 {
-      @apply text-brand text-4xl leading-tight font-bold text-balance md:text-5xl;
+      @apply text-brand text-4xl leading-tight font-bold text-balance sm:text-5xl;
     }
 
     h2 {
@@ -92,15 +92,15 @@
     }
 
     dl {
-      @apply mt-4 grid grid-cols-1 gap-x-4 gap-y-2 leading-relaxed md:grid-cols-4;
+      @apply mt-4 grid grid-cols-1 gap-x-4 gap-y-2 leading-relaxed sm:grid-cols-4;
     }
 
     dt {
-      @apply text-brand font-bold md:col-span-1;
+      @apply text-brand font-bold sm:col-span-1;
     }
 
     dd {
-      @apply m-0 break-words md:col-span-3;
+      @apply m-0 break-words sm:col-span-3;
     }
 
     a {
@@ -159,7 +159,7 @@
   }
 
   .tool-grid {
-    @apply mt-3 grid grid-cols-1 gap-3 md:grid-cols-2;
+    @apply mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2;
   }
 
   .tool-input {
@@ -167,7 +167,7 @@
   }
 
   .tool-label {
-    @apply md:max-w-72;
+    @apply sm:max-w-72;
 
     input {
       @apply mt-1 block w-full;

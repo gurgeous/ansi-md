@@ -1,0 +1,36 @@
+---
+
+---
+
+<nav aria-label="Table of contents">hi there</nav>
+
+<style>
+  nav {
+    @apply border-brand hidden border-b-2 bg-neutral-50 px-4 py-4 lg:block lg:w-64 lg:shrink-0 lg:border-r-2 lg:border-b-0 lg:px-5 lg:py-10;
+    @apply grid min-w-0 content-start gap-4 text-sm;
+  }
+
+  section {
+    @apply min-w-0;
+
+    div {
+      @apply flex min-w-0 flex-wrap gap-x-3 gap-y-1 lg:grid lg:gap-y-1;
+    }
+  }
+
+  h2 {
+    @apply w-full text-xs font-bold text-neutral-600 uppercase;
+  }
+
+  h3 {
+    @apply mt-4 text-xs font-bold tracking-normal text-neutral-600 uppercase;
+  }
+
+  a {
+    @apply border-brand text-brand hover:text-brand-dark block w-full border-b border-dotted py-1 no-underline hover:border-solid;
+
+    &[aria-current="page"] {
+      @apply border-solid font-bold text-neutral-950;
+    }
+  }
+</style>

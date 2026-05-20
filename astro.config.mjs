@@ -11,6 +11,16 @@ const allowedHosts = (ALLOWED_HOSTS ?? "").split(",");
 
 const src = fileURLToPath(new URL("./src", import.meta.url));
 
+const tailwindReference = () => ({
+  name: "tailwind-reference",
+  enforce: "pre",
+  transform(code, id) {
+    if (!id.includes(".astro") || !id.includes("type=style")) return;
+    if (!code.includes("@apply") || code.includes("@reference")) return;
+    return { code: `@reference "@/main.css";\n\n${code}` };
+  },
+});
+
 export default defineConfig({
   build: { inlineStylesheets: "always" },
   cacheDir: "tmp/astro",
@@ -29,7 +39,7 @@ export default defineConfig({
   integrations: [mdx(), icon()],
   outDir: "tmp/dist",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindReference(), tailwindcss()],
     resolve: { alias: { "@": src } },
     server: {
       allowedHosts,
