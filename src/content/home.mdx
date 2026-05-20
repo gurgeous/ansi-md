@@ -12,7 +12,7 @@ Last Updated May 2026
 
 I don't claim to be any kind of expert on command line apps, but I've written a few popular tools (like [tennis](https://github.com/gurgeous/tennis)) and it's not easy. I've also written literally hundreds of internal cli apps for various projects and I'm sadly quite obsessed with color, progress bars, and spinners.
 
-Why is this stuff so complicated? In order to answer this question, you have to dig into the history of the terminal. Your little cli app runs inside a terminal, something like Apple Terminal, Ghostty, iTerm, Alacritty, or even good ol' xterm. If you are using a "web" terminal like the thing that google cloud provides, the cli apps are running inside a terminal written in javascript.
+Why is this stuff so complicated? In order to answer this question, you have to dig into the history of the terminal. Your little cli app runs inside a terminal, something like Apple Terminal, Ghostty, iTerm, Alacritty, or even good ol' xterm. If you are using a "web" terminal like the thing inside Google Cloud, you are running a javascript terminal.
 
 All terminals have a shared lineage, dating back to the [classic VT100](https://en.wikipedia.org/wiki/VT100) from 50 years ago. Your lovingly crafted app prints out bytes like `"hello world"` and the terminal displays them.
 
@@ -31,7 +31,7 @@ In the meantime, cli devs and library authors need to understand some of this to
 <div class="mt-4">
   {chapters.map((c, ii) => (
     <div class="text-neutral-400">
-      {ii}.{" "}
+      {ii}.
       <a class="border-b-0!" href={c.url}>
         {c.name}
       </a>
@@ -42,9 +42,6 @@ In the meantime, cli devs and library authors need to understand some of this to
 </div>
 
 ### NOTES
-
-- Intro
-  feedback
 
 - Detection
   how apps figure out what the terminal can do
@@ -166,3 +163,4 @@ REMIND
 - github link
 - https://www.cl.cam.ac.uk/~mgk25/unicode.html
 - https://tldp.org/HOWTO/Xterm-Title.html
+- feedback/email me
