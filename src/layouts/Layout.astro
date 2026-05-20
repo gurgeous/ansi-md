@@ -1,12 +1,10 @@
 ---
 import "../main.css";
-import { navGroups } from "@/data/site";
+import TableOfContents from "@/components/TableOfContents.astro";
 import logoUrl from "@/assets/logo.png?url";
 import { Font } from "astro:assets";
 
 const { title = "Ansi.md" } = Astro.props;
-
-const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
 <!doctype html>
@@ -18,34 +16,17 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     <title>{title}</title>
   </head>
   <body>
+    <!-- header -->
     <header>
       <a href="/" aria-label="Ansi.md home">Ansi.md</a>
     </header>
+
+    <!-- left/right -->
     <div>
-      <aside>
-        <nav aria-label="Table of contents">
-          <h2>Contents</h2>
-          {
-            navGroups.map((group) => (
-              <section>
-                <h3>{group.label}</h3>
-                <div>
-                  {group.items.map((item) => (
-                    <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
-              </section>
-            ))
-          }
-        </nav>
-      </aside>
-      <div>
-        <main>
-          <slot />
-        </main>
-      </div>
+      <TableOfContents />
+      <main>
+        <slot />
+      </main>
     </div>
   </body>
 </html>

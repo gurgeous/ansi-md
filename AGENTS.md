@@ -51,3 +51,4 @@ Save tokens: keep this file short. Add durable rules only; do not duplicate obvi
 - Keep changes small and direct.
 - Do not add Ruby or unrelated tooling.
 - Run `just build` before handing off substantial changes.
+- Do not take browser screenshots unless the user asks.

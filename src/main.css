@@ -18,7 +18,7 @@
     @apply min-h-screen md:flex;
 
     > aside {
-      @apply border-brand border-b-2 bg-neutral-50 px-4 py-4 md:w-64 md:shrink-0 md:border-r-2 md:border-b-0 md:px-5 md:py-10;
+      @apply border-brand hidden border-b-2 bg-neutral-50 px-4 py-4 md:block md:w-64 md:shrink-0 md:border-r-2 md:border-b-0 md:px-5 md:py-10;
     }
 
     > div {
@@ -177,6 +177,49 @@
   .ansi256 {
     svg {
       @apply h-7 w-12 border border-neutral-300;
+    }
+  }
+
+  .ansi256-reference {
+    @apply mt-10;
+  }
+
+  .language-picker {
+    @apply mt-4;
+
+    pre {
+      @apply mt-0 max-h-96 border-neutral-800 bg-neutral-950 text-neutral-100;
+
+      code {
+        @apply bg-transparent text-neutral-100;
+      }
+    }
+  }
+
+  .language-picker-bar {
+    @apply flex flex-wrap items-stretch gap-1 border border-b-0 border-neutral-800 bg-neutral-900 p-1;
+
+    button {
+      @apply font-brand cursor-pointer border border-transparent bg-transparent px-2 py-1 text-sm text-neutral-200;
+
+      &:hover,
+      &.is-active {
+        @apply border-neutral-500 bg-neutral-800 text-white;
+      }
+
+      &[data-copy] {
+        @apply ml-auto;
+      }
+    }
+  }
+
+  .is-hidden {
+    @apply hidden;
+  }
+
+  .palette-table {
+    svg {
+      @apply h-6 w-12 border border-neutral-300 align-middle;
     }
   }
 

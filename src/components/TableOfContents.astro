@@ -1,0 +1,25 @@
+---
+import { navGroups } from "@/data/site";
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<aside>
+  <nav aria-label="Table of contents">
+    <h2>Contents</h2>
+    {
+      navGroups.map((group) => (
+        <section>
+          <h3>{group.label}</h3>
+          <div>
+            {group.items.map((item) => (
+              <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </nav>
+</aside>

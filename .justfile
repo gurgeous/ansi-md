@@ -6,6 +6,10 @@ build:
   just banner "prettier..." && prettier --log-level error --write .
   just banner "✓ build ✓"
 
+test-code:
+  just banner "generated code..." && node test/ansi256-code.mjs
+  just banner "✓ test-code ✓"
+
 clean:
   rm -rf tmp .astro
 
