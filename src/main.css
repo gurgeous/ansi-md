@@ -8,9 +8,19 @@
 }
 
 /**
- * global content tags
+ * custom classes
  */
 
+.table-wrap {
+  @apply mt-4 max-w-full overflow-x-auto;
+}
+
+.section-anchor {
+  @apply hidden;
+}
+
+/**
+ * global content tags
 article {
   @apply w-full max-w-4xl px-5 py-10 sm:px-10;
 
@@ -90,15 +100,4 @@ article {
     @apply text-brand inline-block min-h-6 max-w-full break-words;
   }
 }
-
-/**
- * custom components
- */
-
-.table-wrap {
-  @apply mt-4 max-w-full overflow-x-auto;
-}
-
-.section-anchor {
-  @apply hidden;
-}
+*/
