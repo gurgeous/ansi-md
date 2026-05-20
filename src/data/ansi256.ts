@@ -1,3 +1,7 @@
+import { snakeCase } from "es-toolkit/string";
+
+import { paddedRows } from "../lib/util.ts";
+
 export type Ansi256Color = {
   name: string;
   hex: string;
@@ -255,17 +259,12 @@ export function ansiCode(index: number): number {
   return index + 16;
 }
 
-export function hexToRgb(hex: string): readonly [number, number, number] {
-  const value = hex.startsWith("#") ? hex.slice(1) : hex;
-  if (!/^[0-9a-f]{6}$/i.test(value)) throw new Error(`invalid hex color: ${hex}`);
-  return [parseInt(value.slice(0, 2), 16), parseInt(value.slice(2, 4), 16), parseInt(value.slice(4, 6), 16)];
-}
-
-export const ansi256Languages = ["go", "ruby", "rust", "typescript", "zig"] as const;
-export type Ansi256Language = (typeof ansi256Languages)[number];
+export const languages = ["go", "python", "ruby", "rust", "typescript", "zig"] as const;
+export type Ansi256Language = (typeof languages)[number];
 
 export const ansi256LanguageLabels: Record<Ansi256Language, string> = {
   go: "Go",
+  python: "Python",
   ruby: "Ruby",
   rust: "Rust",
   typescript: "TypeScript",
@@ -277,66 +276,69 @@ type NamedColor = Ansi256Entry & {
   key: string;
 };
 
-function words(name: string): string[] {
-  return name
-    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
-    .replace(/([A-Za-z])([0-9])/g, "$1 $2")
-    .replace(/([0-9])([A-Za-z])/g, "$1 $2")
-    .split(/\s+/)
-    .filter(Boolean);
-}
-
-function snakeName(name: string): string {
-  return words(name).join("_").toLowerCase();
-}
-
 function namedColors(format: (name: string) => string): NamedColor[] {
   const seen = new Map<string, number>();
   return ansi256.map((color, index) => {
     const code = ansiCode(index);
-    const key = format(color.name);
+    const key = format(displayName(color));
     const count = seen.get(key) ?? 0;
     seen.set(key, count + 1);
     return { ...color, code, key: count === 0 ? key : `${key}_${code}` };
   });
 }
 
-function paddedRows<T extends NamedColor>(
-  colors: T[],
-  render: (color: T, widths: { key: number; value: number }) => string,
-): string {
-  const widths = {
-    key: Math.max(...colors.map((color) => color.key.length)),
-    value: Math.max(...colors.map((color) => color.hex.length)),
-  };
-  return colors.map((color) => render(color, widths)).join("\n");
-}
-
 function headerComment(prefix: string): string {
   return `${prefix} ANSI 256 colors 16-255. See https://ansi.md.`;
 }
 
-export function renderAnsi256Go(): string {
-  const rows = paddedRows(namedColors(snakeName), (color, widths) => {
-    const key = `"${color.key}":`.padEnd(widths.key + 3);
-    return `\t${key} "${color.hex}", // ${color.code}`;
-  });
-  return `${headerComment("//")}
-package ansi256
+function displayName(color: Ansi256Entry): string {
+  if (color.hex === "#ffffff") return "White";
+  return color.name;
+}
 
-// ANSI256 is a named color table. Treat it as read-only.
+export function renderAnsi256Go(): string {
+  const rows = paddedRows(
+    namedColors(snakeCase),
+    (color, widths) => {
+      const key = `"${color.key}":`.padEnd(widths.key + 3);
+      return `\t${key} "${color.hex}", // ${color.code}`;
+    },
+    (color) => ({ key: color.key, value: color.hex }),
+  );
+  return `${headerComment("//")}
 var ANSI256 = map[string]string{
 ${rows}
 }
 `;
 }
 
+export function renderAnsi256Python(): string {
+  const rows = paddedRows(
+    namedColors(snakeCase),
+    (color, widths) => {
+      const key = `"${color.key}":`.padEnd(widths.key + 3);
+      const value = `"${color.hex}",`.padEnd(widths.value + 3);
+      return `    ${key} ${value} # ${color.code}`;
+    },
+    (color) => ({ key: color.key, value: color.hex }),
+  );
+  return `${headerComment("#")}
+ANSI_256: dict[str, str] = {
+${rows}
+}
+`;
+}
+
 export function renderAnsi256Ruby(): string {
-  const rows = paddedRows(namedColors(snakeName), (color, widths) => {
-    const key = `${color.key}:`.padEnd(widths.key + 1);
-    const value = `"${color.hex}",`.padEnd(widths.value + 3);
-    return `  ${key} ${value} # ${color.code}`;
-  });
+  const rows = paddedRows(
+    namedColors(snakeCase),
+    (color, widths) => {
+      const key = `${color.key}:`.padEnd(widths.key + 1);
+      const value = `"${color.hex}",`.padEnd(widths.value + 3);
+      return `  ${key} ${value} # ${color.code}`;
+    },
+    (color) => ({ key: color.key, value: color.hex }),
+  );
   return `${headerComment("#")}
 ANSI_256 = {
 ${rows}
@@ -345,7 +347,7 @@ ${rows}
 }
 
 export function renderAnsi256Rust(): string {
-  const colors = namedColors(snakeName);
+  const colors = namedColors(snakeCase);
   const rows = colors
     .map((color) => `    ("${color.key}", "${color.hex}"),`)
     .map(
@@ -361,11 +363,15 @@ ${rows}
 }
 
 export function renderAnsi256Typescript(): string {
-  const rows = paddedRows(namedColors(snakeName), (color, widths) => {
-    const key = `${color.key}:`.padEnd(widths.key + 1);
-    const value = `"${color.hex}",`.padEnd(widths.value + 3);
-    return `  ${key} ${value} // ${color.code}`;
-  });
+  const rows = paddedRows(
+    namedColors(snakeCase),
+    (color, widths) => {
+      const key = `${color.key}:`.padEnd(widths.key + 1);
+      const value = `"${color.hex}",`.padEnd(widths.value + 3);
+      return `  ${key} ${value} // ${color.code}`;
+    },
+    (color) => ({ key: color.key, value: color.hex }),
+  );
   return `${headerComment("//")}
 export const ANSI_256 = {
 ${rows}
@@ -374,12 +380,10 @@ ${rows}
 }
 
 export function renderAnsi256Zig(): string {
-  const rows = namedColors(snakeName)
+  const rows = namedColors(snakeCase)
     .map((color) => `    .{ "${color.key}", "${color.hex}" }, // ${color.code}`)
     .join("\n");
   return `${headerComment("//")}
-const std = @import("std");
-
 pub const ANSI_256 = std.StaticStringMap([]const u8).initComptime(.{
 ${rows}
 });
@@ -390,6 +394,8 @@ export function renderAnsi256(language: Ansi256Language): string {
   switch (language) {
     case "go":
       return renderAnsi256Go();
+    case "python":
+      return renderAnsi256Python();
     case "ruby":
       return renderAnsi256Ruby();
     case "rust":

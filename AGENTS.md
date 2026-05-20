@@ -30,6 +30,7 @@ Save tokens: keep this file short. Add durable rules only; do not duplicate obvi
 - Use classes, not IDs; use named anchors only when fragment links need targets.
 - Use MDX for authored long-form pages when useful; embed interactive islands as Astro components.
 - Keep client JS rare.
+- Avoid wrapper-only helpers; import library utilities directly unless the wrapper adds project behavior.
 
 ## Tailwind
 

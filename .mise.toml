@@ -9,6 +9,7 @@ postinstall = ["npx corepack enable", "yarn"]
 go = "latest"
 just = "latest"
 node = "lts"
+python = "latest"
 ruby = "latest"
 rust = "latest"
 zig = "latest"

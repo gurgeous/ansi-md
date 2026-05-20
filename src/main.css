@@ -188,27 +188,47 @@
     @apply mt-4;
 
     pre {
-      @apply mt-0 max-h-96 border-neutral-800 bg-neutral-950 text-neutral-100;
+      @apply mt-0 max-h-96 border-neutral-800 bg-neutral-950 text-xs text-neutral-100;
 
       code {
-        @apply bg-transparent text-neutral-100;
+        @apply bg-transparent text-xs leading-tight text-neutral-100;
       }
     }
   }
 
+  .hex-chip {
+    @apply mr-1 inline-block h-3 w-3 border border-neutral-500 align-middle;
+  }
+
   .language-picker-bar {
-    @apply flex flex-wrap items-stretch gap-1 border border-b-0 border-neutral-800 bg-neutral-900 p-1;
+    @apply bg-brand border-brand-dark flex flex-wrap items-stretch gap-1 border border-b-0 p-1;
 
     button {
-      @apply font-brand cursor-pointer border border-transparent bg-transparent px-2 py-1 text-sm text-neutral-200;
+      @apply font-brand inline-flex cursor-pointer items-center gap-1 border border-transparent bg-transparent px-2 py-1 text-sm text-white transition;
 
       &:hover,
       &.is-active {
-        @apply border-neutral-500 bg-neutral-800 text-white;
+        @apply text-brand-dark border-white bg-white;
+      }
+
+      svg {
+        @apply size-4;
       }
 
       &[data-copy] {
         @apply ml-auto;
+
+        &.is-copied {
+          @apply border-green-300 bg-green-600 text-white;
+
+          [data-copy-icon] {
+            @apply hidden;
+          }
+
+          [data-check-icon] {
+            @apply inline-block;
+          }
+        }
       }
     }
   }
@@ -217,10 +237,8 @@
     @apply hidden;
   }
 
-  .palette-table {
-    svg {
-      @apply h-6 w-12 border border-neutral-300 align-middle;
-    }
+  .clipboard-fallback {
+    @apply fixed top-0 left-0 h-px w-px opacity-0;
   }
 
   .contrast {

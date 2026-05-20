@@ -1,14 +1,12 @@
 ---
-import { ansi256, ansi256LanguageLabels, ansi256Languages, ansiCode, hexToRgb, renderAnsi256 } from "@/data/ansi256";
+import { ansi256LanguageLabels, languages, renderAnsi256 } from "@/data/ansi256";
+import { hexColorChipTransformer } from "@/lib/shikiColorChips";
+import { Code } from "astro:components";
+import { Icon } from "astro-icon/components";
 
-const codeSamples = Object.fromEntries(ansi256Languages.map((language) => [language, renderAnsi256(language)]));
-const escapeHtml = (value: string) =>
-  value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
+const codeSamples = Object.fromEntries(languages.map((language) => [language, renderAnsi256(language)]));
+const codeTransformers = [hexColorChipTransformer()];
+const serializedCodeSamples = JSON.stringify(codeSamples).replaceAll("</", "<\\/");
 ---
 
 <section class="ansi256-reference">
@@ -32,9 +30,10 @@ const escapeHtml = (value: string) =>
 
   <h3>Constants</h3>
   <div class="language-picker" data-code-picker>
+    <script type="application/json" data-code-samples set:html={serializedCodeSamples} />
     <div class="language-picker-bar" aria-label="Language">
       {
-        ansi256Languages.map((language, index) => (
+        languages.map((language, index) => (
           <button
             class={index === 0 ? "is-active" : ""}
             type="button"
@@ -44,65 +43,53 @@ const escapeHtml = (value: string) =>
           </button>
         ))
       }
-      <button type="button" data-copy>copy</button>
+      <button type="button" data-copy aria-label="Copy code" title="Copy code">
+        <Icon name="lucide:clipboard" data-copy-icon />
+        <Icon name="lucide:clipboard-check" class="is-hidden" data-check-icon />
+        <span data-copy-label>copy</span>
+      </button>
     </div>
 
     {
-      ansi256Languages.map((language, index) => (
-        <pre
+      languages.map((language, index) => (
+        <Code
+          code={codeSamples[language]}
           class={index === 0 ? "" : "is-hidden"}
           data-sample={language}
-          set:html={`<code>${escapeHtml(codeSamples[language])}</code>`}
+          lang={language}
+          theme="github-dark"
+          transformers={codeTransformers}
         />
       ))
     }
   </div>
-
-  <div class="palette-table table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Code</th>
-          <th>Color</th>
-          <th>Name</th>
-          <th>Hex</th>
-          <th>RGB</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          ansi256.map((color, index) => {
-            const [red, green, blue] = hexToRgb(color.hex);
-            return (
-              <tr>
-                <th scope="row">{ansiCode(index)}</th>
-                <td>
-                  <svg viewBox="0 0 48 24" aria-label={color.name} role="img">
-                    <rect width="48" height="24" fill={color.hex} />
-                  </svg>
-                </td>
-                <td>{color.name}</td>
-                <td>
-                  <code>{color.hex}</code>
-                </td>
-                <td>
-                  <code>
-                    {red}, {green}, {blue}
-                  </code>
-                </td>
-              </tr>
-            );
-          })
-        }
-      </tbody>
-    </table>
-  </div>
 </section>
 
 <script>
+  async function writeClipboard(text) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return;
+      } catch {
+        // Fall through for non-secure origins such as LAN dev-server URLs.
+      }
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.className = "clipboard-fallback";
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    document.body.append(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+  }
+
   for (const picker of document.querySelectorAll("[data-code-picker]")) {
     const buttons = [...picker.querySelectorAll("[data-language]")];
     const samples = [...picker.querySelectorAll("[data-sample]")];
+    const codeSamples = JSON.parse(picker.querySelector("[data-code-samples]")?.textContent ?? "{}");
     const copy = picker.querySelector("[data-copy]");
 
     for (const button of buttons) {
@@ -121,11 +108,17 @@ const escapeHtml = (value: string) =>
 
     copy?.addEventListener("click", async () => {
       const sample = samples.find((nextSample) => !nextSample.classList.contains("is-hidden"));
-      const text = sample?.textContent ?? "";
-      await navigator.clipboard.writeText(text.trimEnd());
-      copy.textContent = "copied";
+      const language = sample?.getAttribute("data-sample") ?? "";
+      const text = codeSamples[language] ?? "";
+      await writeClipboard(text.trimEnd());
+      copy.classList.add("is-copied");
+      copy.setAttribute("aria-label", "Copied");
+      const label = copy.querySelector("[data-copy-label]");
+      if (label) label.textContent = "copied!";
       setTimeout(() => {
-        copy.textContent = "copy";
+        copy.classList.remove("is-copied");
+        copy.setAttribute("aria-label", "Copy code");
+        if (label) label.textContent = "copy";
       }, 1200);
     });
   }
