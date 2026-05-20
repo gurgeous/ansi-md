@@ -1,11 +1,28 @@
-# Ansi.md
+ANSI.NET
 
-Static Astro reference for ANSI escape codes, terminal capabilities, CLI output, progress UI, tools, and TUI libraries.
+- generator
+- palettes / themes
+- TERM
+- terminfo
+- 256/16
+- curses
+- libraries
+- queries/codes
+- spinners
+- prog bars
+- image format (chafa)
+- terminals & compat
+- history
+- legacy
+- termbg/detection
+- stty sane
+- "reset"
+- tputs
+- echo
+- printf
+- raw mode
 
-Notes can live here while the site takes shape.
-
-Design notes:
-
-- Text-first technical reference, not a product site.
-- The layout borrows structural ideas from Fil-C docs, especially https://fil-c.org/calling_convention.
-- We borrow the plain documentation feel, not the Fil-C palette or identity.
+d3 category colors
+css named colors
+tailwind colors
+catppuccin

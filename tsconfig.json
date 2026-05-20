@@ -1,9 +1,13 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["tmp"],
   "compilerOptions": {
-    "baseUrl": ".",
+    // "baseUrl": ".",
+    // "ignoreDeprecations": "6.0", // this let's us use baseUrl without whining
+    "types": ["node"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   }
 }

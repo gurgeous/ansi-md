@@ -6,15 +6,8 @@ import { defineConfig, fontProviders } from "astro/config";
 import { fileURLToPath, URL } from "node:url";
 
 // ALLOWED_HOSTS for remote access
-const allowedHosts = ["pinky"];
 const { ALLOWED_HOSTS } = process.env;
-if (ALLOWED_HOSTS) {
-  allowedHosts.push(
-    ...ALLOWED_HOSTS.split(",")
-      .map((host) => host.trim())
-      .filter(Boolean),
-  );
-}
+const allowedHosts = (ALLOWED_HOSTS ?? "").split(",");
 
 const src = fileURLToPath(new URL("./src", import.meta.url));
 
