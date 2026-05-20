@@ -3,25 +3,22 @@
 </article>
 
 <style is:global>
-  /**
-   * simple markdown styling, somewhat like prose
-   */
   article {
-    @apply w-full max-w-[80ch] px-5 py-10 text-sm sm:px-10 sm:text-base;
-    @apply leading-relaxed wrap-break-word text-neutral-950;
+    @apply w-full max-w-[95ch] px-5 py-10 text-sm sm:px-10;
+    @apply leading-normal wrap-break-word text-neutral-950;
 
     h1,
     h2,
     h3,
     h4 {
-      @apply leading-tight text-balance;
+      @apply text-brand leading-tight text-balance;
     }
 
     h1 {
-      @apply text-brand text-4xl font-bold sm:text-5xl;
+      @apply text-4xl font-bold sm:text-5xl;
     }
     h2 {
-      @apply text-brand mt-10 border-b border-neutral-200 pb-1 text-3xl font-bold;
+      @apply mt-10 border-b border-neutral-200 pb-1 text-3xl font-bold;
     }
     h3 {
       @apply mt-5 text-xl font-semibold sm:text-2xl;
@@ -31,34 +28,38 @@
     }
 
     a {
-      @apply text-brand border-b border-dotted hover:border-solid hover:brightness-80;
+      @apply border-b border-dotted font-bold text-sky-600 hover:border-solid hover:brightness-80;
     }
 
     p,
     ul,
-    ol {
+    ol,
+    pre,
+    table {
       @apply mt-4;
     }
 
     ul,
     ol {
-      @apply space-y-2 pl-6;
       ::marker {
         @apply text-gray-400;
       }
-      li {
-        @apply pl-2;
-      }
     }
     ul {
-      @apply list-disc;
+      @apply list-disc pl-6;
+      li {
+        @apply pl-4;
+      }
     }
     ol {
-      @apply list-decimal;
+      @apply list-decimal pl-9;
+      li {
+        @apply pl-1;
+      }
     }
 
     pre {
-      @apply border-l-brand mt-4 max-w-full overflow-x-auto border border-l-4 border-neutral-200 bg-neutral-50 p-4 text-sm leading-relaxed;
+      @apply max-w-full overflow-x-auto border-l-4 border-l-sky-500 px-2 py-1 text-sm leading-normal;
 
       code {
         @apply bg-transparent p-0;
@@ -70,14 +71,14 @@
     }
 
     table {
-      @apply w-full border-collapse text-sm;
+      @apply w-full border-collapse;
 
-      th {
-        @apply text-brand border border-neutral-200 bg-neutral-50 px-3 py-2 text-left align-top font-bold;
-      }
-
+      th,
       td {
-        @apply border border-neutral-200 px-3 py-2 text-left align-top;
+        @apply border border-neutral-300 px-2 py-1 text-left;
+      }
+      th {
+        @apply text-brand bg-neutral-100 font-bold;
       }
     }
 
@@ -86,11 +87,7 @@
     }
 
     input {
-      @apply border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-950;
-    }
-
-    output {
-      @apply text-brand inline-block min-h-6 max-w-full break-words;
+      @apply border border-neutral-300 px-2 py-1;
     }
   }
 </style>
