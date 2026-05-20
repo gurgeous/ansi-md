@@ -1,42 +1,45 @@
+import { chapters } from "@/lib/chapters";
+
 # About
 
-Ansi.md is my personal brain dump for creating nice command line apps in the modern era. My intent is to gradually expand the site with hard-won tricks, recommended apps and homegrown tools.
+Ansi.md is my personal brain dump for creating modern command line apps. My intent is to gradually expand the site with hard-won tricks, recommended apps and homegrown tools that will live here.
 
-**AI statement**: I wrote everything here. I like my writing voice and I do not use LLMs to write. They help out with the coding bits, of course.
+**AI statement**: I like my writing voice and I do not use LLMs to write. They help out with the astrojs bits, of course.
 
-Last Updated - May 2026
+Last Updated May 2026
 
 ## Why
 
 I don't claim to be any kind of expert on command line apps, but I've written a few popular tools (like [tennis](https://github.com/gurgeous/tennis)) and it's not easy. I've also written literally hundreds of internal cli apps for various projects and I'm sadly quite obsessed with color, progress bars, and spinners.
 
-Why is this stuff so complicated? In order to answer this question, you have to dig into the history of the terminal. Your little cli app runs inside a terminal, something like Apple Terminal, Ghostty, iTerm, Alacritty, or even good ol' xterm. If you are using a "web" terminal like the thing that google cloud provides, the cli apps are running insie a terminal written in javascript.
+Why is this stuff so complicated? In order to answer this question, you have to dig into the history of the terminal. Your little cli app runs inside a terminal, something like Apple Terminal, Ghostty, iTerm, Alacritty, or even good ol' xterm. If you are using a "web" terminal like the thing that google cloud provides, the cli apps are running inside a terminal written in javascript.
 
 All terminals have a shared lineage, dating back to the [classic VT100](https://en.wikipedia.org/wiki/VT100) from 50 years ago. Your lovingly crafted app prints out bytes like `"hello world"` and the terminal displays them.
 
-Vintage terminals were straightfoward, displaying text on screen and looking for `\n` to advance to the next line. Similar to typewriters of that era. But modern terminals are capable of more, so much more. Too much, probably.
+Vintage terminals were straightforward, displaying text on screen and looking for `\n` to advance to the next line. Similar to typewriters of that era. But modern terminals are capable of more, so much more. Too much, probably.
 
-We've got truecolor RGB. We've got themes that are "light" and "dark". We've got mouse control, layout, and hints for double buffering. We've got window titles. We've got strange graphics protocols, builtin tiny progress bars, and hacks to make the icon bounce in [the Dock](<https://en.wikipedia.org/wiki/Dock_(macOS)>).
+We've got truecolor RGB. We've got themes that are "light" and "dark". We've got mouse control, layout, and hints for double buffering. We've got window titles. We've got strange graphics protocols, built-in tiny progress bars, and hacks to make the icon bounce in [the Dock](<https://en.wikipedia.org/wiki/Dock_(macOS)>).
 
-Modern terminals carefully parse the stream of bytes printed from your app in order to support these features. Terminals also set ENV variables to give hints to your app about what's supported. Tools like `ssh` or `tmux` have to understand these ENV variables too, otherwise apps running over ssh have no idea what's supported. There are [huge databases](https://invisible-island.net/xterm/terminfo.html) that try to capture which features are supported by which terminals. Your app can also query the terminal directly using obscure invisible codes.
+Modern terminals carefully parse the stream of bytes printed from your app in order to support these features. Terminals also set environment variables to give hints to your app about what's supported. Tools like `ssh` or `tmux` have to understand these environment variables too, otherwise apps running over ssh have no idea what's supported. There are [huge databases](https://invisible-island.net/xterm/terminfo.html) that try to capture which features are supported by which terminals. Your app can also query the terminal directly using obscure invisible codes.
 
 I'll be honest with you, this system is a beautiful mess and probably should be burned in a fire. The complexity is made worse due to the various strata in the system - it's quite easy to find docs for first or second generation terminals, etc. but in many cases you won't need that stuff. Software evolves quickly, and devs are eager to move on to modern terminals.
 
 In the meantime, cli devs and library authors need to understand some of this to create nice cli apps that work in popular terminals.
 
-## Chapters
+## Pages
 
-- [ENV, Capabilities, Theme Detection](detection) - OMG why is this so hard
-- [ANSI 256 / Tailwind / Catppuccin](colors) - color tooling
-- [How to CLI](rules) - the difference between meh and awesome cli
-- [Progress Bars & Spinners](progs) - the fun stuff
-- [Recommended Apps](apps) - I love CLI. Like, a lot
-- [Recommended Libraries](libs) - modern cli libraries
-- [Recommended Terminals](terms) - modern terminals
-- [Advanced ANSI Stuff](advanced) - don't read this
-- [LLMs and CLI](llms) - prompting suggestions
-- [Windows](windows) - I know very little about this topic
-- [Further Reading](more) - if you aren't bored yet
+<div class="mt-4">
+  {chapters.map((c, ii) => (
+    <div class="text-neutral-400">
+      {ii}.{" "}
+      <a class="border-b-0!" href={c.url}>
+        {c.name}
+      </a>
+      <span class="px-2">-</span>
+      {c.phrase}
+    </div>
+  ))}
+</div>
 
 ### NOTES
 
@@ -157,8 +160,9 @@ yazi
 zmx
 ```
 
-maybe
+REMIND
 
-- articles should have dates
+- articles should have "updated at"
+- github link
 - https://www.cl.cam.ac.uk/~mgk25/unicode.html
 - https://tldp.org/HOWTO/Xterm-Title.html
