@@ -1,19 +1,106 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: theme("colors.sky.900");
-  --color-brand-dark: theme("colors.sky.950");
-  --color-brand-soft: theme("colors.sky.100");
-  --default-font-family: var(--font-ibm-plex-mono), var(--font-sans);
+  --color-brand: theme("colors.sky.800");
+  --color-brand-dark: theme("colors.sky.900");
+  --font-brand: var(--font-ibm-plex-mono), var(--font-mono);
+  --default-font-family: var(--font-ibm-plex-mono), var(--font-mono);
+}
+
+/**
+ * markdown article
+ */
+
+article {
+  @apply w-full max-w-[95ch] min-w-0 overflow-x-hidden px-5 py-10 text-sm sm:px-10;
+  @apply leading-normal wrap-break-word text-neutral-950;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-brand leading-tight text-balance;
+  }
+
+  h1 {
+    @apply text-4xl font-bold sm:text-5xl;
+  }
+  h2 {
+    @apply mt-10 border-b border-neutral-200 pb-1 text-3xl font-bold;
+  }
+  h3 {
+    @apply mt-5 text-xl font-semibold sm:text-2xl;
+  }
+  h4 {
+    @apply text-lg font-semibold sm:text-xl;
+  }
+
+  a {
+    @apply border-b border-dotted font-bold text-sky-600 hover:border-solid hover:brightness-80;
+  }
+
+  p,
+  ul,
+  ol,
+  pre,
+  table {
+    @apply mt-4;
+  }
+
+  ul,
+  ol {
+    ::marker {
+      @apply text-gray-400;
+    }
+  }
+  ul {
+    @apply list-disc pl-6;
+    li {
+      @apply pl-4;
+    }
+  }
+  ol {
+    @apply list-decimal pl-9;
+    li {
+      @apply pl-1;
+    }
+  }
+
+  pre {
+    @apply w-full overflow-x-auto border-l-6 border-l-sky-500 px-2 py-1 text-xs leading-normal sm:text-sm;
+    code {
+      @apply bg-transparent p-0;
+    }
+  }
+
+  code {
+    @apply font-brand bg-neutral-100 px-1;
+  }
+
+  table {
+    @apply w-full border-collapse overflow-x-auto text-xs sm:text-sm;
+
+    th,
+    td {
+      @apply border border-neutral-300 px-2 py-1 text-left;
+    }
+    th {
+      @apply text-brand bg-neutral-100 font-bold;
+    }
+  }
+
+  label {
+    @apply mt-4 block text-sm font-bold;
+  }
+
+  input {
+    @apply border border-neutral-300 px-2 py-1;
+  }
 }
 
 /**
  * custom classes
  */
-
-.table-wrap {
-  @apply mt-4 max-w-full overflow-x-auto;
-}
 
 .section-anchor {
   @apply hidden;
@@ -21,6 +108,7 @@
 
 /**
  * global content tags
+ * OLD
 article {
   @apply w-full max-w-4xl px-5 py-10 sm:px-10;
 

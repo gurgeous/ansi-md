@@ -31,15 +31,11 @@ GUB="hello $hi world"
 
 ## Table (h2)
 
-<div class="table-wrap">
-
 | Mode      | Example                 | Notes                     |
 | --------- | ----------------------- | ------------------------- |
 | 16 color  | `\x1b[31m`              | Theme slot, not fixed RGB |
 | 256 color | `\x1b[38;5;45m`         | Portable indexed palette  |
 | Truecolor | `\x1b[38;2;56;189;248m` | Useful when supported     |
-
-</div>
 
 ## Form Bits (h2)
 
