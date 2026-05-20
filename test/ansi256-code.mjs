@@ -7,6 +7,7 @@ import { ansi256Languages, renderAnsi256 } from "../src/data/ansi256.ts";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const out = join(root, "tmp", "test", "ansi256-code");
+const expectedLanguages = ["go", "ruby", "rust", "typescript", "zig"];
 
 const files = {
   go: join(out, "go", "ansi256.go"),
@@ -40,8 +41,20 @@ const commands = {
   zig: ["zig", ["test", files.zig], root],
 };
 
+function assertSameLanguages(label, actual) {
+  const actualSorted = [...actual].sort();
+  const expectedSorted = [...expectedLanguages].sort();
+  if (actualSorted.join(",") !== expectedSorted.join(",")) {
+    throw new Error(`${label} languages ${actualSorted.join(",")} did not match ${expectedSorted.join(",")}`);
+  }
+}
+
 function run(command, args, cwd) {
   execFileSync(command, args, { cwd, stdio: "inherit" });
+}
+
+function output(command, args, cwd) {
+  return execFileSync(command, args, { cwd, encoding: "utf8" });
 }
 
 function assertIncludes(language, source, value) {
@@ -58,6 +71,10 @@ function assertExcludes(language, source, value) {
 
 rmSync(out, { force: true, recursive: true });
 
+assertSameLanguages("ansi256Languages", ansi256Languages);
+assertSameLanguages("file targets", Object.keys(files));
+assertSameLanguages("compiler commands", Object.keys(commands));
+
 for (const language of ansi256Languages) {
   const file = files[language];
   mkdirSync(dirname(file), { recursive: true });
@@ -69,20 +86,35 @@ for (const language of ansi256Languages) {
   assertIncludes(language, source, "#0000d7");
 }
 
-assertIncludes("go", renderAnsi256("go"), "Black");
-assertIncludes("go", renderAnsi256("go"), "Blue3_20");
+assertIncludes("go", renderAnsi256("go"), "map[string]string");
+assertIncludes("go", renderAnsi256("go"), '"black":');
+assertIncludes("go", renderAnsi256("go"), '"blue_3_20":');
 assertIncludes("ruby", renderAnsi256("ruby"), "black:");
 assertIncludes("ruby", renderAnsi256("ruby"), "blue_3_20:");
-assertIncludes("rust", renderAnsi256("rust"), "BLACK");
-assertIncludes("rust", renderAnsi256("rust"), "BLUE_3_20");
+assertIncludes("rust", renderAnsi256("rust"), "pub const ANSI_256: &[(&str, &str)]");
+assertIncludes("rust", renderAnsi256("rust"), '"black"');
+assertIncludes("rust", renderAnsi256("rust"), '"blue_3_20"');
+assertIncludes("typescript", renderAnsi256("typescript"), "Record<string, string>");
 assertIncludes("typescript", renderAnsi256("typescript"), "black:");
-assertIncludes("typescript", renderAnsi256("typescript"), "blue3_20:");
-assertIncludes("zig", renderAnsi256("zig"), "black");
-assertIncludes("zig", renderAnsi256("zig"), "blue_3_20");
+assertIncludes("typescript", renderAnsi256("typescript"), "blue_3_20:");
+assertIncludes("zig", renderAnsi256("zig"), "StaticStringMap");
+assertIncludes("zig", renderAnsi256("zig"), '"black"');
+assertIncludes("zig", renderAnsi256("zig"), '"blue_3_20"');
 
 writeFileSync(join(dirname(files.go), "go.mod"), "module ansi256test\n\ngo 1.22\n");
 
+const gofmtDiff = output("gofmt", ["-d", files.go], root);
+if (gofmtDiff.length > 0) {
+  console.error(gofmtDiff);
+  throw new Error("go output is not gofmt-formatted");
+}
+
 for (const language of ansi256Languages) {
   const [command, args, cwd] = commands[language];
+  console.log(language);
   run(command, args, cwd);
 }
+
+run("rustfmt", ["--check", files.rust], root);
+run("prettier", ["--check", files.typescript], root);
+run("zig", ["fmt", "--check", files.zig], root);

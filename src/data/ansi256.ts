@@ -290,21 +290,6 @@ function snakeName(name: string): string {
   return words(name).join("_").toLowerCase();
 }
 
-function screamingSnakeName(name: string): string {
-  return snakeName(name).toUpperCase();
-}
-
-function camelName(name: string): string {
-  const [first = "", ...rest] = words(name);
-  return [first.toLowerCase(), ...rest.map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())].join("");
-}
-
-function pascalName(name: string): string {
-  return words(name)
-    .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
-    .join("");
-}
-
 function namedColors(format: (name: string) => string): NamedColor[] {
   const seen = new Map<string, number>();
   return ansi256.map((color, index) => {
@@ -328,24 +313,21 @@ function paddedRows<T extends NamedColor>(
 }
 
 function headerComment(prefix: string): string {
-  return [
-    `${prefix} ANSI 256 named colors, codes 16-255.`,
-    `${prefix} Names and hex values from Vim Tips Wiki: Xterm256 color names for console Vim.`,
-    `${prefix} Code 16 is named Black; duplicate names are suffixed with the ANSI code.`,
-  ].join("\n");
+  return `${prefix} ANSI 256 colors 16-255. See https://ansi.md.`;
 }
 
 export function renderAnsi256Go(): string {
-  const rows = paddedRows(namedColors(pascalName), (color, widths) => {
-    const key = color.key.padEnd(widths.key);
-    return `\t${key} = "${color.hex}" // ${color.code}`;
+  const rows = paddedRows(namedColors(snakeName), (color, widths) => {
+    const key = `"${color.key}":`.padEnd(widths.key + 3);
+    return `\t${key} "${color.hex}", // ${color.code}`;
   });
   return `${headerComment("//")}
 package ansi256
 
-const (
+// ANSI256 is a named color table. Treat it as read-only.
+var ANSI256 = map[string]string{
 ${rows}
-)
+}
 `;
 }
 
@@ -363,16 +345,23 @@ ${rows}
 }
 
 export function renderAnsi256Rust(): string {
-  const rows = paddedRows(namedColors(screamingSnakeName), (color) => {
-    return `pub const ${color.key}: &str = "${color.hex}"; // ${color.code}`;
-  });
+  const colors = namedColors(snakeName);
+  const rows = colors
+    .map((color) => `    ("${color.key}", "${color.hex}"),`)
+    .map(
+      (row, _index, allRows) =>
+        `${row.padEnd(Math.max(...allRows.map((nextRow) => nextRow.length)))} // ${colors[_index].code}`,
+    )
+    .join("\n");
   return `${headerComment("//")}
+pub const ANSI_256: &[(&str, &str)] = &[
 ${rows}
+];
 `;
 }
 
 export function renderAnsi256Typescript(): string {
-  const rows = paddedRows(namedColors(camelName), (color, widths) => {
+  const rows = paddedRows(namedColors(snakeName), (color, widths) => {
     const key = `${color.key}:`.padEnd(widths.key + 1);
     const value = `"${color.hex}",`.padEnd(widths.value + 3);
     return `  ${key} ${value} // ${color.code}`;
@@ -380,17 +369,20 @@ export function renderAnsi256Typescript(): string {
   return `${headerComment("//")}
 export const ANSI_256 = {
 ${rows}
-} as const;
+} as const satisfies Record<string, string>;
 `;
 }
 
 export function renderAnsi256Zig(): string {
-  const rows = paddedRows(namedColors(snakeName), (color, widths) => {
-    const key = color.key.padEnd(widths.key);
-    return `pub const ${key} = "${color.hex}"; // ${color.code}`;
-  });
+  const rows = namedColors(snakeName)
+    .map((color) => `    .{ "${color.key}", "${color.hex}" }, // ${color.code}`)
+    .join("\n");
   return `${headerComment("//")}
+const std = @import("std");
+
+pub const ANSI_256 = std.StaticStringMap([]const u8).initComptime(.{
 ${rows}
+});
 `;
 }
 
