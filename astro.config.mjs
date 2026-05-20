@@ -1,21 +1,25 @@
 // Astro config for Ansi.md.
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
+import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
 import { fileURLToPath, URL } from "node:url";
 
 // ALLOWED_HOSTS for remote access
-const allowedHosts = ["pinky"];
 const { ALLOWED_HOSTS } = process.env;
-if (ALLOWED_HOSTS) {
-  allowedHosts.push(
-    ...ALLOWED_HOSTS.split(",")
-      .map((host) => host.trim())
-      .filter(Boolean),
-  );
-}
+const allowedHosts = (ALLOWED_HOSTS ?? "").split(",");
 
 const src = fileURLToPath(new URL("./src", import.meta.url));
+
+const tailwindReference = () => ({
+  name: "tailwind-reference",
+  enforce: "pre",
+  transform(code, id) {
+    if (!id.includes(".astro") || !id.includes("type=style")) return;
+    if (!code.includes("@apply") || code.includes("@reference")) return;
+    return { code: `@reference "@/main.css";\n\n${code}` };
+  },
+});
 
 export default defineConfig({
   build: { inlineStylesheets: "always" },
@@ -32,10 +36,13 @@ export default defineConfig({
       fallbacks: ["monospace"],
     },
   ],
-  integrations: [mdx()],
+  integrations: [mdx(), icon()],
+  markdown: {
+    smartypants: false,
+  },
   outDir: "tmp/dist",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindReference(), tailwindcss()],
     resolve: { alias: { "@": src } },
     server: {
       allowedHosts,

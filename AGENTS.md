@@ -1,53 +1,43 @@
 ## Project
 
-`Ansi.md` is a static Astro + TypeScript reference for ANSI codes, terminal capabilities, CLI output, progress UI, tools, and TUI libraries.
+`Ansi.md` is a static Astro + TypeScript reference for ANSI codes, terminal color, CLI output, tools, and TUI libraries.
 
-Save tokens: keep this file short. Add durable rules only; do not duplicate obvious repo state.
+Save tokens: keep this file short. Add durable rules only.
 
 ## Commands
 
-- Install: `just install`
-- Dev: `just dev`
-- Format: `just fmt`
-- Build/check: `just build`
-- No `package.json` scripts; this repo always uses `just`.
+- Use `just`: `just install`, `just dev`, `just fmt`, `just build`.
+- No `package.json` scripts.
 
 ## Design
 
-- Text-first technical reference, not a product site.
-- Visual reference: fil-c.org/calling_convention; borrow structure only, not palette.
-- Brand color/font live in `src/main.css` `@theme`; use `brand` tokens as accents, not body copy.
-- Fluid layout; left TOC on desktop, below header on mobile.
-- Avoid heroes, cards, gradients, decorative imagery, marketing copy, and per-page subtitles.
-- Use color sparingly and only to explain terminal behavior.
-- Prefer top margins for document flow; avoid bottom margins except deliberate heading typography.
+- Text-first technical reference; not a product site.
+- Visual reference: fil-c.org/calling_convention; borrow structure, not palette.
+- Brand color/font live in `src/main.css` `@theme`.
+- Avoid heroes, cards, gradients, decorative imagery, marketing copy, per-page subtitles.
+- Prefer top margins for document flow.
 
 ## Code
 
-- Keep source under `src/`; never use `public/`.
-- Assets belong in `src/assets/` and should be imported through Astro/Vite.
-- Prefer semantic HTML for docs: `article`, `section`, `nav`, `table`, `pre`, `code`, `dl`, `ol`, `ul`.
-- Use classes, not IDs; use named anchors only when fragment links need targets.
-- Use MDX for authored long-form pages when useful; embed interactive islands as Astro components.
+- Source/assets stay under `src/`; never use `public/`.
+- Prefer semantic HTML and classes, not IDs.
+- Use MDX for authored long-form pages when useful.
 - Keep client JS rare.
+- Avoid wrapper-only helpers; import library utilities directly unless adding project behavior.
 
 ## Tailwind
 
-- Prefer semantic HTML plus Tailwind `@apply` in `src/main.css` for repeated doc/site elements.
-- Keep one-off component layout classes small; do not hide Tailwind utility lists in JS/TS constants.
-- Components/pages may add local styles when they are clearer than bloating global element rules.
-- CSS should use nesting for related rules; avoid pointless `body` nesting.
-- Avoid inline `style` attributes and DOM `.style` writes; use SVG attributes or component state for dynamic previews.
-- Avoid arbitrary Tailwind bracket values/variants; use standard scale classes.
+- Use Tailwind `@apply` in `src/main.css` for repeated doc/site elements.
+- Local component styles are okay; the Vite plugin adds `@reference "@/main.css"`.
+- CSS uses nesting; avoid arbitrary bracket utilities.
+- Responsive utilities: only `sm:` and `lg:`; never `md:`.
 
 ## Data
 
-- Keep content/data tables explicit and easy to audit.
-- Prefer `foo?: T` and `undefined`.
-- Keep generated data under `src/data/`; caches/build output under `tmp/`.
+- Keep tables explicit and auditable.
+- Generated data goes in `src/data/`; build/cache output goes in `tmp/`.
 
 ## Handoff
 
-- Keep changes small and direct.
-- Do not add Ruby or unrelated tooling.
-- Run `just build` before handing off substantial changes.
+- Run `just build` before substantial handoff.
+- Do not take browser screenshots unless asked.

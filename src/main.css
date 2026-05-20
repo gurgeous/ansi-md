@@ -1,196 +1,95 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #0c4a6e;
-  --color-brand-dark: #082f49;
-  --color-brand-soft: #e0f2fe;
-  --font-brand:
-    var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace;
+  --color-brand: theme("colors.sky.800");
+  --color-brand-dark: theme("colors.sky.900");
+  --font-brand: var(--font-ibm-plex-mono), var(--font-mono);
+  --default-font-family: var(--font-ibm-plex-mono), var(--font-mono);
 }
 
-@layer base {
-  body {
-    @apply font-brand m-0 min-w-80 bg-white text-base tracking-normal text-neutral-950;
+body {
+  @apply text-sm;
+}
+
+/**
+ * article (markdown)
+ */
+
+article {
+  /* note: h1 has no top margin. h2 has an underline thing */
+  /* prettier-ignore */
+  h1 { @apply mt-0  text-3xl font-bold                 } /* prettier-ignore */
+  h2 { @apply mt-10 text-3xl font-bold                 } /* prettier-ignore */
+  h3 { @apply mt-5  text-xl  font-semibold sm:text-2xl } /* prettier-ignore */
+  h4 { @apply mt-2  text-lg  font-semibold sm:text-xl  } /* prettier-ignore */
+  h2 { @apply border-b border-neutral-200 pb-1        } /* prettier-ignore */
+  h1, h2, h3, h4 { @apply text-brand leading-tight text-balance }
+
+  a {
+    @apply border-b border-dotted font-bold text-sky-600 hover:border-solid hover:brightness-80;
   }
 
-  body > div {
-    @apply min-h-screen md:flex;
-
-    > aside {
-      @apply border-brand border-b-2 bg-neutral-50 px-4 py-4 md:w-64 md:shrink-0 md:border-r-2 md:border-b-0 md:px-5 md:py-10;
-    }
-
-    > div {
-      @apply min-w-0 flex-1;
-    }
+  /* beware the nested <p> (like in <li>) */
+  /* prettier-ignore */
+  > p, ul, ol, pre, table {
+    @apply mt-4;
   }
 
-  header {
-    @apply border-brand-dark bg-brand w-full border-b-4 px-5 py-5 text-white md:px-10;
-
-    a {
-      @apply text-4xl leading-none font-bold text-white no-underline md:text-5xl;
+  ul,
+  ol {
+    ::marker {
+      @apply text-gray-400;
     }
   }
-
-  aside {
-    nav {
-      @apply grid min-w-0 content-start gap-4 text-sm;
+  ul {
+    @apply list-disc pl-6;
+    li {
+      @apply pl-4;
     }
-
-    section {
-      @apply min-w-0;
-
-      div {
-        @apply flex min-w-0 flex-wrap gap-x-3 gap-y-1 md:grid md:gap-y-1;
-      }
-    }
-
-    h2 {
-      @apply w-full text-xs font-bold text-neutral-600 uppercase;
-    }
-
-    h3 {
-      @apply mt-4 text-xs font-bold tracking-normal text-neutral-600 uppercase;
-    }
-
-    a {
-      @apply border-brand text-brand hover:text-brand-dark block w-full border-b border-dotted py-1 no-underline hover:border-solid;
-
-      &[aria-current="page"] {
-        @apply border-solid font-bold text-neutral-950;
-      }
+  }
+  ol {
+    @apply list-decimal pl-9;
+    li {
+      @apply pl-1;
     }
   }
 
-  article {
-    @apply w-full max-w-4xl px-5 py-10 md:px-10;
-
-    > header {
-      @apply border-brand border-b-4 bg-transparent p-0 text-inherit;
-    }
-
-    h1 {
-      @apply text-brand text-4xl leading-tight font-bold text-balance md:text-5xl;
-    }
-
-    h2 {
-      @apply text-brand mt-10 border-b border-neutral-200 pb-1 text-3xl font-bold;
-    }
-
-    h3 {
-      @apply mt-5 text-sm font-bold text-neutral-600 uppercase;
-    }
-
-    p {
-      @apply mt-4 leading-relaxed break-words text-neutral-950;
-    }
-
-    ul {
-      @apply mt-4 list-disc space-y-2 pl-6 leading-relaxed;
-    }
-
-    dl {
-      @apply mt-4 grid grid-cols-1 gap-x-4 gap-y-2 leading-relaxed md:grid-cols-4;
-    }
-
-    dt {
-      @apply text-brand font-bold md:col-span-1;
-    }
-
-    dd {
-      @apply m-0 break-words md:col-span-3;
-    }
-
-    a {
-      @apply border-brand text-brand hover:text-brand-dark border-b border-dotted no-underline hover:border-solid;
-    }
-
-    pre {
-      @apply border-l-brand mt-4 max-w-full overflow-x-auto border border-l-4 border-neutral-200 bg-neutral-50 p-4 text-sm leading-relaxed;
-
-      code {
-        @apply bg-transparent p-0;
-      }
-    }
-
+  pre {
+    @apply w-full overflow-x-auto border-l-6 border-l-sky-500 px-2 py-1 text-xs leading-normal sm:text-sm;
     code {
-      @apply bg-neutral-100 px-1;
+      @apply bg-transparent p-0;
     }
+  }
 
-    table {
-      @apply font-brand w-full border-collapse text-sm;
-    }
+  code {
+    @apply font-brand bg-neutral-100 px-1;
+  }
 
-    th {
-      @apply text-brand border border-neutral-200 bg-neutral-50 px-3 py-2 text-left align-top font-bold;
-    }
+  table {
+    @apply w-full border-collapse overflow-x-auto text-xs sm:text-sm;
 
+    th,
     td {
-      @apply border border-neutral-200 px-3 py-2 text-left align-top;
+      @apply border border-neutral-300 px-2 py-1 text-left;
     }
+    th {
+      @apply text-brand bg-neutral-100 font-bold;
+    }
+  }
 
-    label {
-      @apply mt-4 block text-sm font-bold;
-    }
+  label {
+    @apply mt-4 block text-sm font-bold;
+  }
 
-    input {
-      @apply font-brand border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-950;
-    }
-
-    output {
-      @apply text-brand inline-block min-h-6 max-w-full break-words;
-    }
+  input {
+    @apply border border-neutral-300 px-2 py-1;
   }
 }
 
-@layer components {
-  .table-wrap {
-    @apply mt-4 max-w-full overflow-x-auto;
-  }
+/**
+ * custom classes
+ */
 
-  .tool-row {
-    @apply mt-2 flex flex-wrap items-center gap-x-4 gap-y-2;
-  }
-
-  .tool-swatch-row {
-    @apply mt-3 flex flex-wrap items-center gap-3;
-  }
-
-  .tool-grid {
-    @apply mt-3 grid grid-cols-1 gap-3 md:grid-cols-2;
-  }
-
-  .tool-input {
-    @apply mt-1 block w-full max-w-72;
-  }
-
-  .tool-label {
-    @apply md:max-w-72;
-
-    input {
-      @apply mt-1 block w-full;
-    }
-  }
-
-  .ansi256 {
-    svg {
-      @apply h-7 w-12 border border-neutral-300;
-    }
-  }
-
-  .contrast {
-    svg {
-      @apply mt-2 h-12 w-full max-w-xs border border-neutral-300;
-    }
-  }
-
-  .contrast-preview-fg {
-    @apply font-brand text-base;
-  }
-
-  .section-anchor {
-    @apply hidden;
-  }
+.section-anchor {
+  @apply hidden;
 }

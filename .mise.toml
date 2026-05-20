@@ -6,5 +6,10 @@ _.file = { path = ".env.local", redact = true }
 postinstall = ["npx corepack enable", "yarn"]
 
 [tools]
+go = "latest"
 just = "latest"
 node = "lts"
+python = "latest"
+ruby = "latest"
+rust = "latest"
+zig = "latest"

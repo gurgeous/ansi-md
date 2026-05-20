@@ -1075,6 +1075,7 @@ export const docPages: DocPage[] = [
 ];
 
 const navLabels: Record<string, string> = {
+  "ansi-256": "ansi 256",
   "cli-renaissance": "tools",
   "getting-started": "getting started",
 };
@@ -1096,7 +1097,7 @@ export const navGroups: NavGroup[] = [
   },
   {
     label: "terminal",
-    items: [navPage("ansi"), navPage("capabilities"), navPage("color")],
+    items: [navPage("ansi"), navPage("capabilities"), navPage("color"), { href: "/ansi-256", label: "ansi 256" }],
   },
   {
     label: "output",
