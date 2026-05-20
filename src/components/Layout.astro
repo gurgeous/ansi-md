@@ -17,6 +17,7 @@ function pageTitle(): string {
 <!doctype html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href={logoUrl} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <Font cssVariable="--font-ibm-plex-mono" preload />
@@ -26,9 +27,15 @@ function pageTitle(): string {
     <Header />
     <div class="flex min-h-screen">
       <Nav />
-      <div class="min-w-0 flex-1 overflow-x-hidden">
+      <main>
         <slot />
-      </div>
+      </main>
     </div>
   </body>
 </html>
+
+<style>
+  main {
+    @apply w-full max-w-[95ch] min-w-0 flex-1 overflow-x-hidden px-5 py-10 sm:px-10;
+  }
+</style>

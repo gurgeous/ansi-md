@@ -37,6 +37,9 @@ export default defineConfig({
     },
   ],
   integrations: [mdx(), icon()],
+  markdown: {
+    smartypants: false,
+  },
   outDir: "tmp/dist",
   vite: {
     plugins: [tailwindReference(), tailwindcss()],

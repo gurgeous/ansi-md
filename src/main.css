@@ -7,43 +7,31 @@
   --default-font-family: var(--font-ibm-plex-mono), var(--font-mono);
 }
 
+body {
+  @apply text-sm;
+}
+
 /**
- * markdown article
+ * article (markdown)
  */
 
 article {
-  @apply w-full max-w-[95ch] min-w-0 overflow-x-hidden px-5 py-10 text-sm sm:px-10;
-  @apply leading-normal wrap-break-word text-neutral-950;
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply text-brand leading-tight text-balance;
-  }
-
-  h1 {
-    @apply text-4xl font-bold sm:text-5xl;
-  }
-  h2 {
-    @apply mt-10 border-b border-neutral-200 pb-1 text-3xl font-bold;
-  }
-  h3 {
-    @apply mt-5 text-xl font-semibold sm:text-2xl;
-  }
-  h4 {
-    @apply text-lg font-semibold sm:text-xl;
-  }
+  /* note: h1 has no top margin. h2 has an underline thing */
+  /* prettier-ignore */
+  h1 { @apply mt-0  text-3xl font-bold                 } /* prettier-ignore */
+  h2 { @apply mt-10 text-3xl font-bold                 } /* prettier-ignore */
+  h3 { @apply mt-5  text-xl  font-semibold sm:text-2xl } /* prettier-ignore */
+  h4 { @apply mt-2  text-lg  font-semibold sm:text-xl  } /* prettier-ignore */
+  h2 { @apply border-b border-neutral-200 pb-1        } /* prettier-ignore */
+  h1, h2, h3, h4 { @apply text-brand leading-tight text-balance }
 
   a {
     @apply border-b border-dotted font-bold text-sky-600 hover:border-solid hover:brightness-80;
   }
 
-  p,
-  ul,
-  ol,
-  pre,
-  table {
+  /* beware the nested <p> (like in <li>) */
+  /* prettier-ignore */
+  > p, ul, ol, pre, table {
     @apply mt-4;
   }
 
@@ -105,87 +93,3 @@ article {
 .section-anchor {
   @apply hidden;
 }
-
-/**
- * global content tags
- * OLD
-article {
-  @apply w-full max-w-4xl px-5 py-10 sm:px-10;
-
-  > header {
-    @apply border-brand border-b-4 bg-transparent p-0 text-inherit;
-  }
-
-  h1 {
-    @apply text-brand text-4xl leading-tight font-bold text-balance sm:text-5xl;
-  }
-
-  h2 {
-    @apply text-brand mt-10 border-b border-neutral-200 pb-1 text-3xl font-bold;
-  }
-
-  h3 {
-    @apply mt-5 text-sm font-bold text-neutral-600 uppercase;
-  }
-
-  p {
-    @apply mt-4 leading-relaxed break-words text-neutral-950;
-  }
-
-  ul {
-    @apply mt-4 list-disc space-y-2 pl-6 leading-relaxed;
-  }
-
-  dl {
-    @apply mt-4 grid grid-cols-1 gap-x-4 gap-y-2 leading-relaxed sm:grid-cols-4;
-  }
-
-  dt {
-    @apply text-brand font-bold sm:col-span-1;
-  }
-
-  dd {
-    @apply m-0 break-words sm:col-span-3;
-  }
-
-  a {
-    @apply border-brand text-brand hover:text-brand-dark border-b border-dotted no-underline hover:border-solid;
-  }
-
-  pre {
-    @apply border-l-brand mt-4 max-w-full overflow-x-auto border border-l-4 border-neutral-200 bg-neutral-50 p-4 text-sm leading-relaxed;
-
-    code {
-      @apply bg-transparent p-0;
-    }
-  }
-
-  code {
-    @apply bg-neutral-100 px-1;
-  }
-
-  table {
-    @apply w-full border-collapse text-sm;
-  }
-
-  th {
-    @apply text-brand border border-neutral-200 bg-neutral-50 px-3 py-2 text-left align-top font-bold;
-  }
-
-  td {
-    @apply border border-neutral-200 px-3 py-2 text-left align-top;
-  }
-
-  label {
-    @apply mt-4 block text-sm font-bold;
-  }
-
-  input {
-    @apply border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-950;
-  }
-
-  output {
-    @apply text-brand inline-block min-h-6 max-w-full break-words;
-  }
-}
-*/

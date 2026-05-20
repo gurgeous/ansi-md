@@ -1,47 +1,164 @@
-# Ansi.md (h1)
+# About
 
-Small markdown-style demo page for the global `article` content styles.
+Ansi.md is my personal brain dump for creating nice command line apps in the modern era. My intent is to gradually expand the site with hard-won tricks, recommended apps and homegrown tools.
 
-This paragraph exercises body copy, inline `code`, and a regular [link](/ansi-256). Fil-C is a fanatically compatible memory-safe implementation of C and C++. Lots of software compiles and runs with Fil-C with zero or minimal changes. All memory safety errors are caught as Fil-C panics. Fil-C achieves this using a combination of concurrent garbage collection and invisible capabilities (InvisiCaps). Every possibly-unsafe C and C++ operation is checked. Fil-C has no unsafe statement and only limited FFI to unsafe code.
+**AI statement**: I wrote everything here. I like my writing voice and I do not use LLMs to write. They help out with the coding bits, of course.
 
-## Prose (h2)
+Last Updated - May 2026
 
-Another paragraph makes the default vertical spacing obvious. The page should feel like a plain technical note rather than a product surface.
+## Why
 
-### Lists (h3)
+I don't claim to be any kind of expert on command line apps, but I've written a few popular tools (like [tennis](https://github.com/gurgeous/tennis)) and it's not easy. I've also written literally hundreds of internal cli apps for various projects and I'm sadly quite obsessed with color, progress bars, and spinners.
 
-- ANSI escapes are transport.
-- `terminfo` is capability metadata.
-- Palette names are data, not semantics.
+Why is this stuff so complicated? In order to answer this question, you have to dig into the history of the terminal. Your little cli app runs inside a terminal, something like Apple Terminal, Ghostty, iTerm, Alacritty, or even good ol' xterm. If you are using a "web" terminal like the thing that google cloud provides, the cli apps are running insie a terminal written in javascript.
 
-1. Start with plain text.
-1. Add color only where it helps.
-1. Keep fallbacks readable.
+All terminals have a shared lineage, dating back to the [classic VT100](https://en.wikipedia.org/wiki/VT100) from 50 years ago. Your lovingly crafted app prints out bytes like `"hello world"` and the terminal displays them.
 
-## Code (h2)
+Vintage terminals were straightfoward, displaying text on screen and looking for `\n` to advance to the next line. Similar to typewriters of that era. But modern terminals are capable of more, so much more. Too much, probably.
 
-Inline code should stay quiet, while fenced code should read like a copied note:
+We've got truecolor RGB. We've got themes that are "light" and "dark". We've got mouse control, layout, and hints for double buffering. We've got window titles. We've got strange graphics protocols, builtin tiny progress bars, and hacks to make the icon bounce in [the Dock](<https://en.wikipedia.org/wiki/Dock_(macOS)>).
 
-```sh
-printf '\033[38;5;45mcyan-ish\033[0m\n'
-printf '\033[1;38;2;12;74;110mbrand\033[0m\n'
+Modern terminals carefully parse the stream of bytes printed from your app in order to support these features. Terminals also set ENV variables to give hints to your app about what's supported. Tools like `ssh` or `tmux` have to understand these ENV variables too, otherwise apps running over ssh have no idea what's supported. There are [huge databases](https://invisible-island.net/xterm/terminfo.html) that try to capture which features are supported by which terminals. Your app can also query the terminal directly using obscure invisible codes.
 
-GUB="hello $hi world"
+I'll be honest with you, this system is a beautiful mess and probably should be burned in a fire. The complexity is made worse due to the various strata in the system - it's quite easy to find docs for first or second generation terminals, etc. but in many cases you won't need that stuff. Software evolves quickly, and devs are eager to move on to modern terminals.
+
+In the meantime, cli devs and library authors need to understand some of this to create nice cli apps that work in popular terminals.
+
+## Chapters
+
+- [ENV, Capabilities, Theme Detection](detection) - OMG why is this so hard
+- [ANSI 256 / Tailwind / Catppuccin](colors) - color tooling
+- [How to CLI](rules) - the difference between meh and awesome cli
+- [Progress Bars & Spinners](progs) - the fun stuff
+- [Recommended Apps](apps) - I love CLI. Like, a lot
+- [Recommended Libraries](libs) - modern cli libraries
+- [Recommended Terminals](terms) - modern terminals
+- [Advanced ANSI Stuff](advanced) - don't read this
+- [LLMs and CLI](llms) - prompting suggestions
+- [Windows](windows) - I know very little about this topic
+- [Further Reading](more) - if you aren't bored yet
+
+### NOTES
+
+- Intro
+  feedback
+
+- Detection
+  how apps figure out what the terminal can do
+  tty vs not a tty (redirect)
+  /dev/tty
+  NO_COLOR
+  FORCE_COLOR
+  COLORTERM
+  TERM
+  TERMINFO
+  none vs ansi vs 256 vs 16m
+  terminfo / and the term database
+  termcap
+  querying bg color, mostly bg
+  "raw mode"
+  terminal size
+  tmux, ssh
+  ghostty injection terminfo
+  printf 256 16m what do you see?
+  echo
+  (note: how does this stuff end up using ncurses/terminfo?)
+  https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+
+- windows
+
+- palettes / themes
+  ansi 256
+  tailwind
+  css named colors
+  catppuccin
+  downsampling
+  closest 256
+  closest tailwind
+  format as RGB
+
+- advanced stuff
+  alpha blending
+  half block
+
+- random commands and misc
+  terminfo
+  termcap
+  tputs
+  ncurses (curses)
+  readline
+  `stty sane`
+  printf (and 16m detection)
+
+- modern terminals
+  alacritty
+  ghostty
+  kitty
+  iterm
+  ConEmu
+  vscode/zed
+  https://github.com/dalance/termbg
+
+- libraries
+  cli args / ansicolor / tui / detection / spinner / progressbar / react-like libs
+  go
+  python
+  node
+  ruby
+  rust
+  zig
+
+- ansi codes
+  common stuff
+  fg bg
+  reset
+  bold
+  there are many more codes
+  novelty codes : progress bar
+  novelty codes : notify
+  show/hide cursor
+  carriage return
+  hyperlinks
+  randos ("kitty color")
+  set window title
+
+- images
+  ascii art
+  proper images ("kitty graphics")
+
+- also see
+  12 factor cli apps
+  https://clig.dev/
+  charmbracelet
+
+```
+atuin
+bat
+chafa
+doggo
+dust
+eza
+fd
+fx
+ghostty
+gron
+gum
+hexyl
+oh-my-posh
+pastel
+rg
+sd
+sequin
+tennis
+trippy
+vd
+vhs
+yazi
+zmx
 ```
 
-## Table (h2)
+maybe
 
-| Mode      | Example                 | Notes                     |
-| --------- | ----------------------- | ------------------------- |
-| 16 color  | `\x1b[31m`              | Theme slot, not fixed RGB |
-| 256 color | `\x1b[38;5;45m`         | Portable indexed palette  |
-| Truecolor | `\x1b[38;2;56;189;248m` | Useful when supported     |
-
-## Form Bits (h2)
-
-<label>
-  Sample input
-  <input value="#38bdf8" />
-</label>
-
-<output>#38bdf8 looks readable on a dark terminal background.</output>
+- articles should have dates
+- https://www.cl.cam.ac.uk/~mgk25/unicode.html
+- https://tldp.org/HOWTO/Xterm-Title.html
