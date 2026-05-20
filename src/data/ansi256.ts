@@ -1,4 +1,4 @@
-import { snakeCase } from "es-toolkit/string";
+import { camelCase, snakeCase } from "es-toolkit/string";
 
 import { paddedRows } from "../lib/util.ts";
 
@@ -276,14 +276,17 @@ type NamedColor = Ansi256Entry & {
   key: string;
 };
 
-function namedColors(format: (name: string) => string): NamedColor[] {
+function namedColors(
+  format: (name: string) => string,
+  duplicateKey = (key: string, code: number) => `${key}_${code}`,
+): NamedColor[] {
   const seen = new Map<string, number>();
   return ansi256.map((color, index) => {
     const code = ansiCode(index);
     const key = format(displayName(color));
     const count = seen.get(key) ?? 0;
     seen.set(key, count + 1);
-    return { ...color, code, key: count === 0 ? key : `${key}_${code}` };
+    return { ...color, code, key: count === 0 ? key : duplicateKey(key, code) };
   });
 }
 
@@ -364,7 +367,7 @@ ${rows}
 
 export function renderAnsi256Typescript(): string {
   const rows = paddedRows(
-    namedColors(snakeCase),
+    namedColors(camelCase, (key, code) => `${key}${code}`),
     (color, widths) => {
       const key = `${color.key}:`.padEnd(widths.key + 1);
       const value = `"${color.hex}",`.padEnd(widths.value + 3);
