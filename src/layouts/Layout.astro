@@ -1,21 +1,10 @@
 ---
 import "../main.css";
 import { navGroups } from "@/data/site";
+import logoUrl from "@/assets/logo.png?url";
 import { Font } from "astro:assets";
 
-const iconModules = import.meta.glob<string>("/src/assets/*.png", {
-  eager: true,
-  import: "default",
-  query: "?url",
-});
-const iconUrls = Object.values(iconModules);
-const pageIconUrl = iconUrls[0];
-const iconJson = JSON.stringify(iconUrls);
-
-const {
-  title = "ansi.md",
-  description = "A practical reference for building beautiful command line and terminal user interfaces.",
-} = Astro.props;
+const { title = "Ansi.md" } = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
@@ -23,27 +12,14 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/png" href={pageIconUrl} />
-    <link rel="shortcut icon" type="image/png" href={pageIconUrl} />
-    <link rel="apple-touch-icon" href={pageIconUrl} />
-    <meta name="ansi.md:icon" content={pageIconUrl} />
-    <meta property="og:image" content={pageIconUrl} />
-    <meta name="twitter:image" content={pageIconUrl} />
+    <link rel="icon" type="image/png" href={logoUrl} />
     <Font cssVariable="--font-ibm-plex-mono" preload />
-    <slot name="head" />
     <title>{title}</title>
   </head>
   <body>
     <header>
-      <a href="/" aria-label="ansi.md home">
-        <img class="brand-icon" src={pageIconUrl} alt="" width="40" height="40" />
-        <span>ansi.md</span>
-      </a>
-      <p><em>ANSI codes</em> &bull; <em>terminal color</em> &bull; <em>CLI/TUI craft</em></p>
+      <a href="/" aria-label="Ansi.md home">Ansi.md</a>
     </header>
     <div>
       <aside>
@@ -69,47 +45,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
         <main>
           <slot />
         </main>
-        <footer>
-          <span>ansi.md</span>
-        </footer>
       </div>
     </div>
-    <script define:vars={{ iconJson, pageIconUrl }}>
-      const icons = JSON.parse(iconJson);
-      let iconIndex = Math.max(0, icons.indexOf(pageIconUrl));
-
-      function setIcon(url) {
-        document.querySelector(".brand-icon")?.setAttribute("src", url);
-        document
-          .querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]')
-          .forEach((link) => {
-            link.setAttribute("href", url);
-          });
-        document
-          .querySelectorAll('meta[name="ansi.md:icon"], meta[property="og:image"], meta[name="twitter:image"]')
-          .forEach((meta) => {
-            meta.setAttribute("content", url);
-          });
-      }
-
-      document.addEventListener("keydown", (event) => {
-        if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-
-        const target = event.target;
-        if (
-          target instanceof HTMLInputElement ||
-          target instanceof HTMLTextAreaElement ||
-          target instanceof HTMLSelectElement ||
-          target?.isContentEditable
-        ) {
-          return;
-        }
-
-        event.preventDefault();
-        iconIndex = (iconIndex + (event.key === "ArrowRight" ? 1 : -1) + icons.length) % icons.length;
-        setIcon(icons[iconIndex]);
-      });
-    </script>
   </body>
 </html>

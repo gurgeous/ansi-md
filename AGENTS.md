@@ -1,6 +1,6 @@
 ## Project
 
-`ansi.md` is a static Astro + TypeScript reference for ANSI codes, terminal capabilities, CLI output, progress UI, tools, and TUI libraries.
+`Ansi.md` is a static Astro + TypeScript reference for ANSI codes, terminal capabilities, CLI output, progress UI, tools, and TUI libraries.
 
 Save tokens: keep this file short. Add durable rules only; do not duplicate obvious repo state.
 

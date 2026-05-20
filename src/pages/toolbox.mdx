@@ -1,20 +1,19 @@
 ---
 layout: ../layouts/DocLayout.astro
 title: Toolbox
-description: toolbox - small helpers for color, contrast, escape strings, and terminal feature checks
 ---
 
 import ToolboxTools from "../components/ToolboxTools.astro";
 
 export const probeCommands = `printf 'truecolor: \\033[38;2;255;120;0mRGB24\\033[0m\\n'
-printf 'hyperlink: \\033]8;;https://ansi.md\\033\\\\ansi.md\\033]8;;\\033\\\\\\n'
+printf 'hyperlink: \\033]8;;https://Ansi.md\\033\\\\Ansi.md\\033]8;;\\033\\\\\\n'
 printf 'cursor: hide for one second\\033[?25l'; sleep 1; printf '\\033[?25h\\n'
 printf 'clear line: before'; sleep 1; printf '\\r\\033[2Kafter\\n'
 tput colors
 infocmp "$TERM" | sed -n '1,12p'`;
 
 <p>
-  The toolbox is the practical side of <code>ansi.md</code>: small references and calculators that answer the questions
+  The toolbox is the practical side of <code>Ansi.md</code>: small references and calculators that answer the questions
   people run into while building terminal output.
 </p>
 

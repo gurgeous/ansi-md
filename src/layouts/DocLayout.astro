@@ -3,13 +3,12 @@ import Layout from "@/layouts/Layout.astro";
 
 type Frontmatter = {
   title: string;
-  description: string;
 };
 
 const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
 ---
 
-<Layout title={`${frontmatter.title} - ansi.md`} description={frontmatter.description}>
+<Layout title={`${frontmatter.title} - Ansi.md`}>
   <article>
     <header>
       <h1>{frontmatter.title}</h1>

@@ -1,4 +1,4 @@
-// Astro config for ansi.md.
+// Astro config for Ansi.md.
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";

@@ -30,21 +30,13 @@
     @apply border-brand-dark bg-brand w-full border-b-4 px-5 py-5 text-white md:px-10;
 
     a {
-      @apply inline-flex items-center gap-3 text-4xl leading-none font-bold text-white no-underline md:text-5xl;
-    }
-
-    img {
-      @apply size-9 bg-white p-1 md:size-10;
-    }
-
-    p {
-      @apply text-brand-soft mt-2 text-sm leading-relaxed md:text-base;
+      @apply text-4xl leading-none font-bold text-white no-underline md:text-5xl;
     }
   }
 
   aside {
     nav {
-      @apply grid min-w-0 content-start gap-4 text-sm md:sticky md:top-6;
+      @apply grid min-w-0 content-start gap-4 text-sm;
     }
 
     section {
@@ -70,10 +62,6 @@
         @apply border-solid font-bold text-neutral-950;
       }
     }
-  }
-
-  footer {
-    @apply flex w-full max-w-4xl flex-wrap justify-between gap-x-4 gap-y-1 border-t border-neutral-200 px-5 py-4 text-xs text-neutral-600 md:px-10;
   }
 
   article {

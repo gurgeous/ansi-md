@@ -9,15 +9,7 @@ const { page } = Astro.props as { page: DocPage };
     <h1>{page.title}</h1>
   </header>
 
-  <section class="synopsis">
-    <a class="section-anchor" name="synopsis"></a>
-    <h2>Synopsis</h2>
-    <pre><code>{page.synopsis.join("\n")}</code></pre>
-  </section>
-
-  <section class="description">
-    <a class="section-anchor" name="description"></a>
-    <h2>Description</h2>
+  <section class="intro">
     {page.description.map((paragraph) => <p>{paragraph}</p>)}
   </section>
 
