@@ -1,0 +1,96 @@
+<article>
+  <slot />
+</article>
+
+<style is:global>
+  /**
+   * simple markdown styling, somewhat like prose
+   */
+  article {
+    @apply w-full max-w-[80ch] px-5 py-10 text-sm sm:px-10 sm:text-base;
+    @apply leading-relaxed wrap-break-word text-neutral-950;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      @apply leading-tight text-balance;
+    }
+
+    h1 {
+      @apply text-brand text-4xl font-bold sm:text-5xl;
+    }
+    h2 {
+      @apply text-brand mt-10 border-b border-neutral-200 pb-1 text-3xl font-bold;
+    }
+    h3 {
+      @apply mt-5 text-xl font-semibold sm:text-2xl;
+    }
+    h4 {
+      @apply text-lg font-semibold sm:text-xl;
+    }
+
+    a {
+      @apply text-brand border-b border-dotted hover:border-solid hover:brightness-80;
+    }
+
+    p,
+    ul,
+    ol {
+      @apply mt-4;
+    }
+
+    ul,
+    ol {
+      @apply space-y-2 pl-6;
+      ::marker {
+        @apply text-gray-400;
+      }
+      li {
+        @apply pl-2;
+      }
+    }
+    ul {
+      @apply list-disc;
+    }
+    ol {
+      @apply list-decimal;
+    }
+
+    pre {
+      @apply border-l-brand mt-4 max-w-full overflow-x-auto border border-l-4 border-neutral-200 bg-neutral-50 p-4 text-sm leading-relaxed;
+
+      code {
+        @apply bg-transparent p-0;
+      }
+    }
+
+    code {
+      @apply bg-neutral-100 px-1;
+    }
+
+    table {
+      @apply w-full border-collapse text-sm;
+
+      th {
+        @apply text-brand border border-neutral-200 bg-neutral-50 px-3 py-2 text-left align-top font-bold;
+      }
+
+      td {
+        @apply border border-neutral-200 px-3 py-2 text-left align-top;
+      }
+    }
+
+    label {
+      @apply mt-4 block text-sm font-bold;
+    }
+
+    input {
+      @apply border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-950;
+    }
+
+    output {
+      @apply text-brand inline-block min-h-6 max-w-full break-words;
+    }
+  }
+</style>
