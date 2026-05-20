@@ -1,5 +1,6 @@
 ---
 import "../main.css";
+import Header from "@/components/Header.astro";
 import Nav from "@/components/Nav.astro";
 import logoUrl from "@/assets/logo.png?url";
 import { Font } from "astro:assets";
@@ -16,17 +17,12 @@ const { title = "Ansi.md" } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <!-- header -->
-    <header>
-      <a href="/" aria-label="Ansi.md home">Ansi.md</a>
-    </header>
-
-    <!-- left/right -->
-    <div>
+    <Header />
+    <div class="flex min-h-screen">
       <Nav />
-      <main>
+      <div class="flex-1">
         <slot />
-      </main>
+      </div>
     </div>
   </body>
 </html>
