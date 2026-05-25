@@ -80,6 +80,19 @@ function remarkGitHubRepoLinks() {
 }
 
 //
+// default layout
+//
+
+function remarkDefaultLayout() {
+  return function (_, file) {
+    const { frontmatter } = file.data.astro;
+    if (frontmatter.title) {
+      frontmatter.layout ??= "../components/ArticleLayout.astro";
+    }
+  };
+}
+
+//
 // auto import
 //
 const autoImports = [
@@ -137,7 +150,7 @@ export default defineConfig({
   integrations: [autoImportMdx, autoImportVite, mdx(), icon()],
   markdown: {
     rehypePlugins: [[rehypeExternalLinks, { rel: ["noopener", "noreferrer"], target: "_blank" }]],
-    remarkPlugins: [remarkGfm, remarkGitHubRepoLinks],
+    remarkPlugins: [remarkDefaultLayout, remarkGfm, remarkGitHubRepoLinks],
     shikiConfig: { theme: catppuccin },
     smartypants: false,
   },
