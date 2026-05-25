@@ -42,7 +42,7 @@ article {
 
   /* beware the nested <p> (like in <li>) */
   /* prettier-ignore */
-  > p, ul, ol, pre, table {
+  > p, ul, ol, pre, table, li > p, section {
     @apply mt-4;
   }
 

@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import Ansi from "@/lib/ansi.ts";
 
 describe("ansi", () => {

@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import * as Base from "@/lib/code/lang/base.ts";
 
 describe("Code", function () {

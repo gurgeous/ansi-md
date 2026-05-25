@@ -1,5 +1,6 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { describe, expect, it } from "vitest";
 
 import { extByName, languages, type LangKey, type Language } from "@/lib/code/code.ts";
 import catppuccin from "@/lib/code/palettes/catppuccin.ts";
