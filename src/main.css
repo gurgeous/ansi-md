@@ -2,14 +2,32 @@
 
 @theme {
   --color-brand: theme("colors.sky.800");
+  --color-brand-bright: theme("colors.sky.500");
   --color-brand-dark: theme("colors.sky.900");
   --font-brand: var(--font-ibm-plex-mono), var(--font-mono);
   --default-font-family: var(--font-ibm-plex-mono), var(--font-mono);
 }
 
+:root {
+  --border-color-default: theme("colors.neutral.300");
+}
+
+/* https://tailwindcss.com/docs/upgrade-guide#default-border-color */
+/* prettier-ignore */
+*, ::after, ::before { border-color: var(--border-color-default) }
+
 body {
   @apply text-sm;
 }
+
+/* dim input placeholder color */
+input::placeholder {
+  @apply text-neutral-300;
+}
+
+/* prettier-ignore */
+ul { @apply list-disc    } /* prettier-ignore */
+ol { @apply list-decimal }
 
 /**
  * article (markdown)
@@ -21,13 +39,9 @@ article {
   h1 { @apply mt-0  text-3xl font-bold                 } /* prettier-ignore */
   h2 { @apply mt-10 text-3xl font-bold                 } /* prettier-ignore */
   h3 { @apply mt-5  text-xl  font-semibold sm:text-2xl } /* prettier-ignore */
-  h4 { @apply mt-2  text-lg  font-semibold sm:text-xl  } /* prettier-ignore */
+  h4 { @apply mt-5  text-lg  font-semibold sm:text-xl  } /* prettier-ignore */
   h2 { @apply border-b border-neutral-200 pb-1        } /* prettier-ignore */
-  h1, h2, h3, h4 { @apply text-brand leading-tight text-balance }
-
-  a {
-    @apply border-b border-dotted font-bold text-sky-600 hover:border-solid hover:brightness-80;
-  }
+  h1, h2, h3, h4 { @apply text-brand leading-tight }
 
   /* beware the nested <p> (like in <li>) */
   /* prettier-ignore */
@@ -37,32 +51,39 @@ article {
 
   ul,
   ol {
+    li:not(:first-child) {
+      @apply mt-2;
+    }
     ::marker {
-      @apply text-gray-400;
+      @apply text-neutral-400;
     }
   }
   ul {
-    @apply list-disc pl-6;
+    @apply pl-6;
     li {
       @apply pl-4;
     }
   }
   ol {
-    @apply list-decimal pl-9;
+    @apply pl-9;
     li {
       @apply pl-1;
     }
   }
 
   pre {
-    @apply w-full overflow-x-auto border-l-6 border-l-sky-500 px-2 py-1 text-xs leading-normal sm:text-sm;
+    @apply border-l-brand-bright w-full overflow-x-auto border-l-6 px-2 py-1 text-xs leading-normal sm:text-sm;
     code {
       @apply bg-transparent p-0;
     }
   }
 
+  a {
+    @apply text-brand-bright border-b border-dotted font-bold hover:border-solid hover:brightness-80;
+  }
+
   code {
-    @apply font-brand bg-neutral-100 px-1;
+    @apply font-brand text-brand bg-neutral-100 px-1;
   }
 
   table {
@@ -70,7 +91,7 @@ article {
 
     th,
     td {
-      @apply border border-neutral-300 px-2 py-1 text-left;
+      @apply border px-2 py-1 text-left;
     }
     th {
       @apply text-brand bg-neutral-100 font-bold;
@@ -82,14 +103,24 @@ article {
   }
 
   input {
-    @apply border border-neutral-300 px-2 py-1;
+    @apply border px-2 py-1;
   }
 }
 
 /**
- * custom classes
+ * shimmer
  */
 
-.section-anchor {
-  @apply hidden;
+.shimmer {
+  background: linear-gradient(to right, #7953cd 20%, #00affa 30%, #0190cd 70%, #764ada 80%);
+  background-clip: text;
+  background-size: 500% auto;
+  color: transparent;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  /* prettier-ignore */
+  0% { background-position: 0% 50% } /* prettier-ignore */
+  100% { background-position: 100% 50% }
 }

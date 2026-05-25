@@ -1,43 +1,51 @@
+## Critical
+
+- Ignore `old/`; it is inactive reference trash.
+- Use `just`: `install`, `dev`, `fmt`, `lint`, `test`, `build`.
+- No `package.json` scripts.
+- Run `just check` after code changes.
+- Run `just build` before substantial handoff.
+- Do not take browser screenshots unless asked.
+
 ## Project
 
-`Ansi.md` is a static Astro + TypeScript reference for ANSI codes, terminal color, CLI output, tools, and TUI libraries.
+`Ansi.md` is a static Astro + TypeScript reference for ANSI,
+terminal color, CLI output, tools, and TUI libraries.
 
 Save tokens: keep this file short. Add durable rules only.
-
-## Commands
-
-- Use `just`: `just install`, `just dev`, `just fmt`, `just build`.
-- No `package.json` scripts.
 
 ## Design
 
 - Text-first technical reference; not a product site.
-- Visual reference: fil-c.org/calling_convention; borrow structure, not palette.
+- Visual reference: fil-c.org/calling_convention; structure,
+  not palette.
 - Brand color/font live in `src/main.css` `@theme`.
-- Avoid heroes, cards, gradients, decorative imagery, marketing copy, per-page subtitles.
+- Avoid heroes, cards, gradients, marketing copy, and subtitles.
 - Prefer top margins for document flow.
 
 ## Code
 
 - Source/assets stay under `src/`; never use `public/`.
+- Prefer `@/...` imports instead of relative source imports.
+- Use es-toolkit via auto-imports; do not import it manually.
+- Do not remove auto-imports; ignore build warnings about unused imports.
 - Prefer semantic HTML and classes, not IDs.
-- Use MDX for authored long-form pages when useful.
 - Keep client JS rare.
-- Avoid wrapper-only helpers; import library utilities directly unless adding project behavior.
+- Avoid wrapper-only helpers.
+- Prefix HTML element refs with `$`, including element arrays/maps.
+- Function type aliases use an `Fn` suffix.
+- Omit trivial TS return types; avoid pointless `: void`.
+- Avoid `private`/`readonly`; use them only when genuinely valuable.
+- For impossible internal states, prefer `throw "impossible"` over verbose error scaffolding.
+- TS comments explain purpose or constraints, never names.
+- Add a short file-purpose comment atop non-test TS files.
+- Keep source lines at 72 columns or less.
+- Palette/code modules live in `src/lib/code/`.
 
 ## Tailwind
 
-- Use Tailwind `@apply` in `src/main.css` for repeated doc/site elements.
-- Local component styles are okay; the Vite plugin adds `@reference "@/main.css"`.
+- Use `src/main.css` `@apply` for repeated doc/site elements.
+- Local component styles are okay; Vite adds `@reference`.
+- Put repeated/interesting Astro utility groups in scoped `<style>`.
 - CSS uses nesting; avoid arbitrary bracket utilities.
 - Responsive utilities: only `sm:` and `lg:`; never `md:`.
-
-## Data
-
-- Keep tables explicit and auditable.
-- Generated data goes in `src/data/`; build/cache output goes in `tmp/`.
-
-## Handoff
-
-- Run `just build` before substantial handoff.
-- Do not take browser screenshots unless asked.

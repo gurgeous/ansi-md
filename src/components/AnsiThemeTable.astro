@@ -1,0 +1,60 @@
+---
+import Ansi from "@/lib/ansi.ts";
+
+type Row = {
+  name: string;
+  hex: string;
+};
+
+type Props = {
+  rows: Row[];
+  bright?: boolean;
+};
+
+const { rows, bright = false } = Astro.props;
+const base = bright ? 8 : 0;
+---
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>rgb</th>
+      <th>fg16</th>
+      <th>bg16</th>
+      <th>fg256</th>
+      <th>bg256</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      rows.map((row, i) => (
+        <tr>
+          <td>
+            <span class="inline-flex items-center gap-2">
+              <svg class="size-3 shrink-0 border border-neutral-400">
+                <rect width="12" height="12" fill={row.hex} />
+              </svg>
+              <span>{row.name}</span>
+            </span>
+          </td>
+          <td>
+            <code>{row.hex}</code>
+          </td>
+          <td>
+            <code>{Ansi.fg16(i, bright)}</code>
+          </td>
+          <td>
+            <code>{Ansi.bg16(i, bright)}</code>
+          </td>
+          <td>
+            <code>{Ansi.fg256(base + i)}</code>
+          </td>
+          <td>
+            <code>{Ansi.bg256(base + i)}</code>
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

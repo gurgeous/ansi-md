@@ -2,4 +2,6 @@
 .env*
 .yarn/
 node_modules/
+old/
 tmp/
+TODO.md

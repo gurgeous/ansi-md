@@ -1,0 +1,6 @@
+#!/bin/sh
+
+exec node --experimental-strip-types \
+  --import ./bin/_nodeAutoImports.mjs \
+  --import ./bin/_nodeSrcAlias.mjs \
+  "$@"

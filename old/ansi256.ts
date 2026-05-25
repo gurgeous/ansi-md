@@ -1,15 +1,18 @@
+// Previous ANSI 256 palette generator kept for reference during rewrites.
+// Active palette generators live under src/lib/code.
 import { camelCase, snakeCase } from "es-toolkit/string";
+import { type Language, headerComment, languageByKey, languages } from "./code.ts";
+import { paddedRows } from "./util.ts";
 
-import { paddedRows } from "../lib/util.ts";
-
+// Source ANSI 256 color before adding its terminal code.
 export type Ansi256Color = {
-  name: string;
-  hex: string;
+  name: string; // Name copied from the Vim reference table.
+  hex: string; // Canonical value emitted in generated snippets.
 };
 
-// Source names and hex values: Vim Tips Wiki, "Xterm256 color names for console Vim".
-// https://vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
-// This table intentionally omits ANSI 0-15 because those slots are terminal-theme colors.
+// Source names: Vim Tips Wiki, "Xterm256 color names for console Vim".
+// vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim
+// Omit ANSI 0-15 because those slots are terminal-theme colors.
 export const ansi256 = [
   { name: "Black", hex: "#000000" },
   { name: "NavyBlue", hex: "#00005f" },
@@ -251,31 +254,28 @@ export const ansi256 = [
   { name: "Grey85", hex: "#dadada" },
   { name: "Grey89", hex: "#e4e4e4" },
   { name: "Grey93", hex: "#eeeeee" },
-] as const satisfies readonly Ansi256Color[];
+] as const;
 
+// Literal palette row inferred from the ANSI 256 source table.
 export type Ansi256Entry = (typeof ansi256)[number];
 
+// Convert zero-based palette index to xterm color code.
 export function ansiCode(index: number): number {
   return index + 16;
 }
 
-export const languages = ["go", "python", "ruby", "rust", "typescript", "zig"] as const;
-export type Ansi256Language = (typeof languages)[number];
+export { languages };
 
-export const ansi256LanguageLabels: Record<Ansi256Language, string> = {
-  go: "Go",
-  python: "Python",
-  ruby: "Ruby",
-  rust: "Rust",
-  typescript: "TypeScript",
-  zig: "Zig",
-};
+// Language metadata type accepted by the ANSI 256 renderer.
+export type Ansi256Language = Language;
 
+// Palette row after adding code and language-ready key.
 type NamedColor = Ansi256Entry & {
-  code: number;
-  key: string;
+  code: number; // Xterm number shown in generated comments.
+  key: string; // Collision-safe identifier for generated output.
 };
 
+// Build generated names and suffix duplicates with their xterm code.
 function namedColors(
   format: (name: string) => string,
   duplicateKey = (key: string, code: number) => `${key}_${code}`,
@@ -286,19 +286,21 @@ function namedColors(
     const key = format(displayName(color));
     const count = seen.get(key) ?? 0;
     seen.set(key, count + 1);
-    return { ...color, code, key: count === 0 ? key : duplicateKey(key, code) };
+    return {
+      ...color,
+      code,
+      key: count === 0 ? key : duplicateKey(key, code),
+    };
   });
 }
 
-function headerComment(prefix: string): string {
-  return `${prefix} ANSI 256 colors 16-255. See https://ansi.md.`;
-}
-
+// Normalize source names that should have canonical generated keys.
 function displayName(color: Ansi256Entry): string {
   if (color.hex === "#ffffff") return "White";
   return color.name;
 }
 
+// Render ANSI 256 colors as a Go map literal.
 export function renderAnsi256Go(): string {
   const rows = paddedRows(
     namedColors(snakeCase),
@@ -308,13 +310,14 @@ export function renderAnsi256Go(): string {
     },
     (color) => ({ key: color.key, value: color.hex }),
   );
-  return `${headerComment("//")}
+  return `${headerComment(languageByKey.go, "ANSI 256 colors 16-255")}
 var ANSI256 = map[string]string{
 ${rows}
 }
 `;
 }
 
+// Render ANSI 256 colors as a typed Python dictionary.
 export function renderAnsi256Python(): string {
   const rows = paddedRows(
     namedColors(snakeCase),
@@ -325,13 +328,14 @@ export function renderAnsi256Python(): string {
     },
     (color) => ({ key: color.key, value: color.hex }),
   );
-  return `${headerComment("#")}
+  return `${headerComment(languageByKey.python, "ANSI 256 colors 16-255")}
 ANSI_256: dict[str, str] = {
 ${rows}
 }
 `;
 }
 
+// Render ANSI 256 colors as a frozen Ruby hash.
 export function renderAnsi256Ruby(): string {
   const rows = paddedRows(
     namedColors(snakeCase),
@@ -342,29 +346,27 @@ export function renderAnsi256Ruby(): string {
     },
     (color) => ({ key: color.key, value: color.hex }),
   );
-  return `${headerComment("#")}
+  return `${headerComment(languageByKey.ruby, "ANSI 256 colors 16-255")}
 ANSI_256 = {
 ${rows}
 }.freeze
 `;
 }
 
+// Render ANSI 256 colors as a borrowed Rust tuple slice.
 export function renderAnsi256Rust(): string {
   const colors = namedColors(snakeCase);
-  const rows = colors
-    .map((color) => `    ("${color.key}", "${color.hex}"),`)
-    .map(
-      (row, _index, allRows) =>
-        `${row.padEnd(Math.max(...allRows.map((nextRow) => nextRow.length)))} // ${colors[_index].code}`,
-    )
-    .join("\n");
-  return `${headerComment("//")}
+  const tupleRows = colors.map((color) => `    ("${color.key}", "${color.hex}"),`);
+  const width = Math.max(...tupleRows.map((row) => row.length));
+  const rows = tupleRows.map((row, index) => `${row.padEnd(width)} // ${colors[index].code}`).join("\n");
+  return `${headerComment(languageByKey.rust, "ANSI 256 colors 16-255")}
 pub const ANSI_256: &[(&str, &str)] = &[
 ${rows}
 ];
 `;
 }
 
+// Render ANSI 256 colors as a TypeScript const object.
 export function renderAnsi256Typescript(): string {
   const rows = paddedRows(
     namedColors(camelCase, (key, code) => `${key}${code}`),
@@ -375,26 +377,28 @@ export function renderAnsi256Typescript(): string {
     },
     (color) => ({ key: color.key, value: color.hex }),
   );
-  return `${headerComment("//")}
+  return `${headerComment(languageByKey.ts, "ANSI 256 colors 16-255")}
 export const ANSI_256 = {
 ${rows}
-} as const satisfies Record<string, string>;
+} as const;
 `;
 }
 
+// Render ANSI 256 colors as a Zig StaticStringMap initializer.
 export function renderAnsi256Zig(): string {
   const rows = namedColors(snakeCase)
     .map((color) => `    .{ "${color.key}", "${color.hex}" }, // ${color.code}`)
     .join("\n");
-  return `${headerComment("//")}
+  return `${headerComment(languageByKey.zig, "ANSI 256 colors 16-255")}
 pub const ANSI_256 = std.StaticStringMap([]const u8).initComptime(.{
 ${rows}
 });
 `;
 }
 
+// Dispatch ANSI 256 rendering by target language.
 export function renderAnsi256(language: Ansi256Language): string {
-  switch (language) {
+  switch (language.key) {
     case "go":
       return renderAnsi256Go();
     case "python":
@@ -403,7 +407,7 @@ export function renderAnsi256(language: Ansi256Language): string {
       return renderAnsi256Ruby();
     case "rust":
       return renderAnsi256Rust();
-    case "typescript":
+    case "ts":
       return renderAnsi256Typescript();
     case "zig":
       return renderAnsi256Zig();

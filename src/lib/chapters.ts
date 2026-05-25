@@ -1,7 +1,9 @@
+// Defines the site chapter order used by navigation and placeholder pages.
+// Keep this list human-curated so the outline reflects editorial intent.
 export const chapters: Chapter[] = [
   { name: "Home", url: "/", phrase: "start here" },
-  { name: "ENV & Capabilities", url: "/detection", phrase: "OMG why is this so hard" },
-  { name: "ANSI 256, Tailwind, Catppuccin...", url: "/colors", phrase: "all about color" },
+  { name: "ENV & Detection", url: "/env", phrase: "OMG why is this so hard" },
+  { name: "Color Design", url: "/colors", phrase: "all about color palettes" },
   { name: "How to CLI", url: "/rules", phrase: "the difference between meh and awesome cli" },
   { name: "Progress Bars & Spinners", url: "/progs", phrase: "the fun stuff" },
   { name: "Recommended Apps", url: "/apps", phrase: "I love CLI. Like, a lot" },
@@ -13,8 +15,9 @@ export const chapters: Chapter[] = [
   { name: "Further Reading", url: "/more", phrase: "if you aren't bored yet" },
 ];
 
+// Navigation item rendered in the site table of contents.
 type Chapter = {
-  name: string;
-  url: string;
-  phrase: string;
+  name: string;   // Title shown in navigation.
+  url: string;    // Site route for this chapter.
+  phrase: string; // Informal teaser copy; editorial, not generated.
 };

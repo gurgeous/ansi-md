@@ -1,15 +1,26 @@
 // Astro config for Ansi.md.
 import mdx from "@astrojs/mdx";
+import catppuccin from "@shikijs/themes/catppuccin-latte";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
 import { fileURLToPath, URL } from "node:url";
+import rehypeExternalLinks from "rehype-external-links";
+import remarkGfm from "remark-gfm";
+import { visit } from "unist-util-visit";
+import AutoImportVite from "unplugin-auto-import/astro";
+import AutoImportMDX from "astro-auto-import";
 
+//
 // ALLOWED_HOSTS for remote access
+//
+
 const { ALLOWED_HOSTS } = process.env;
 const allowedHosts = (ALLOWED_HOSTS ?? "").split(",");
 
-const src = fileURLToPath(new URL("./src", import.meta.url));
+//
+// add @reference to <style>
+//
 
 const tailwindReference = () => ({
   name: "tailwind-reference",
@@ -21,8 +32,95 @@ const tailwindReference = () => ({
   },
 });
 
+//
+// handle github repo urls
+//
+
+const repoLabelOverrides = {
+  "charmbracelet/bubbletea": "bubbletea",
+  "charmbracelet/lipgloss": "lipgloss",
+  "crossterm-rs/crossterm": "crossterm",
+  "dalance/termbg": "termbg",
+  "gurgeous/table_tennis": "table_tennis",
+  "gurgeous/tennis": "tennis",
+  "muesli/termenv": "termenv",
+};
+
+function repoPath(href) {
+  let url;
+  try {
+    url = new URL(href);
+  } catch {
+    return;
+  }
+  if (!["github.com", "www.github.com"].includes(url.hostname)) return;
+  const [owner, repo] = url.pathname.split("/").filter(Boolean);
+  if (!owner || !repo) return;
+  return `${owner}/${repo}`;
+}
+
+function rawHref(node) {
+  if (node.children.length !== 1) return;
+  const [child] = node.children;
+  if (child.type !== "text") return;
+  if (child.value !== node.url) return;
+  return child;
+}
+
+function remarkGitHubRepoLinks() {
+  return (tree) => {
+    visit(tree, "link", (node) => {
+      const child = rawHref(node);
+      if (!child) return;
+      const repo = repoPath(node.url);
+      if (!repo) return;
+      child.value = repoLabelOverrides[repo] ?? repo;
+    });
+  };
+}
+
+//
+// auto import
+//
+const autoImports = [
+  {
+    "es-toolkit": [
+      "camelCase",
+      "capitalize",
+      "compact",
+      "constantCase",
+      "groupBy",
+      "identity",
+      "keyBy",
+      "mapKeys",
+      "mapValues",
+      "maxBy",
+      "minBy",
+      "partition",
+      "pascalCase",
+      "pickBy",
+      "range",
+    ],
+    "es-toolkit/compat": ["isObject", "keys", "template", "values"],
+  },
+];
+const autoImportMdx = AutoImportMDX({
+  imports: autoImports,
+});
+
+const autoImportVite = AutoImportVite({
+  dts: "src/auto-imports.d.ts",
+  include: [/\.(astro|ts)$/],
+  imports: autoImports,
+});
+
+//
+// defineConfig
+//
+
+const src = fileURLToPath(new URL("./src", import.meta.url));
+
 export default defineConfig({
-  build: { inlineStylesheets: "always" },
   cacheDir: "tmp/astro",
   devToolbar: { enabled: false },
   fonts: [
@@ -36,8 +134,11 @@ export default defineConfig({
       fallbacks: ["monospace"],
     },
   ],
-  integrations: [mdx(), icon()],
+  integrations: [autoImportMdx, autoImportVite, mdx(), icon()],
   markdown: {
+    rehypePlugins: [[rehypeExternalLinks, { rel: ["noopener", "noreferrer"], target: "_blank" }]],
+    remarkPlugins: [remarkGfm, remarkGitHubRepoLinks],
+    shikiConfig: { theme: catppuccin },
     smartypants: false,
   },
   outDir: "tmp/dist",

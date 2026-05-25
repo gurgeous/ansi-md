@@ -1,12 +1,12 @@
 ---
-layout: ../components/DocLayout.astro
+layout: ../components/ArticleLayout.astro
 title: Toolbox
 ---
 
 import ToolboxTools from "../components/ToolboxTools.astro";
 
 export const probeCommands = `printf 'truecolor: \\033[38;2;255;120;0mRGB24\\033[0m\\n'
-printf 'hyperlink: \\033]8;;https://Ansi.md\\033\\\\Ansi.md\\033]8;;\\033\\\\\\n'
+printf 'hyperlink: \\033]8;;Ansi.md\\033\\\\Ansi.md\\033]8;;\\033\\\\\\n'
 printf 'cursor: hide for one second\\033[?25l'; sleep 1; printf '\\033[?25h\\n'
 printf 'clear line: before'; sleep 1; printf '\\r\\033[2Kafter\\n'
 tput colors

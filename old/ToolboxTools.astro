@@ -1,9 +1,20 @@
+---
+import { tailwindColorMap } from "@/lib/code/tailwind";
+
+const serializedTailwindColors = JSON.stringify(tailwindColorMap).replaceAll("</", "<\\/");
+const defaultForeground = tailwindColorMap["slate-50"];
+const defaultBackground = tailwindColorMap["slate-900"];
+const defaultHexInput = tailwindColorMap["sky-400"];
+---
+
+<script type="application/json" data-tailwind-colors set:html={serializedTailwindColors} />
+
 <section class="ansi256">
   <a class="section-anchor" name="ansi256"></a>
   <h2>Nearest ANSI 256 Color</h2>
   <label>
     Hex color
-    <input class="hex-input tool-input" value="#38bdf8" inputmode="text" />
+    <input class="hex-input tool-input" value={defaultHexInput} inputmode="text" />
   </label>
   <div class="tool-row">
     <output class="ansi-output"></output>
@@ -20,7 +31,7 @@
   <a class="section-anchor" name="tailwind"></a>
   <h2>Tailwind Color To ANSI</h2>
   <p>
-    Small built-in map for common Tailwind colors. Use a token such as
+    Tailwind palette tokens converted to sRGB. Use a token such as
     <code>sky-500</code> or
     <code>emerald-500</code>.
   </p>
@@ -39,18 +50,18 @@
   <div class="tool-grid">
     <label class="tool-label">
       Foreground
-      <input class="fg-input" value="#f8fafc" inputmode="text" />
+      <input class="fg-input" value={defaultForeground} inputmode="text" />
     </label>
     <label class="tool-label">
       Background
-      <input class="bg-input" value="#0f172a" inputmode="text" />
+      <input class="bg-input" value={defaultBackground} inputmode="text" />
     </label>
   </div>
   <output class="contrast-output"></output>
   <svg viewBox="0 0 320 48" role="img">
     <title>Contrast preview</title>
-    <rect class="contrast-preview-bg" width="320" height="48" fill="#0f172a"></rect>
-    <text class="contrast-preview-fg" x="16" y="30" fill="#f8fafc">sample terminal text</text>
+    <rect class="contrast-preview-bg" width="320" height="48" fill={defaultBackground}></rect>
+    <text class="contrast-preview-fg" x="16" y="30" fill={defaultForeground}>sample terminal text</text>
   </svg>
 </section>
 
@@ -118,21 +129,8 @@
     [255, 255, 255],
   ];
 
-  const tailwind: Record<string, string> = {
-    "slate-900": "#0f172a",
-    "slate-100": "#f1f5f9",
-    "orange-500": "#f97316",
-    "amber-500": "#f59e0b",
-    "yellow-400": "#facc15",
-    "green-500": "#22c55e",
-    "emerald-500": "#10b981",
-    "cyan-500": "#06b6d4",
-    "sky-500": "#0ea5e9",
-    "blue-500": "#3b82f6",
-    "violet-500": "#8b5cf6",
-    "purple-500": "#a855f7",
-    "pink-500": "#ec4899",
-  };
+  const tailwindData = document.querySelector("[data-tailwind-colors]");
+  const tailwind = JSON.parse(tailwindData?.textContent ?? "{}") as Record<string, string>;
 
   function $<T extends Element>(selector: string): T {
     const element = document.querySelector(selector);
