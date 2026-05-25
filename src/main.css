@@ -4,6 +4,7 @@
   --color-brand: theme("colors.sky.800");
   --color-brand-bright: theme("colors.sky.500");
   --color-brand-dark: theme("colors.sky.900");
+  --color-muted: theme("colors.neutral.400");
   --font-brand: var(--font-ibm-plex-mono), var(--font-mono);
   --default-font-family: var(--font-ibm-plex-mono), var(--font-mono);
 }
@@ -16,18 +17,14 @@
 /* prettier-ignore */
 *, ::after, ::before { border-color: var(--border-color-default) }
 
-body {
-  @apply text-sm;
-}
-
 /* dim input placeholder color */
 input::placeholder {
   @apply text-neutral-300;
 }
 
 /* prettier-ignore */
-ul { @apply list-disc    } /* prettier-ignore */
-ol { @apply list-decimal }
+ol { @apply list-decimal } /* prettier-ignore */
+ul { @apply list-disc    }
 
 /**
  * article (markdown)
@@ -45,7 +42,7 @@ article {
 
   /* beware the nested <p> (like in <li>) */
   /* prettier-ignore */
-  > p, ul, ol, pre, table {
+  > p, ul, ol, pre, table, li > p, section {
     @apply mt-4;
   }
 
@@ -55,7 +52,7 @@ article {
       @apply mt-2;
     }
     ::marker {
-      @apply text-neutral-400;
+      @apply text-muted;
     }
   }
   ul {
@@ -65,10 +62,7 @@ article {
     }
   }
   ol {
-    @apply pl-9;
-    li {
-      @apply pl-1;
-    }
+    @apply pl-7;
   }
 
   pre {

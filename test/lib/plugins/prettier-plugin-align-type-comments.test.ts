@@ -7,8 +7,8 @@ import { fileURLToPath } from "node:url";
 import prettier from "prettier";
 import { describe, expect, test } from "vitest";
 
-const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const plugin = new URL("../src/lib/plugins/prettier-plugin-align-type-comments.mjs", import.meta.url).href;
+const root = fileURLToPath(new URL("../../../", import.meta.url));
+const plugin = new URL("../../../src/lib/plugins/prettier-plugin-align-type-comments.mjs", import.meta.url).href;
 
 async function format(source: string) {
   return prettier.format(source, {

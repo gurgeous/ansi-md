@@ -23,9 +23,9 @@ function pageTitle() {
     <Font cssVariable="--font-ibm-plex-mono" preload />
     <title>{pageTitle()}</title>
   </head>
-  <body>
+  <body class="bg-brand text-sm">
     <Header />
-    <div class="flex min-h-screen">
+    <div class="flex min-h-screen bg-white">
       <Nav />
       <main>
         <slot />

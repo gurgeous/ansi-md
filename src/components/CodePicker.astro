@@ -15,9 +15,9 @@ const codeTransformers = [hexChips()];
 const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
 ---
 
-<div class="language-picker" data-code-picker>
+<section class="code-picker" data-code-picker>
   <script is:inline type="application/json" data-code-snippets set:html={serializedSnippets} />
-  <div class="language-picker-bar" aria-label="Language">
+  <div class="code-picker-bar" aria-label="Language">
     {
       languages.map((language, index) => (
         <button
@@ -48,11 +48,11 @@ const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
       />
     ))
   }
-</div>
+</section>
 
 <style>
-  .language-picker {
-    @apply mx-auto mt-4 sm:max-w-4/5;
+  .code-picker {
+    @apply mx-auto sm:max-w-4/5;
 
     pre {
       @apply mt-0 max-h-96 border-neutral-800 bg-neutral-950 text-xs/4 text-neutral-100;
@@ -63,7 +63,7 @@ const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
     }
   }
 
-  .language-picker-bar {
+  .code-picker-bar {
     @apply bg-brand border-brand-dark flex flex-wrap items-stretch gap-1 border border-b-0 p-1;
 
     button {

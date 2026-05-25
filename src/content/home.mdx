@@ -1,4 +1,5 @@
 import { chapters } from "@/lib/chapters";
+import HomePages from "@/components/HomePages.astro";
 
 # About
 
@@ -28,15 +29,4 @@ In the meantime, cli devs and library authors need to understand some of this to
 
 ## Pages
 
-<div class="mt-4 text-neutral-400">
-  {chapters.map((c, ii) => (
-    <div>
-      {ii}.
-      <a class="border-b-0!" href={c.url}>
-        {c.name}
-      </a>
-      <span class="px-2">-</span>
-      {c.phrase}
-    </div>
-  ))}
-</div>
+<HomePages />

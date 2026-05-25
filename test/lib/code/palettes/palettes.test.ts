@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { languages, type Language } from "@/lib/code/code.ts";
 import catppuccin from "@/lib/code/palettes/catppuccin.ts";
 import d3Ordinal from "@/lib/code/palettes/d3-ordinal.ts";

@@ -1,0 +1,46 @@
+---
+import { chapters } from "@/lib/chapters";
+---
+
+<ol start="0">
+  {
+    chapters.map((c) => (
+      <li>
+        <a href={c.url}>{c.name}</a>
+        <div>{c.phrase}</div>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  ol {
+    li {
+      @apply text-sm/4 sm:text-sm;
+
+      &:not(:first-child) {
+        @apply mt-4 sm:mt-2;
+      }
+    }
+  }
+
+  div {
+    @apply text-muted mt-1 sm:mt-0 sm:inline-block;
+
+    &::before {
+      @apply sm:pr-1.5 sm:content-['-'];
+    }
+  }
+</style>
+
+<!-- <ol class="leading-tighter" start="0">
+  {chapters.map((c) => (
+    <li class="mt-4!">
+      <a class="border-b-0!" href={c.url}>
+        {c.name}
+      </a>
+      <span class="hidden px-1.5 sm:inline-block">-</span>
+      <div class="sm:inline-block">{c.phrase}</div>
+    </li>
+  ))}
+</ol> -->

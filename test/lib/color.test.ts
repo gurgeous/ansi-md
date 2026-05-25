@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { NamedColor, nearestColor, normalizeHexInput, parseHex } from "@/lib/color.ts";
 
 describe("color", () => {
