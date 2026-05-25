@@ -1,4 +1,6 @@
-### WEEKEND TODO
+REMIND
+
+- contrast checker
 
 ### 2. Color Design
 
