@@ -141,7 +141,6 @@ export default defineConfig({
     shikiConfig: { theme: catppuccin },
     smartypants: false,
   },
-  outDir: "tmp/dist",
   vite: {
     plugins: [tailwindReference(), tailwindcss()],
     resolve: { alias: { "@": src } },

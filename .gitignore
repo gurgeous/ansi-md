@@ -1,6 +1,7 @@
 .astro/
 .env*
 .yarn/
+dist/
 node_modules/
 old/
 tmp/
