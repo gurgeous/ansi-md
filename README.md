@@ -1,6 +1,6 @@
 ### WEEKEND TODO
 
-### Color Design
+### 2. Color Design
 
 - proofread
 - some discussion of the ansi color cube
@@ -8,23 +8,17 @@
 - http://vrl.cs.brown.edu/color
   css named colors
 
-### style
+### 3. CLI Design
 
-- set body bg to brand color, so when we pull too far it looks good
-- mobile look and feel, TOC (hamburger?)
+- 12 factor cli apps
+- clig.dev
+- charmbracelet
 
-### ops
-
-- ship ansi.md
-- feedback/email me
-
-### windows
-
-### progress bars and spinners
+### 4. progress bars and spinners
 
 - There are many good libraries for generating progress bars. For example, ~[tqdm](github.com/tqdm/tqdm)~ for Python, ~[schollz/progressbar](github.com/schollz/progressbar)~ for Go, and ~[node-progress](github.com/visionmedia/node-progress)~ for Node.js.
 
-### escape codes
+### 5. ANSI Escape Basics
 
 - color
 - show/hide cursor
@@ -42,8 +36,10 @@
 - tldp.org/HOWTO/Xterm-Title.html
 - novelty codes : progress bar
 - novelty codes : notify
+- hyperlinks
+- window title
 
-### advanced
+### 6. Advanced ANSI
 
 - alpha blending
 - half block
@@ -62,9 +58,9 @@
 - invisible-island.net/xterm/ctlseqs/ctlseqs.html
 - randos ("kitty color")
 - carriage return
-- hyperlinks
+- queries
 
-### apps/terms
+### 7. apps/terms
 
 - alacritty
 - ghostty
@@ -75,7 +71,7 @@
 - https://github.com/dalance/termbg
 - atuin, bat, chafa, doggo, dust, eza, fd, fx, ghostty, gron, gum, hexyl, oh-my-posh, pastel, rg, sd, sequin, tennis, trippy, vd, vhs, yazi, zmx
 
-### libs
+### 8. libs
 
 - cli args / ansicolor / tui / detection / spinner / progressbar / react-like libs
 - go
@@ -86,12 +82,11 @@
 - zig
 - REMIND: chalk
 
-### ansi codes
+### style
 
-- set window title
+- mobile look and feel, TOC (hamburger?)
 
-### how to cli
+### ops
 
-- 12 factor cli apps
-- clig.dev
-- charmbracelet
+- ship ansi.md
+- feedback/email me
