@@ -1,0 +1,146 @@
+---
+layout: ../components/ArticleLayout.astro
+title: Color Design
+---
+
+import catppuccin from "@/lib/code/palettes/catppuccin";
+import d3Ordinal from "@/lib/code/palettes/d3-ordinal";
+import tailwind from "@/lib/code/palettes/tailwind";
+import AnsiThemeTable from "@/components/AnsiThemeTable.astro";
+import ColorConverter from "@/components/ColorConverter.astro";
+import Palette from "@/components/Palette.astro";
+import Scales from "@/components/Scales.astro";
+
+export const normalColors = [
+  { name: "black", hex: "#51576d" },
+  { name: "red", hex: "#e78284" },
+  { name: "green", hex: "#a6d189" },
+  { name: "yellow", hex: "#e5c890" },
+  { name: "blue", hex: "#8caaee" },
+  { name: "magenta", hex: "#f4b8e4" },
+  { name: "cyan", hex: "#81c8be" },
+  { name: "white", hex: "#a5adce" },
+];
+
+export const brightColors = [
+  { name: '"bright" black', hex: "#626880" },
+  { name: '"bright" red', hex: "#e78284" },
+  { name: '"bright" green', hex: "#a6d189" },
+  { name: '"bright" yellow', hex: "#e5c890" },
+  { name: '"bright" blue', hex: "#8caaee" },
+  { name: '"bright" magenta', hex: "#f4b8e4" },
+  { name: '"bright" cyan', hex: "#81c8be" },
+  { name: '"bright" white', hex: "#b5bfe2" },
+];
+
+First, let me save you man-years of effort with my rules of thumb:
+
+1. **Avoid ANSI 16 and ANSI 256 0-15.** Here are different ways to show white on green. This screenshot is directly from my terminal. Because this a rule of thumb I will put [the full explanation at the bottom of this page](#details-ansi-16--ansi-256-0-15). Which one do you think looks best?
+
+<div class="ml-9 flex flex-col gap-4">
+```sh
+# ansi16 white on ansi16 green (borked)
+printf '\e[37;42m 1. hello, world \e[0m\n'
+# ansi256 brightwhite on ansi256 green (borked)
+printf '\e[38;5;15;48;5;2m 2. hello, world \e[0m\n'
+# ansi 256 system white on ansi256 system green (AWESOMENESS)
+printf '\e[38;5;255;48;5;40m 3. hello, world \e[0m\n'
+```
+
+![](../assets/three.png)
+
+</div>
+
+2. **ANSI 256** for most apps. Avoid colors 0-15, they lie. When I say WHITE, I mean WHITE. Not off white. WHITE. You could go all the way to ANSI 16M, but as your app grows in popularity you will encounter oddball terminals that don't support it. Either use a library that detects & downsamples, or stick with ANSI 256.
+
+1. **Don't set background color.** Don't mess with the user's background color, it's jarring. Since we are giving up control over background, you will need to pick two colors for each text style. If you want "blue" text, you will need to select both a light blue (for dark terminals) and a dark blue (for light terminals).
+
+1. **Invert with abandon.** White text on a dark color (or vice versa) is an excellent choice for drawing attention.
+
+Special note on downsampling. It's trivial to write a function that takes an RGB color and finds the closest ANSI 256 16-255 color using distance squared. Be careful - that approach completely fails to take human vision into account. You might want to read [this](https://github.com/charmbracelet/x/blob/main/ansi/color.go), or at least ask your llm to consider the problem.
+
+## Color Converter
+
+Behold, my incredible color converter technology. Type in a hex RGB and I will find the closest ansi 256 color and the closest tailwind color. Depending on my needs I might need one or the other. This tool uses [DeltaE in Color.js](https://colorjs.io/docs/color-difference.html) for calculating perceptual distance.
+
+<ColorConverter />
+
+## Color Sets
+
+#### Tailwind
+
+I build lots of web apps and always use Tailwind. I love the [tailwind color set](https://tailwindcss.com/docs/colors), which makes it easy to pick colors and adjust the brightness. Wouldn't it be nice to use tailwind colors in your cli app? Look no further, here is Tailwind for popular languages:
+
+<Palette name="tailwind" palette={tailwind} />
+
+#### Catppuccin
+
+These days I use [Catppuccin Frappe](https://catppuccin.com) as my terminal theme and I like sneaking these colors into various places. For example, I use `One Dark Pro` in [zed](https://zed.dev) but I like it better with some Catppuccin Green in there for visibility:
+
+![](../assets/catp.png)
+
+Here is Catppuccin for popular languages:
+
+<Palette name="catppuccin" palette={catppuccin} />
+
+#### Bonus: D3 Ordinal Scales
+
+The amazing D3 project has [nicely cureated "ordinal color scales"](https://d3js.org/d3-scale/ordinal) for presenting data. I use these to draw attention to unrelated bits of data, like columns in a spreadsheet, counts in charts, things like that. Here are the D3 ordinal scale color sets for popular languages:
+
+<Scales name="d3Ordinal" scales={d3Ordinal} />
+
+## Details: ANSI 16 & ANSI 256 0-15
+
+I find this topic confusing so I'm putting some details in here. All modern terminals let the user customize the "theme", which in effect means customizing ANSI colors 0-16. We are stuck with a primitive system for communicating color between apps and the host terminal. App says "color 4" and the terminal shows the color that the user picked for "blue".
+
+For example, I use the https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf Ghostty theme, which is setup like this:
+
+```
+# catppuccin-frappe.conf ghostty theme
+palette = 0=#51576d
+palette = 1=#e78284
+palette = 2=#a6d189
+palette = 3=#e5c890
+palette = 4=#8caaee
+palette = 5=#f4b8e4
+palette = 6=#81c8be
+palette = 7=#a5adce
+palette = 8=#626880
+palette = 9=#e78284
+palette = 10=#a6d189
+palette = 11=#e5c890
+palette = 12=#8caaee
+palette = 13=#f4b8e4
+palette = 14=#81c8be
+palette = 15=#b5bfe2
+...
+```
+
+#### Eight Normal Colors (Catppuccin Frappe)
+
+<AnsiThemeTable rows={normalColors} />
+
+and of course the anachronistically named "bright" colors are part of the theme:
+
+#### Eight "Bright" Colors (Catppuccin Frappe)
+
+<AnsiThemeTable rows={brightColors} bright />
+
+#### And Once Again
+
+To refer back to the example at the top of this page,
+
+```sh
+# ansi16 white on ansi16 green (borked)
+printf '\e[37;42m 1. hello, world \e[0m\n'
+
+# ansi256 brightwhite on ansi256 green (borked)
+printf '\e[38;5;15;48;5;2m 2. hello, world \e[0m\n'
+
+# ansi 256 system white on ansi256 system green (AWESOMENESS)
+printf '\e[38;5;255;48;5;40m 3. hello, world \e[0m\n'
+```
+
+![](../assets/three.png)
+
+When we try to create UI with the user's colors, things go astray. That's why I avoid ANSI 16 or ANSI 256 0-15. Just because the internet calls that color "white" doesn't mean it's going to look anything like white. Don't be fooled!

@@ -4,28 +4,28 @@ import { chapters } from "@/lib/chapters";
 
 <nav>
   <h2 class="text-3xl font-bold">Pages</h2>
-  <ul class="mt-4">
+  <ol class="mt-4" start="0">
     {
-      chapters.map((c, ii) => (
+      chapters.map((c) => (
         <li>
-          {ii}. <a href={c.url}>{c.name}</a>
+          <a href={c.url}>{c.name}</a>
         </li>
       ))
     }
-  </ul>
+  </ol>
 </nav>
 
 <style>
-  /* remind */
-
   nav {
-    @apply border-brand w-64 gap-3 border-b-2;
-    @apply shrink-0 flex-col border-r-2 px-6 py-10 leading-tight;
+    @apply border-brand w-64 shrink-0 flex-col gap-3 border-r-2 px-6 py-10 leading-tight;
     @apply hidden lg:block;
   }
 
-  ul {
-    @apply flex flex-col gap-1 text-xs;
+  ol {
+    @apply flex flex-col gap-1.5 pl-6 text-xs leading-tight;
+    li ::marker {
+      @apply text-neutral-400;
+    }
   }
 
   a {

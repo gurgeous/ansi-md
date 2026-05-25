@@ -1,0 +1,15 @@
+---
+import CodePicker from "@/components/CodePicker.astro";
+import { languages, type Palette, type LangKey } from "@/lib/code/code";
+
+type Props = { name: string; palette: Palette };
+const { name, palette } = Astro.props;
+
+const snippets = Object.fromEntries(
+  languages.map((language) => [language.name, language.render(name, palette)]),
+) as Record<LangKey, string>;
+---
+
+<section class="mt-5">
+  <CodePicker {languages} {snippets} />
+</section>

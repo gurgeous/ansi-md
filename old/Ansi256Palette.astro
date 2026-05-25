@@ -1,0 +1,35 @@
+---
+import CodePicker from "./CodePicker.astro";
+import { languages, renderAnsi256 } from "@/lib/code/ansi256";
+
+const codeSamples = Object.fromEntries(languages.map((language) => [language.key, renderAnsi256(language)]));
+---
+
+<section class="ansi256-reference">
+  <a class="section-anchor" name="reference"></a>
+  <h2>Reference</h2>
+  <p>
+    The fixed part of the xterm 256-color palette starts at code 16. Codes 0-15 are deliberately omitted here: terminals
+    treat them as theme slots, so their RGB values are not portable.
+  </p>
+  <p>
+    Each source entry stores only a name and a hex value. The terminal code is array index plus 16, and RGB triples are
+    derived from hex when a renderer or tool needs integers. The source's <code>Grey0</code> entry is named
+    <code>Black</code> here because that is how people usually want to use code 16.
+  </p>
+  <p>
+    Source names and values come from
+    <a href="vim.fandom.com/wiki/Xterm256_color_names_for_console_Vim">Xterm256 color names for console Vim</a>. For
+    escape sequence details, see <a href="/ansi#color">ANSI color forms</a>; for capability gates, see
+    <a href="/capabilities#terminfo">terminfo</a> and <a href="/toolbox">toolbox probes</a>.
+  </p>
+
+  <h3>Constants</h3>
+  <CodePicker {languages} samples={codeSamples} />
+</section>
+
+<style>
+  .ansi256-reference {
+    @apply mt-10;
+  }
+</style>

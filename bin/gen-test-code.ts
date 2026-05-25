@@ -1,0 +1,42 @@
+// Generate language fixtures under tmp/ for the static codegen test
+import { extByName, languages } from "@/lib/code/code.ts";
+import catppuccin from "@/lib/code/palettes/catppuccin.ts";
+import d3Ordinal from "@/lib/code/palettes/d3-ordinal.ts";
+import tailwind from "@/lib/code/palettes/tailwind.ts";
+import Util from "@/lib/util.ts";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const out = join(root, "tmp", "gen-test-code");
+
+//
+// generate code for each template & language, we will test against this later
+//
+
+await Util.shEx(`rm -rf '${out}'`);
+
+const palettes = { catppuccin, tailwind };
+const scales = { d3Ordinal };
+
+for (const [name, palette] of Object.entries(palettes)) {
+  for (const language of languages) {
+    let source = language.render(name, palette);
+    if (language.name === "go") {
+      source = `package ${name}\n\n${source}`;
+    }
+    const file = join(out, name, language.name, `colors.${extByName[language.name]}`);
+    await Util.writeFile(file, source);
+  }
+}
+
+for (const [name, scale] of Object.entries(scales)) {
+  for (const language of languages) {
+    let source = language.renderScales(name, scale);
+    if (language.name === "go") {
+      source = `package ${name}\n\n${source}`;
+    }
+    const file = join(out, name, language.name, `colors.${extByName[language.name]}`);
+    await Util.writeFile(file, source);
+  }
+}

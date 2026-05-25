@@ -10,17 +10,17 @@ Last Updated May 2026
 
 ## Why
 
-I don't claim to be any kind of expert on command line apps, but I've written a few popular tools (like [tennis](https://github.com/gurgeous/tennis)) and it's not easy. I've also written literally hundreds of internal cli apps for various projects and I'm sadly quite obsessed with color, progress bars, and spinners.
+I don't claim to be any kind of expert on command line apps, but I've written a few popular tools (like https://github.com/gurgeous/tennis) and it's not easy. I've also written literally hundreds of internal cli apps for various projects and I'm sadly quite obsessed with color, progress bars, and spinners.
 
 Why is this stuff so complicated? In order to answer this question, you have to dig into the history of the terminal. Your little cli app runs inside a terminal, something like Apple Terminal, Ghostty, iTerm, Alacritty, or even good ol' xterm. If you are using a "web" terminal like the thing inside Google Cloud, you are running a javascript terminal.
 
-All terminals have a shared lineage, dating back to the [classic VT100](https://en.wikipedia.org/wiki/VT100) from 50 years ago. Your lovingly crafted app prints out bytes like `"hello world"` and the terminal displays them.
+All terminals have a shared lineage, dating back to the [classic VT100](en.wikipedia.org/wiki/VT100) from 50 years ago. Your lovingly crafted app prints out bytes like `"hello world"` and the terminal displays them.
 
 Vintage terminals were straightforward, displaying text on screen and looking for `\n` to advance to the next line. Similar to typewriters of that era. But modern terminals are capable of more, so much more. Too much, probably.
 
-We've got truecolor RGB. We've got themes that are "light" and "dark". We've got mouse control, layout, and hints for double buffering. We've got window titles. We've got strange graphics protocols, built-in tiny progress bars, and hacks to make the icon bounce in [the Dock](<https://en.wikipedia.org/wiki/Dock_(macOS)>).
+We've got truecolor RGB. We've got themes that are "light" and "dark". We've got mouse control, layout, and hints for double buffering. We've got window titles. We've got strange graphics protocols, built-in tiny progress bars, and hacks to make the icon bounce in [the Dock](<en.wikipedia.org/wiki/Dock_(macOS)>).
 
-Modern terminals carefully parse the stream of bytes printed from your app in order to support these features. Terminals also set environment variables to give hints to your app about what's supported. Tools like `ssh` or `tmux` have to understand these environment variables too, otherwise apps running over ssh have no idea what's supported. There are [huge databases](https://invisible-island.net/xterm/terminfo.html) that try to capture which features are supported by which terminals. Your app can also query the terminal directly using obscure invisible codes.
+Modern terminals carefully parse the stream of bytes printed from your app in order to support these features. Terminals also set environment variables to give hints to your app about what's supported. Tools like `ssh` or `tmux` have to understand these environment variables too, otherwise apps running over ssh have no idea what's supported. There are [huge databases](invisible-island.net/xterm/terminfo.html) that try to capture which features are supported by which terminals. Your app can also query the terminal directly using obscure invisible codes.
 
 I'll be honest with you, this system is a beautiful mess and probably should be burned in a fire. The complexity is made worse due to the various strata in the system - it's quite easy to find docs for first or second generation terminals, etc. but in many cases you won't need that stuff. Software evolves quickly, and devs are eager to move on to modern terminals.
 
@@ -28,9 +28,9 @@ In the meantime, cli devs and library authors need to understand some of this to
 
 ## Pages
 
-<div class="mt-4">
+<div class="mt-4 text-neutral-400">
   {chapters.map((c, ii) => (
-    <div class="text-neutral-400">
+    <div>
       {ii}.
       <a class="border-b-0!" href={c.url}>
         {c.name}
@@ -40,127 +40,3 @@ In the meantime, cli devs and library authors need to understand some of this to
     </div>
   ))}
 </div>
-
-### NOTES
-
-- Detection
-  how apps figure out what the terminal can do
-  tty vs not a tty (redirect)
-  /dev/tty
-  NO_COLOR
-  FORCE_COLOR
-  COLORTERM
-  TERM
-  TERMINFO
-  none vs ansi vs 256 vs 16m
-  terminfo / and the term database
-  termcap
-  querying bg color, mostly bg
-  "raw mode"
-  terminal size
-  tmux, ssh
-  ghostty injection terminfo
-  printf 256 16m what do you see?
-  echo
-  (note: how does this stuff end up using ncurses/terminfo?)
-  https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
-
-- windows
-
-- palettes / themes
-  ansi 256
-  tailwind
-  css named colors
-  catppuccin
-  downsampling
-  closest 256
-  closest tailwind
-  format as RGB
-
-- advanced stuff
-  alpha blending
-  half block
-
-- random commands and misc
-  terminfo
-  termcap
-  tputs
-  ncurses (curses)
-  readline
-  `stty sane`
-  printf (and 16m detection)
-
-- modern terminals
-  alacritty
-  ghostty
-  kitty
-  iterm
-  ConEmu
-  vscode/zed
-  https://github.com/dalance/termbg
-
-- libraries
-  cli args / ansicolor / tui / detection / spinner / progressbar / react-like libs
-  go
-  python
-  node
-  ruby
-  rust
-  zig
-
-- ansi codes
-  common stuff
-  fg bg
-  reset
-  bold
-  there are many more codes
-  novelty codes : progress bar
-  novelty codes : notify
-  show/hide cursor
-  carriage return
-  hyperlinks
-  randos ("kitty color")
-  set window title
-
-- images
-  ascii art
-  proper images ("kitty graphics")
-
-- also see
-  12 factor cli apps
-  https://clig.dev/
-  charmbracelet
-
-```
-atuin
-bat
-chafa
-doggo
-dust
-eza
-fd
-fx
-ghostty
-gron
-gum
-hexyl
-oh-my-posh
-pastel
-rg
-sd
-sequin
-tennis
-trippy
-vd
-vhs
-yazi
-zmx
-```
-
-REMIND
-
-- articles should have "updated at"
-- github link
-- https://www.cl.cam.ac.uk/~mgk25/unicode.html
-- https://tldp.org/HOWTO/Xterm-Title.html
-- feedback/email me

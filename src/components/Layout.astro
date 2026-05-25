@@ -1,11 +1,11 @@
 ---
-import "../main.css";
+import "@/main.css";
 import Header from "@/components/Header.astro";
 import Nav from "@/components/Nav.astro";
 import logoUrl from "@/assets/logo.png?url";
 import { Font } from "astro:assets";
 
-function pageTitle(): string {
+function pageTitle() {
   let s = Astro.props.title ?? "Ansi.md";
   if (!s.includes("Ansi.md")) {
     s = `${s} - Ansi.md`;

@@ -1,14 +1,16 @@
 default:
   just --list
 
-build:
+build: check
   just banner "astro..." && astro build
   just banner "prettier..." && prettier --log-level error --write .
   just banner "✓ build ✓"
 
-test-code:
-  just banner "generated code..." && node test/ansi256-code.mjs
-  just banner "✓ test-code ✓"
+check:
+  just banner "lint..." && just lint
+  just banner "test..." && just test
+  just banner "tsc..." && just tsc
+  just banner "✓ check ✓"
 
 clean:
   rm -rf tmp .astro
@@ -18,6 +20,18 @@ dev:
 
 fmt:
   prettier --list-different --write .
+
+lint:
+  eslint .
+
+test:
+  just banner "gen-test-code.ts..." && node-ts ./bin/gen-test-code.ts
+  just banner "vitest..." ; vitest run
+  just banner "✓ test ✓"
+
+tsc:
+  tsc
+
 
 #
 # banner

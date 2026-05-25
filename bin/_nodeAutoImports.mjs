@@ -1,0 +1,41 @@
+// Keep this file in sync with the autoImports list in astro.config.mjs.
+import {
+  camelCase,
+  capitalize,
+  compact,
+  constantCase,
+  groupBy,
+  identity,
+  keyBy,
+  mapKeys,
+  mapValues,
+  maxBy,
+  minBy,
+  partition,
+  pascalCase,
+  pickBy,
+  range,
+} from "es-toolkit";
+import { isObject, keys, template, values } from "es-toolkit/compat";
+
+Object.assign(globalThis, {
+  camelCase,
+  capitalize,
+  compact,
+  constantCase,
+  groupBy,
+  identity,
+  isObject,
+  keyBy,
+  keys,
+  mapKeys,
+  mapValues,
+  maxBy,
+  minBy,
+  partition,
+  pascalCase,
+  pickBy,
+  range,
+  template,
+  values,
+});

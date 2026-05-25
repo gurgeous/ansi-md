@@ -1,0 +1,58 @@
+---
+import Ansi from "@/lib/ansi.ts";
+import { tailwind } from "@/lib/color.ts";
+import ColorConverterSection from "@/components/ColorConverterSection.astro";
+
+const data = JSON.stringify({ ansi256: Ansi.colors256, tailwind });
+---
+
+<section class="color-converter is-empty mt-5 border-l pl-4 text-sm">
+  <!-- json data -->
+  <script is:inline type="application/json" set:html={data} />
+
+  <!-- label / input -->
+  <label>
+    <div class="font-semibold text-neutral-950">Enter RGB hex</div>
+    <input
+      class="mt-2 max-w-sm border px-2 py-1 text-neutral-950"
+      type="text"
+      placeholder="#8caaee"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+    />
+  </label>
+
+  <!-- results -->
+  <div class="mt-4 flex max-w-2xl flex-col gap-5">
+    <!-- original -->
+    <ColorConverterSection title="original color" swatch="input">
+      <code data-field="inputHex"></code>
+    </ColorConverterSection>
+
+    <!-- 256 -->
+    <ColorConverterSection title="closest ANSI 256 color" swatch="ansi">
+      <span class="flex flex-wrap items-baseline gap-2">
+        <code data-field="ansiHex"></code>
+        <strong>index <span data-field="ansiIndex"></span></strong>
+      </span>
+      <span class="hidden flex-wrap gap-2 sm:flex">
+        <code data-field="ansiFg"></code>
+        <code data-field="ansiBg"></code>
+      </span>
+    </ColorConverterSection>
+
+    <!-- tailwind -->
+    <ColorConverterSection title="closest Tailwind color" swatch="tailwind">
+      <span>
+        <code data-field="tailwindHex"></code>
+        <strong data-field="tailwindName"></strong>
+      </span>
+    </ColorConverterSection>
+  </div>
+</section>
+
+<script>
+  import { initColorConverter } from "@/browser/colorConverter";
+  initColorConverter();
+</script>
