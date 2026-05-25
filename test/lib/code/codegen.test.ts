@@ -79,7 +79,8 @@ const compile: Record<(typeof languages)[number]["name"], CompileFn> = {
   },
 
   async zig(file) {
-    await Util.shellEx("zig", "build-lib", file);
+    const outFile = join(dirname(file), "libcolors.a");
+    await Util.shellEx("zig", "build-lib", file, `-femit-bin=${outFile}`);
   },
 };
 
