@@ -5,32 +5,11 @@ title: Color Design
 import catppuccin from "@/lib/code/palettes/catppuccin";
 import d3Ordinal from "@/lib/code/palettes/d3-ordinal";
 import tailwind from "@/lib/code/palettes/tailwind";
+import Ansi from "@/lib/ansi";
 import AnsiThemeTable from "@/components/AnsiThemeTable.astro";
 import ColorConverter from "@/components/ColorConverter.astro";
 import Palette from "@/components/Palette.astro";
 import Scales from "@/components/Scales.astro";
-
-export const normalColors = [
-  { name: "black", hex: "#51576d" },
-  { name: "red", hex: "#e78284" },
-  { name: "green", hex: "#a6d189" },
-  { name: "yellow", hex: "#e5c890" },
-  { name: "blue", hex: "#8caaee" },
-  { name: "magenta", hex: "#f4b8e4" },
-  { name: "cyan", hex: "#81c8be" },
-  { name: "white", hex: "#a5adce" },
-];
-
-export const brightColors = [
-  { name: '"bright" black', hex: "#626880" },
-  { name: '"bright" red', hex: "#e78284" },
-  { name: '"bright" green', hex: "#a6d189" },
-  { name: '"bright" yellow', hex: "#e5c890" },
-  { name: '"bright" blue', hex: "#8caaee" },
-  { name: '"bright" magenta', hex: "#f4b8e4" },
-  { name: '"bright" cyan', hex: "#81c8be" },
-  { name: '"bright" white', hex: "#b5bfe2" },
-];
 
 First, let me save you man-years of effort with my rules of thumb:
 
@@ -123,13 +102,13 @@ palette = 15=#b5bfe2
 
 #### Eight Normal Colors (Catppuccin Frappe)
 
-<AnsiThemeTable rows={normalColors} />
+<AnsiThemeTable rows={Ansi.catppuccin16.normal} />
 
 and of course the anachronistically named "bright" colors are part of the theme:
 
 #### Eight "Bright" Colors (Catppuccin Frappe)
 
-<AnsiThemeTable rows={brightColors} bright />
+<AnsiThemeTable rows={Ansi.catppuccin16.bright} bright />
 
 #### And Once Again
 

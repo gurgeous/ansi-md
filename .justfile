@@ -24,6 +24,8 @@ fmt:
 lint:
   eslint .
 
+llm: fmt check
+
 test:
   just banner "gen-test-code.ts..." && node-ts ./bin/gen-test-code.ts
   just banner "vitest..." ; vitest run
