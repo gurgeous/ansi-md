@@ -99,6 +99,10 @@ article {
   input {
     @apply border px-2 py-1;
   }
+
+  hr {
+    @apply my-8;
+  }
 }
 
 /**

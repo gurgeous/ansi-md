@@ -38,6 +38,7 @@ const tailwindReference = () => ({
 
 const repoLabelOverrides = {
   "charmbracelet/bubbletea": "bubbletea",
+  "charmbracelet/gum": "gum",
   "charmbracelet/lipgloss": "lipgloss",
   "crossterm-rs/crossterm": "crossterm",
   "dalance/termbg": "termbg",
@@ -88,6 +89,7 @@ function remarkDefaultLayout() {
     const { frontmatter } = file.data.astro;
     if (frontmatter.title) {
       frontmatter.layout ??= "../components/ArticleLayout.astro";
+      console.log(frontmatter);
     }
   };
 }
