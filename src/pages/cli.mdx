@@ -18,11 +18,13 @@ Let's stick to the important stuff:
 | -h, --help    | show help, then exit 0          |
 | -f, --force   | yes, do the dangerous thing     |
 | -v, --version | show version, then exit 0       |
-| -q, --quiet   | zero or heavily reduced output  |
+| -q, --quiet   | no output                       |
 | --dry-run     | don't do anything, just preview |
-| --json        | output JSON only, for LLMs      |
+| --json        | output JSON only (for LLMs)     |
 
-### Rules to Live By
+I do not recommend `-v` for verbose, instead I like `-v` for version and use an ENV var like `$MYAPP_DEBUG=1` for debug output.
+
+### CLI Golden Rules
 
 1. **`stdout` is for output, `stderr` is <span class="text-red-500">only for errors</span>**. <span class="text-green-500">Exit 0 on success</span>, <span class="text-red-500">1 on failure</span>.
 
@@ -45,6 +47,96 @@ Let's stick to the important stuff:
 
 1. **Use XDG** - I may uninstall your app if it writes straight into $HOME.
 
+1. **Errors** - Guys, it's not that complicated. Make sure your error includes enough detail! Here is a handy chart that illustrates the problem. Some libraries and languages make this quite difficult, unfortunately. I am sending [Zig](https://ziglang.org) the stink eye right now.
+
+    | nope                 | yup                          |
+    | -------------------- | ---------------------------- |
+    | file not found       | /tmp/something.txt not found |
+    | invalid arg          | --bogus is not a valid flag  |
+    | missing required arg | curl: no URL specified       |
+
 1. **Flags > env > config file** - If your app is successful, user's will want to configure it in a more permanent fashion. Some flags will be very popular. Users will setup aliases. They will want ENV variables. They will want config files. You can add support for all this stuff, but remember the priority of each mechanism.
 
 1. **ENV is great for spelunking** - I love it when apps & libs support special environment variables that modify behavior. `--help` is the public face of your app, but it doesn't have to end there. I love love love when I find a MYAPP_DEBUG=1 flag. As a cli author I hesitate to add cli flags that increase verbosity, turn the cache off, disable retries, etc. Each flag comes with a small burden for testing, --help text, man page, README, and completions. Secret ENV flags mostly sidestep that burden. Add 'em!
+
+## Example - gum
+
+[Gum](https://github.com/charmbracelet/gum) is a fun little app from our friends at Charm. Like all charm apps, it is written in golang and uses [kong](https://github.com/alecthomas/kong) for args. A fine example of what you get out-of-the-box with a proper library. This is why I highlight Kong and other stellar libraries on my [recommendations](/recs) page.
+
+#### 1. Naked gum
+
+Nice help message, and it goes to stdout. Only quibble is that naked `gum` exits with a non-zero code. I understand that this is technically an error ("the user didn't pass a subcommand") but this is  unfriendly. In my terminal this shows a <span class="text-red-500">nasty red ERROR indicator</span>. Why make me feel bad just for entering your command naked? This reminds of web forms that display an error as soon as you focus the input, then the error disappears once the field is valid. Meanies.
+
+```
+$ gum
+
+Usage: gum <command> [flags]
+
+A tool for glamorous shell scripts.
+
+Flags:
+  -h, --help       Show context-sensitive help.
+  -v, --version    Print the version number
+
+Commands:
+  choose           Choose an option from a list of choices
+  confirm          Ask a user to confirm an action
+  ...
+```
+<div class="text-red-500 font-bold">exit: non-zero</div>
+
+#### 2. gum --help
+
+Same as above, but exit code zero. Sweet relief.
+
+```
+$ gum --help
+
+Usage: gum <command> [flags]
+
+A tool for glamorous shell scripts.
+
+Flags:
+  -h, --help       Show context-sensitive help.
+  -v, --version    Print the version number
+...
+```
+<div class="text-green-500 font-bold">exit: 0</div>
+
+#### 3. gum subcommand --help
+
+Same as above, but the help text is specific to the subcommand. Great.
+
+```
+$ gum choose --help
+
+Usage: gum choose [<options> ...] [flags]
+
+Choose an option from a list of choices
+
+Arguments:
+  [<options> ...]    Options to choose from.
+
+Flags:
+  -h, --help                        Show context-sensitive help.
+  -v, --version                     Print the version number
+
+      --ordered                     Maintain the order of the selected options ($GUM_CHOOSE_ORDERED)
+      --height=10                   Height of the list ($GUM_CHOOSE_HEIGHT)
+...
+```
+<div class="text-green-500 font-bold">exit: 0</div>
+
+### 4. gum errors
+
+These show help again, a useful error message, and exit non-zero. Perfect!
+
+```
+$ gum bogus
+$ gum --bogus
+$ gum choose --bogus
+
+...
+[various surly error messages]
+```
+<div class="text-red-500 font-bold">exit: non-zero</div>

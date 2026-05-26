@@ -38,6 +38,7 @@ const tailwindReference = () => ({
 
 const repoLabelOverrides = {
   "charmbracelet/bubbletea": "bubbletea",
+  "charmbracelet/gum": "gum",
   "charmbracelet/lipgloss": "lipgloss",
   "crossterm-rs/crossterm": "crossterm",
   "dalance/termbg": "termbg",
