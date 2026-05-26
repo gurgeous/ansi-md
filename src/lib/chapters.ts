@@ -8,8 +8,7 @@ export const chapters: Chapter[] = [
   { name: "Progress Bars & Spinners", url: "/progs", phrase: "the fun stuff" },
   { name: "ANSI Escape Codes", url: "/ansi", phrase: "just the basics, ha" },
   { name: "Advanced ANSI", url: "/advanced", phrase: "don't read this" },
-  { name: "Recommended Apps and Terminals", url: "/apps_terms", phrase: "modern terminals" },
-  { name: "Recommended Libraries", url: "/libs", phrase: "modern cli libraries" },
+  { name: "Recommended Apps, Terminals & Libraries", url: "/apps_terms", phrase: "modern terminals" },
 ];
 
 // Navigation item rendered in the site table of contents.

@@ -88,6 +88,7 @@ function remarkDefaultLayout() {
     const { frontmatter } = file.data.astro;
     if (frontmatter.title) {
       frontmatter.layout ??= "../components/ArticleLayout.astro";
+      console.log(frontmatter);
     }
   };
 }

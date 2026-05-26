@@ -2,4 +2,49 @@
 title: CLI Design
 ---
 
-This page is about building delightful command line apps, which is a deep topic. [Colors and visual design](/colors) is carved out separately, so read that too.
+This page is about building delightful command line apps, which is a deep topic. [Colors and visual design](/colors) is carved out separately, this page focuses on the basic principles of cli design - stdout/stderr, exit code, args, flags, subcommands, etc. We are having a bit of a CLI rennassaince with the rise of LLMs. This also powered by backlash against the plodding, buggy nature of web pages. You can contribute to the rennassaince by building delightful apps.
+
+I wanted to call out the two main cli guides that made an impact on me:
+
+- [12 Factor Cli Apps](https://jdxcode.medium.com/12-factor-cli-apps-dd3c227a0e46). Essential reading. Written by jdx, who went on to create [mise](https://mise.en.dev).
+- [CLIG.dev](https://clig.dev) A bit overbearing, perhaps due to excessive use of Apple Garamond. Love the philisophical tone, though.
+
+Let's stick to the important stuff:
+
+### Standard Flags
+
+| flag          | behavior                        |
+| ------------- | ------------------------------- |
+| -h, --help    | show help, then exit 0          |
+| -f, --force   | yes, do the dangerous thing     |
+| -v, --version | show version, then exit 0       |
+| -q, --quiet   | zero or heavily reduced output  |
+| --dry-run     | don't do anything, just preview |
+| --json        | output JSON only, for LLMs      |
+
+### Rules to Live By
+
+1. **`stdout` is for output, `stderr` is <span class="text-red-500">only for errors</span>**. <span class="text-green-500">Exit 0 on success</span>, <span class="text-red-500">1 on failure</span>.
+
+
+1. When running **--help or "naked" (no args)**, print help on stdout and exit 0. Let me pipe it into my pager! Try not to comingle stdout and stderr, this is difficult to untangle.
+
+    ```sh
+    $ myapp              # print help on stdout, exit 0
+    $ myapp --help       # print help on stdout, exit 0
+    $ myapp cmd --help   # print help for this subcmd, exit 0
+
+    $ myapp --bogus      # print error on stderr, exit 1
+    $ myapp bogus        # print error on stderr, exit 1
+    $ myapp cmd --bogus  # print error on stderr, exit 1
+    ```
+
+2. **Fail fast, fail loud** - Don't try to recover from strange errors. Humans and LLMs are both perfectly capable of fixing things, and will probably do a better job than some lightly tested limb of your cli. Has your LSP silently stopped working in vscode? Has prettier failed to format? Give me errors right away, don't silently fail!
+
+1. **Don't prompt** - Except maybe for destructive actions, support `--force` to skip.
+
+1. **Use XDG** - I may uninstall your app if it writes straight into $HOME.
+
+1. **Flags > env > config file** - If your app is successful, user's will want to configure it in a more permanent fashion. Some flags will be very popular. Users will setup aliases. They will want ENV variables. They will want config files. You can add support for all this stuff, but remember the priority of each mechanism.
+
+1. **ENV is great for spelunking** - I love it when apps & libs support special environment variables that modify behavior. `--help` is the public face of your app, but it doesn't have to end there. I love love love when I find a MYAPP_DEBUG=1 flag. As a cli author I hesitate to add cli flags that increase verbosity, turn the cache off, disable retries, etc. Each flag comes with a small burden for testing, --help text, man page, README, and completions. Secret ENV flags mostly sidestep that burden. Add 'em!

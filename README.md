@@ -1,21 +1,3 @@
-REMIND
-
-- contrast checker
-
-### 2. Color Design
-
-- proofread
-- some discussion of the ansi color cube
-- https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=9
-- http://vrl.cs.brown.edu/color
-  css named colors
-
-### 3. CLI Design
-
-- 12 factor cli apps
-- clig.dev
-- charmbracelet
-
 ### 4. progress bars and spinners
 
 - There are many good libraries for generating progress bars. For example, ~[tqdm](github.com/tqdm/tqdm)~ for Python, ~[schollz/progressbar](github.com/schollz/progressbar)~ for Go, and ~[node-progress](github.com/visionmedia/node-progress)~ for Node.js.
@@ -62,7 +44,7 @@ REMIND
 - carriage return
 - queries
 
-### 7. apps/terms
+### 7. apps/terms/libs
 
 - alacritty
 - ghostty
@@ -72,9 +54,7 @@ REMIND
 - vscode/zed
 - https://github.com/dalance/termbg
 - atuin, bat, chafa, doggo, dust, eza, fd, fx, ghostty, gron, gum, hexyl, oh-my-posh, pastel, rg, sd, sequin, tennis, trippy, vd, vhs, yazi, zmx
-
-### 8. libs
-
+-
 - cli args / ansicolor / tui / detection / spinner / progressbar / react-like libs
 - go
 - python
@@ -84,11 +64,9 @@ REMIND
 - zig
 - REMIND: chalk
 
-### style
+### features
 
 - mobile look and feel, TOC (hamburger?)
-
-### ops
-
+- contrast checker
 - ship ansi.md
-- feedback/email me
+- feedback/email me, header, footer, ansi.md should be clickable
