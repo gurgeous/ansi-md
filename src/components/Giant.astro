@@ -1,12 +1,20 @@
 ---
-import { ansi256, catppuccin, tailwind } from "@/lib/palettes";
+import Color from "colorjs.io";
+import { sprintf } from "sprintf-js";
+import { ansi256, tailwind } from "@/lib/palettes";
 
-type Row = {
-  name: string;
-  hex: string;
-};
+type Row = { name: string; hex: string };
 
-const rows = [...Object.entries(ansi256).map(([name, hex]) => row(`ansi 256 #${name}`, hex)), ...flatten(tailwind)];
+const WHITE = new Color("#ffffff");
+const BLACK = new Color("#000000");
+
+const rows: Row[] = [];
+rows.push(...Object.entries(ansi256).map(([name, hex]) => ({ name: `ansi 256 #${name}`, hex })));
+rows.push(...flatten(tailwind));
+
+//
+// helpers
+//
 
 function row(name: string, hex: string): Row {
   return { name, hex };
@@ -14,8 +22,12 @@ function row(name: string, hex: string): Row {
 
 function flatten(palette: Record<string, Record<string, string>>): Row[] {
   return Object.entries(palette).flatMap(([group, colors]) => {
-    return Object.entries(colors).map(([name, hex]) => row(`tw ${group}-${name}`, hex));
+    return Object.entries(colors).map(([name, hex]) => ({ name: `tw ${group}-${name}`, hex }));
   });
+}
+
+function contrast(fg: Color | string, bg: Color | string): string {
+  return sprintf("contrast %.2f", new Color(bg).contrastAPCA(new Color(fg)));
 }
 ---
 
@@ -35,20 +47,24 @@ function flatten(palette: Record<string, Record<string, string>>): Row[] {
         <tr>
           <td class="hidden sm:table-cell">{hex}</td>
           <td>
-            <span class="bg-white" style={`color:${hex}`}>
+            <span class="bg-white" style={`color:${hex}`} title={contrast(hex, WHITE)}>
               {name}
             </span>
           </td>
           <td>
-            <span class="bg-black" style={`color:${hex}`}>
+            <span class="bg-black" style={`color:${hex}`} title={contrast(hex, BLACK)}>
               {name}
             </span>
           </td>
           <td>
-            <span style={`background:${hex};color:#fff`}>white</span>
+            <span style={`background:${hex};color:#fff`} title={contrast(WHITE, hex)}>
+              white
+            </span>
           </td>
           <td>
-            <span style={`background:${hex};color:#000`}>black</span>
+            <span style={`background:${hex};color:#000`} title={contrast(BLACK, hex)}>
+              black
+            </span>
           </td>
         </tr>
       ))
