@@ -1,0 +1,84 @@
+---
+import { ansi256, catppuccin, tailwind } from "@/lib/palettes";
+
+type Row = {
+  name: string;
+  hex: string;
+};
+
+const rows = [...Object.entries(ansi256).map(([name, hex]) => row(`ansi 256 #${name}`, hex)), ...flatten(tailwind)];
+
+function row(name: string, hex: string): Row {
+  return { name, hex };
+}
+
+function flatten(palette: Record<string, Record<string, string>>): Row[] {
+  return Object.entries(palette).flatMap(([group, colors]) => {
+    return Object.entries(colors).map(([name, hex]) => row(`tw ${group}-${name}`, hex));
+  });
+}
+---
+
+<table class="w-auto overflow-x-auto text-xs! leading-tight">
+  <thead>
+    <tr>
+      <th class="hidden sm:table-cell">RGB</th>
+      <th>Light Bg</th>
+      <th>Dark Bg</th>
+      <th>Light Fg</th>
+      <th>Dark Fg</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      rows.map(({ name, hex }) => (
+        <tr>
+          <td class="hidden sm:table-cell">{hex}</td>
+          <td>
+            <span class="bg-white" style={`color:${hex}`}>
+              {name}
+            </span>
+          </td>
+          <td>
+            <span class="bg-black" style={`color:${hex}`}>
+              {name}
+            </span>
+          </td>
+          <td>
+            <span style={`background:${hex};color:#fff`}>white</span>
+          </td>
+          <td>
+            <span style={`background:${hex};color:#000`}>black</span>
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  table {
+    th,
+    td {
+      @apply text-center;
+    }
+    td {
+      @apply border-0 p-0;
+      &:first-child {
+        @apply border-x;
+      }
+      &:last-child {
+        @apply border-r;
+      }
+    }
+    tr:last-child {
+      td {
+        @apply border-b;
+      }
+    }
+  }
+
+  span {
+    @apply block px-2 py-1 whitespace-nowrap;
+  }
+</style>
