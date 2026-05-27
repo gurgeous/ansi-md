@@ -1,6 +1,10 @@
 // Shared palette data and types for pages, tools, and code generation.
 
-export type { Colors, Palette, Scale, Scales } from "@/lib/code/code.ts";
+export type Palette = Record<string, Colors>;
+export type Colors = Record<string, string>;
+
+export type Scales = Record<string, Scale>;
+export type Scale = readonly string[];
 
 export { default as catppuccin } from "@/lib/palettes/catppuccin.ts";
 export { default as d3Ordinal } from "@/lib/palettes/d3-ordinal.ts";

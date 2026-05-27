@@ -97,8 +97,8 @@ describe("prettier-plugin-align-type-comments", () => {
     expect(output).toContain("  wider_name: string; // four");
   });
 
-  test("formats the palette type block in code.ts", async () => {
-    const source = readFileSync(join(root, "src", "lib", "code", "code.ts"), "utf8");
+  test("formats the palette type block in palettes/index.ts", async () => {
+    const source = readFileSync(join(root, "src", "lib", "palettes", "index.ts"), "utf8");
     const output = await format(source);
 
     expect(output).toContain("export type Palette = Record<string, Colors>;");

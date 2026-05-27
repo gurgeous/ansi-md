@@ -1,6 +1,6 @@
 // Python palette renderer for generated code snippets.
 // It emits a typed dictionary so users can paste it into strict codebases.
-import type { Palette, Scales } from "@/lib/code/code.ts";
+import type { Palette, Scales } from "@/lib/palettes";
 import {
   Language,
   colorNames,

@@ -1,6 +1,6 @@
 // Zig palette renderer for generated code snippets.
 // It emits comptime-friendly structs with string slice fields.
-import type { Palette, Scales } from "@/lib/code/code.ts";
+import type { Palette, Scales } from "@/lib/palettes";
 import {
   align,
   Language,
