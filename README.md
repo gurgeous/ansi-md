@@ -8,7 +8,6 @@
 - contrast discussion / tool
 - bash scripts
 - create a TOOLS section in sidebar?
-- rename Nav to Sidebar
 - big table of ansi 256 (like tennis --spectrum)
 
 ### 4. progress bars and spinners
