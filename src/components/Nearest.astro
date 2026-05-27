@@ -1,13 +1,9 @@
 ---
 import Ansi from "@/lib/ansi.ts";
 import { ansi256, tailwind } from "@/lib/palettes";
-import { namedColors } from "@/lib/color.ts";
 import NearestSection from "@/components/NearestSection.astro";
 
-const data = JSON.stringify({
-  ansi256: Object.entries(ansi256).map(([name, hex]) => ({ name, hex })),
-  tailwind: namedColors(tailwind),
-});
+const data = JSON.stringify({ ansi256, tailwind });
 ---
 
 <div class="nearest is-empty mt-10">

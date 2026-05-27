@@ -1,26 +1,8 @@
-import { hexify, NamedColor, namedColors, nearestColor, normalizeHexInput, parseHex, rgbHex } from "@/lib/color.ts";
+import Color from "colorjs.io";
+import { hexify, nearestColorIndex, normalizeHexInput, parseHex, rgbHex } from "@/lib/color.ts";
 import { describe, expect, it } from "vitest";
 
 describe("color", () => {
-  it("rehydrates named colors from serialized data", () => {
-    const colors = NamedColor.fromData([{ name: "40", hex: "#00d700" }]);
-
-    expect(colors).toHaveLength(1);
-    expect(colors[0]).toBeInstanceOf(NamedColor);
-    expect(colors[0]?.name).toBe("40");
-    expect(colors[0]?.hex).toBe("#00d700");
-  });
-
-  it("flattens nested palettes into named colors", () => {
-    const colors = namedColors({
-      slate: { "500": "#64748b" },
-      sky: { "400": "#38bdf8" },
-    });
-
-    expect(colors.map((color) => color.name)).toEqual(["slate-500", "sky-400"]);
-    expect(colors.map((color) => color.hex)).toEqual(["#64748b", "#38bdf8"]);
-  });
-
   it("normalizes display input while preserving a typed hash", () => {
     expect(normalizeHexInput("")).toBe("");
     expect(normalizeHexInput("#")).toBe("#");
@@ -39,40 +21,25 @@ describe("color", () => {
     expect(parseHex("#")).toBeNull();
   });
 
-  it("finds exact named colors", () => {
-    const colors = [new NamedColor("red", "#ff0000"), new NamedColor("green", "#00ff00")];
+  it("finds the exact nearest color index", () => {
+    const needle = new Color("#ff0000");
+    const haystack = [new Color("#ff0000"), new Color("#00ff00")];
 
-    expect(nearestColor("#ff0000", colors).name).toBe("red");
+    expect(nearestColorIndex(needle, haystack)).toBe(0);
   });
 
-  it("finds nearest named colors without exact matches", () => {
-    const colors = [new NamedColor("black", "#000000"), new NamedColor("white", "#ffffff")];
+  it("finds the nearest color index without exact matches", () => {
+    const haystack = [new Color("#000000"), new Color("#ffffff")];
 
-    expect(nearestColor("#111111", colors).name).toBe("black");
-    expect(nearestColor("#eeeeee", colors).name).toBe("white");
+    expect(nearestColorIndex(new Color("#111111"), haystack)).toBe(0);
+    expect(nearestColorIndex(new Color("#eeeeee"), haystack)).toBe(1);
   });
 
-  it("handles one-color and empty nearest palettes", () => {
-    const only = new NamedColor("only", "#123456");
+  it("handles one-color and empty nearest haystacks", () => {
+    const only = new Color("#123456");
 
-    expect(nearestColor("#ffffff", [only])).toBe(only);
-    expect(() => nearestColor("#ffffff", [])).toThrow("impossible");
-  });
-
-  it("serializes named colors without parser state", () => {
-    const color = new NamedColor("40", "#00d700");
-    void color.color;
-
-    expect(color.toJSON()).toEqual({ hex: "#00d700", name: "40" });
-  });
-
-  it("lazily parses and memoizes Color.js state", () => {
-    const color = new NamedColor("40", "#00d700");
-    const first = color.color;
-    const second = color.color;
-
-    expect(first).toBe(second);
-    expect(first.toString({ format: "hex", collapse: false })).toBe("#00d700");
+    expect(nearestColorIndex(new Color("#ffffff"), [only])).toBe(0);
+    expect(() => nearestColorIndex(new Color("#ffffff"), [])).toThrow("impossible");
   });
 
   it("normalizes Color.js input to full hex", () => {
