@@ -8,14 +8,9 @@ import Util from "@/lib/util.ts";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
-import ts from "typescript";
+import ts, { type TextChange } from "typescript";
 
-const REPO = (await Util.shellEx("git", "rev-parse", "--show-toplevel")).trim();
-const FORMAT: ts.FormatCodeSettings = {
-  ...ts.getDefaultFormatCodeSettings(),
-  indentSize: 2,
-  tabSize: 2,
-};
+const FORMAT: ts.FormatCodeSettings = { ...ts.getDefaultFormatCodeSettings(), indentSize: 2, tabSize: 2 };
 
 //
 // main
@@ -27,8 +22,9 @@ async function main() {
 
   // get list of files from globbed argv. for simplicity we always operate in REPO
   let files = args;
-  files = files.map((f) => path.relative(REPO, path.resolve(f)));
-  process.chdir(REPO);
+  const repo = (await Util.shellEx("git", "rev-parse", "--show-toplevel")).trim();
+  files = files.map((f) => path.relative(repo, path.resolve(f)));
+  process.chdir(repo);
   files = files.length ? files : ["."];
   files = await buildTargets(files);
   if (!files.length) Util.fatal(`no ts files found in ${args}`);
@@ -106,18 +102,21 @@ function readConfig() {
 // Rewrite one changed file after TypeScript returns text edits.
 async function writeEdit(edit: ts.FileTextChanges) {
   const before = await Util.readFile(edit.fileName);
-  const after = [...edit.textChanges]
+  const after = applyChanges(before, [...edit.textChanges]);
+  if (after !== before) {
+    await Util.writeFile(edit.fileName, after);
+  }
+  return after !== before;
+}
+
+function applyChanges(str: string, textChanges: TextChange[]) {
+  return textChanges
     .sort((a, b) => b.span.start - a.span.start)
-    .reduce((text, change) => {
+    .reduce((str, change) => {
       const start = change.span.start;
       const end = start + change.span.length;
-      return `${text.slice(0, start)}${change.newText}${text.slice(end)}`;
-    }, before);
-
-  // this is slow, so show progress
-  if (after === before) return false;
-  await Util.writeFile(edit.fileName, after);
-  return true;
+      return `${str.slice(0, start)}${change.newText}${str.slice(end)}`;
+    }, str);
 }
 
 //
@@ -141,17 +140,14 @@ function resolve(arg: string) {
     return;
   }
 
-  // process file/dir
-  let list: string[];
+  // file
   if (fs.statSync(arg).isFile()) {
-    list = [arg];
-  } else {
-    const exclude = ["**/{.git,node_modules,tmp}/**"];
-    const pattern = `${arg}/**/*.ts`;
-    list = fs.globSync(pattern, { exclude });
+    return [arg];
   }
 
-  return list;
+  // dir - glob
+  const exclude = ["**/{.git,node_modules,tmp}/**"];
+  return fs.globSync(`${arg}/**/*.ts`, { exclude });
 }
 
 // Drop files ignored by git so "." behaves like the rest of the repo tools.
