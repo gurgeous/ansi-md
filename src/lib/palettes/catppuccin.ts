@@ -5,6 +5,7 @@ import { flavors } from "@catppuccin/palette";
 // Convert from the upstream package shape into our palette template shape.
 const palette = mapValues(flavors, (flavor) => mapValues(flavor.colors, (c) => c.hex));
 
+// from https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf
 export const ghostty16: { normal: Colors; bright: Colors } = {
   normal: {
     black: "#51576d",

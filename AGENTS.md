@@ -17,6 +17,7 @@
 
 - Assets stay under `src/`; never use `public/`.
 - Prefer `@/...` imports instead of relative source imports.
+- `index.ts` only re-exports package-facing API, not internal helpers.
 - Prefer semantic HTML and classes, not IDs.
 - Keep client JS rare.
 - Prefix HTML element refs with `$`, including element arrays/maps.

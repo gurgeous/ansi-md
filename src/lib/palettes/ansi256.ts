@@ -12,13 +12,12 @@ export function hex256(index: number) {
     return rgbHex(gray, gray, gray);
   }
 
-  const offset = index - 16;
-  const r = CUBE[Math.floor(offset / 36) % 6];
-  const g = CUBE[Math.floor(offset / 6) % 6];
-  const b = CUBE[offset % 6];
+  const off = index - 16;
+  const r = CUBE[Math.floor(off / 36) % 6];
+  const g = CUBE[Math.floor(off / 6) % 6];
+  const b = CUBE[off % 6];
   return rgbHex(r, g, b);
 }
 
-const ansi256: Colors = Object.fromEntries(range(16, 256).map((index) => [String(index), hex256(index)]));
-
-export default ansi256;
+// export Colors
+export default Object.fromEntries(range(16, 256).map((ii) => [String(ii), hex256(ii)])) as Colors;
