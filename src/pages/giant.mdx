@@ -1,9 +1,13 @@
 ---
-title: Giant
+title: Giant Contrast Table
 ---
 
 import Giant from "@/components/Giant.astro";
 
-Sometimes a big boring table is exactly what you need.
+Here is a giant table of all the ansi 256 colors and all the tailwind colors. You can compare how the color works as fg/bg with dark and light terminal themes. This is a nice way to pick readlable colors.
+
+Hover any cell to see the APCA contrast between bg and fg. A dot indicates "good contrast", which technically means >= 40. Personally I find those to be readable, though tastes vary and anything between 40 & 50 should be scrutinized.
+
+There are some ambidextrous colors with dots for both light and dark backgrounds. Could be a good choice for lazy people (like me) who want to sidestep terminal theme detection.
 
 <Giant />

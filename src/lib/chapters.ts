@@ -25,7 +25,7 @@ export const chapters: Section[] = [
         phrase: "nearest ANSI 256 and Tailwind matches",
       },
       {
-        name: "Giant",
+        name: "Giant Contrast Table",
         url: "/giant",
         phrase: "see lots of colors on light and dark",
       },

@@ -26,12 +26,26 @@ function flatten(palette: Record<string, Record<string, string>>): Row[] {
   });
 }
 
+function apca(fg: Color | string, bg: Color | string): number {
+  return new Color(bg).contrastAPCA(new Color(fg));
+}
+
 function contrast(fg: Color | string, bg: Color | string): string {
-  return sprintf("contrast %.2f", new Color(bg).contrastAPCA(new Color(fg)));
+  return sprintf("APCA %d", apca(fg, bg));
+}
+
+function readable(fg: Color | string, bg: Color | string): boolean {
+  return Math.abs(apca(fg, bg)) >= 40;
+}
+
+function dot(bg: Color | string): string {
+  const white = Math.abs(apca(WHITE, bg));
+  const black = Math.abs(apca(BLACK, bg));
+  return white > black ? "#ffffff" : "#000000";
 }
 ---
 
-<table class="w-auto overflow-x-auto text-xs! leading-tight">
+<table class="text-2xs! w-auto overflow-x-auto leading-tight sm:text-xs!">
   <thead>
     <tr>
       <th class="hidden sm:table-cell">RGB</th>
@@ -47,22 +61,34 @@ function contrast(fg: Color | string, bg: Color | string): string {
         <tr>
           <td class="hidden sm:table-cell">{hex}</td>
           <td>
-            <span class="bg-white" style={`color:${hex}`} title={contrast(hex, WHITE)}>
+            <span
+              class:list={["bg-white", { "apca-ok": readable(hex, WHITE) }]}
+              style={`color:${hex};--dot:${dot(WHITE)}`}
+              title={contrast(hex, WHITE)}>
               {name}
             </span>
           </td>
           <td>
-            <span class="bg-black" style={`color:${hex}`} title={contrast(hex, BLACK)}>
+            <span
+              class:list={["bg-black", { "apca-ok": readable(hex, BLACK) }]}
+              style={`color:${hex};--dot:${dot(BLACK)}`}
+              title={contrast(hex, BLACK)}>
               {name}
             </span>
           </td>
           <td>
-            <span style={`background:${hex};color:#fff`} title={contrast(WHITE, hex)}>
+            <span
+              class:list={{ "apca-ok": readable(WHITE, hex) }}
+              style={`background:${hex};color:#fff;--dot:${dot(hex)}`}
+              title={contrast(WHITE, hex)}>
               white
             </span>
           </td>
           <td>
-            <span style={`background:${hex};color:#000`} title={contrast(BLACK, hex)}>
+            <span
+              class:list={{ "apca-ok": readable(BLACK, hex) }}
+              style={`background:${hex};color:#000;--dot:${dot(hex)}`}
+              title={contrast(BLACK, hex)}>
               black
             </span>
           </td>
@@ -95,6 +121,13 @@ function contrast(fg: Color | string, bg: Color | string): string {
   }
 
   span {
-    @apply block px-2 py-1 whitespace-nowrap;
+    @apply relative block cursor-default px-2 py-1 whitespace-nowrap;
+  }
+
+  .apca-ok::before {
+    content: "";
+    background: var(--dot);
+    @apply absolute top-1/2 left-1 size-0.75 -translate-y-1/2 rounded-full;
+    @apply sm:left-1.5 sm:size-1;
   }
 </style>
