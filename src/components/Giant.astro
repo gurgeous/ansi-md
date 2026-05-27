@@ -3,22 +3,22 @@ import Color from "colorjs.io";
 import { sprintf } from "sprintf-js";
 import { ansi256, tailwind } from "@/lib/palettes";
 
+//
+// rows
+//
+
 type Row = { name: string; hex: string };
 
-const WHITE = new Color("#ffffff");
-const BLACK = new Color("#000000");
-
 const rows: Row[] = [];
-rows.push(...Object.entries(ansi256).map(([name, hex]) => ({ name: `ansi 256 #${name}`, hex })));
+rows.push(...Object.entries(ansi256).map(([name, hex]) => ({ name: `ansi256 #${name}`, hex })));
 rows.push(...flatten(tailwind));
 
 //
 // helpers
 //
 
-function row(name: string, hex: string): Row {
-  return { name, hex };
-}
+const WHITE = new Color("white");
+const BLACK = new Color("black");
 
 function flatten(palette: Record<string, Record<string, string>>): Row[] {
   return Object.entries(palette).flatMap(([group, colors]) => {
@@ -27,6 +27,7 @@ function flatten(palette: Record<string, Record<string, string>>): Row[] {
 }
 
 function apca(fg: Color | string, bg: Color | string): number {
+  // note: order matters
   return new Color(bg).contrastAPCA(new Color(fg));
 }
 
@@ -34,7 +35,7 @@ function contrast(fg: Color | string, bg: Color | string): string {
   return sprintf("APCA %d", apca(fg, bg));
 }
 
-function readable(fg: Color | string, bg: Color | string): boolean {
+function ok(fg: Color | string, bg: Color | string): boolean {
   return Math.abs(apca(fg, bg)) >= 40;
 }
 
@@ -45,7 +46,8 @@ function dot(bg: Color | string): string {
 }
 ---
 
-<table class="text-2xs! w-auto overflow-x-auto leading-tight sm:text-xs!">
+<!-- apologies for bangs, css specificity issues and i am lazy -->
+<table class="text-2xs! mt-10! w-auto! overflow-x-auto leading-tight sm:text-xs!">
   <thead>
     <tr>
       <th class="hidden sm:table-cell">RGB</th>
@@ -59,10 +61,12 @@ function dot(bg: Color | string): string {
     {
       rows.map(({ name, hex }) => (
         <tr>
-          <td class="hidden sm:table-cell">{hex}</td>
-          <td>
+          <td class="hidden px-4 sm:table-cell">
+            <div class="px-4">{hex}</div>
+          </td>
+          <td class="border-l!">
             <span
-              class:list={["bg-white", { "apca-ok": readable(hex, WHITE) }]}
+              class:list={["bg-white", { ok: ok(hex, WHITE) }]}
               style={`color:${hex};--dot:${dot(WHITE)}`}
               title={contrast(hex, WHITE)}>
               {name}
@@ -70,7 +74,7 @@ function dot(bg: Color | string): string {
           </td>
           <td>
             <span
-              class:list={["bg-black", { "apca-ok": readable(hex, BLACK) }]}
+              class:list={["bg-black", { ok: ok(hex, BLACK) }]}
               style={`color:${hex};--dot:${dot(BLACK)}`}
               title={contrast(hex, BLACK)}>
               {name}
@@ -78,7 +82,7 @@ function dot(bg: Color | string): string {
           </td>
           <td>
             <span
-              class:list={{ "apca-ok": readable(WHITE, hex) }}
+              class:list={{ ok: ok(WHITE, hex) }}
               style={`background:${hex};color:#fff;--dot:${dot(hex)}`}
               title={contrast(WHITE, hex)}>
               white
@@ -86,7 +90,7 @@ function dot(bg: Color | string): string {
           </td>
           <td>
             <span
-              class:list={{ "apca-ok": readable(BLACK, hex) }}
+              class:list={{ ok: ok(BLACK, hex) }}
               style={`background:${hex};color:#000;--dot:${dot(hex)}`}
               title={contrast(BLACK, hex)}>
               black
@@ -106,28 +110,24 @@ function dot(bg: Color | string): string {
     }
     td {
       @apply border-0 p-0;
-      &:first-child {
-        @apply border-x;
-      }
-      &:last-child {
-        @apply border-r;
-      }
     }
-    tr:last-child {
-      td {
+    tr {
+      @apply border-x;
+
+      &:last-child {
         @apply border-b;
       }
     }
   }
 
   span {
-    @apply relative block cursor-default px-2 py-1 whitespace-nowrap;
+    @apply relative block cursor-default py-1 pr-3 pl-4 whitespace-nowrap;
   }
 
-  .apca-ok::before {
+  .ok::before {
     content: "";
     background: var(--dot);
-    @apply absolute top-1/2 left-1 size-0.75 -translate-y-1/2 rounded-full;
-    @apply sm:left-1.5 sm:size-1;
+    @apply absolute top-1/2 left-1.5 size-0.75 -translate-y-1/2 rounded-full;
+    @apply sm:size-1;
   }
 </style>
