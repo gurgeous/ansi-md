@@ -1,4 +1,4 @@
-// Client-side behavior for color converter
+// Client-side behavior for nearest color stuff
 import Ansi from "@/lib/ansi.ts";
 import { NamedColor, nearestColor, normalizeHexInput, parseHex, type NamedColorInit } from "@/lib/color.ts";
 
@@ -13,7 +13,7 @@ const EMPTY_SWATCH = "#d4d4d4";
 //
 
 // Owns DOM state and rendering for one converter instance.
-class ColorConverterTool {
+class NearestTool {
   ansi256: NamedColor[]; // lazy ANSI 256 lookup entries
   tailwind: NamedColor[]; // lazy Tailwind lookup entries
   $root: HTMLElement;
@@ -99,13 +99,13 @@ class ColorConverterTool {
 //
 
 // Attach converter behavior to every matching tool on the page.
-export function initColorConverter() {
-  const $root = document.querySelector(".color-converter") as HTMLElement;
+export function initNearest() {
+  const $root = document.querySelector(".nearest") as HTMLElement;
   if ($root.dataset.ready === "true") return;
   $root.dataset.ready = "true";
 
   const $script = $root.querySelector("script") as HTMLScriptElement;
-  new ColorConverterTool($root, JSON.parse($script.textContent));
+  new NearestTool($root, JSON.parse($script.textContent));
 }
 
 //

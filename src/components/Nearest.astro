@@ -2,7 +2,7 @@
 import Ansi from "@/lib/ansi.ts";
 import { namedColors } from "@/lib/color.ts";
 import { tailwind } from "@/lib/palettes";
-import ColorConverterSection from "@/components/ColorConverterSection.astro";
+import NearestSection from "@/components/NearestSection.astro";
 
 const data = JSON.stringify({
   ansi256: Ansi.colors256,
@@ -10,7 +10,7 @@ const data = JSON.stringify({
 });
 ---
 
-<div class="color-converter is-empty mt-10">
+<div class="nearest is-empty mt-10">
   <!-- json data -->
   <script is:inline type="application/json" set:html={data} />
 
@@ -30,12 +30,12 @@ const data = JSON.stringify({
   <!-- results -->
   <div class="mt-4 flex max-w-2xl flex-col gap-5">
     <!-- original -->
-    <ColorConverterSection title="original color" swatch="input">
+    <NearestSection title="original color" swatch="input">
       <code data-field="inputHex"></code>
-    </ColorConverterSection>
+    </NearestSection>
 
     <!-- 256 -->
-    <ColorConverterSection title="closest ANSI 256 color" swatch="ansi">
+    <NearestSection title="closest ANSI 256 color" swatch="ansi">
       <span class="flex flex-wrap items-baseline gap-2">
         <code data-field="ansiHex"></code>
         <strong>index <span data-field="ansiIndex"></span></strong>
@@ -44,19 +44,19 @@ const data = JSON.stringify({
         <code data-field="ansiFg"></code>
         <code data-field="ansiBg"></code>
       </span>
-    </ColorConverterSection>
+    </NearestSection>
 
     <!-- tailwind -->
-    <ColorConverterSection title="closest Tailwind color" swatch="tailwind">
+    <NearestSection title="closest Tailwind color" swatch="tailwind">
       <span>
         <code data-field="tailwindHex"></code>
         <strong data-field="tailwindName"></strong>
       </span>
-    </ColorConverterSection>
+    </NearestSection>
   </div>
 </div>
 
 <script>
-  import { initColorConverter } from "@/browser/colorConverter";
-  initColorConverter();
+  import { initNearest } from "@/browser/nearest";
+  initNearest();
 </script>
