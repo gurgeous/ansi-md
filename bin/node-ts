@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # simple shim that uses node to run ts, but includes our preload
-
 DIRNAME="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 exec node --experimental-strip-types \
-  --import $DIRNAME/preload.ts \
+  --import "$DIRNAME/preload.ts" \
   "$@"

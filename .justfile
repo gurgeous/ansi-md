@@ -27,7 +27,7 @@ lint:
 llm: fmt build
 
 organize:
-  node-ts bin/organize-imports.ts
+  organize-imports.ts
 
 test:
   just banner "gen-test-code.ts..." && node-ts bin/gen-test-code.ts

@@ -1,3 +1,5 @@
+#!/usr/bin/env node-ts
+
 // Organize TypeScript imports in place using the installed TS language service.
 // This is a thin CLI around TypeScript, so a dedicated test is not needed here.
 
@@ -32,7 +34,9 @@ async function main() {
   for (const file of files) {
     process.stdout.write(file);
     const edits = lsp.organizeImports(
-      { type: "file", fileName: file, mode: ts.OrganizeImportsMode.All },
+      {
+        type: "file", fileName: file, mode: ts.OrganizeImportsMode.All
+      },
       ts.getDefaultFormatCodeSettings(),
       {},
     );
