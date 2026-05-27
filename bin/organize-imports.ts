@@ -11,6 +11,11 @@ import process from "node:process";
 import ts from "typescript";
 
 const REPO = (await Util.shellEx("git", "rev-parse", "--show-toplevel")).trim();
+const FORMAT: ts.FormatCodeSettings = {
+  ...ts.getDefaultFormatCodeSettings(),
+  indentSize: 2,
+  tabSize: 2,
+};
 
 //
 // main
@@ -40,7 +45,7 @@ async function main() {
         fileName: file,
         mode: ts.OrganizeImportsMode.All,
       },
-      ts.getDefaultFormatCodeSettings(),
+      FORMAT,
       {},
     );
     let changed = false;
