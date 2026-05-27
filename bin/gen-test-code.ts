@@ -1,12 +1,13 @@
+#!/usr/bin/env -S sh -c 'node --experimental-strip-types --import "$(dirname "$0")/preload.ts" "$0" "$@"'
+// ^^ note magic shebang. this is how we run node w/ preload, no matte where we are
+
 // Generate language fixtures under tmp/ for the static codegen test
 import { extByName, languages } from "@/lib/code/code.ts";
 import { catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
 import Util from "@/lib/util.ts";
-import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const out = join(root, "tmp", "gen-test-code");
+const out = join("tmp", "gen-test-code");
 
 //
 // generate code for each template & language, we will test against this later

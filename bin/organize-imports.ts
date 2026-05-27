@@ -1,4 +1,5 @@
-#!/usr/bin/env node-ts
+#!/usr/bin/env -S sh -c 'node --experimental-strip-types --import "$(dirname "$0")/preload.ts" "$0" "$@"'
+// ^^ note magic shebang. this is how we run node w/ preload, no matte where we are
 
 // Organize TypeScript imports in place using the installed TS language service.
 // This is a thin CLI around TypeScript, so a dedicated test is not needed here.
@@ -35,7 +36,9 @@ async function main() {
     process.stdout.write(file);
     const edits = lsp.organizeImports(
       {
-        type: "file", fileName: file, mode: ts.OrganizeImportsMode.All
+        type: "file",
+        fileName: file,
+        mode: ts.OrganizeImportsMode.All,
       },
       ts.getDefaultFormatCodeSettings(),
       {},
