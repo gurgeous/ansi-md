@@ -2,6 +2,8 @@
 
 - Ignore `old/`; it is inactive reference trash.
 - Use `just`: `build`, `lint`, `test`. `just llm` after code changes
+- Use `just`: `build`, `lint`, `test`. Use the narrowest relevant
+  check; reserve `just llm` for substantive changes.
 - Never add `package.json` scripts
 - Give PRs a descriptive title; never use `wip`.
 - Succintness/simplicity is a core value, don't add layers

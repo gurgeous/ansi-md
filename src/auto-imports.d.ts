@@ -10,6 +10,7 @@ declare global {
   const capitalize: typeof import('es-toolkit').capitalize
   const compact: typeof import('es-toolkit').compact
   const constantCase: typeof import('es-toolkit').constantCase
+  const difference: typeof import('es-toolkit').difference
   const groupBy: typeof import('es-toolkit').groupBy
   const identity: typeof import('es-toolkit').identity
   const isObject: typeof import('es-toolkit/compat').isObject
@@ -24,5 +25,7 @@ declare global {
   const pickBy: typeof import('es-toolkit').pickBy
   const range: typeof import('es-toolkit').range
   const template: typeof import('es-toolkit/compat').template
+  const uniq: typeof import('es-toolkit').uniq
   const values: typeof import('es-toolkit/compat').values
+  const zip: typeof import('es-toolkit').zip
 }
