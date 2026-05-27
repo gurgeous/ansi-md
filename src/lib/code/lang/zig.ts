@@ -2,15 +2,15 @@
 // It emits comptime-friendly structs with string slice fields.
 import type { Palette, Scales } from "@/lib/palettes";
 import {
-    align,
-    colorNames,
-    indent,
-    isNumberStr,
-    Language,
-    mustache,
-    renderFields,
-    renderScale,
-    tagline,
+  align,
+  colorNames,
+  indent,
+  isNumberStr,
+  Language,
+  mustache,
+  renderFields,
+  renderScale,
+  tagline,
 } from "./base.ts";
 
 const TEMPLATE = `

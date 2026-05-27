@@ -5,6 +5,9 @@
 import { chapters } from "@/lib/chapters";
 import Util from "@/lib/util";
 import { join } from "node:path";
+import { fileURLToPath, URL } from "node:url";
+
+process.chdir(fileURLToPath(new URL("../", import.meta.url))); // repo root
 
 for (const section of chapters) {
   for (const item of section.items) {

@@ -30,8 +30,8 @@ organize:
   organize-imports.ts
 
 test:
-  just banner "gen-test-code.ts..." && bin/gen-test-code.ts
-  just banner "check-chapters.ts..." && bin/check-chapters.ts
+  just banner "gen-test-code.ts..." && gen-test-code.ts
+  just banner "check-chapters.ts..." && check-chapters.ts
   just banner "vitest..." ; vitest run
   just banner "✓ test ✓"
 

@@ -2,15 +2,15 @@
 // It emits a typed dictionary so users can paste it into strict codebases.
 import type { Palette, Scales } from "@/lib/palettes";
 import {
-    Language,
-    colorNames,
-    constantName,
-    indent,
-    isNumberStr,
-    mustache,
-    renderFields,
-    renderScale,
-    tagline,
+  Language,
+  colorNames,
+  constantName,
+  indent,
+  isNumberStr,
+  mustache,
+  renderFields,
+  renderScale,
+  tagline,
 } from "./base.ts";
 
 const TEMPLATE = `

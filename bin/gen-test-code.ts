@@ -6,13 +6,14 @@ import { extByName, languages } from "@/lib/code/code.ts";
 import { catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
 import Util from "@/lib/util.ts";
 import { join } from "node:path";
-
-const out = join("tmp", "gen-test-code");
+import { fileURLToPath, URL } from "node:url";
 
 //
 // generate code for each template & language, we will test against this later
 //
 
+process.chdir(fileURLToPath(new URL("../", import.meta.url))); // repo root
+const out = join("tmp", "gen-test-code");
 await Util.shEx(`rm -rf '${out}'`);
 
 const palettes = { catppuccin, tailwind };
