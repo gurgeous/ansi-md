@@ -19,14 +19,14 @@ export const chapters: Section[] = [
   {
     name: "Tools",
     items: [
-      { name: "Color Converter", url: "/nearest", phrase: "nearest ANSI 256 and Tailwind matches" },
-      { name: "Tailwind Colors", url: "/tailwind", phrase: "browse Tailwind and copy generated code" },
-      { name: "Catppuccin Colors", url: "/catppuccin", phrase: "browse Catppuccin and copy generated code" },
+      { name: "Nearest Color", url: "/nearest", phrase: "nearest ANSI 256 and Tailwind matches" },
+      { name: "Catppuccin Colors", url: "/catppuccin", phrase: "Catppuccin-as-code" },
       {
         name: "D3 Ordinal Scales",
         url: "/d3-ordinal",
-        phrase: "browse categorical scales and copy generated code",
+        phrase: "d3 scales-as-code",
       },
+      { name: "Tailwind Colors", url: "/tailwind", phrase: "tailwind colors-as-code" },
     ],
   },
 ];

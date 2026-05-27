@@ -1,6 +1,6 @@
 // Astro config for Ansi.md.
 import mdx from "@astrojs/mdx";
-import catppuccin from "@shikijs/themes/catppuccin-latte";
+import catppuccin from "@shikijs/themes/catppuccin-frappe";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
