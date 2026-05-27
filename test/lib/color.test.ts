@@ -1,7 +1,26 @@
 import { describe, expect, it } from "vitest";
-import { NamedColor, nearestColor, normalizeHexInput, parseHex } from "@/lib/color.ts";
+import { hexify, NamedColor, namedColors, nearestColor, normalizeHexInput, parseHex, rgbHex } from "@/lib/color.ts";
 
 describe("color", () => {
+  it("rehydrates named colors from serialized data", () => {
+    const colors = NamedColor.fromData([{ name: "40", hex: "#00d700" }]);
+
+    expect(colors).toHaveLength(1);
+    expect(colors[0]).toBeInstanceOf(NamedColor);
+    expect(colors[0]?.name).toBe("40");
+    expect(colors[0]?.hex).toBe("#00d700");
+  });
+
+  it("flattens nested palettes into named colors", () => {
+    const colors = namedColors({
+      slate: { "500": "#64748b" },
+      sky: { "400": "#38bdf8" },
+    });
+
+    expect(colors.map((color) => color.name)).toEqual(["slate-500", "sky-400"]);
+    expect(colors.map((color) => color.hex)).toEqual(["#64748b", "#38bdf8"]);
+  });
+
   it("normalizes display input while preserving a typed hash", () => {
     expect(normalizeHexInput("")).toBe("");
     expect(normalizeHexInput("#")).toBe("#");
@@ -45,5 +64,25 @@ describe("color", () => {
     void color.color;
 
     expect(color.toJSON()).toEqual({ hex: "#00d700", name: "40" });
+  });
+
+  it("lazily parses and memoizes Color.js state", () => {
+    const color = new NamedColor("40", "#00d700");
+    const first = color.color;
+    const second = color.color;
+
+    expect(first).toBe(second);
+    expect(first.toString({ format: "hex", collapse: false })).toBe("#00d700");
+  });
+
+  it("normalizes Color.js input to full hex", () => {
+    expect(hexify("rgb(140 170 238)")).toBe("#8caaee");
+    expect(hexify("oklch(0.76 0.12 274)")).toMatch(/^#[0-9a-f]{6}$/);
+  });
+
+  it("formats rgb bytes as canonical hex", () => {
+    expect(rgbHex(0, 0, 0)).toBe("#000000");
+    expect(rgbHex(140, 170, 238)).toBe("#8caaee");
+    expect(rgbHex(255, 255, 255)).toBe("#ffffff");
   });
 });

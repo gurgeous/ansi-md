@@ -2,6 +2,7 @@
 // It keeps terminal color math in one place for static and browser code.
 import Color from "colorjs.io";
 import type { Palette } from "@/lib/palettes";
+import { sprintf } from "sprintf-js";
 
 // Palette color with lazy Color.js parsing for distance checks.
 export class NamedColor {
@@ -78,7 +79,7 @@ export function hexify(color: string): string {
   return new Color(color).to("srgb").toString({ format: "hex", collapse: false });
 }
 
-// Format one 0-255 channel as a two-digit lowercase hex byte.
-export function hex2(value: number): string {
-  return value.toString(16).padStart(2, "0");
+// Format 8-bit RGB channels as a canonical #rrggbb string.
+export function rgbHex(r: number, g: number, b: number): string {
+  return sprintf("#%02x%02x%02x", r, g, b);
 }

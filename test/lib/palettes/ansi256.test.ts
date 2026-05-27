@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { ansi256, colors256, hex256 } from "@/lib/palettes";
+import { ansi256, hex256 } from "@/lib/palettes";
 
 describe("ansi256 palette", () => {
   it("exports only ANSI 256 colors 16-255", () => {
-    expect(colors256).toHaveLength(240);
-    expect(colors256[0]?.name).toBe("16");
-    expect(colors256.at(-1)?.name).toBe("255");
-    const numbers = colors256.map((color) => Number(color.name));
+    expect(keys(ansi256)).toHaveLength(240);
+    expect(ansi256["16"]).toBe("#000000");
+    expect(ansi256["255"]).toBe("#eeeeee");
+    const numbers = keys(ansi256).map(Number);
     expect(numbers.every((number) => number >= 16)).toBe(true);
     expect(numbers.every((number) => number <= 255)).toBe(true);
     expect(keys(ansi256)).not.toContain("15");
