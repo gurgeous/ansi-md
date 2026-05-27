@@ -2,7 +2,7 @@
 title: Color Design
 ---
 
-import Ansi from "@/lib/ansi";
+import { ghostty16 } from "@/lib/palettes";
 import AnsiThemeTable from "@/components/AnsiThemeTable.astro";
 import { chapters } from "@/lib/chapters";
 
@@ -76,13 +76,13 @@ palette = 15=#b5bfe2
 
 #### Eight Normal Colors (Catppuccin Frappe)
 
-<AnsiThemeTable rows={Ansi.catppuccin16.normal} />
+<AnsiThemeTable colors={ghostty16.normal} />
 
 and of course the anachronistically named "bright" colors are part of the theme:
 
 #### Eight "Bright" Colors (Catppuccin Frappe)
 
-<AnsiThemeTable rows={Ansi.catppuccin16.bright} bright />
+<AnsiThemeTable colors={ghostty16.bright} bright />
 
 #### Helpful Illustration
 
