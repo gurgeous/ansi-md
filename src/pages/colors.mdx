@@ -4,6 +4,9 @@ title: Color Design
 
 import Ansi from "@/lib/ansi";
 import AnsiThemeTable from "@/components/AnsiThemeTable.astro";
+import { chapters } from "@/lib/chapters";
+
+const tools = chapters.find((chapter) => chapter.name === "Tools")?.items ?? [];
 
 Let me save you man-years of effort with three simple suggestions.
 
@@ -37,7 +40,13 @@ Special note on downsampling. It's trivial to write a function that takes an RGB
 
 Ansi.md has some dedicated tools for messing with color:
 
-CODEX USE CHAPTERS.TS
+<ul>
+  {tools.map((tool) => (
+    <li>
+      <a href={tool.url}>{tool.name}</a> - {tool.phrase}
+    </li>
+  ))}
+</ul>
 
 <a name="avoid" />
 ## Avoid ANSI 16 & ANSI 256 0-15

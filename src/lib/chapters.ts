@@ -5,13 +5,15 @@ export const chapters: Section[] = [
     name: "Pages",
     items: [
       { name: "Home", url: "/", phrase: "start here" },
-      { name: "ENV & Detection", url: "/env", phrase: "OMG why is this so hard" },
+      { name: "ENV & Capabilities", url: "/env", phrase: "OMG why is this so hard" },
       { name: "Color Design", url: "/colors", phrase: "all about color palettes" },
       { name: "CLI Design", url: "/cli", phrase: "the difference between meh and awesome cli" },
       { name: "Progress Bars & Spinners", url: "/progs", phrase: "the fun stuff" },
       { name: "ANSI Escape Codes", url: "/ansi", phrase: "just the basics, ha" },
-      { name: "Advanced ANSI", url: "/advanced", phrase: "don't read this" },
-      { name: "Recommended Apps, Libraries & Terminals", url: "/recs", phrase: "stuff I personally like" },
+      { name: "Advanced ANSI Stuff", url: "/advanced", phrase: "don't read this" },
+      { name: "Recommended Apps", url: "/recs", phrase: "stuff I personally like" },
+      { name: "Recommended Libraries", url: "/libs", phrase: "stuff I personally like" },
+      { name: "Recommended Terminals", url: "/terms", phrase: "stuff I personally like" },
     ],
   },
   {
