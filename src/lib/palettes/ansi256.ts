@@ -6,6 +6,7 @@ import type { Colors } from "@/lib/palettes";
 const CUBE = [0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff] as const;
 
 // Calculate one ANSI 256 palette color from its 16-255 index.
+// https://gist.github.com/hSATAC/1095100
 export function hex256(index: number) {
   if (index >= 232) {
     const gray = 8 + (index - 232) * 10;

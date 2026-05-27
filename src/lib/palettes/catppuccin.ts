@@ -1,12 +1,12 @@
 // Adapt Catppuccin into a shared palette template.
-import type { Colors } from "@/lib/palettes";
+import type { Palette } from "@/lib/palettes";
 import { flavors } from "@catppuccin/palette";
 
 // Convert from the upstream package shape into our palette template shape.
-const palette = mapValues(flavors, (flavor) => mapValues(flavor.colors, (c) => c.hex));
+export default mapValues(flavors, (flavor) => mapValues(flavor.colors, (c) => c.hex)) as Palette;
 
-// from https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf
-export const ghostty16: { normal: Colors; bright: Colors } = {
+// https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf
+export const ghostty16: Palette = {
   normal: {
     black: "#51576d",
     red: "#e78284",
@@ -28,5 +28,3 @@ export const ghostty16: { normal: Colors; bright: Colors } = {
     white: "#b5bfe2",
   },
 };
-
-export default palette;
