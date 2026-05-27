@@ -1,5 +1,5 @@
+import { hexify, nearestColor, normalizeHexInput, parseHex, rgbHex } from "@/lib/color.ts";
 import Color from "colorjs.io";
-import { hexify, nearestColorIndex, normalizeHexInput, parseHex, rgbHex } from "@/lib/color.ts";
 import { describe, expect, it } from "vitest";
 
 describe("color", () => {
@@ -21,25 +21,18 @@ describe("color", () => {
     expect(parseHex("#")).toBeNull();
   });
 
-  it("finds the exact nearest color index", () => {
+  it("finds the exact nearest color", () => {
     const needle = new Color("#ff0000");
     const haystack = [new Color("#ff0000"), new Color("#00ff00")];
 
-    expect(nearestColorIndex(needle, haystack)).toBe(0);
+    expect(nearestColor(needle, haystack)).toBe(haystack[0]);
   });
 
-  it("finds the nearest color index without exact matches", () => {
+  it("returns the nearest parsed color", () => {
     const haystack = [new Color("#000000"), new Color("#ffffff")];
 
-    expect(nearestColorIndex(new Color("#111111"), haystack)).toBe(0);
-    expect(nearestColorIndex(new Color("#eeeeee"), haystack)).toBe(1);
-  });
-
-  it("handles one-color and empty nearest haystacks", () => {
-    const only = new Color("#123456");
-
-    expect(nearestColorIndex(new Color("#ffffff"), [only])).toBe(0);
-    expect(() => nearestColorIndex(new Color("#ffffff"), [])).toThrow("impossible");
+    expect(nearestColor(new Color("#111111"), haystack)).toBe(haystack[0]);
+    expect(nearestColor(new Color("#eeeeee"), haystack)).toBe(haystack[1]);
   });
 
   it("normalizes Color.js input to full hex", () => {

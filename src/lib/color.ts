@@ -24,9 +24,10 @@ export function parseHex(value: string): string | null {
   return null;
 }
 
-// Return the index of the nearest color in a parsed candidate list.
-export function nearestColorIndex(needle: Color, haystack: Color[]) {
-  return minBy(range(haystack.length), (idx) => needle.deltaEOK(haystack[idx]!))!;
+// Return the nearest parsed color from a candidate list.
+export function nearestColor(needle: Color, haystack: Color[]) {
+  if (haystack.length === 0) throw "impossible";
+  return minBy(haystack, (color) => needle.deltaEOK(color))!;
 }
 
 // Convert any Color.js-supported color string to full sRGB hex.

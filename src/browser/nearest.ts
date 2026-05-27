@@ -1,8 +1,8 @@
 // Client-side behavior for nearest color stuff
 import Ansi from "@/lib/ansi.ts";
+import { nearestColor, normalizeHexInput, parseHex } from "@/lib/color.ts";
 import type { Colors, Palette } from "@/lib/palettes";
 import Color from "colorjs.io";
-import { nearestColorIndex, normalizeHexInput, parseHex } from "@/lib/color.ts";
 
 //
 // types
@@ -10,16 +10,20 @@ import { nearestColorIndex, normalizeHexInput, parseHex } from "@/lib/color.ts";
 
 const EMPTY_SWATCH = "#d4d4d4";
 
-type PaletteState = {
-  colors: Color[];
-  hexes: string[];
-  ids: string[];
-};
-
 type Init = {
   ansi256: Colors;
   tailwind: Palette;
 };
+
+// simple subclass to stuff our name in there
+class ColorWithName extends Color {
+  name: string;
+
+  constructor(name: string, value: string) {
+    super(value);
+    this.name = name;
+  }
+}
 
 //
 // main
@@ -27,8 +31,8 @@ type Init = {
 
 // Owns DOM state and rendering for one converter instance.
 class NearestTool {
-  ansi256: PaletteState;
-  tailwind: PaletteState;
+  ansi256: ColorWithName[];
+  tailwind: ColorWithName[];
   $root: HTMLElement;
   $input: HTMLInputElement;
   $fields: Record<string, HTMLElement>;
@@ -73,23 +77,27 @@ class NearestTool {
   // Render one complete converter result.
   render(hex: string) {
     const needle = new Color(hex);
-    const ansi = nearestColorIndex(needle, this.ansi256.colors);
-    const tailwind = nearestColorIndex(needle, this.tailwind.colors);
 
     this.$root.classList.remove("is-empty");
 
     this.$fields.inputHex.textContent = hex;
     this.$swatches.input.setAttribute("fill", hex);
 
-    this.$swatches.ansi.setAttribute("fill", this.ansi256.hexes[ansi]!);
-    this.$fields.ansiHex.textContent = this.ansi256.hexes[ansi]!;
-    this.$fields.ansiIndex.textContent = this.ansi256.ids[ansi]!;
-    this.$fields.ansiFg.textContent = Ansi.fg256(Number(this.ansi256.ids[ansi]!));
-    this.$fields.ansiBg.textContent = Ansi.bg256(Number(this.ansi256.ids[ansi]!));
+    // ansi
+    const ansi = nearestColor(needle, this.ansi256) as ColorWithName;
+    const ansiHex = ansi.toString({ format: "hex", collapse: false });
+    this.$swatches.ansi.setAttribute("fill", ansiHex);
+    this.$fields.ansiHex.textContent = ansiHex;
+    this.$fields.ansiIndex.textContent = ansi.name;
+    this.$fields.ansiFg.textContent = Ansi.fg256(Number(ansi.name));
+    this.$fields.ansiBg.textContent = Ansi.bg256(Number(ansi.name));
 
-    this.$swatches.tailwind.setAttribute("fill", this.tailwind.hexes[tailwind]!);
-    this.$fields.tailwindHex.textContent = this.tailwind.hexes[tailwind]!;
-    this.$fields.tailwindName.textContent = this.tailwind.ids[tailwind]!;
+    // tailwind
+    const tailwind = nearestColor(needle, this.tailwind) as ColorWithName;
+    const tailwindHex = tailwind.toString({ format: "hex", collapse: false });
+    this.$swatches.tailwind.setAttribute("fill", tailwindHex);
+    this.$fields.tailwindHex.textContent = tailwindHex;
+    this.$fields.tailwindName.textContent = tailwind.name;
   }
 
   // Restore the initial waiting state for empty or incomplete input.
@@ -126,15 +134,13 @@ function dataMap<T extends Element>($root: HTMLElement, name: string) {
   return Object.fromEntries($array.map(($i) => [$i.getAttribute(attr) ?? "", $i]));
 }
 
-// Build one flat search state from a simple color map.
-function buildColors(colors: Colors): PaletteState {
-  const ids = Object.keys(colors);
-  const hexes = ids.map((id) => colors[id]!);
-  return { ids, hexes, colors: hexes.map((hex) => new Color(hex)) };
+// Build one flat search list from a simple color map.
+function buildColors(colors: Colors): ColorWithName[] {
+  return Object.entries(colors).map(([name, hex]) => new ColorWithName(name, hex));
 }
 
 // Flatten a nested palette into one color-id map, then parse it once.
-function buildPalette(palette: Palette): PaletteState {
+function buildPalette(palette: Palette): ColorWithName[] {
   const colors = Object.fromEntries(
     Object.entries(palette).flatMap(([family, shades]) => {
       return Object.entries(shades).map(([shade, hex]) => [`${family}-${shade}`, hex]);

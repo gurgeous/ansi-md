@@ -35,6 +35,7 @@
 - Omit trivial TS return types; avoid pointless `: void`.
 - Avoid `private`/`readonly`; use them only when genuinely valuable.
 - For impossible internal states, prefer `throw "impossible"` over verbose error scaffolding.
+- Do not add tests for `throw "impossible"` paths.
 
 ## Tailwind
 
