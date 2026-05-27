@@ -7,33 +7,43 @@ import process from "node:process";
 import ts from "typescript";
 import Util from "@/lib/util.ts";
 
+const REPO = (await Util.shellEx("git", "rev-parse", "--show-toplevel")).trim();
+
 //
 // main
 //
 
-const REPO = (await Util.shellEx("git", "rev-parse", "--show-toplevel")).trim();
-
 // Expand targets, organize imports, and rewrite changed files in place.
 async function main() {
   // get list of files from globbed argv. for simplicity we always operate in REPO
-  let files = process.argv.slice(2);
-  if (!files.length) files = ["."];
+  const args = process.argv.slice(2);
+  let files = args.length ? args : ["."];
   files = files.map((f) => path.relative(REPO, path.resolve(f)));
   process.chdir(REPO);
   files = await buildTargets(files);
+  if (!files.length) Util.fatal(`no ts files found in ${args}`);
 
   // fire up the lsp
   const lsp = ts.createLanguageService(buildHost(files));
 
-  // now run
+  // run
   for (const file of files) {
+    process.stdout.write(file);
     const edits = lsp.organizeImports(
       { type: "file", fileName: file, mode: ts.OrganizeImportsMode.All },
       ts.getDefaultFormatCodeSettings(),
       {},
     );
+    let changed = false;
     for (const edit of edits) {
-      await writeEdit(edit);
+      if (await writeEdit(edit)) {
+        changed = true;
+      }
+    }
+    if (changed) {
+      console.log("    [updated]");
+    } else {
+      console.log();
     }
   }
 }
@@ -48,26 +58,19 @@ function buildHost(src: string[]): ts.LanguageServiceHost {
   const all = uniq([...tsconfig.fileNames, ...src]);
 
   return {
-    getCompilationSettings() {
-      return tsconfig.options;
-    },
-    getCurrentDirectory() {
-      return process.cwd();
-    },
-    getDefaultLibFileName(compilerOptions) {
-      return ts.getDefaultLibFilePath(compilerOptions);
-    },
-    getScriptFileNames() {
-      return all;
-    },
     getScriptSnapshot(file) {
       const text = ts.sys.readFile(file);
       if (!text) return;
       return ts.ScriptSnapshot.fromString(text);
     },
-    getScriptVersion() {
-      return "0";
-    },
+
+    // one-liners
+    getCompilationSettings() { return tsconfig.options }, // prettier-ignore
+    getCurrentDirectory() { return "." }, // prettier-ignore
+    getDefaultLibFileName(compilerOptions) { return ts.getDefaultLibFilePath(compilerOptions) }, // prettier-ignore
+    getScriptFileNames() { return all }, // prettier-ignore
+    getScriptVersion() { return "0" }, // prettier-ignore
+
     fileExists: ts.sys.fileExists,
     readDirectory: ts.sys.readDirectory,
     readFile: ts.sys.readFile,
@@ -77,12 +80,12 @@ function buildHost(src: string[]): ts.LanguageServiceHost {
 // Load tsconfig so organizeImports has the same project context as editors.
 function readConfig() {
   // find
-  const tsconfig = ts.findConfigFile(process.cwd(), ts.sys.fileExists);
+  const tsconfig = ts.findConfigFile(".", ts.sys.fileExists);
   if (!tsconfig) return { fileNames: [], options: {} };
 
   // read
   const opaque = ts.readConfigFile(tsconfig, ts.sys.readFile);
-  if (opaque.error) Util.fatal(ts.flattenDiagnosticMessageText(opaque.error.messageText, "\n"));
+  if (opaque.error) throw new Error(ts.flattenDiagnosticMessageText(opaque.error.messageText, "\n"));
   return ts.parseJsonConfigFileContent(opaque.config, ts.sys, path.dirname(tsconfig));
 }
 
@@ -96,9 +99,11 @@ async function writeEdit(edit: ts.FileTextChanges) {
       const end = start + change.span.length;
       return `${text.slice(0, start)}${change.newText}${text.slice(end)}`;
     }, before);
-  if (after === before) return 0;
+
+  // this is slow, so show progress
+  if (after === before) return false;
   await Util.writeFile(edit.fileName, after);
-  return 1;
+  return true;
 }
 
 //
@@ -112,7 +117,6 @@ async function buildTargets(args: string[]) {
   a = await gitignore(a); // gitignore
   a = a.filter((f) => !f.endsWith(".d.ts")); // ignore d.ts
   a = a.sort();
-  if (!a.length) Util.fatal(`no ts files found in ${args}`);
   return a;
 }
 
@@ -138,11 +142,9 @@ function resolve(arg: string) {
 
 // Drop files ignored by git so "." behaves like the rest of the repo tools.
 async function gitignore(files: string[]) {
-  console.log(files);
+  if (!files.length) return files;
   const result = await Util.shell("git", "check-ignore", ...files);
-  console.log(result);
-
-  if (result.status === 128) Util.fatal("git -C failed");
+  if (result.status === 128) throw `git check-ignore ${files} failed`;
   const ignored = result.output.split("\n");
   return difference(files, ignored);
 }
