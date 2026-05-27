@@ -1,9 +1,13 @@
 ---
 import Ansi from "@/lib/ansi.ts";
-import { tailwind } from "@/lib/color.ts";
+import { namedColors } from "@/lib/color.ts";
+import { tailwind } from "@/lib/palettes";
 import ColorConverterSection from "@/components/ColorConverterSection.astro";
 
-const data = JSON.stringify({ ansi256: Ansi.colors256, tailwind });
+const data = JSON.stringify({
+  ansi256: Ansi.colors256,
+  tailwind: namedColors(tailwind),
+});
 ---
 
 <div class="color-converter is-empty mt-10">

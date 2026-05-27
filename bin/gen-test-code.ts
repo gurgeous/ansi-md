@@ -1,8 +1,6 @@
 // Generate language fixtures under tmp/ for the static codegen test
 import { extByName, languages } from "@/lib/code/code.ts";
-import catppuccin from "@/lib/code/palettes/catppuccin.ts";
-import d3Ordinal from "@/lib/code/palettes/d3-ordinal.ts";
-import tailwind from "@/lib/code/palettes/tailwind.ts";
+import { catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
 import Util from "@/lib/util.ts";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";

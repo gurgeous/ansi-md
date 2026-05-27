@@ -1,7 +1,7 @@
 // Shared color parsing, datasets, and nearest-match helpers.
 // It keeps terminal color math in one place for static and browser code.
 import Color from "colorjs.io";
-import tailwindRaw from "@/lib/code/palettes/tailwind.ts";
+import type { Palette } from "@/lib/palettes";
 
 // Palette color with lazy Color.js parsing for distance checks.
 export class NamedColor {
@@ -30,16 +30,14 @@ export type NamedColorInit = {
   hex: string;  // canonical sRGB hex value
 };
 
-//
-// tailwind colors
-//
-
-// Flatten the Tailwind palette into named lookup entries.
-export const tailwind = Object.entries(tailwindRaw).flatMap(([family, colors]) => {
-  return Object.entries(colors).map(([shade, hex]) => {
-    return new NamedColor(`${family}-${shade}`, hex);
+// Flatten a nested palette into named lookup entries.
+export function namedColors(palette: Palette) {
+  return Object.entries(palette).flatMap(([family, colors]) => {
+    return Object.entries(colors).map(([shade, hex]) => {
+      return new NamedColor(`${family}-${shade}`, hex);
+    });
   });
-});
+}
 
 //
 // parsing/normalizing hex strings
@@ -72,6 +70,14 @@ export function nearestColor(hex: string, colors: NamedColor[]) {
   const match = minBy(colors, (color) => target.deltaEOK(color.color));
   if (!match) throw "impossible";
   return match;
+}
+
+// Convert any Color.js-supported color string to full sRGB hex.
+export function hexify(color: string) {
+  return new Color(color).to("srgb").toString({
+    format: "hex",
+    collapse: false,
+  });
 }
 
 // Format one 0-255 channel as a two-digit lowercase hex byte.

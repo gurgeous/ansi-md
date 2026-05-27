@@ -19,7 +19,11 @@ export const chapters: Section[] = [
   {
     name: "Tools",
     items: [
-      { name: "Nearest Color", url: "/nearest", phrase: "nearest ANSI 256 and Tailwind matches" },
+      {
+        name: "Nearest Color",
+        url: "/nearest",
+        phrase: "nearest ANSI 256 and Tailwind matches",
+      },
       { name: "Catppuccin Colors", url: "/catppuccin", phrase: "Catppuccin-as-code" },
       {
         name: "D3 Ordinal Scales",

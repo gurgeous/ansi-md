@@ -1,8 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { languages, type Language } from "@/lib/code/code.ts";
-import catppuccin from "@/lib/code/palettes/catppuccin.ts";
-import d3Ordinal from "@/lib/code/palettes/d3-ordinal.ts";
-import tailwind from "@/lib/code/palettes/tailwind.ts";
+import { catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
 
 // Palette renderer function under test.
 type RendererFn = (language: Language) => string;

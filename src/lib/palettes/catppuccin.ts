@@ -1,4 +1,4 @@
-// Adapt Catppuccin into a Palette
+// Adapt Catppuccin into a shared palette template.
 import { flavors } from "@catppuccin/palette";
 
 // Convert from the upstream package shape into our palette template shape.

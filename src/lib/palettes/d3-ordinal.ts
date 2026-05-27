@@ -1,4 +1,4 @@
-// Adapt D3 categorical schemes into Scales.
+// Adapt D3 categorical schemes into shared scale data.
 // Each scheme stays an ordered list of hex colors.
 import * as D3Ordinal from "d3-scale-chromatic";
 
