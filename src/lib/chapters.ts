@@ -19,7 +19,7 @@ export const chapters: Section[] = [
   {
     name: "Tools",
     items: [
-      { name: "Color Converter", url: "/color-converter", phrase: "nearest ANSI 256 and Tailwind matches" },
+      { name: "Nearest Color", url: "/nearest", phrase: "nearest ANSI 256 and Tailwind matches" },
       { name: "Tailwind Colors", url: "/tailwind", phrase: "browse Tailwind and copy generated code" },
       { name: "Catppuccin Colors", url: "/catppuccin", phrase: "browse Catppuccin and copy generated code" },
       {
