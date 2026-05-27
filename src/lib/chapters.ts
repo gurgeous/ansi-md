@@ -1,15 +1,39 @@
-// Defines the site chapter order used by navigation and placeholder pages.
+// Defines the site navigation used by the sidebar and home page.
 // Keep this list human-curated so the outline reflects editorial intent.
-export const chapters: Chapter[] = [
-  { name: "Home", url: "/", phrase: "start here" },
-  { name: "ENV & Detection", url: "/env", phrase: "OMG why is this so hard" },
-  { name: "Color Design", url: "/colors", phrase: "all about color palettes" },
-  { name: "CLI Design", url: "/cli", phrase: "the difference between meh and awesome cli" },
-  { name: "Progress Bars & Spinners", url: "/progs", phrase: "the fun stuff" },
-  { name: "ANSI Escape Codes", url: "/ansi", phrase: "just the basics, ha" },
-  { name: "Advanced ANSI", url: "/advanced", phrase: "don't read this" },
-  { name: "Recommended Apps, Libraries & Terminals", url: "/recs", phrase: "stuff I personally like" },
+export const chapters: Section[] = [
+  {
+    name: "Pages",
+    items: [
+      { name: "Home", url: "/", phrase: "start here" },
+      { name: "ENV & Detection", url: "/env", phrase: "OMG why is this so hard" },
+      { name: "Color Design", url: "/colors", phrase: "all about color palettes" },
+      { name: "CLI Design", url: "/cli", phrase: "the difference between meh and awesome cli" },
+      { name: "Progress Bars & Spinners", url: "/progs", phrase: "the fun stuff" },
+      { name: "ANSI Escape Codes", url: "/ansi", phrase: "just the basics, ha" },
+      { name: "Advanced ANSI", url: "/advanced", phrase: "don't read this" },
+      { name: "Recommended Apps, Libraries & Terminals", url: "/recs", phrase: "stuff I personally like" },
+    ],
+  },
+  {
+    name: "Tools",
+    items: [
+      { name: "Color Converter", url: "/color-converter", phrase: "nearest ANSI 256 and Tailwind matches" },
+      { name: "Tailwind Colors", url: "/tailwind", phrase: "browse Tailwind and copy generated code" },
+      { name: "Catppuccin Colors", url: "/catppuccin", phrase: "browse Catppuccin and copy generated code" },
+      {
+        name: "D3 Ordinal Scales",
+        url: "/d3-ordinal",
+        phrase: "browse categorical scales and copy generated code",
+      },
+    ],
+  },
 ];
+
+// Navigation section rendered in the site table of contents.
+type Section = {
+  name: string;
+  items: Chapter[];
+};
 
 // Navigation item rendered in the site table of contents.
 type Chapter = {

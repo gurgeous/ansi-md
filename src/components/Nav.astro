@@ -3,16 +3,20 @@ import { chapters } from "@/lib/chapters";
 ---
 
 <nav>
-  <h2 class="text-3xl font-bold">Pages</h2>
-  <ol class="mt-4" start="0">
-    {
-      chapters.map((c) => (
-        <li>
-          <a href={c.url}>{c.name}</a>
-        </li>
-      ))
-    }
-  </ol>
+  {
+    chapters.map((section, index) => (
+      <section>
+        <h2 class="text-3xl font-bold">{section.name}</h2>
+        <ol class={index === 0 ? "mt-4" : "mt-8"} start="0">
+          {section.items.map((item) => (
+            <li>
+              <a href={item.url}>{item.name}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
 </nav>
 
 <style>

@@ -2,24 +2,41 @@
 import { chapters } from "@/lib/chapters";
 ---
 
-<ol start="0">
-  {
-    chapters.map((c) => (
-      <li>
-        <a href={c.url}>{c.name}</a>
-        <div>{c.phrase}</div>
-      </li>
-    ))
-  }
-</ol>
+{
+  chapters.map((section) => (
+    <section>
+      <h2>{section.name}</h2>
+      <ol start="0">
+        {section.items.map((item) => (
+          <li>
+            <a href={item.url}>{item.name}</a>
+            <div>{item.phrase}</div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))
+}
 
 <style>
-  ol {
-    li {
-      @apply text-sm/4 sm:text-sm;
+  section {
+    &:not(:first-child) {
+      @apply mt-10;
+    }
 
-      &:not(:first-child) {
-        @apply mt-4 sm:mt-2;
+    h2 {
+      @apply text-brand mt-0 text-3xl font-bold;
+    }
+
+    ol {
+      @apply mt-4;
+
+      li {
+        @apply text-sm/4 sm:text-sm;
+
+        &:not(:first-child) {
+          @apply mt-4 sm:mt-2;
+        }
       }
     }
   }
@@ -32,15 +49,3 @@ import { chapters } from "@/lib/chapters";
     }
   }
 </style>
-
-<!-- <ol class="leading-tighter" start="0">
-  {chapters.map((c) => (
-    <li class="mt-4!">
-      <a class="border-b-0!" href={c.url}>
-        {c.name}
-      </a>
-      <span class="hidden px-1.5 sm:inline-block">-</span>
-      <div class="sm:inline-block">{c.phrase}</div>
-    </li>
-  ))}
-</ol> -->
