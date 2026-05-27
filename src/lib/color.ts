@@ -73,14 +73,12 @@ export function nearestColor(hex: string, colors: NamedColor[]) {
 }
 
 // Convert any Color.js-supported color string to full sRGB hex.
-export function hexify(color: string) {
-  return new Color(color).to("srgb").toString({
-    format: "hex",
-    collapse: false,
-  });
+export function hexify(color: string): string {
+  // collapse=false to avoid 3/4 digit hex, we always want rrggbb
+  return new Color(color).to("srgb").toString({ format: "hex", collapse: false });
 }
 
 // Format one 0-255 channel as a two-digit lowercase hex byte.
-export function hex2(value: number) {
+export function hex2(value: number): string {
   return value.toString(16).padStart(2, "0");
 }
