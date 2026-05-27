@@ -1,5 +1,6 @@
+import { hexify, nearestColor, normalizeHexInput, parseHex, rgbHex } from "@/lib/color.ts";
+import Color from "colorjs.io";
 import { describe, expect, it } from "vitest";
-import { NamedColor, nearestColor, normalizeHexInput, parseHex } from "@/lib/color.ts";
 
 describe("color", () => {
   it("normalizes display input while preserving a typed hash", () => {
@@ -20,30 +21,28 @@ describe("color", () => {
     expect(parseHex("#")).toBeNull();
   });
 
-  it("finds exact named colors", () => {
-    const colors = [new NamedColor("red", "#ff0000"), new NamedColor("green", "#00ff00")];
+  it("finds the exact nearest color", () => {
+    const needle = new Color("#ff0000");
+    const haystack = [new Color("#ff0000"), new Color("#00ff00")];
 
-    expect(nearestColor("#ff0000", colors).name).toBe("red");
+    expect(nearestColor(needle, haystack)).toBe(haystack[0]);
   });
 
-  it("finds nearest named colors without exact matches", () => {
-    const colors = [new NamedColor("black", "#000000"), new NamedColor("white", "#ffffff")];
+  it("returns the nearest parsed color", () => {
+    const haystack = [new Color("#000000"), new Color("#ffffff")];
 
-    expect(nearestColor("#111111", colors).name).toBe("black");
-    expect(nearestColor("#eeeeee", colors).name).toBe("white");
+    expect(nearestColor(new Color("#111111"), haystack)).toBe(haystack[0]);
+    expect(nearestColor(new Color("#eeeeee"), haystack)).toBe(haystack[1]);
   });
 
-  it("handles one-color and empty nearest palettes", () => {
-    const only = new NamedColor("only", "#123456");
-
-    expect(nearestColor("#ffffff", [only])).toBe(only);
-    expect(() => nearestColor("#ffffff", [])).toThrow("impossible");
+  it("normalizes Color.js input to full hex", () => {
+    expect(hexify("rgb(140 170 238)")).toBe("#8caaee");
+    expect(hexify("oklch(0.76 0.12 274)")).toMatch(/^#[0-9a-f]{6}$/);
   });
 
-  it("serializes named colors without parser state", () => {
-    const color = new NamedColor("40", "#00d700");
-    void color.color;
-
-    expect(color.toJSON()).toEqual({ hex: "#00d700", name: "40" });
+  it("formats rgb bytes as canonical hex", () => {
+    expect(rgbHex(0, 0, 0)).toBe("#000000");
+    expect(rgbHex(140, 170, 238)).toBe("#8caaee");
+    expect(rgbHex(255, 255, 255)).toBe("#ffffff");
   });
 });

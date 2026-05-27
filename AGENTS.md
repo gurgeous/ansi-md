@@ -2,6 +2,8 @@
 
 - Ignore `old/`; it is inactive reference trash.
 - Use `just`: `build`, `lint`, `test`. `just llm` after code changes
+- Use `just`: `build`, `lint`, `test`. Use the narrowest relevant
+  check; reserve `just llm` for substantive changes.
 - Never add `package.json` scripts
 - Give PRs a descriptive title; never use `wip`.
 - Succintness/simplicity is a core value, don't add layers
@@ -17,6 +19,7 @@
 
 - Assets stay under `src/`; never use `public/`.
 - Prefer `@/...` imports instead of relative source imports.
+- `index.ts` only re-exports package-facing API, not internal helpers.
 - Prefer semantic HTML and classes, not IDs.
 - Keep client JS rare.
 - Prefix HTML element refs with `$`, including element arrays/maps.
@@ -32,6 +35,7 @@
 - Omit trivial TS return types; avoid pointless `: void`.
 - Avoid `private`/`readonly`; use them only when genuinely valuable.
 - For impossible internal states, prefer `throw "impossible"` over verbose error scaffolding.
+- Do not add tests for `throw "impossible"` paths.
 
 ## Tailwind
 

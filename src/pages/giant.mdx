@@ -1,0 +1,13 @@
+---
+title: Giant Contrast Table
+---
+
+import Giant from "@/components/Giant.astro";
+
+Here is a giant table of all the ansi 256 and tailwind colors. You can compare how the color works as fg/bg with dark and light terminal themes. This is a nice way to pick readable colors.
+
+A dot indicates "good [APCA contrast](https://colorjs.io/docs/contrast)", which in this case means APCA >= 40. Personally I find those to be readable, though tastes vary and anything between 40 & 50 is suspect. Hover a cell to see the exact APCA contrast.
+
+There are some ambidextrous colors with dots for both light and dark backgrounds. Could be a good choice for lazy people (like me) who want to sidestep terminal theme detection. Maybe I should make my whole cli app <span class="text-amber-600 font-semibold">amber-600</span>!
+
+<Giant />

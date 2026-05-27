@@ -1,6 +1,7 @@
 // Base class for generated-code languages.
 // Each subclass owns one target language's naming and file layout.
-import type { Colors, LangKey, Palette, Scale, Scales } from "@/lib/code/code.ts";
+import type { LangKey } from "@/lib/code/code.ts";
+import type { Colors, Palette, Scale, Scales } from "@/lib/palettes";
 
 export abstract class Language {
   name: LangKey;

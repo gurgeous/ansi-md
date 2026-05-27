@@ -1,16 +1,16 @@
 // Go palette renderer for generated code snippets.
 // It emits a value first, then struct types for easy scanning.
-import type { Palette, Scales } from "@/lib/code/code.ts";
+import type { Palette, Scales } from "@/lib/palettes";
 import {
   align,
   colorNames,
   indent,
   isNumberStr,
+  Language,
   mustache,
+  renderFields,
   renderScale,
   tagline,
-  Language,
-  renderFields,
 } from "./base.ts";
 
 const TEMPLATE = `

@@ -1,7 +1,7 @@
 ---
 import "@/main.css";
 import Header from "@/components/Header.astro";
-import Nav from "@/components/Nav.astro";
+import Sidebar from "@/components/Sidebar.astro";
 import logoUrl from "@/assets/logo.png?url";
 import { Font } from "astro:assets";
 
@@ -26,7 +26,7 @@ function pageTitle() {
   <body class="bg-brand text-sm">
     <Header />
     <div class="flex min-h-screen bg-white">
-      <Nav />
+      <Sidebar />
       <main>
         <slot />
       </main>

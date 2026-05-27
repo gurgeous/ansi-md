@@ -1,6 +1,6 @@
 // Astro config for Ansi.md.
 import mdx from "@astrojs/mdx";
-import catppuccin from "@shikijs/themes/catppuccin-latte";
+import catppuccin from "@shikijs/themes/catppuccin-frappe";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
@@ -45,6 +45,7 @@ const repoLabelOverrides = {
   "gurgeous/table_tennis": "table_tennis",
   "gurgeous/tennis": "tennis",
   "muesli/termenv": "termenv",
+  "Textualize/rich": "rich",
 };
 
 function repoPath(href) {
@@ -89,7 +90,6 @@ function remarkDefaultLayout() {
     const { frontmatter } = file.data.astro;
     if (frontmatter.title) {
       frontmatter.layout ??= "../components/ArticleLayout.astro";
-      console.log(frontmatter);
     }
   };
 }
@@ -104,6 +104,7 @@ const autoImports = [
       "capitalize",
       "compact",
       "constantCase",
+      "difference",
       "groupBy",
       "identity",
       "keyBy",
@@ -115,6 +116,8 @@ const autoImports = [
       "pascalCase",
       "pickBy",
       "range",
+      "uniq",
+      "zip",
     ],
     "es-toolkit/compat": ["isObject", "keys", "template", "values"],
   },

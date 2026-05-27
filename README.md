@@ -1,3 +1,15 @@
+### Notes from nak review
+
+- H1 sync (maybe just pull title from frontmatter)
+- "naked" language is not correct for lots of commands that just do things
+- xdg info + link
+- broken ansi 256 link
+- pull more styles from docs site!
+- contrast discussion / tool
+- bash scripts
+- create a TOOLS section in sidebar?
+- big table of ansi 256 (like tennis --spectrum)
+
 ### 4. progress bars and spinners
 
 - There are many good libraries for generating progress bars. For example, ~[tqdm](github.com/tqdm/tqdm)~ for Python, ~[schollz/progressbar](github.com/schollz/progressbar)~ for Go, and ~[node-progress](github.com/visionmedia/node-progress)~ for Node.js.
@@ -70,3 +82,8 @@
 - contrast checker
 - ship ansi.md
 - feedback/email me, header, footer, ansi.md should be clickable
+
+###REMIND
+
+- gauge
+- icons for languages?

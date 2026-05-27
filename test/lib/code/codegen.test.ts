@@ -3,9 +3,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 import { extByName, languages, type LangKey, type Language } from "@/lib/code/code.ts";
-import catppuccin from "@/lib/code/palettes/catppuccin.ts";
-import d3Ordinal from "@/lib/code/palettes/d3-ordinal.ts";
-import tailwind from "@/lib/code/palettes/tailwind.ts";
+import { catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
 import Util from "@/lib/util.ts";
 
 //

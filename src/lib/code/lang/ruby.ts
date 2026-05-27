@@ -1,6 +1,6 @@
 // Ruby palette renderer for generated code snippets.
 // It uses Data.define for compact immutable-ish palette records.
-import type { Palette, Scales } from "@/lib/code/code.ts";
+import type { Palette, Scales } from "@/lib/palettes";
 import {
   Language,
   colorNames,

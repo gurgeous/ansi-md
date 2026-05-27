@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import * as Base from "@/lib/code/lang/base.ts";
+import { describe, expect, it } from "vitest";
 
 describe("Code", function () {
   it("maxLength", function () {

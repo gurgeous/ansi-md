@@ -1,17 +1,13 @@
 ---
 import Ansi from "@/lib/ansi.ts";
-
-type Row = {
-  name: string;
-  hex: string;
-};
+import type { Colors } from "@/lib/palettes";
 
 type Props = {
-  rows: Row[];
+  colors: Colors;
   bright?: boolean;
 };
 
-const { rows, bright = false } = Astro.props;
+const { colors, bright = false } = Astro.props;
 const base = bright ? 8 : 0;
 ---
 
@@ -28,18 +24,18 @@ const base = bright ? 8 : 0;
   </thead>
   <tbody>
     {
-      rows.map((row, i) => (
+      Object.entries(colors).map(([name, hex], i) => (
         <tr>
           <td>
-            <span class="inline-flex items-center gap-2">
-              <svg class="size-3 shrink-0 border border-neutral-400">
-                <rect width="12" height="12" fill={row.hex} />
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="size-4 shrink-0 border border-neutral-400">
+                <rect width="16" height="16" fill={hex} />
               </svg>
-              <span>{row.name}</span>
+              <span>{name}</span>
             </span>
           </td>
           <td>
-            <code>{row.hex}</code>
+            <code>{hex}</code>
           </td>
           <td>
             <code>{Ansi.fg16(i, bright)}</code>

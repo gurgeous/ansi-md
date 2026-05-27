@@ -1,6 +1,6 @@
 // TypeScript palette renderer for generated code snippets.
 // It emits a const object that preserves literal color values.
-import type { Palette, Scales } from "@/lib/code/code.ts";
+import type { Palette, Scales } from "@/lib/palettes";
 import { Language, indent, isNumberStr, mustache, renderFields, renderScale, tagline } from "./base.ts";
 
 const TEMPLATE = `

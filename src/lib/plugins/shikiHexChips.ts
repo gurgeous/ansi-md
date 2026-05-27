@@ -1,7 +1,7 @@
 // Shiki transformer that adds small color chips before rendered hex colors.
 // It edits HAST nodes only, so copied code remains the original text.
-import type { ShikiTransformer } from "shiki";
 import type { Element, ElementContent } from "hast";
+import type { ShikiTransformer } from "shiki";
 
 const hexColorPattern = /#[0-9a-fA-F]{6}/;
 const globalHexColorPattern = /#[0-9a-fA-F]{6}/g;

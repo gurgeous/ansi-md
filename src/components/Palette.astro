@@ -1,6 +1,7 @@
 ---
 import CodePicker from "@/components/CodePicker.astro";
-import { languages, type Palette, type LangKey } from "@/lib/code/code";
+import { languages, type LangKey } from "@/lib/code/code";
+import type { Palette } from "@/lib/palettes";
 
 type Props = { name: string; palette: Palette };
 const { name, palette } = Astro.props;

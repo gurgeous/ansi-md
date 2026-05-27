@@ -1,0 +1,133 @@
+---
+import Color from "colorjs.io";
+import { sprintf } from "sprintf-js";
+import { ansi256, tailwind } from "@/lib/palettes";
+
+//
+// rows
+//
+
+type Row = { name: string; hex: string };
+
+const rows: Row[] = [];
+rows.push(...Object.entries(ansi256).map(([name, hex]) => ({ name: `ansi256 #${name}`, hex })));
+rows.push(...flatten(tailwind));
+
+//
+// helpers
+//
+
+const WHITE = new Color("white");
+const BLACK = new Color("black");
+
+function flatten(palette: Record<string, Record<string, string>>): Row[] {
+  return Object.entries(palette).flatMap(([group, colors]) => {
+    return Object.entries(colors).map(([name, hex]) => ({ name: `tw ${group}-${name}`, hex }));
+  });
+}
+
+function apca(fg: Color | string, bg: Color | string): number {
+  // note: order matters
+  return new Color(bg).contrastAPCA(new Color(fg));
+}
+
+function contrast(fg: Color | string, bg: Color | string): string {
+  return sprintf("APCA %d", apca(fg, bg));
+}
+
+function ok(fg: Color | string, bg: Color | string): boolean {
+  return Math.abs(apca(fg, bg)) >= 40;
+}
+
+function dot(bg: Color | string): string {
+  const white = Math.abs(apca(WHITE, bg));
+  const black = Math.abs(apca(BLACK, bg));
+  return white > black ? "#ffffff" : "#000000";
+}
+---
+
+<!-- apologies for bangs, css specificity issues and i am lazy -->
+<table class="text-2xs! mt-10! w-auto! overflow-x-auto leading-tight sm:text-xs!">
+  <thead>
+    <tr>
+      <th class="hidden sm:table-cell">RGB</th>
+      <th>Light Bg</th>
+      <th>Dark Bg</th>
+      <th>Light Fg</th>
+      <th>Dark Fg</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      rows.map(({ name, hex }) => (
+        <tr>
+          <td class="hidden px-4 sm:table-cell">
+            <div class="px-4">{hex}</div>
+          </td>
+          <td class="border-l!">
+            <span
+              class:list={["bg-white", { ok: ok(hex, WHITE) }]}
+              style={`color:${hex};--dot:${dot(WHITE)}`}
+              title={contrast(hex, WHITE)}>
+              {name}
+            </span>
+          </td>
+          <td>
+            <span
+              class:list={["bg-black", { ok: ok(hex, BLACK) }]}
+              style={`color:${hex};--dot:${dot(BLACK)}`}
+              title={contrast(hex, BLACK)}>
+              {name}
+            </span>
+          </td>
+          <td>
+            <span
+              class:list={{ ok: ok(WHITE, hex) }}
+              style={`background:${hex};color:#fff;--dot:${dot(hex)}`}
+              title={contrast(WHITE, hex)}>
+              white
+            </span>
+          </td>
+          <td>
+            <span
+              class:list={{ ok: ok(BLACK, hex) }}
+              style={`background:${hex};color:#000;--dot:${dot(hex)}`}
+              title={contrast(BLACK, hex)}>
+              black
+            </span>
+          </td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  table {
+    th,
+    td {
+      @apply text-center;
+    }
+    td {
+      @apply border-0 p-0;
+    }
+    tr {
+      @apply border-x;
+
+      &:last-child {
+        @apply border-b;
+      }
+    }
+  }
+
+  span {
+    @apply relative block cursor-default py-1 pr-3 pl-4 whitespace-nowrap;
+  }
+
+  .ok::before {
+    content: "";
+    background: var(--dot);
+    @apply absolute top-1/2 left-1.5 size-0.75 -translate-y-1/2 rounded-full;
+    @apply sm:size-1;
+  }
+</style>
