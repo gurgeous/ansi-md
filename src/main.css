@@ -65,10 +65,23 @@ article {
     @apply pl-7;
   }
 
-  pre {
-    @apply border-l-brand-bright w-full overflow-x-auto border-l-6 px-2 py-1 text-xs leading-normal sm:text-sm;
-    code {
-      @apply bg-transparent p-0;
+  /* syntax highlighted <pre> */
+  pre.astro-code {
+    @apply w-full overflow-x-auto px-2 py-1 text-xs sm:text-sm;
+
+    @media (min-width: theme(--breakpoint-sm)) {
+      /* css line numbers - https://github.com/shikijs/shiki/issues/3#issuecomment-830564854 */
+      code {
+        @apply p-0;
+        counter-reset: idx;
+        counter-increment: idx 0;
+
+        & .line::before {
+          content: counter(idx);
+          counter-increment: idx;
+          @apply mr-6 -ml-1 inline-block w-5 text-right text-neutral-600;
+        }
+      }
     }
   }
 
@@ -76,8 +89,12 @@ article {
     @apply text-brand-bright border-b border-dotted font-bold hover:border-solid hover:brightness-80;
   }
 
-  code {
-    @apply font-brand text-brand bg-neutral-100 px-1;
+  p,
+  table {
+    code {
+      @apply rounded border border-blue-200 bg-sky-100 align-middle text-[90%] whitespace-nowrap text-cyan-700;
+      @apply px-[0.3em] pb-[0.1em]; /* note em units */
+    }
   }
 
   table {
