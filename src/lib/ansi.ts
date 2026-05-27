@@ -1,27 +1,6 @@
-// ANSI-specific palette data and escape-code helpers.
-// Keep the xterm 256-color table separate from generic color matching logic.
-import { NamedColor, hex2 } from "@/lib/color.ts";
-
-const CUBE = [0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff] as const;
-
-// ANSI 256 colors 16-255 as named canonical sRGB hex values.
-const colors256 = range(16, 256).map((index) => {
-  return new NamedColor(String(index), hex256(index));
-});
-
-// Calculate one ANSI 256 palette color from its 16-255 index.
-function hex256(index: number) {
-  if (index >= 232) {
-    const gray = 8 + (index - 232) * 10;
-    return `#${hex2(gray)}${hex2(gray)}${hex2(gray)}`;
-  }
-
-  const offset = index - 16;
-  const r = CUBE[Math.floor(offset / 36) % 6];
-  const g = CUBE[Math.floor(offset / 6) % 6];
-  const b = CUBE[offset % 6];
-  return `#${hex2(r)}${hex2(g)}${hex2(b)}`;
-}
+// ANSI escape-code helpers and ANSI-16 theme data.
+// Shared ANSI 256 palette math lives under lib/palettes.
+import { NamedColor } from "@/lib/color.ts";
 
 // ansi16
 const catppuccin16: { normal: NamedColor[]; bright: NamedColor[] } = {
@@ -59,6 +38,4 @@ export default {
   fg256,
   bg256,
   catppuccin16,
-  colors256,
-  hex256,
 };

@@ -1,11 +1,11 @@
 ---
 import Ansi from "@/lib/ansi.ts";
+import { colors256, tailwind } from "@/lib/palettes";
 import { namedColors } from "@/lib/color.ts";
-import { tailwind } from "@/lib/palettes";
 import NearestSection from "@/components/NearestSection.astro";
 
 const data = JSON.stringify({
-  ansi256: Ansi.colors256,
+  ansi256: colors256,
   tailwind: namedColors(tailwind),
 });
 ---
