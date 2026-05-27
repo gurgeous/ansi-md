@@ -2,12 +2,12 @@
 title: CLI Design
 ---
 
-This page is about building delightful command line apps, which is a deep topic. [Colors and visual design](/colors) is carved out separately, this page focuses on the basic principles of cli design - stdout/stderr, exit code, args, flags, subcommands, etc. We are having a bit of a CLI rennassaince with the rise of LLMs. This also powered by backlash against the plodding, buggy nature of web pages. You can contribute to the rennassaince by building delightful apps.
+This page is about building delightful command line apps, which is a deep topic. [Colors and visual design](/colors) is carved out separately, this page focuses on the basic principles of cli design - stdout/stderr, exit code, args, flags, subcommands, etc. We are having a bit of a CLI renaissance with the rise of LLMs. This is also powered by backlash against the plodding, buggy nature of web pages. You can contribute to the renaissance by building delightful apps.
 
 I wanted to call out the two main cli guides that made an impact on me:
 
 - [12 Factor Cli Apps](https://jdxcode.medium.com/12-factor-cli-apps-dd3c227a0e46). Essential reading. Written by jdx, who went on to create [mise](https://mise.en.dev).
-- [CLIG.dev](https://clig.dev) A bit overbearing, perhaps due to excessive use of Apple Garamond. Love the philisophical tone, though.
+- [CLIG.dev](https://clig.dev) A bit overbearing, perhaps due to excessive use of Apple Garamond. Love the philosophical tone, though.
 
 Let's stick to the important stuff:
 
@@ -28,7 +28,7 @@ I do not recommend `-v` for verbose, instead I like `-v` for version and use an 
 
 1. **`stdout` is for output, `stderr` is <span class="text-red-500">only for errors</span>**. <span class="text-green-500">Exit 0 on success</span>, <span class="text-red-500">1 on failure</span>.
 
-1. When running **--help or "naked" (no args)**, print help on stdout and exit 0. Let me pipe it into my pager! Try not to comingle stdout and stderr, this is difficult to untangle.
+1. When running **--help or "naked" (no args)**, print help on stdout and exit 0. Let me pipe it into my pager! Try not to commingle stdout and stderr, this is difficult to untangle.
 
    ```sh
    $ myapp              # print help on stdout, exit 0
@@ -54,7 +54,7 @@ I do not recommend `-v` for verbose, instead I like `-v` for version and use an 
    | invalid arg          | --bogus is not a valid flag  |
    | missing required arg | curl: no URL specified       |
 
-1. **Flags > env > config file** - If your app is successful, user's will want to configure it in a more permanent fashion. Some flags will be very popular. Users will setup aliases. They will want ENV variables. They will want config files. You can add support for all this stuff, but remember the priority of each mechanism.
+1. **Flags > env > config file** - If your app is successful, users will want to configure it in a more permanent fashion. Some flags will be very popular. Users will setup aliases. They will want ENV variables. They will want config files. You can add support for all this stuff, but remember the priority of each mechanism.
 
 1. **ENV is great for spelunking** - I love it when apps & libs support special environment variables that modify behavior. `--help` is the public face of your app, but it doesn't have to end there. I love love love when I find a MYAPP_DEBUG=1 flag. As a cli author I hesitate to add cli flags that increase verbosity, turn the cache off, disable retries, etc. Each flag comes with a small burden for testing, --help text, man page, README, and completions. Secret ENV flags mostly sidestep that burden. Add 'em!
 
@@ -64,7 +64,7 @@ I do not recommend `-v` for verbose, instead I like `-v` for version and use an 
 
 #### 1. Naked gum
 
-Nice help message, and it goes to stdout. Only quibble is that naked `gum` exits with a non-zero code. I understand that this is technically an error ("the user didn't pass a subcommand") but this is unfriendly. In my terminal this shows a <span class="text-red-500">nasty red ERROR indicator</span>. Why make me feel bad just for entering your command naked? This reminds of web forms that display an error as soon as you focus the input, then the error disappears once the field is valid. Meanies.
+Nice help message, and it goes to stdout. Only quibble is that naked `gum` exits with a non-zero code. I understand that this is technically an error ("the user didn't pass a subcommand") but this is unfriendly. In my terminal this shows a <span class="text-red-500">nasty red ERROR indicator</span>. Why make me feel bad just for entering your command naked? This reminds me of web forms that display an error as soon as you focus the input, then the error disappears once the field is valid. Meanies.
 
 ```
 $ gum
