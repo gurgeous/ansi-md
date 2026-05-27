@@ -1,6 +1,6 @@
 // Client-side behavior for nearest color stuff
 import Ansi from "@/lib/ansi.ts";
-import { NamedColor, nearestColor, normalizeHexInput, parseHex, type NamedColorInit } from "@/lib/color.ts";
+import { NamedColor, nearestColor, normalizeHexInput, parseHex } from "@/lib/color.ts";
 
 //
 // types

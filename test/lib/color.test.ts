@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { hexify, NamedColor, namedColors, nearestColor, normalizeHexInput, parseHex, rgbHex } from "@/lib/color.ts";
+import { describe, expect, it } from "vitest";
 
 describe("color", () => {
   it("rehydrates named colors from serialized data", () => {

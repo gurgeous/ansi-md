@@ -2,16 +2,16 @@
 // It emits const structs with borrowed string fields and no runtime setup.
 import type { Palette, Scales } from "@/lib/palettes";
 import {
-  align,
-  Language,
-  colorNames,
-  constantName,
-  indent,
-  isNumberStr,
-  mustache,
-  renderFields,
-  renderScale,
-  tagline,
+    align,
+    colorNames,
+    constantName,
+    indent,
+    isNumberStr,
+    Language,
+    mustache,
+    renderFields,
+    renderScale,
+    tagline,
 } from "./base.ts";
 
 const TEMPLATE = `

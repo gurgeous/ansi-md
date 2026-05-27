@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import Ansi from "@/lib/ansi.ts";
+import { describe, expect, it } from "vitest";
 
 describe("ansi", () => {
   it("formats ANSI 256 escape sequences", () => {

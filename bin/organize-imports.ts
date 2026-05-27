@@ -1,11 +1,11 @@
 // Organize TypeScript imports in place using the installed TS language service.
 // This is a thin CLI around TypeScript, so a dedicated test is not needed here.
 
+import Util from "@/lib/util.ts";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import ts from "typescript";
-import Util from "@/lib/util.ts";
 
 const REPO = (await Util.shellEx("git", "rev-parse", "--show-toplevel")).trim();
 
@@ -15,11 +15,13 @@ const REPO = (await Util.shellEx("git", "rev-parse", "--show-toplevel")).trim();
 
 // Expand targets, organize imports, and rewrite changed files in place.
 async function main() {
-  // get list of files from globbed argv. for simplicity we always operate in REPO
   const args = process.argv.slice(2);
-  let files = args.length ? args : ["."];
+
+  // get list of files from globbed argv. for simplicity we always operate in REPO
+  let files = args;
   files = files.map((f) => path.relative(REPO, path.resolve(f)));
   process.chdir(REPO);
+  files = files.length ? files : ["."];
   files = await buildTargets(files);
   if (!files.length) Util.fatal(`no ts files found in ${args}`);
 

@@ -1,7 +1,7 @@
 // Verify the published-style plugin aligns trailing line comments inside
 // TypeScript type members without disturbing unrelated cases.
 import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import prettier from "prettier";

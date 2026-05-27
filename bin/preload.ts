@@ -3,31 +3,31 @@
 // this file keeps that runtime glue in one place instead of spreading it
 // through every script or shell command.
 
+import {
+    camelCase,
+    capitalize,
+    compact,
+    constantCase,
+    difference,
+    groupBy,
+    identity,
+    keyBy,
+    mapKeys,
+    mapValues,
+    maxBy,
+    minBy,
+    partition,
+    pascalCase,
+    pickBy,
+    range,
+    uniq,
+    zip,
+} from "es-toolkit";
+import { isObject, keys, template, values } from "es-toolkit/compat";
 import { existsSync, statSync } from "node:fs";
 import { registerHooks } from "node:module";
 import { resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import {
-  camelCase,
-  capitalize,
-  compact,
-  constantCase,
-  difference,
-  groupBy,
-  identity,
-  keyBy,
-  mapKeys,
-  mapValues,
-  maxBy,
-  minBy,
-  partition,
-  pascalCase,
-  pickBy,
-  range,
-  uniq,
-  zip,
-} from "es-toolkit";
-import { isObject, keys, template, values } from "es-toolkit/compat";
 
 //
 // auto-imports

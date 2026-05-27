@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest";
 import { languages, type Language } from "@/lib/code/code.ts";
 import { catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
+import { describe, expect, it } from "vitest";
 
 // Palette renderer function under test.
 type RendererFn = (language: Language) => string;

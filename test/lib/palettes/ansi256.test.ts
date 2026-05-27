@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import ansi256, { hex256 } from "@/lib/palettes/ansi256.ts";
+import { describe, expect, it } from "vitest";
 
 describe("ansi256 palette", () => {
   it("exports only ANSI 256 colors 16-255", () => {

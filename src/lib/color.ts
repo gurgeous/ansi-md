@@ -1,7 +1,7 @@
 // Shared color parsing, datasets, and nearest-match helpers.
 // It keeps terminal color math in one place for static and browser code.
-import Color from "colorjs.io";
 import type { Palette } from "@/lib/palettes";
+import Color from "colorjs.io";
 import { sprintf } from "sprintf-js";
 
 // Palette color with lazy Color.js parsing for distance checks.

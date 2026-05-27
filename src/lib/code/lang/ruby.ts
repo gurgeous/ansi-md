@@ -2,15 +2,15 @@
 // It uses Data.define for compact immutable-ish palette records.
 import type { Palette, Scales } from "@/lib/palettes";
 import {
-  Language,
-  colorNames,
-  constantName,
-  indent,
-  isNumberStr,
-  mustache,
-  renderFields,
-  renderScale,
-  tagline,
+    Language,
+    colorNames,
+    constantName,
+    indent,
+    isNumberStr,
+    mustache,
+    renderFields,
+    renderScale,
+    tagline,
 } from "./base.ts";
 
 const TEMPLATE = `

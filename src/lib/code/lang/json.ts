@@ -1,7 +1,7 @@
 // JSON palette renderer for generated code snippets.
 // It emits plain nested objects for copy-paste into data files.
-import type { Palette, Scales } from "@/lib/palettes";
 import { Language, indent, mustache, renderFields, renderScale } from "@/lib/code/lang/base.ts";
+import type { Palette, Scales } from "@/lib/palettes";
 
 const TEMPLATE = `
 {
