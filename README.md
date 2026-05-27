@@ -82,3 +82,8 @@
 - contrast checker
 - ship ansi.md
 - feedback/email me, header, footer, ansi.md should be clickable
+
+###REMIND
+
+- gauge
+- icons for languages?

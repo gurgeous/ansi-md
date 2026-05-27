@@ -45,6 +45,7 @@ const repoLabelOverrides = {
   "gurgeous/table_tennis": "table_tennis",
   "gurgeous/tennis": "tennis",
   "muesli/termenv": "termenv",
+  "Textualize/rich": "rich",
 };
 
 function repoPath(href) {
