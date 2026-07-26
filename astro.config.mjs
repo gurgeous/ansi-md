@@ -1,15 +1,17 @@
 // Astro config for Ansi.md.
+import { parse as parseJs } from "acorn";
 import mdx from "@astrojs/mdx";
+import { unified } from "@astrojs/markdown-remark";
 import catppuccin from "@shikijs/themes/catppuccin-frappe";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
+import { parse as parsePath, resolve } from "node:path";
 import { fileURLToPath, URL } from "node:url";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
 import AutoImportVite from "unplugin-auto-import/astro";
-import AutoImportMDX from "astro-auto-import";
 
 //
 // ALLOWED_HOSTS for remote access
@@ -122,15 +124,58 @@ const autoImports = [
     "es-toolkit/compat": ["isObject", "keys", "template", "values"],
   },
 ];
-const autoImportMdx = AutoImportMDX({
-  imports: autoImports,
-});
 
 const autoImportVite = AutoImportVite({
   dts: "src/auto-imports.d.ts",
   include: [/\.(astro|ts)$/],
   imports: autoImports,
 });
+
+function importPath(path) {
+  return path.startsWith(".") ? resolve(path) : path;
+}
+
+function importName(path) {
+  return parsePath(path).name.replaceAll(/[^\w\d]/g, "");
+}
+
+function namedImports(imports) {
+  return imports.map((item) => (typeof item === "string" ? item : `${item[0]} as ${item[1]}`)).join(", ");
+}
+
+function importStatements(config) {
+  return config.flatMap((option) => {
+    if (typeof option === "string") {
+      return `import ${importName(option)} from ${JSON.stringify(importPath(option))};`;
+    }
+    return Object.entries(option).map(([path, imports]) => {
+      const imported = typeof imports === "string" ? `* as ${imports}` : `{ ${namedImports(imports)} }`;
+      return `import ${imported} from ${JSON.stringify(importPath(path))};`;
+    });
+  });
+}
+
+function mdxAutoImports(config) {
+  const imports = importStatements(config).join("\n");
+  const importsNode = {
+    type: "mdxjsEsm",
+    value: "",
+    data: {
+      estree: {
+        ...parseJs(imports, { ecmaVersion: "latest", sourceType: "module" }),
+        type: "Program",
+        sourceType: "module",
+      },
+    },
+  };
+
+  return function mdxAutoImportPlugin() {
+    return function injectMdxImports(tree, file) {
+      if (file.basename?.endsWith(".md")) return;
+      tree.children.unshift(importsNode);
+    };
+  };
+}
 
 //
 // defineConfig
@@ -152,12 +197,14 @@ export default defineConfig({
       fallbacks: ["monospace"],
     },
   ],
-  integrations: [autoImportMdx, autoImportVite, mdx(), icon()],
+  integrations: [autoImportVite, mdx(), icon()],
   markdown: {
-    rehypePlugins: [[rehypeExternalLinks, { rel: ["noopener", "noreferrer"], target: "_blank" }]],
-    remarkPlugins: [remarkDefaultLayout, remarkGfm, remarkGitHubRepoLinks],
+    processor: unified({
+      rehypePlugins: [[rehypeExternalLinks, { rel: ["noopener", "noreferrer"], target: "_blank" }]],
+      remarkPlugins: [remarkDefaultLayout, remarkGfm, remarkGitHubRepoLinks, mdxAutoImports(autoImports)],
+      smartypants: false,
+    }),
     shikiConfig: { theme: catppuccin },
-    smartypants: false,
   },
   vite: {
     plugins: [tailwindReference(), tailwindcss()],
