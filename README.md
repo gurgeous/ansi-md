@@ -12,7 +12,7 @@
 
 ### 4. progress bars and spinners
 
-- There are many good libraries for generating progress bars. For example, ~[tqdm](github.com/tqdm/tqdm)~ for Python, ~[schollz/progressbar](github.com/schollz/progressbar)~ for Go, and ~[node-progress](github.com/visionmedia/node-progress)~ for Node.js.
+- There are many good libraries for generating progress bars. For example, ~~[tqdm](github.com/tqdm/tqdm)~~ for Python, ~~[schollz/progressbar](github.com/schollz/progressbar)~~ for Go, and ~~[node-progress](github.com/visionmedia/node-progress)~~ for Node.js.
 
 ### 5. ANSI Escape Basics
 
