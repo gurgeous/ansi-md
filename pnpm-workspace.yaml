@@ -1,2 +1,4 @@
-ignoreScripts: true
-minimumReleaseAge: 30240
+allowBuilds:
+  esbuild: true
+  sharp: true
+minimumReleaseAge: 10080 # one week

@@ -3,13 +3,9 @@ _.path = ["{{config_root}}/node_modules/.bin", "{{config_root}}/bin"]
 _.file = { path = ".env.local", redact = true }
 
 [hooks]
-postinstall = ["npx corepack enable", "pnpm install"]
+postinstall = ["pnpm install"]
 
 [tools]
-go = "latest"
 just = "latest"
 node = "lts"
-python = "latest"
-ruby = "latest"
-rust = "latest"
-zig = "latest"
+pnpm = "latest"
