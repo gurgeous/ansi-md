@@ -1,0 +1,74 @@
+---
+title: Advanced ANSI Stuff
+---
+
+If you flipped through this site you probably learned something about ANSI. At the very least you've plumbed the depths of my modest brain, the limits of my personal knowledge. This chapter is for diehards needing a bit more. Also, in all honesty a dumping ground for topics that I would like to understand better. Pardon my ignorance.
+
+### terminfo
+
+[terminfo](https://invisible-island.net/ncurses/terminfo.src.html) is a giant database file that describes the specific capabilities of all the terminals that ever lived. How many colors? Which escape codes are supported? This is like cracking open a tomb, it's astonishing the sheer number of terminals that have come and gone. [termcap](https://github.com/sctg-development/termcap/blob/main/termcap.src)+curses did the same thing and were part of the original BSD release, way back in 1980. Eventually termcap was superseded by terminfo+ncurses.
+
+For fun, look in the terminfo file and search for something modern like `ghostty` or `warp`. "Its readme and man page begin with a lot of hype...". Good stuff. That file is so salty, I love it. "disregarding the reuse of colors 1-7 which is of interest only to the numerically illiterate..."
+
+Most modern libs DO NOT use terminfo. We have fewer terminals, and most terminals support a common subset of ANSI escapes. The stuff that most of us care about, the stuff on my [ANSI Escape Codes](/ansi) page. There's an [epic anti-terminfo rant](https://twoot.site/@bean/113056942625234032) which you may enjoy. The gist is that terminfo is out of date, overly fussy, and not really needed anymore.
+
+BTW Ghostty has a neat feature that quietly injects a new "ghostty" terminfo entry when you ssh to a machine. This sneaky feature is gradually becoming obsolete since newer versions of terminfo include an entry for ghostty.
+
+### Env
+
+Terminals set a few key environment variables to help advertise their capabilities:
+
+```sh
+$ env | grep TERM
+COLORTERM=truecolor    # does this terminal support 16M colors?
+TERM=xterm-256color    # the key used for terminfo db
+TERM_PROGRAM=iTerm.app # the real name of the terminal
+...
+```
+
+If you poke around the ansi libs we all know and love, you will find different levels of support for these variables.Everyone looks at $COLORTERM as a quick check for 24M. Some fallback to checking `TERM` or `TERM_PROGRAM` directly if COLORTERM is not set. A few try to use terminfo, though it's more common to just hardcode specific terminal strings. Also note that tools like `ssh` or `tmux` need to make careful decisions about how to pass these along to other processes, or insert their own hints.
+
+It's a total mess unfortunately.
+
+### Obscure Tools
+
+- **clear, reset** - These are ansi escape codes, and all cli utils! "Clear" wipes the current screen and "reset" resets the terminal entirely, including scrollback. Remember that these are just magic strings sent to your terminal, which must react accordingly. The escape codes are mostly standardized these dats, but if you run the `clear` or `reset` utils they will lookup the escape code from terminfo and echo it to your terminal. You can also try `stty sane`, which attempts to restore some defaults to your terminal using escape codes. `reset` mostly does the same thing, but also sends the reset escape code. Typing `ctrl+l` into bash/zsh/etc usually ends up sending the `clear` ansi escape code as well.
+
+  Sometimes my terminal is too borked to accept commands. This happens surprisingly often when working on cli apps. In that case I use the ghostty command palette to **Reset Terminal**, which is just like running `reset`.
+
+- **multiplexers/detachers** - These are apps like `tmux`, `screen`, [zellij](https://zellij.dev), https://github.com/crigler/dtach, neurosnap/zmx and many others. tmux uses a master server process to manage a bunch of TTYs. You can switch between TTYs and they stay alive even if your session dies. dtach/zmx are simpler apps that sorta do the same thing, but for a single shell process. Instead of tmux managing lots of shells, you open lots of tabs in your terminal and run dtach or zmx in each one.
+
+  There is a rich history here, but IMO these tools are going to be subsumed by next-gen terminals that have dtach-like behavior builtin. LLM usage is acting as a catalyst.
+
+- **readline** - a gnu lib for reading a line of text from the user. Yes, there's an entire library for that and it supports things like customized keybindings (emacs/vim), copy and paste. For a long time this task (reading a line) was complicated enough that we needed dedicated, supported libraries to get it done. Still needed by many apps, and readline itself has been ported to many other languages at this point.
+
+- **tput** - A cli wrapper for terminfo. It can look things up, and print them too. For example, `tput reset` prints the reset string from terminfo.
+
+### Video Playback
+
+These days terminals are fast enough to play videos as streams of bg colors. I personally have a half-baked cli app that shows a looping video as an intro screen. The app itself is a crappy subset of [gogcli](https://github.com/openclaw/gogcli), but I wanted it to be more exciting:
+
+![](../assets/gshoot.png)
+
+I started with a 5s video file, converted each frame to png, downsampled to something reasonable for terminals, shrank the pngs with pngquant, and then embedded the frames into my go app. If you want to attempt this, here are a few random ideas to consider:
+
+- Alpha blending is possible in a crude way, so you can (for example) draw a lipgloss card on top of the video as seen above.
+- Technically you can double the resolution by using the unicode "half block" char in the fg, but terminals are mostly too slow to make it worthwhile.
+- It can be more efficient to render diffs (using ansi cursor movement) instead of full frames. Depends on the video.
+- Even simple videos look bad in ansi 256. Use truecolor.
+- Adjust fps if your terminal can't handle the speed. You may even want to hack in some `$TERM_PROGRAM` logic to guess throughput.
+- Embedding a video will inevitably bloat the binary. I used a 5s loop and it came out nice.
+
+### Further Reading
+
+- https://dev.to/djmitche/clipboards-terminals-and-linux-3pk5
+- https://en.wikipedia.org/wiki/ANSI_escape_code
+- https://ghostty.org/docs/vt/concepts/sequences
+- https://github.com/mintty/mintty/issues/1205
+- https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+- https://iterm2.com/documentation-escape-codes.html
+- https://www.cl.cam.ac.uk/~mgk25/unicode.html
+
+
+----
+- REMIND link to ansi movie stuff

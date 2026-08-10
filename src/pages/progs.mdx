@@ -1,0 +1,46 @@
+---
+title: Progress Bars & Spinners
+---
+
+You've arrived at one of my favorite pages, the magical world of progress bars and spinners. I love the little details, the flourish that makes cli fun. Aren't these things supposed to be fun?
+
+It is pretty easy to add a progress bar or spinner to virtually any cli app these days. Libraries abound, often with easy-to-use APIs and color support. Even if your favorite library is a bit dated, you can probably find a way to make it pretty.
+
+My rule of thumb is that any operation that takes more than a second deserves a progress bar. Why make the user wait? Modern progress will often display a nice ETA before finally morphing to "elapsed time" when the operation completes. Free logging! Seriously, apply liberally.
+
+I look to https://github.com/Textualize/rich as a baseline of sorts for Progress Bar Technology:
+
+![](../assets/progress.gif)
+
+Here are the features that I like to consider when selecting a library:
+
+| what                               | why                                           |
+| ---------------------------------- | --------------------------------------------- |
+| 1. pretty colors                   | I refuse to use libs without color            |
+| 2. ETA                             | helpful for long-running tasks                |
+| 3. shows time elapsed when done    | free logging                                  |
+| 4. numeric indicator like `17/33`  | free logging                                  |
+| 5. custom title like "Downloading" | nice, not essential                           |
+| 6. percent                         | actually not that important, but people enjoy |
+| 7. "indeterminate progress"        | I prefer spinners, usually                    |
+
+### Under The Hood
+
+Creating progress bars and spinners from scratch is pretty easy. These libraries write a line of text (no newline), then emit a `\r` to move back to the first column and do it again. Simple, which probably explains why there are 10,000 different libraries out there.
+
+A key detail that some libraries overlook is to use the ANSI show/hide cursor escape codes to make the terminal cursor disappear for a bit. See [ANSI Escape Codes](/ansi) for hints on that one.
+
+### Libraries
+
+Typically in ansi.md I try to only recommend libraries that I personally have tried. This is a tough table for me because I haven't used progress bars across that many languages yet. Chicken emoji below means I've used and enjoyed. 🐔
+
+If you have opinionated recs please send 'em.
+
+| lang       | lib                                                                                                                                          |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| go         | 🐔 [progressbar](https://github.com/schollz/progressbar) [go-pretty](https://github.com/jedib0t/go-pretty)                                    |
+| javascript | [node-progress](https://github.com/visionmedia/node-progress)                                                                                |
+| python     | 🐔 [tqdm](https://github.com/tqdm/tqdm) https://github.com/Textualize/rich [halo](https://github.com/manrajgrover/halo)                       |
+| ruby       | 🐔 [ruby-progressbar](https://github.com/jfelchner/ruby-progressbar) but see [#204](https://github.com/jfelchner/ruby-progressbar/issues/204) |
+| rust       | 🐔 [indicatif](https://github.com/console-rs/indicatif) [spinners](https://github.com/fgribreau/spinners)                                     |
+| zig        | 😢                                                                                                                                           |

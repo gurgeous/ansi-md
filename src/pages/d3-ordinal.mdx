@@ -1,0 +1,14 @@
+---
+title: D3 Ordinal Scales
+---
+
+import { d3Ordinal } from "@/lib/palettes";
+import Scales from "@/components/Scales.astro";
+
+The amazing D3 project has [nicely curated "ordinal color
+scales"](https://d3js.org/d3-scale/ordinal) for presenting data. I use these
+to draw attention to unrelated bits of data, like columns in a spreadsheet,
+counts in charts, things like that. Here are the D3 ordinal scale color sets
+for popular languages:
+
+<Scales name="d3Ordinal" scales={d3Ordinal} />

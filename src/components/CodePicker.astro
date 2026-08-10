@@ -1,0 +1,152 @@
+---
+import { Code } from "astro:components";
+import { Icon } from "astro-icon/components";
+import type { Language, LangKey } from "@/lib/code/code";
+import type { CodeLanguage } from "astro";
+import { hexChips } from "@/lib/plugins/shikiHexChips";
+
+type Props = {
+  languages: Language[];
+  snippets: Record<LangKey, string>;
+};
+
+const { languages, snippets } = Astro.props;
+const codeTransformers = [hexChips()];
+const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
+---
+
+<section class="code-picker" data-code-picker>
+  <script is:inline type="application/json" data-code-snippets set:html={serializedSnippets} />
+  <div class="code-picker-bar" aria-label="Language">
+    {
+      languages.map((language, index) => (
+        <button
+          class={index === 0 ? "is-active" : ""}
+          type="button"
+          data-language={language.name}
+          aria-pressed={index === 0 ? "true" : "false"}>
+          {language.name}
+        </button>
+      ))
+    }
+    <button type="button" data-copy aria-label="Copy code" title="Copy code">
+      <Icon name="lucide:clipboard" data-copy-icon />
+      <Icon name="lucide:clipboard-check" class="is-hidden" data-check-icon />
+      <span data-copy-label>copy</span>
+    </button>
+  </div>
+
+  {
+    languages.map((language, index) => (
+      <Code
+        code={snippets[language.name]}
+        class={index === 0 ? "" : "is-hidden"}
+        data-sample={language.name}
+        lang={language.name as CodeLanguage}
+        theme="github-dark"
+        transformers={codeTransformers}
+      />
+    ))
+  }
+</section>
+
+<style>
+  .code-picker {
+    @apply mt-8;
+    pre {
+      @apply mt-0;
+    }
+  }
+
+  .code-picker-bar {
+    @apply bg-brand border-brand-dark flex flex-wrap items-stretch gap-1 border border-b-0 p-1;
+
+    button {
+      @apply inline-flex cursor-pointer items-center gap-1 border border-transparent bg-transparent px-2 py-1 text-sm text-white transition;
+
+      &:hover,
+      &.is-active {
+        @apply text-brand-dark border-white bg-white;
+      }
+
+      svg {
+        @apply size-4;
+      }
+
+      &[data-copy] {
+        @apply ml-auto;
+
+        &.is-copied {
+          @apply border-green-300 bg-green-600 text-white;
+
+          [data-copy-icon] {
+            @apply hidden;
+          }
+
+          [data-check-icon] {
+            @apply inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  :global(.hex-chip) {
+    @apply mr-1 inline-block h-3 w-3 border border-neutral-500 align-middle;
+  }
+
+  :global(.is-hidden) {
+    @apply hidden;
+  }
+
+  :global(.clipboard-fallback) {
+    @apply fixed top-0 left-0 h-px w-px opacity-0;
+  }
+</style>
+
+<script>
+  import { copyToClipboard } from "@/browser/copyToClipboard";
+
+  for (const $picker of document.querySelectorAll("[data-code-picker]")) {
+    if (!($picker instanceof HTMLElement)) continue;
+    if ($picker.dataset.ready === "true") continue;
+    $picker.dataset.ready = "true";
+
+    const $buttons = [...$picker.querySelectorAll("[data-language]")];
+    const $samples = [...$picker.querySelectorAll("[data-sample]")];
+    const $data = $picker.querySelector("[data-code-snippets]");
+
+    for (const $button of $buttons) {
+      $button.addEventListener("click", () => {
+        const language = $button.getAttribute("data-language");
+        for (const $nextButton of $buttons) {
+          const active = $nextButton === $button;
+          $nextButton.classList.toggle("is-active", active);
+          $nextButton.setAttribute("aria-pressed", String(active));
+        }
+        for (const $sample of $samples) {
+          const active = $sample.getAttribute("data-sample") === language;
+          $sample.classList.toggle("is-hidden", !active);
+        }
+      });
+    }
+
+    const $copy = $picker.querySelector("[data-copy]");
+    const snippets = JSON.parse($data?.textContent ?? "{}");
+    $copy?.addEventListener("click", async () => {
+      const $sample = $samples.find((nextSample) => !nextSample.classList.contains("is-hidden"));
+      const language = $sample?.getAttribute("data-sample") ?? "";
+      const text = snippets[language] ?? "";
+      await copyToClipboard(text.trimEnd());
+      $copy.classList.add("is-copied");
+      $copy.setAttribute("aria-label", "Copied");
+      const $label = $copy.querySelector("[data-copy-label]");
+      if ($label) $label.textContent = "copied!";
+      setTimeout(() => {
+        $copy.classList.remove("is-copied");
+        $copy.setAttribute("aria-label", "Copy code");
+        if ($label) $label.textContent = "copy";
+      }, 1200);
+    });
+  }
+</script>
