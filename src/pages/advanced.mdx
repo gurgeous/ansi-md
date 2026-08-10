@@ -36,9 +36,9 @@ It's a total mess unfortunately.
 
   Sometimes my terminal is too borked to accept commands. This happens surprisingly often when working on cli apps. In that case I use the ghostty command palette to **Reset Terminal**, which is just like running `reset`.
 
-- **multiplexers/detachers** - These are apps like `tmux`, `screen`, [zellij](https://zellij.dev), https://github.com/crigler/dtach, neurosnap/zmx and many others. tmux uses a master server process to manage a bunch of TTYs. You can switch between TTYs and they stay alive even if your session dies. dtach/zmx are simpler apps that sorta do the same thing, but for a single shell process. Instead of tmux managing lots of shells, you open lots of tabs in your terminal and run dtach or zmx in each one.
+- **multiplexers/detachers** - These are apps like `tmux`, `screen`, [zellij](https://zellij.dev), https://github.com/crigler/dtach, https://github.com/neurosnap/zmx and many others. tmux uses a master server process to manage a bunch of TTYs. You can switch between TTYs and they stay alive even if your session dies. dtach/zmx are simpler apps that sorta do the same thing, but for a single shell process. Instead of tmux managing lots of shells, you open lots of tabs in your terminal and run dtach or zmx in each one.
 
-  There is a rich history here, but IMO these tools are going to be subsumed by next-gen terminals that have dtach-like behavior builtin. LLM usage is acting as a catalyst.
+  There is a rich history here, but IMO these tools are going to be subsumed by next-gen terminals that have dtach-like behavior builtin. LLM usage is acting as a catalyst. At the moment I use ghostty+zmx.
 
 - **readline** - a gnu lib for reading a line of text from the user. Yes, there's an entire library for that and it supports things like customized keybindings (emacs/vim), copy and paste. For a long time this task (reading a line) was complicated enough that we needed dedicated, supported libraries to get it done. Still needed by many apps, and readline itself has been ported to many other languages at this point.
 
