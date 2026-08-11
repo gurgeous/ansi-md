@@ -94,14 +94,19 @@ end
 
 ```sh
 # sh
+GREEN="\e[1;38;5;231;48;2;64;160;43m"
+YELLOW="\e[1;38;5;231;48;2;251;100;11m"
+RED="\e[1;38;5;231;48;2;210;15;57m"
+
 banner() {
-  printf "\e[1;38;5;231;48;2;64;160;43m[%s] %-72s\e[0m\n" "$(date '+%H:%M:%S')" "$1"
+  color="${2:-$GREEN}"
+  printf "%b[%s] %-72s \e[0m\n" "$color" "$(date '+%H:%M:%S')" "$1"
 }
 warning() {
-  printf "\e[1;38;5;231;48;2;251;100;11m[%s] %-72s\e[0m\n" "$(date '+%H:%M:%S')" "$1"
+  banner "$1" "$YELLOW"
 }
 fatal() {
-  printf "\e[1;38;5;231;48;2;210;15;57m[%s] %-72s\e[0m\n" "$(date '+%H:%M:%S')" "$1"
+  banner "$1" "$RED"
   exit 1
 }
 ```
@@ -116,6 +121,6 @@ fatal() {
 - https://iterm2.com/documentation-escape-codes.html
 - https://www.cl.cam.ac.uk/~mgk25/unicode.html
 
+---
 
-----
 - REMIND link to ansi movie stuff
