@@ -59,6 +59,53 @@ I started with a 5s video file, converted each frame to png, downsampled to some
 - Adjust fps if your terminal can't handle the speed. You may even want to hack in some `$TERM_PROGRAM` logic to guess throughput.
 - Embedding a video will inevitably bloat the binary. I used a 5s loop and it came out nice.
 
+### Banner/Warning/Fatal
+
+Here are three nice color helpers I use religiously. Once you get used to these it's hard to go back.
+
+```just
+# just
+banner +ARGS:  (_banner '\e[48;2;064;160;043m' ARGS)
+warning +ARGS: (_banner '\e[48;2;251;100;011m' ARGS)
+fatal +ARGS:   (_banner '\e[48;2;210;015;057m' ARGS)
+  exit 1
+_banner BG +ARGS:
+  printf '\e[38;5;231m{{BOLD+BG}}[%s] %-72s {{NORMAL}}\n' "$(date +%H:%M:%S)" "{{ARGS}}"
+```
+
+```rb
+# ruby
+GREEN = "\e[1;38;5;231;48;2;64;160;43m"
+YELLOW = "\e[1;38;5;231;48;2;251;100;11m"
+RED = "\e[1;38;5;231;48;2;210;15;57m"
+RESET = "\e[0m"
+
+def banner(str, color: GREEN)
+  puts "#{color}[#{Time.now.strftime("%H:%M:%S")}] #{str.ljust(72)} #{RESET}"
+end
+def warning(str)
+  banner(str, color: YELLOW)
+end
+def fatal(str)
+  banner(str, color: RED)
+  exit 1
+end
+```
+
+```sh
+# sh
+banner() {
+  printf "\e[1;38;5;231;48;2;64;160;43m[%s] %-72s\e[0m\n" "$(date '+%H:%M:%S')" "$1"
+}
+warning() {
+  printf "\e[1;38;5;231;48;2;251;100;11m[%s] %-72s\e[0m\n" "$(date '+%H:%M:%S')" "$1"
+}
+fatal() {
+  printf "\e[1;38;5;231;48;2;210;15;57m[%s] %-72s\e[0m\n" "$(date '+%H:%M:%S')" "$1"
+  exit 1
+}
+```
+
 ### Further Reading
 
 - https://dev.to/djmitche/clipboards-terminals-and-linux-3pk5
