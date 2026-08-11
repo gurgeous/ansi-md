@@ -65,9 +65,9 @@ Here are three nice color helpers I use religiously. Once you get used to these 
 
 ```just
 # just
-banner +ARGS:  (_banner '\e[48;2;064;160;043m' ARGS)
-warning +ARGS: (_banner '\e[48;2;251;100;011m' ARGS)
-fatal +ARGS:   (_banner '\e[48;2;210;015;057m' ARGS)
+banner +ARGS:  (_banner '\e[48;2;64;160;43m' ARGS)
+warning +ARGS: (_banner '\e[48;2;251;100;11m' ARGS)
+fatal +ARGS:   (_banner '\e[48;2;210;15;57m' ARGS)
   exit 1
 _banner BG +ARGS:
   printf '\e[38;5;231m{{BOLD+BG}}[%s] %-72s {{NORMAL}}\n' "$(date +%H:%M:%S)" "{{ARGS}}"
@@ -75,32 +75,31 @@ _banner BG +ARGS:
 
 ```rb
 # ruby
-GREEN = "\e[1;38;5;231;48;2;64;160;43m"
-YELLOW = "\e[1;38;5;231;48;2;251;100;11m"
-RED = "\e[1;38;5;231;48;2;210;15;57m"
-RESET = "\e[0m"
+GREEN = "64;160;43"
+YELLOW = "251;100;11"
+RED = "210;15;57"
 
-def banner(str, color: GREEN)
-  puts "#{color}[#{Time.now.strftime("%H:%M:%S")}] #{str.ljust(72)} #{RESET}"
+def banner(str, color = GREEN)
+  puts "\e[1;38;5;231;48;2;#{color}m[#{Time.now.strftime("%H:%M:%S")}] #{str.ljust(72)} \e[0m"
 end
 def warning(str)
-  banner(str, color: YELLOW)
+  banner(str, YELLOW)
 end
 def fatal(str)
-  banner(str, color: RED)
+  banner(str, RED)
   exit 1
 end
 ```
 
 ```sh
 # sh
-GREEN="\e[1;38;5;231;48;2;64;160;43m"
-YELLOW="\e[1;38;5;231;48;2;251;100;11m"
-RED="\e[1;38;5;231;48;2;210;15;57m"
+GREEN="64;160;43"
+YELLOW="251;100;11"
+RED="210;15;57"
 
 banner() {
   color="${2:-$GREEN}"
-  printf "%b[%s] %-72s \e[0m\n" "$color" "$(date '+%H:%M:%S')" "$1"
+  printf "\e[1;38;5;231;48;2;%sm[%s] %-72s \e[0m\n" "$color" "$(date '+%H:%M:%S')" "$1"
 }
 warning() {
   banner "$1" "$YELLOW"
