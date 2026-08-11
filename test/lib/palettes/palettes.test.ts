@@ -1,11 +1,14 @@
 import { languages, type Language } from "@/lib/code/code.ts";
-import { catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
+import { ansi256Table, catppuccin, d3Ordinal, hex256, tailwind } from "@/lib/palettes";
 import { describe, expect, it } from "vitest";
 
 // Palette renderer function under test.
 type RendererFn = (language: Language) => string;
 
 const renderers: Record<string, RendererFn> = {
+  ansi256(language) {
+    return language.renderTable("ansi256", ansi256Table, hex256);
+  },
   catppuccin(language) {
     return language.render("catppuccin", catppuccin);
   },
@@ -40,5 +43,13 @@ describe("palette renderers", () => {
     expect(languageByName.typescript.render("catppuccin", catppuccin)).toContain("export const catppuccin");
     expect(languageByName.typescript.renderScales("d3Ordinal", d3Ordinal)).toContain("export const d3Ordinal");
     expect(languageByName.go.render("catppuccin", catppuccin)).toContain("var Catppuccin");
+    expect(languageByName.rust.renderTable("ansi256", ansi256Table, hex256)).toContain(
+      "pub enum Ansi256",
+    );
+  });
+
+  it("covers every fixed ANSI 256 color", () => {
+    expect(new Set(values(ansi256Table))).toEqual(new Set(range(16, 256)));
+    expect(ansi256Table.gray11).toBe(ansi256Table.dimgray);
   });
 });

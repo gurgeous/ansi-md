@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 import { extByName, languages, type LangKey, type Language } from "@/lib/code/code.ts";
-import { catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
+import { ansi256Table, catppuccin, d3Ordinal, tailwind } from "@/lib/palettes";
 import Util from "@/lib/util.ts";
 
 //
@@ -25,6 +25,10 @@ const palettes = {
 
 const scales = {
   d3Ordinal,
+} as const;
+
+const tables = {
+  ansi256: ansi256Table,
 } as const;
 
 type CompileFn = (file: string, artifact: string) => Promise<void>;
@@ -148,6 +152,26 @@ describe("generated code", () => {
       assertIncludes("d3Ordinal rust slice", source.rust, "paired: &[");
       assertIncludes("d3Ordinal zig slice", source.zig, ".paired = &.{");
     }
+
+    for (const [name] of Object.entries(tables)) {
+      const source = await renderedSource(name);
+      assertLanguageIncludes("ansi256", source, [
+        { language: "go", value: "var Ansi256 = map[string]uint8{" },
+        { language: "json", value: '"black": 16' },
+        { language: "python", value: "ANSI256: dict[str, int]" },
+        { language: "ruby", value: "ANSI256 = {" },
+        { language: "rust", value: "pub enum Ansi256" },
+        { language: "typescript", value: "export const ansi256 = {" },
+        { language: "zig", value: "pub const ansi256 = Ansi256Table{" },
+      ]);
+      assertIncludes("ansi256 numeric value", source.typescript, "black: 16,");
+      expect(source.go).toMatch(/"darkblue":\s+18,/);
+      assertIncludes("ansi256 gray alias", source.rust, "Self::Dimgray => 242,");
+      for (const language of languages.filter((language) => language.name !== "json")) {
+        assertIncludes(`ansi256 ${language.name} rgb`, source[language.name], "#000000");
+      }
+      expect(source.json).not.toContain("#000000");
+    }
   });
 
   it("compiles every generated file", async () => {
@@ -165,6 +189,12 @@ describe("generated code", () => {
     }
 
     for (const [name] of Object.entries(scales)) {
+      for (const language of languages) {
+        await compile[language.name](fileFor(name, language), name);
+      }
+    }
+
+    for (const [name] of Object.entries(tables)) {
       for (const language of languages) {
         await compile[language.name](fileFor(name, language), name);
       }

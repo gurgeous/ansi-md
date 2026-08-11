@@ -1,6 +1,6 @@
 // Rust palette renderer for generated code snippets.
 // It emits const structs with borrowed string fields and no runtime setup.
-import type { Palette, Scales } from "@/lib/palettes";
+import type { Palette, Scales, Table, TableCommentFn } from "@/lib/palettes";
 import {
   align,
   colorNames,
@@ -11,6 +11,7 @@ import {
   mustache,
   renderFields,
   renderScale,
+  renderTableFields,
   tagline,
 } from "./base.ts";
 
@@ -37,6 +38,22 @@ pub const {{ value }}: {{ scaleType }} = {{ scaleType }} {
 
 pub struct {{ scaleType }} {
 {{ scaleFields }}
+}
+`;
+
+const TABLE_TEMPLATE = `
+// {{ tagline }}
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum {{ tableType }} {
+{{ variants }}
+}
+
+impl {{ tableType }} {
+    pub const fn index(self) -> u8 {
+        match self {
+{{ main }}
+        }
+    }
 }
 `;
 
@@ -86,6 +103,19 @@ class RustLanguage extends Language {
       scaleType: `${pascalCase(name)}Scales`,
       tagline: tagline(name),
       value: constantName(name),
+    });
+  }
+
+  renderTable0(name: string, table: Table, comment?: TableCommentFn) {
+    const tab = "    ";
+    return mustache(TABLE_TEMPLATE, {
+      main: indent(
+        renderTableFields("Self::{{id}} => {{v}},", { table, comment, id: pascalCase, marker: "//", tab }),
+        tab,
+      ),
+      tableType: pascalCase(name),
+      tagline: tagline(name),
+      variants: indent(keys(table).map((name) => `${pascalCase(name)},`), tab),
     });
   }
 }

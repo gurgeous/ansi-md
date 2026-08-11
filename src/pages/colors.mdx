@@ -70,11 +70,11 @@ There are many, many apps that suffer from this problem because they try to use 
 
 Feel free to go all the way to ANSI 16M, of course. As your app grows in popularity you will encounter oddball terminals that don't support it, so use a library that downsamples on your behalf.
 
-BTW, the [ANSI 256 Color Cube](https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/extended-256-colors/) is pretty neat. It's algorithmic, though there have been attempts to name the colors since this was added in [1999](https://invisible-island.net/xterm/xterm.log.html#xterm_111). Thanks Todd!
+The [ANSI 256 Color Cube](https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/extended-256-colors/) is pretty neat. xterm added support way back in [1999](https://invisible-island.net/xterm/xterm.log.html#xterm_111). Thanks Todd!
 
 <div class="mt-1 w-16">![](../assets/cube.svg)</div>
 
-The ansi 256 colors don't technically have color names, though you will find many contradictory attempts to name them. Here is rb code to generate the cube:
+There have been several attempts to name the colors, including my own [modest proposal](/ansi256) right here on this site. BTW here is rb code to generate the cube:
 
 ```rb
 # Calculate ANSI 256 color cube

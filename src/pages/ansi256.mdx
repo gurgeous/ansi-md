@@ -1,0 +1,21 @@
+---
+title: ANSI 256 Colors
+---
+
+import Table from "@/components/Table.astro";
+import { ansi256Table, hex256 } from "@/lib/palettes";
+
+The ANSI 256 color cube is generated algorithmically (see the [Color Design](/colors) page) and there have been various efforts to come up with nice names for the colors. This is handy, because I hate embedding random ints into my code. Give me names pls.
+
+Without further ado here is my own attempt at naming the ANSI 256 color palette. I spent quite a bit of time coming up with the best name for each color:
+
+1. Using perceptual distance, is there a close [css named color](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/named-color)? (91 names)
+1. Is there a close [X11 color](https://en.wikipedia.org/wiki/X11_color_names)? Ignore names with digits. (3 names)
+1. Use `gray1-24` for the 24 gray colors in addition to any close css matches.
+1. If all else fails, pick something evocative from the proposals at [hexdocs](https://color-palette.hexdocs.pm/ansi_color_codes.html) or [wowsignal](https://www.wowsignal.io/articles/xterm256). Thanks guys! (128 names)
+
+Now I can change tennis colors to `skyblue`, `melrose`, `wasabi`, `strawberry`, `coral`, and `lightgoldenrod` instead of `116, 147, 150, 204, 209, 221`. Screenshot from my spreadsheet:
+
+<div class="mt-6 max-w-96">![](../assets/256_sheet.png)</div>
+
+<Table name="ansi256" table={ansi256Table} comment={hex256} />
