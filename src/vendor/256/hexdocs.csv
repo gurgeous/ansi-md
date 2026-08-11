@@ -1,0 +1,241 @@
+idx,names
+16,:black; :black_000
+17,:fuzzy_wuzzy; :stratos; :very_dark_blue
+18,:dark_blue; :navy_blue
+19,:carnation_pink; :duke_blue
+20,:medium_blue
+21,:blue; :light_blue_012
+22,:camarone; :very_dark_lime_green
+23,:bangladesh_green; :blue_stone; :dark_slate_gray; :very_dark_cyan
+24,:orient; :sea_blue
+25,:endeavour; :medium_persian_blue
+26,:science_blue; :true_blue
+27,:blue_ribbon; :brandeis_blue
+28,:ao
+29,:deep_sea; :spanish_viridian
+30,:teal
+31,:deep_cerulean
+32,:blue_cola; :lochmara; :strong_blue
+33,:azure; :azure_radiance; :pure_blue
+34,:dark_lime_green; :islamic_green; :japanese_laurel
+35,:go_green; :jade
+36,:dark_cyan; :persian_green
+37,:bondi_blue; :tiffany_blue
+38,:cerulean
+39,:blue_bolt; :deep_sky_blue
+40,:strong_lime_green
+41,:malachite
+42,:caribbean_green_042
+43,:caribbean_green; :strong_cyan
+44,:dark_turquoise; :robins_egg_blue
+45,:vivid_sky_blue
+46,:electric_green; :green; :light_green_010
+47,:spring_green_047
+48,:guppie_green
+49,:medium_spring_green; :spring_green
+50,:bright_turquoise; :pure_cyan; :sea_green
+51,:aqua; :cyan; :light_cyan_014
+52,:blood_red; :rosewood; :very_dark_red
+53,:imperial_purple; :pompadour; :very_dark_magenta
+54,:metallic_violet; :pigment_indigo
+55,:chinese_purple; :dark_violet
+56,:electric_violet_056
+57,:electric_indigo
+58,:bronze_yellow; :verdun_green; :very_dark_yellow_olive_tone
+59,:scorpion
+60,:comet; :mostly_desaturated_dark_blue; :ucla_blue
+61,:dark_moderate_blue; :liberty; :scampi
+62,:indigo; :slate_blue
+63,:cornflower_blue
+64,:avocado
+65,:glade_green; :mostly_desaturated_dark_lime_green; :russian_green
+66,:juniper; :mostly_desaturated_dark_cyan; :steel_teal
+67,:hippie_blue; :rackley; :steel_blue
+68,:havelock_blue; :moderate_blue; :united_nations_blue
+69,:blueberry; :light_blue
+70,:dark_green; :kelly_green
+71,:dark_moderate_lime_green; :fern; :forest_green
+72,:polished_pine; :silver_tree
+73,:crystal_blue; :dark_moderate_cyan; :tradewind
+74,:aqua_pearl; :carolina_blue; :shakespeare
+75,:blue_jeans
+76,:alien_armpit; :harlequin_green; :strong_green
+77,:moderate_lime_green
+78,:caribbean_green_pearl
+79,:downy; :eucalyptus
+80,:medium_turquoise; :moderate_cyan; :viking
+81,:maya_blue
+82,:bright_green
+83,:light_lime_green
+84,:very_light_malachite_green
+85,:medium_aquamarine
+86,:aquamarine_086
+87,:aquamarine_087
+88,:deep_red
+89,:french_plum
+90,:fresh_eggplant; :mardi_gras
+91,:purple; :violet
+92,:french_violet; :strong_violet
+93,:electric_violet; :pure_violet
+94,:brown; :gamboge_orange
+95,:copper_rose; :deep_taupe; :mostly_desaturated_dark_red
+96,:chinese_violet; :mostly_desaturated_dark_magenta; :strikemaster
+97,:dark_moderate_violet; :deluge; :royal_purple
+98,:medium_purple; :moderate_violet
+99,:blueberry_099
+100,:dark_yellow_olive_tone; :olive
+101,:clay_creek; :mostly_desaturated_dark_yellow; :shadow
+102,:taupe_gray
+103,:cool_grey; :dark_grayish_blue; :shadow_blue
+104,:chetwode_blue; :ube
+105,:violets_are_blue
+106,:apple_green; :limeade
+107,:asparagus; :chelsea_cucumber; :dark_moderate_green
+108,:bay_leaf; :dark_grayish_lime_green; :dark_sea_green
+109,:dark_grayish_cyan; :gulf_stream; :pewter_blue
+110,:light_cobalt_blue; :polo_blue; :slightly_desaturated_blue
+111,:french_sky_blue; :malibu
+112,:pistachio
+113,:mantis
+114,:pastel_green; :slightly_desaturated_lime_green
+115,:pearl_aqua; :vista_blue
+116,:bermuda; :middle_blue_green; :slightly_desaturated_cyan
+117,:pale_cyan; :very_light_blue
+118,:chartreuse; :pure_green
+119,:light_green; :screamin_green
+120,:very_light_lime_green
+121,:mint_green_121
+122,:aquamarine; :lime_green
+123,:anakiwa; :electric_blue; :very_light_cyan
+124,:bright_red; :dark_candy_apple_red; :dark_red
+125,:dark_pink; :jazzberry_jam
+126,:dark_magenta; :flirt
+127,:heliotrope_magenta
+128,:vivid_mulberry
+129,:electric_purple
+130,:dark_orange_brown_tone; :rose_of_sharon; :windsor_tan
+131,:dark_moderate_red; :electric_brown; :matrix
+132,:dark_moderate_pink; :tapestry; :turkish_rose
+133,:dark_moderate_magenta; :pearly_purple
+134,:rich_lilac
+135,:lavender_indigo; :light_violet
+136,:dark_goldenrod; :pirate_gold
+137,:bronze; :dark_moderate_orange; :muesli
+138,:dark_grayish_red; :english_lavender; :pharlap
+139,:bouquet; :dark_grayish_magenta; :opera_mauve
+140,:lavender; :slightly_desaturated_violet
+141,:bright_lavender
+142,:buddha_gold; :light_gold
+143,:dark_moderate_yellow; :olive_green
+144,:dark_grayish_yellow; :hillary; :sage
+145,:silver_foil
+146,:grayish_blue; :wild_blue_yonder; :wistful
+147,:maximum_blue_purple; :melrose
+148,:rio_grande; :sheen_green; :vivid_lime_green
+149,:conifer; :june_bud; :moderate_green
+150,:feijoa; :slightly_desaturated_green; :yellow_green
+151,:grayish_lime_green; :light_moss_green; :pixie_green
+152,:crystal; :grayish_cyan; :jungle_mist
+153,:fresh_air; :pale_blue
+154,:lime; :spring_bud
+155,:green_yellow; :inchworm
+156,:mint_green; :very_light_green
+157,:menthol; :pale_lime_green
+158,:aero_blue; :magic_mint
+159,:celeste; :french_pass
+160,:guardsman_red; :rosso_corsa; :strong_red
+161,:razzmatazz; :royal_red
+162,:mexican_pink; :strong_pink
+163,:hollywood_cerise_163
+164,:deep_magenta; :strong_magenta
+165,:phlox
+166,:strong_orange; :tenn
+167,:indian_red; :moderate_red; :roman
+168,:blush; :cranberry; :mystic_pearl
+169,:hopbush; :moderate_pink; :super_pink
+170,:moderate_magenta; :orchid
+171,:heliotrope; :light_magenta
+172,:chocolate; :harvest_gold; :mango_tango
+173,:copperfield; :raw_sienna
+174,:my_pink; :new_york_pink; :slightly_desaturated_red
+175,:can_can; :middle_purple; :slightly_desaturated_pink
+176,:deep_mauve; :light_orchid; :slightly_desaturated_magenta
+177,:bright_lilac; :very_light_violet
+178,:goldenrod; :mustard_yellow
+179,:earth_yellow; :moderate_orange
+180,:slightly_desaturated_orange; :tan
+181,:clam_shell; :grayish_red; :pale_chestnut
+182,:grayish_magenta; :pink_lavender; :thistle
+183,:mauve; :pale_violet
+184,:citrine; :corn; :strong_yellow
+185,:chinese_green; :moderate_yellow; :tacha
+186,:deco; :medium_spring_bud; :slightly_desaturated_yellow
+187,:grayish_yellow; :green_mist; :pastel_gray
+188,:light_silver
+189,:fog; :pale_lavender; :very_pale_blue
+190,:chartreuse_yellow; :pure_yellow
+191,:canary; :maximum_green_yellow
+192,:honeysuckle; :mindaro
+193,:pale_green; :reef; :tea_green
+194,:beige; :nyanza; :snowy_mint; :very_pale_lime_green
+195,:light_cyan; :oyster_bay; :very_pale_cyan
+196,:light_red; :red
+197,:vivid_raspberry; :winter_sky
+198,:bright_pink; :rose
+199,:fashion_fuchsia; :hollywood_cerise; :pure_pink
+200,:pure_magenta
+201,:fuchsia; :light_magenta_013; :magenta
+202,:blaze_orange; :orange_red; :vivid_orange
+203,:bittersweet; :pastel_red
+204,:strawberry; :wild_watermelon
+205,:hot_pink; :light_pink
+206,:light_deep_pink; :purple_pizzazz
+207,:pink_flamingo; :shocking_pink
+208,:american_orange; :dark_orange; :flush_orange
+209,:coral; :salmon
+210,:tulip; :very_light_red; :vivid_tangerine
+211,:pink_salmon; :tickle_me_pink
+212,:lavender_rose; :princess_perfume; :very_light_pink
+213,:blush_pink; :fuchsia_pink; :very_light_magenta
+214,:chinese_yellow; :orange; :pure_orange; :yellow_sea
+215,:light_orange; :rajah; :texas_rose
+216,:hit_pink; :macaroni_and_cheese; :very_light_orange
+217,:melon; :pale_red_pink_tone; :sundown
+218,:cotton_candy; :lavender_pink; :pale_pink
+219,:pale_magenta; :rich_brilliant_lavender; :shampoo
+220,:gold
+221,:dandelion; :naples_yellow
+222,:grandis; :jasmine; :khaki
+223,:caramel; :moccasin; :pale_orange
+224,:cosmos; :misty_rose; :very_pale_red_pink_tone
+225,:bubble_gum; :pink_lace; :very_pale_magenta
+226,:light_yellow_011; :yellow
+227,:laser_lemon; :light_yellow
+228,:dolly; :pastel_yellow; :very_light_yellow
+229,:calamansi; :pale_yellow; :portafino
+230,:cream; :cumulus; :very_pale_yellow
+231,:light_white; :white
+232,:vampire_black
+233,:chinese_black; :cod_gray
+234,:eerie_black
+235,:raisin_black
+236,:dark_charcoal
+237,:black_olive; :mine_shaft
+238,:outer_space
+239,:dark_liver; :tundora
+240,:davys_grey
+241,:granite_gray; :very_dark_gray
+242,:dim_gray; :dove_gray
+243,:boulder; :sonic_silver
+244,:gray; :light_black
+245,:philippine_gray
+246,:dusty_gray
+247,:spanish_gray
+248,:dark_gray; :quick_silver
+249,:philippine_silver; :silver_chalice
+250,:silver
+251,:silver_sand
+252,:american_silver; :light_gray
+253,:alto; :gainsboro
+254,:mercury; :platinum
+255,:bright_gray; :gallery; :very_light_gray
