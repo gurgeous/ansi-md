@@ -28,6 +28,7 @@ export const chapters: Section[] = [
         url: "/giant",
         phrase: "see lots of colors on light and dark",
       },
+      { name: "ANSI 256 Colors", url: "/ansi256", phrase: "ansi 256 names-as-code" },
       { name: "Catppuccin Colors", url: "/catppuccin", phrase: "Catppuccin-as-code" },
       {
         name: "D3 Ordinal Scales",

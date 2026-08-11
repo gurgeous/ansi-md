@@ -1,7 +1,7 @@
 // Base class for generated-code languages.
 // Each subclass owns one target language's naming and file layout.
 import type { LangKey } from "@/lib/code/code.ts";
-import type { Colors, Palette, Scale, Scales } from "@/lib/palettes";
+import type { Colors, Palette, Scale, Scales, Table, TableCommentFn } from "@/lib/palettes";
 
 export abstract class Language {
   name: LangKey;
@@ -16,10 +16,14 @@ export abstract class Language {
   renderScales(name: string, scales: Scales): string {
     return this.renderScales0(name, scales).trim() + "\n";
   }
+  renderTable(name: string, table: Table, comment?: TableCommentFn): string {
+    return this.renderTable0(name, table, comment).trim() + "\n";
+  }
 
   // for subclasses
   abstract render0(name: string, palette: Palette): string;
   abstract renderScales0(name: string, scales: Scales): string;
+  abstract renderTable0(name: string, table: Table, comment?: TableCommentFn): string;
 }
 
 //
@@ -148,4 +152,29 @@ export function renderScale(line: string, scale: Scale, tab: string): string {
     scale.map((v) => mustache(line, { v })),
     tab,
   );
+}
+
+// Render one numeric table entry per line, optionally with aligned comments.
+export function renderTableFields(
+  line: string,
+  options: {
+    table: Table;
+    tab: string;
+    id?: (name: string) => string;
+    comment?: TableCommentFn;
+    marker?: "#" | "//";
+    align?: RegExp;
+  },
+): string {
+  const id = options.id ?? identity;
+  const entries = Object.entries(options.table);
+  let fields = entries.map(([name, value]) => {
+    return mustache(line, { id: id(name), v: String(value) });
+  });
+  if (options.align) fields = align(fields, options.align).split("\n");
+  fields = fields.map((field, index) => {
+    if (!options.comment || !options.marker) return field;
+    return `${field} ${options.marker} ${options.comment(entries[index][1])}`;
+  });
+  return indent(options.marker ? align(fields, options.marker === "#" ? /# #/ : /\/\//) : fields, options.tab);
 }

@@ -1,0 +1,12 @@
+---
+title: ANSI 256 Colors
+---
+
+import Table from "@/components/Table.astro";
+import { ansi256Table, hex256 } from "@/lib/palettes";
+
+ANSI 256 colors 16-255 have fixed RGB values, but no standard names. After
+looking through the many contradictory attempts to name them, I curated my own.
+Here it is for popular languages:
+
+<Table name="ansi256" table={ansi256Table} comment={hex256} />

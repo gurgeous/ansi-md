@@ -1,6 +1,6 @@
 // Python palette renderer for generated code snippets.
 // It emits a typed dictionary so users can paste it into strict codebases.
-import type { Palette, Scales } from "@/lib/palettes";
+import type { Palette, Scales, Table, TableCommentFn } from "@/lib/palettes";
 import {
   Language,
   colorNames,
@@ -10,6 +10,7 @@ import {
   mustache,
   renderFields,
   renderScale,
+  renderTableFields,
   tagline,
 } from "./base.ts";
 
@@ -47,6 +48,15 @@ class PythonLanguage extends Language {
     return mustache(TEMPLATE, {
       dict: "dict[str, list[str]]",
       main: main.join("\n"),
+      tagline: tagline(name),
+      value: constantName(name),
+    });
+  }
+
+  renderTable0(name: string, table: Table, comment?: TableCommentFn) {
+    return mustache(TEMPLATE, {
+      dict: "dict[str, int]",
+      main: renderTableFields("{{id}}: {{v}},", { table, comment, id, marker: "#", tab: "    " }),
       tagline: tagline(name),
       value: constantName(name),
     });
