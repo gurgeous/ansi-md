@@ -1,6 +1,6 @@
 // Ruby palette renderer for generated code snippets.
 // It uses Data.define for compact immutable-ish palette records.
-import type { Palette, Scales, Table, TableCommentFn } from "@/lib/palettes";
+import type { Palette, Scales, Table, TableCommentFn, TableSections } from "@/lib/palettes";
 import {
   Language,
   colorNames,
@@ -59,9 +59,9 @@ class RubyLanguage extends Language {
     });
   }
 
-  renderTable0(name: string, table: Table, comment?: TableCommentFn) {
+  renderTable0(name: string, table: Table, comment?: TableCommentFn, sections?: TableSections) {
     return mustache(SCALE_TEMPLATE, {
-      main: renderTableFields("{{id}}: {{v}},", { table, comment, id, marker: "#", tab: "  " }),
+      main: renderTableFields("{{id}}: {{v}},", { table, comment, id, marker: "#", sections, tab: "  " }),
       tagline: tagline(name),
       value: constantName(name),
     });

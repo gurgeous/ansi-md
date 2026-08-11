@@ -1,6 +1,6 @@
 // Zig palette renderer for generated code snippets.
 // It emits comptime-friendly structs with string slice fields.
-import type { Palette, Scales, Table, TableCommentFn } from "@/lib/palettes";
+import type { Palette, Scales, Table, TableCommentFn, TableSections } from "@/lib/palettes";
 import {
   align,
   colorNames,
@@ -97,14 +97,14 @@ class ZigLanguage extends Language {
     });
   }
 
-  renderTable0(name: string, table: Table, comment?: TableCommentFn) {
+  renderTable0(name: string, table: Table, comment?: TableCommentFn, sections?: TableSections) {
     const tab = "    ";
     return mustache(TABLE_TEMPLATE, {
       fields: align(
         keys(table).map((name) => `${tab}${id(name)}: u8,`),
         /u8,$/,
       ),
-      main: renderTableFields(".{{id}} = {{v}},", { table, comment, id, marker: "//", tab }),
+      main: renderTableFields(".{{id}} = {{v}},", { table, comment, id, marker: "//", sections, tab }),
       tableType: `${pascalCase(name)}Table`,
       tagline: tagline(name),
       value: camelCase(name),

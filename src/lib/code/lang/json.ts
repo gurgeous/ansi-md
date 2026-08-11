@@ -1,7 +1,7 @@
 // JSON palette renderer for generated code snippets.
 // It emits plain nested objects for copy-paste into data files.
-import { Language, indent, mustache, renderFields, renderScale } from "@/lib/code/lang/base.ts";
-import type { Palette, Scales, Table } from "@/lib/palettes";
+import { Language, indent, mustache, renderFields, renderScale, renderTableFields } from "@/lib/code/lang/base.ts";
+import type { Palette, Scales, Table, TableCommentFn, TableSections } from "@/lib/palettes";
 
 const TEMPLATE = `
 {
@@ -30,8 +30,10 @@ class JsonLanguage extends Language {
     return mustache(TEMPLATE, { main: main.join(",\n") });
   }
 
-  renderTable0(_name: string, table: Table): string {
-    return JSON.stringify(table, null, 2);
+  renderTable0(_name: string, table: Table, _comment?: TableCommentFn, sections?: TableSections): string {
+    let main = renderTableFields("{{id}}: {{v}},", { table, id: JSON.stringify, sections, tab: "  " });
+    main = main.replace(/,$/, "");
+    return mustache(TEMPLATE, { main });
   }
 }
 

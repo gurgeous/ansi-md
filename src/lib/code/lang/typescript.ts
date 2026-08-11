@@ -1,6 +1,6 @@
 // TypeScript palette renderer for generated code snippets.
 // It emits a const object that preserves literal color values.
-import type { Palette, Scales, Table, TableCommentFn } from "@/lib/palettes";
+import type { Palette, Scales, Table, TableCommentFn, TableSections } from "@/lib/palettes";
 import {
   Language,
   indent,
@@ -46,9 +46,9 @@ class TypescriptLanguage extends Language {
     });
   }
 
-  renderTable0(name: string, table: Table, comment?: TableCommentFn) {
+  renderTable0(name: string, table: Table, comment?: TableCommentFn, sections?: TableSections) {
     return mustache(TEMPLATE, {
-      main: renderTableFields("{{id}}: {{v}},", { table, comment, id, marker: "//", tab: "  " }),
+      main: renderTableFields("{{id}}: {{v}},", { table, comment, id, marker: "//", sections, tab: "  " }),
       tagline: tagline(name),
       value: camelCase(name),
     });

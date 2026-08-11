@@ -1,6 +1,6 @@
 // Go palette renderer for generated code snippets.
 // It emits a value first, then struct types for easy scanning.
-import type { Palette, Scales, Table, TableCommentFn } from "@/lib/palettes";
+import type { Palette, Scales, Table, TableCommentFn, TableSections } from "@/lib/palettes";
 import {
   align,
   colorNames,
@@ -76,7 +76,7 @@ class GoLanguage extends Language {
     });
   }
 
-  renderTable0(name: string, table: Table, comment?: TableCommentFn) {
+  renderTable0(name: string, table: Table, comment?: TableCommentFn, sections?: TableSections) {
     const tab = "\t";
     return mustache(TABLE_TEMPLATE, {
       main: renderTableFields("{{id}}: {{v}},", {
@@ -84,6 +84,7 @@ class GoLanguage extends Language {
         comment,
         id: JSON.stringify,
         marker: "//",
+        sections,
         tab,
         align: /\d+,/,
       }),

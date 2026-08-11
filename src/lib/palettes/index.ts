@@ -7,6 +7,7 @@ export type Colors = Record<string, string>;
 // map of name => integer
 export type Table = Record<string, number>;
 export type TableCommentFn = (value: number) => string;
+export type TableSections = Record<string, string>;
 
 // map of name => scale (array)
 export type Scales = Record<string, Scale>;

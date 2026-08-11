@@ -1,6 +1,6 @@
 // Rust palette renderer for generated code snippets.
 // It emits const structs with borrowed string fields and no runtime setup.
-import type { Palette, Scales, Table, TableCommentFn } from "@/lib/palettes";
+import type { Palette, Scales, Table, TableCommentFn, TableSections } from "@/lib/palettes";
 import {
   align,
   colorNames,
@@ -106,11 +106,18 @@ class RustLanguage extends Language {
     });
   }
 
-  renderTable0(name: string, table: Table, comment?: TableCommentFn) {
+  renderTable0(name: string, table: Table, comment?: TableCommentFn, sections?: TableSections) {
     const tab = "    ";
     return mustache(TABLE_TEMPLATE, {
       main: indent(
-        renderTableFields("Self::{{id}} => {{v}},", { table, comment, id: pascalCase, marker: "//", tab }),
+        renderTableFields("Self::{{id}} => {{v}},", {
+          table,
+          comment,
+          id: pascalCase,
+          marker: "//",
+          sections,
+          tab,
+        }),
         tab,
       ),
       tableType: pascalCase(name),
