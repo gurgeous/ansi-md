@@ -57,6 +57,7 @@ const repoLabelOverrides = {
   "rust-cli/anstyle": "anstyle",
   "tautropfli/terminal-colorsaurus": "terminal-colorsaurus",
   "Textualize/rich": "rich",
+  "Textualize/textual": "Textual",
 };
 
 function repoPath(href) {
