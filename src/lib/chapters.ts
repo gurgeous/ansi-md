@@ -13,7 +13,6 @@ export const chapters: Section[] = [
       { name: "Advanced ANSI", url: "/advanced", phrase: "don't read this" },
       { name: "Recommended Apps", url: "/recs", phrase: "stuff I personally like" },
       { name: "Recommended Libraries", url: "/libs", phrase: "stuff I personally like" },
-      { name: "Recommended Terminals", url: "/terms", phrase: "stuff I personally like" },
     ],
   },
   {
