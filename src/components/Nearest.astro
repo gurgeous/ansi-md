@@ -1,9 +1,14 @@
 ---
 import Ansi from "@/lib/ansi.ts";
-import { ansi256, tailwind } from "@/lib/palettes";
+import { ansi256, ansi256Table, tailwind } from "@/lib/palettes";
 import NearestSection from "@/components/NearestSection.astro";
 
-const data = JSON.stringify({ ansi256, tailwind });
+const ansi256Names: Record<string, string> = {};
+for (const [name, index] of Object.entries(ansi256Table)) {
+  const current = ansi256Names[index];
+  if (!current || (/\d/.test(current) && !/\d/.test(name))) ansi256Names[index] = name;
+}
+const data = JSON.stringify({ ansi256, ansi256Names, tailwind });
 ---
 
 <div class="nearest is-empty mt-10">
@@ -34,7 +39,8 @@ const data = JSON.stringify({ ansi256, tailwind });
     <NearestSection title="closest ANSI 256 color" swatch="ansi">
       <span class="flex flex-wrap items-baseline gap-2">
         <code data-field="ansiHex"></code>
-        <strong>index # <span data-field="ansiIndex"></span></strong>
+        <strong>color #<span data-field="ansiIndex"></span></strong>
+        <strong data-field="ansiName"></strong>
       </span>
     </NearestSection>
 

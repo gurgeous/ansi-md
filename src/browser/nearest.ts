@@ -12,6 +12,7 @@ const EMPTY_SWATCH = "#d4d4d4";
 
 type Init = {
   ansi256: Colors;
+  ansi256Names: Record<string, string>;
   tailwind: Palette;
 };
 
@@ -32,6 +33,7 @@ class ColorWithName extends Color {
 // Owns DOM state and rendering for one converter instance.
 class NearestTool {
   ansi256: ColorWithName[];
+  ansi256Names: Record<string, string>;
   tailwind: ColorWithName[];
   $root: HTMLElement;
   $input: HTMLInputElement;
@@ -40,6 +42,7 @@ class NearestTool {
 
   constructor($root: HTMLElement, init: Init) {
     this.ansi256 = buildColors(init.ansi256);
+    this.ansi256Names = init.ansi256Names;
     this.tailwind = buildPalette(init.tailwind);
     this.$root = $root;
     this.$input = $root.querySelector("input")!;
@@ -89,6 +92,7 @@ class NearestTool {
     this.$swatches.ansi.setAttribute("fill", ansiHex);
     this.$fields.ansiHex.textContent = ansiHex;
     this.$fields.ansiIndex.textContent = ansi.name;
+    this.$fields.ansiName.textContent = `(${this.ansi256Names[ansi.name]})`;
 
     // tailwind
     const tailwind = nearestColor(needle, this.tailwind) as ColorWithName;

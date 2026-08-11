@@ -1,5 +1,8 @@
 ### features
 
+- finalize urls
+- feedback from nak
 - full readthrough
 - mobile look and feel, TOC (hamburger?)
-- deploy to ansi.md, turn on hello@ansi.md
+- turn on hello@ansi.md
+- deploy to ansi.md

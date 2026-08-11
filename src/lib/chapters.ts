@@ -33,7 +33,7 @@ export const chapters: Section[] = [
   {
     name: "Palettes",
     items: [
-      { name: "ANSI 256 Colors", url: "/ansi256", phrase: "ansi 256 names-as-code" },
+      { name: "ANSI 256 Color Cube", url: "/ansi256", phrase: "ansi 256 names-as-code" },
       { name: "Catppuccin Colors", url: "/catppuccin", phrase: "Catppuccin-as-code" },
       {
         name: "D3 Ordinal Scales",
