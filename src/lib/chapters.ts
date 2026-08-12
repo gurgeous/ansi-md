@@ -11,7 +11,7 @@ export const chapters: Section[] = [
       { name: "Progress Bars & Spinners", url: "/progs", phrase: "the fun stuff" },
       { name: "ANSI Escape Codes", url: "/ansi", phrase: "just the basics, ha" },
       { name: "Advanced ANSI Stuff", url: "/advanced", phrase: "don't read this" },
-      { name: "Recommended CLI Apps", url: "/recs", phrase: "stuff I personally like" },
+      { name: "Recommended CLI Apps", url: "/apps", phrase: "stuff I personally like" },
       { name: "Recommended CLI Libraries", url: "/libs", phrase: "stuff I personally like" },
     ],
   },
