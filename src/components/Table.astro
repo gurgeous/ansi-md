@@ -1,13 +1,13 @@
 ---
 import CodePicker from "@/components/CodePicker.astro";
 import { languages, type LangKey } from "@/lib/code/code";
-import type { Table, TableCommentFn } from "@/lib/palettes";
+import type { Table, TableCommentFn, TableSections } from "@/lib/palettes";
 
-type Props = { name: string; table: Table; comment?: TableCommentFn };
-const { name, table, comment } = Astro.props;
+type Props = { name: string; table: Table; comment?: TableCommentFn; sections?: TableSections };
+const { name, table, comment, sections } = Astro.props;
 
 const snippets = Object.fromEntries(
-  languages.map((language) => [language.name, language.renderTable(name, table, comment)]),
+  languages.map((language) => [language.name, language.renderTable(name, table, comment, sections)]),
 ) as Record<LangKey, string>;
 ---
 

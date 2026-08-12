@@ -2,6 +2,7 @@
 import "@/main.css";
 import Header from "@/components/Header.astro";
 import Sidebar from "@/components/Sidebar.astro";
+import StarCells from "@/components/StarCells.astro";
 import logoUrl from "@/assets/logo.png?url";
 import { Font } from "astro:assets";
 
@@ -31,6 +32,7 @@ function pageTitle() {
         <slot />
       </main>
     </div>
+    <StarCells />
   </body>
 </html>
 

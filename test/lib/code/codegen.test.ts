@@ -167,6 +167,11 @@ describe("generated code", () => {
       assertIncludes("ansi256 numeric value", source.typescript, "black: 16,");
       expect(source.go).toMatch(/"darkblue":\s+18,/);
       assertIncludes("ansi256 gray alias", source.rust, "Self::Dimgray => 242,");
+      assertIncludes("ansi256 red section", source.go, "// red = 0x5f");
+      assertIncludes("ansi256 grayscale section", source.python, "# grayscale");
+      assertIncludes("ansi256 alias section", source.ruby, "# gray aliases");
+      assertBefore("ansi256 aliases", source.typescript, "gray24: 255", "dimgray: 242");
+      expect(source.json).toContain('"aqua": 51,\n\n  "rosewood": 52');
       for (const language of languages.filter((language) => language.name !== "json")) {
         assertIncludes(`ansi256 ${language.name} rgb`, source[language.name], "#000000");
       }

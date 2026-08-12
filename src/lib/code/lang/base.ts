@@ -1,7 +1,7 @@
 // Base class for generated-code languages.
 // Each subclass owns one target language's naming and file layout.
 import type { LangKey } from "@/lib/code/code.ts";
-import type { Colors, Palette, Scale, Scales, Table, TableCommentFn } from "@/lib/palettes";
+import type { Colors, Palette, Scale, Scales, Table, TableCommentFn, TableSections } from "@/lib/palettes";
 
 export abstract class Language {
   name: LangKey;
@@ -16,14 +16,14 @@ export abstract class Language {
   renderScales(name: string, scales: Scales): string {
     return this.renderScales0(name, scales).trim() + "\n";
   }
-  renderTable(name: string, table: Table, comment?: TableCommentFn): string {
-    return this.renderTable0(name, table, comment).trim() + "\n";
+  renderTable(name: string, table: Table, comment?: TableCommentFn, sections?: TableSections): string {
+    return this.renderTable0(name, table, comment, sections).trim() + "\n";
   }
 
   // for subclasses
   abstract render0(name: string, palette: Palette): string;
   abstract renderScales0(name: string, scales: Scales): string;
-  abstract renderTable0(name: string, table: Table, comment?: TableCommentFn): string;
+  abstract renderTable0(name: string, table: Table, comment?: TableCommentFn, sections?: TableSections): string;
 }
 
 //
@@ -164,17 +164,30 @@ export function renderTableFields(
     comment?: TableCommentFn;
     marker?: "#" | "//";
     align?: RegExp;
+    sections?: TableSections;
   },
 ): string {
   const id = options.id ?? identity;
   const entries = Object.entries(options.table);
-  let fields = entries.map(([name, value]) => {
-    return mustache(line, { id: id(name), v: String(value) });
+  const groups: (typeof entries)[] = [];
+
+  for (const entry of entries) {
+    if (Object.hasOwn(options.sections ?? {}, entry[0]) || groups.length === 0) groups.push([]);
+    groups.at(-1)!.push(entry);
+  }
+
+  const lines = groups.flatMap((group, groupIndex) => {
+    let fields = group.map(([name, value]) => mustache(line, { id: id(name), v: String(value) }));
+    if (options.align) fields = align(fields, options.align).split("\n");
+    if (options.comment && options.marker) {
+      fields = fields.map((field, index) => `${field} ${options.marker} ${options.comment!(group[index][1])}`);
+      fields = align(fields, options.marker === "#" ? /# #/ : /\/\//).split("\n");
+    }
+
+    const section = options.sections?.[group[0][0]];
+    const heading = section && options.marker ? [`${options.marker} ${section}`] : [];
+    return [...(groupIndex ? [""] : []), ...heading, ...fields];
   });
-  if (options.align) fields = align(fields, options.align).split("\n");
-  fields = fields.map((field, index) => {
-    if (!options.comment || !options.marker) return field;
-    return `${field} ${options.marker} ${options.comment(entries[index][1])}`;
-  });
-  return indent(options.marker ? align(fields, options.marker === "#" ? /# #/ : /\/\//) : fields, options.tab);
+
+  return indent(lines, options.tab);
 }
