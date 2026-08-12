@@ -8,14 +8,15 @@ import { hexChips } from "@/lib/plugins/shikiHexChips";
 type Props = {
   languages: Language[];
   snippets: Record<LangKey, string>;
+  class?: string;
 };
 
-const { languages, snippets } = Astro.props;
+const { languages, snippets, class: className } = Astro.props;
 const codeTransformers = [hexChips()];
 const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
 ---
 
-<section class="code-picker" data-code-picker>
+<section class:list={["code-picker", className]} data-code-picker>
   <script is:inline type="application/json" data-code-snippets set:html={serializedSnippets} />
   <div class="code-picker-bar" aria-label="Language">
     {
@@ -25,7 +26,14 @@ const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
           type="button"
           data-language={language.name}
           aria-pressed={index === 0 ? "true" : "false"}>
-          {language.name}
+          {language.name === "typescript" ? (
+            <>
+              <span class="sm:hidden">ts</span>
+              <span class="hidden sm:inline">typescript</span>
+            </>
+          ) : (
+            language.name
+          )}
         </button>
       ))
     }
@@ -59,10 +67,11 @@ const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
   }
 
   .code-picker-bar {
-    @apply bg-brand border-brand-dark flex flex-wrap items-stretch gap-1 border border-b-0 p-1;
+    @apply bg-brand border-brand-dark flex flex-wrap items-stretch gap-1 border border-b-0 p-1 text-xs sm:text-sm;
 
     button {
-      @apply inline-flex cursor-pointer items-center gap-1 border border-transparent bg-transparent px-2 py-1 text-sm text-white transition;
+      @apply inline-flex cursor-pointer items-center gap-1 border border-transparent bg-transparent text-white transition;
+      @apply px-1 py-0.5 sm:px-2 sm:py-1;
 
       &:hover,
       &.is-active {
@@ -74,7 +83,7 @@ const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
       }
 
       &[data-copy] {
-        @apply ml-auto;
+        @apply ml-auto hidden sm:block;
 
         &.is-copied {
           @apply border-green-300 bg-green-600 text-white;

@@ -1,0 +1,71 @@
+---
+import { ansi256Table, hex256 } from "@/lib/palettes";
+import { luma } from "@/lib/color";
+
+// see https://www.hackitu.de/termcolor256/
+const data = `
+52  88 124 160 196 203 210 217 224
+52  88 124 160 202 209 216 223 230
+52  88 124 166 208 215 222 229 230
+52  88 130 172 214 221 228 229 230
+52  94 136 178 220 227 228 229 230
+58 100 142 184 226 227 228 229 230
+22  64 106 148 190 227 228 229 230
+22  28  70 112 154 191 228 229 230
+22  28  34  76 118 155 192 229 230
+22  28  34  40  82 119 156 193 230
+22  28  34  40  46  83 120 157 194
+22  28  34  40  47  84 121 158 195
+22  28  34  41  48  85 122 159 195
+22  28  35  42  49  86 123 159 195
+22  29  36  43  50  87 123 159 195
+23  30  37  44  51  87 123 159 195
+17  24  31  38  45  87 123 159 195
+17  18  25  32  39  81 123 159 195
+17  18  19  26  33  75 117 159 195
+17  18  19  20  27  69 111 153 195
+17  18  19  20  21  63 105 147 189
+17  18  19  20  57  99 141 183 225
+17  18  19  56  93 135 177 219 225
+17  18  55  92 129 171 213 219 225
+17  54  91 128 165 207 213 219 225
+53  90 127 164 201 207 213 219 225
+52  89 126 163 200 207 213 219 225
+52  88 125 162 199 206 213 219 225
+52  88 124 161 198 205 212 219 225
+52  88 124 160 197 204 211 218 225
+`
+  .trim()
+  .split("\n")
+  .map((row) => row.split(/\s+/).map(Number));
+const names = Object.fromEntries(Object.entries(ansi256Table).map(([name, idx]) => [idx, name]));
+---
+
+<table>
+  {
+    data.map((row) => (
+      <tr>
+        {row.map((idx) => {
+          const hex = hex256(idx);
+          const fg = luma(hex) > 0.5 ? "#000" : "#fff";
+          const label = names[idx];
+          const title = `${label} (${idx}): ${hex}`;
+          return (
+            <td style={`--fg: ${fg}; --bg: ${hex}`} title={title}>
+              {label}
+            </td>
+          );
+        })}
+      </tr>
+    ))
+  }
+</table>
+
+<style>
+  table {
+    @apply mt-4 table-fixed border-separate border-spacing-0 border border-neutral-400 text-[9px];
+  }
+  td {
+    @apply h-7 cursor-pointer overflow-hidden border-0 bg-(--bg) px-0.5 py-0 text-center text-ellipsis whitespace-nowrap text-(--fg);
+  }
+</style>

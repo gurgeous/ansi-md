@@ -179,7 +179,7 @@ export const ansi256Table = {
   deepmagenta: 164, // #d700d7
   phlox: 165, // #d700ff
   chocolate: 166, // #d75f00
-  indianred: 167, // #d75f5f
+  chestnut: 167, // #d75f5f
   palevioletred: 168, // #d75f87
   superpink: 169, // #d75faf
   orchid: 170, // #d75fd7
