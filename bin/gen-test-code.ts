@@ -3,8 +3,8 @@
 
 // Generate language fixtures under tmp/ for the static codegen test
 import { extByName, languages } from "@/lib/code/code.ts";
-import { ansi256Sections, ansi256View } from "@/lib/palettes/ansi256-view.ts";
 import { catppuccin, d3Ordinal, hex256, tailwind } from "@/lib/palettes";
+import { ansi256Sections, ansi256View } from "@/lib/palettes/ansi256-view.ts";
 import Util from "@/lib/util.ts";
 import { join } from "node:path";
 import { fileURLToPath, URL } from "node:url";

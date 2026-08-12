@@ -6,7 +6,7 @@ I'm hesitant to detail all the various ansi escape codes and protocols, many of 
 
 ### ESC
 
-Most useful ansi escape sequences begin with `\e[`. Usually followed by a series of semicolon delimited integers. For colors, use an `m` to end the sequence. `\e` is the ESC character, which is why we call these *escape codes*. The `\e[` text is the `CSI`, short for Control Sequence Introducer. ESC itself is ANSI character 27 (base 10), 0x1b (base 16) or 033 (octal). As you wander the internet you might see sample code using `\e` or `\033` or `\x1b` or `ESC`. These are all various ways to send an ESC char from your app to the terminal.
+Most useful ansi escape sequences begin with `\e[`. Usually followed by a series of semicolon delimited integers. For colors, use an `m` to end the sequence. `\e` is the ESC character, which is why we call these _escape codes_. The `\e[` text is the `CSI`, short for Control Sequence Introducer. ESC itself is ANSI character 27 (base 10), 0x1b (base 16) or 033 (octal). As you wander the internet you might see sample code using `\e` or `\033` or `\x1b` or `ESC`. These are all various ways to send an ESC char from your app to the terminal.
 
 ### Colors and Bold
 
@@ -16,8 +16,8 @@ In the table below, the chicken emoji \{🐔} is a ansi 16 color index `0..7` fo
 
 `{RR}`, `{GG}` and `{BB}` are red, green and blue channels as integers. CSS `rebeccapurple` `#663399` would be written as `102;51;153`.
 
-| what | code |
-|-|-|
+| what               | code                       |
+| ------------------ | -------------------------- |
 | set fg 16          | \e[3\{🐔}m                 |
 | set bg 16          | \e[4\{🐔}m                 |
 | set fg 16 "bright" | \e[9\{🐔}m                 |
@@ -39,8 +39,8 @@ These codes are designed to be combined. For example, here is a super ugly `hell
 
 These are less popular, but I've used all of these for various reasons. For example, `tennis` will helpfully interpret markdown links in csv files and emit hyperlink escape codes so your terminal can make them clickable. Super handy.
 
-| what | code |
-|-|-|
+| what                         | code                                    |
+| ---------------------------- | --------------------------------------- |
 | hide cursor                  | \e?25l                                  |
 | show cursor                  | \e?25h                                  |
 | move cursor                  | \e[\{row};\{col}H                       |

@@ -29,6 +29,9 @@ llm: fmt build
 organize:
   organize-imports.ts
 
+preview: build
+  astro preview --host
+
 test:
   just banner "gen-test-code.ts..." && gen-test-code.ts
   just banner "check-chapters.ts..." && check-chapters.ts
@@ -36,7 +39,8 @@ test:
   just banner "✓ test ✓"
 
 tsc:
-  tsc
+  # includes tsc
+  astro check --minimumSeverity error
 
 
 #
