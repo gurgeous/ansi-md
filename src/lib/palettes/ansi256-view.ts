@@ -21,4 +21,4 @@ for (const [name, index] of primary) {
     ansi256Sections[name] = `red = 0x${hex256(index).slice(1, 3)}`;
   }
 }
-ansi256Sections[aliases[0][0]] = "gray aliases";
+ansi256Sections[aliases[0][0]] = "gray aliases from css";
