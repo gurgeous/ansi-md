@@ -11,9 +11,7 @@ for (const [name, idx] of Object.entries(ansi256Table)) {
 <table class="ansi256-full-chart">
   <thead>
     <tr>
-      <th>
-        <div class="text-center">Index</div>
-      </th>
+      <th>Index</th>
       <th>Color Name</th>
       <th>Hex</th>
     </tr>
@@ -45,11 +43,11 @@ for (const [name, idx] of Object.entries(ansi256Table)) {
   .ansi256-full-chart {
     th:first-child,
     td:first-child {
-      @apply w-28;
+      @apply w-20 sm:w-28 text-center;
     }
 
     .swatch {
-      @apply block h-7 rounded bg-(--bg) text-center leading-7 font-semibold text-(--fg);
+      @apply block h-7 rounded bg-(--bg) text-center leading-7 font-semibold text-(--fg) text-xs sm:text-sm;
     }
   }
 </style>
