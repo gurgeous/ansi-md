@@ -1,6 +1,12 @@
 default:
   just --list
 
+astro-preview: build
+  astro preview --host
+
+astro-check:
+  astro check --minimumSeverity error # includes tsc
+
 build: check
   just banner "astro..." && astro build
   just banner "prettier..." && prettier --log-level error --write .
@@ -9,7 +15,7 @@ build: check
 check:
   just banner "lint..." && just lint
   just banner "test..." && just test
-  just banner "tsc..." && just tsc
+  just banner "astro-check..." && just astro-check
   just banner "✓ check ✓"
 
 clean:
@@ -28,20 +34,11 @@ llm: fmt build
 
 organize:
   organize-imports.ts
-
-preview: build
-  astro preview --host
-
 test:
   just banner "gen-test-code.ts..." && gen-test-code.ts
   just banner "check-chapters.ts..." && check-chapters.ts
   just banner "vitest..." ; vitest run
   just banner "✓ test ✓"
-
-tsc:
-  # includes tsc
-  astro check --minimumSeverity error
-
 
 #
 # banner
