@@ -27,6 +27,9 @@ dev:
 fmt:
   prettier --list-different --write .
 
+links: build
+  linkinator dist --recurse --clean-urls --check-fragments
+
 lint:
   eslint .
 
