@@ -1,6 +1,6 @@
 ### features
 
-- finalize urls
+- link checker
 - feedback from nak
 - full readthrough
 - mobile look and feel, TOC (hamburger?)
