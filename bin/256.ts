@@ -2,10 +2,10 @@
 // ^^ note magic shebang. this is how we run node w/ preload, no matte where we are
 
 // Generate the ANSI 256 color-name research CSV under tmp/.
-import Color from "colorjs.io";
 import { nearestColor } from "@/lib/color.ts";
 import { hex256 } from "@/lib/palettes/ansi256.ts";
 import Util from "@/lib/util.ts";
+import Color from "colorjs.io";
 import { fileURLToPath, URL } from "node:url";
 
 type NamedColor = { name: string; hex: string };

@@ -122,7 +122,10 @@ class RustLanguage extends Language {
       ),
       tableType: pascalCase(name),
       tagline: tagline(name),
-      variants: indent(keys(table).map((name) => `${pascalCase(name)},`), tab),
+      variants: indent(
+        keys(table).map((name) => `${pascalCase(name)},`),
+        tab,
+      ),
     });
   }
 }

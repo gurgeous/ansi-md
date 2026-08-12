@@ -1,5 +1,4 @@
 // Client-side behavior for nearest color stuff
-import Ansi from "@/lib/ansi.ts";
 import { nearestColor, normalizeHexInput, parseHex } from "@/lib/color.ts";
 import type { Colors, Palette } from "@/lib/palettes";
 import Color from "colorjs.io";

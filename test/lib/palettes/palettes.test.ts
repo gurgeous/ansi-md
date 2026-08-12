@@ -43,9 +43,7 @@ describe("palette renderers", () => {
     expect(languageByName.typescript.render("catppuccin", catppuccin)).toContain("export const catppuccin");
     expect(languageByName.typescript.renderScales("d3Ordinal", d3Ordinal)).toContain("export const d3Ordinal");
     expect(languageByName.go.render("catppuccin", catppuccin)).toContain("var Catppuccin");
-    expect(languageByName.rust.renderTable("ansi256", ansi256Table, hex256)).toContain(
-      "pub enum Ansi256",
-    );
+    expect(languageByName.rust.renderTable("ansi256", ansi256Table, hex256)).toContain("pub enum Ansi256");
   });
 
   it("covers every fixed ANSI 256 color", () => {

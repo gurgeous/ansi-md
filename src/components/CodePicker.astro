@@ -31,7 +31,7 @@ const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
     }
     <button type="button" data-copy aria-label="Copy code" title="Copy code">
       <Icon name="lucide:clipboard" data-copy-icon />
-      <Icon name="lucide:clipboard-check" class="is-hidden" data-check-icon />
+      <Icon name="lucide:clipboard-check" class:list={["is-hidden"]} data-check-icon />
       <span data-copy-label>copy</span>
     </button>
   </div>
