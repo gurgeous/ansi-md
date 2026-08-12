@@ -26,7 +26,14 @@ const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
           type="button"
           data-language={language.name}
           aria-pressed={index === 0 ? "true" : "false"}>
-          {language.name}
+          {language.name === "typescript" ? (
+            <>
+              <span class="sm:hidden">ts</span>
+              <span class="hidden sm:inline">typescript</span>
+            </>
+          ) : (
+            language.name
+          )}
         </button>
       ))
     }
