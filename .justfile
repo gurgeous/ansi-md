@@ -8,14 +8,14 @@ astro-check:
   astro check --minimumSeverity error # includes tsc
 
 build: check
-  just banner "astro..." && astro build
+  just banner "astro build..." && astro build
   just banner "prettier..." && prettier --log-level error --write .
   just banner "✓ build ✓"
 
 check:
   just banner "lint..." && just lint
   just banner "test..." && just test
-  just banner "astro-check..." && just astro-check
+  just banner "astro check..." && just astro-check
   just banner "✓ check ✓"
 
 clean:
