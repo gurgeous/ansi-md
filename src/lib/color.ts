@@ -40,3 +40,9 @@ export function hexify(color: string): string {
 export function rgbHex(r: number, g: number, b: number): string {
   return sprintf("#%02x%02x%02x", r, g, b);
 }
+
+// Calculate perceived brightness for a canonical #rrggbb color.
+export function luma(hex: string) {
+  const [r, g, b] = hex.match(/\w\w/g)!.map((channel) => parseInt(channel, 16));
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+}

@@ -18,7 +18,7 @@ All terminals have a shared lineage, dating back to the [classic VT100](https://
 
 Vintage hardware terminals were relatively straightforward, displaying text on screen and looking for `\n` to advance to the next line. Similar to typewriters of that era. But modern terminals are capable of more, so much more. Too much, probably.
 
-We've got truecolor RGB. We've got themes that are "light" and "dark". We've got mouse control, layout, and hints for double buffering. We've got window titles. We've got strange graphics protocols, built-in tiny progress bars, and hacks to make the icon bounce in [the Dock](https://en.wikipedia.org/wiki/Dock_(macOS)).
+We've got truecolor RGB. We've got themes that are "light" and "dark". We've got mouse control, layout, and hints for double buffering. We've got window titles. We've got strange graphics protocols, built-in tiny progress bars, and hacks to make the icon bounce in [the Dock](<https://en.wikipedia.org/wiki/Dock_(macOS)>).
 
 Modern terminals carefully parse the stream of bytes printed from your app in order to support these features. Terminals also set environment variables to give hints to your app about what's supported. Tools like `ssh` or `tmux` have to understand these environment variables too, otherwise apps running over ssh have no idea what's supported. There are [huge databases](https://invisible-island.net/xterm/terminfo.html) that try to capture which features are supported by which terminals. Your app can also query the terminal directly using obscure invisible codes.
 
