@@ -50,6 +50,7 @@ class NearestTool {
     this.$fields = dataMap<HTMLElement>($root, "field");
     this.$swatches = dataMap<SVGRectElement>($root, "swatch");
     this.$input.addEventListener("input", this.onInput.bind(this));
+    this.$wheel.addEventListener("pointerdown", this.onWheel.bind(this));
     this.$wheel.addEventListener("pointermove", this.onWheel.bind(this));
     this.drawWheel();
   }

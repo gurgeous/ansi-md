@@ -11,7 +11,7 @@ for (const [name, index] of Object.entries(ansi256Table)) {
 const data = JSON.stringify({ ansi256, ansi256Names, tailwind });
 ---
 
-<div class="nearest is-empty mt-10 flex items-start gap-4 lg:gap-10">
+<div class="nearest is-empty mt-10 flex items-start gap-4 sm:gap-10">
   <!-- json data -->
   <script is:inline type="application/json" set:html={data} />
 
@@ -55,17 +55,17 @@ const data = JSON.stringify({ ansi256, ansi256Names, tailwind });
     </div>
   </div>
 
-  <figure class="mt-4 shrink-0">
+  <figure class="mt-4 flex shrink-0 flex-col">
     <canvas
       data-color-wheel
       width="320"
       height="320"
       aria-hidden="true"
-      class="size-20 touch-none cursor-crosshair rounded-full lg:size-64"></canvas>
+      class="size-24 cursor-crosshair touch-none rounded-full sm:size-64"></canvas>
     <figcaption
-      class="mt-2 hidden border-t border-neutral-200 pt-2 text-center text-xs text-neutral-500 lg:block"
-    >
-      Move your mouse over the wheel
+      class="text-2xs order-last mt-2 mb-1 border-t border-neutral-200 text-center text-neutral-500 sm:pt-2 sm:text-xs">
+      <span class="sm:hidden">Touch me</span>
+      <span class="hidden sm:inline">Move your mouse here</span>
     </figcaption>
   </figure>
 </div>
