@@ -6,8 +6,8 @@ export const chapters: Section[] = [
     items: [
       { name: "Home", url: "/", phrase: "start here" },
       { name: "ENV & Capabilities", url: "/env", phrase: "OMG why is this so hard" },
-      { name: "Color Design", url: "/colors", phrase: "all about color palettes" },
-      { name: "CLI Design", url: "/cli", phrase: "the difference between meh and awesome cli" },
+      { name: "Color Depth", url: "/colors", phrase: "all about color palettes" },
+      { name: "CLI Best Practices", url: "/cli", phrase: "the difference between meh and awesome cli" },
       { name: "Progress Bars & Spinners", url: "/progress", phrase: "the fun stuff" },
       { name: "ANSI Escape Codes", url: "/escapes", phrase: "just the basics, ha" },
       { name: "Advanced ANSI Stuff", url: "/advanced", phrase: "don't read this" },
