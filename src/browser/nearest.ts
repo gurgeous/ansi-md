@@ -1,5 +1,5 @@
 // Client-side behavior for nearest color stuff
-import { nearestColor, normalizeHexInput, parseHex } from "@/lib/color.ts";
+import { nearestColor, normalizeHexInput, parseHex, rgbHex } from "@/lib/color.ts";
 import type { Colors, Palette } from "@/lib/palettes";
 import Color from "colorjs.io";
 
@@ -35,6 +35,7 @@ class NearestTool {
   ansi256Names: Record<string, string>;
   tailwind: ColorWithName[];
   $root: HTMLElement;
+  $wheel: HTMLCanvasElement;
   $input: HTMLInputElement;
   $fields: Record<string, HTMLElement>;
   $swatches: Record<string, SVGRectElement>;
@@ -44,10 +45,13 @@ class NearestTool {
     this.ansi256Names = init.ansi256Names;
     this.tailwind = buildPalette(init.tailwind);
     this.$root = $root;
+    this.$wheel = $root.querySelector("[data-color-wheel]")!;
     this.$input = $root.querySelector("input")!;
     this.$fields = dataMap<HTMLElement>($root, "field");
     this.$swatches = dataMap<SVGRectElement>($root, "swatch");
     this.$input.addEventListener("input", this.onInput.bind(this));
+    this.$wheel.addEventListener("pointermove", this.onWheel.bind(this));
+    this.drawWheel();
   }
 
   //
@@ -63,6 +67,21 @@ class NearestTool {
     } else {
       this.render(hex);
     }
+  }
+
+  // Convert wheel position to a full-brightness HSV color.
+  onWheel(event: PointerEvent) {
+    const rect = this.$wheel.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    const y = ((event.clientY - rect.top) / rect.height) * 2 - 1;
+    const saturation = Math.hypot(x, y);
+    if (saturation > 1) return;
+
+    const hue = (Math.atan2(y, x) / (Math.PI * 2) + 1) % 1;
+    const [r, g, b] = hsvRgb(hue, saturation);
+    const hex = rgbHex(r, g, b);
+    this.inputValue = hex;
+    this.render(hex);
   }
 
   //
@@ -108,6 +127,29 @@ class NearestTool {
     }
     this.$root.classList.add("is-empty");
   }
+
+  // Paint the same hue/saturation space used by pointer conversion.
+  drawWheel() {
+    const context = this.$wheel.getContext("2d")!;
+    const image = context.createImageData(this.$wheel.width, this.$wheel.height);
+    const center = this.$wheel.width / 2;
+    const radius = center - 1;
+
+    for (let y = 0; y < this.$wheel.height; y++) {
+      for (let x = 0; x < this.$wheel.width; x++) {
+        const dx = x + 0.5 - center;
+        const dy = y + 0.5 - center;
+        const saturation = Math.hypot(dx, dy) / radius;
+        if (saturation > 1) continue;
+
+        const hue = (Math.atan2(dy, dx) / (Math.PI * 2) + 1) % 1;
+        const [r, g, b] = hsvRgb(hue, saturation);
+        const offset = (y * this.$wheel.width + x) * 4;
+        image.data.set([r, g, b, 255], offset);
+      }
+    }
+    context.putImageData(image, 0, 0);
+  }
 }
 
 //
@@ -148,4 +190,22 @@ function buildPalette(palette: Palette): ColorWithName[] {
     }),
   );
   return buildColors(colors);
+}
+
+// Convert full-brightness HSV coordinates to 8-bit RGB.
+function hsvRgb(hue: number, saturation: number) {
+  const sector = hue * 6;
+  const part = sector - Math.floor(sector);
+  const low = 1 - saturation;
+  const falling = 1 - part * saturation;
+  const rising = 1 - (1 - part) * saturation;
+  const channels = [
+    [1, rising, low],
+    [falling, 1, low],
+    [low, 1, rising],
+    [low, falling, 1],
+    [rising, low, 1],
+    [1, low, falling],
+  ][Math.floor(sector) % 6];
+  return channels.map((channel) => Math.round(channel * 255));
 }
