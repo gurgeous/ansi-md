@@ -11,47 +11,63 @@ for (const [name, index] of Object.entries(ansi256Table)) {
 const data = JSON.stringify({ ansi256, ansi256Names, tailwind });
 ---
 
-<div class="nearest is-empty mt-10">
+<div class="nearest is-empty mt-10 flex items-start gap-4 sm:gap-10">
   <!-- json data -->
   <script is:inline type="application/json" set:html={data} />
 
-  <!-- label / input -->
-  <label>
-    <div class="font-semibold text-neutral-950">Enter RGB hex</div>
-    <input
-      class="mt-2 max-w-sm border px-2 py-1 text-neutral-950"
-      type="text"
-      placeholder="#8caaee"
-      autocomplete="off"
-      autocapitalize="off"
-      spellcheck="false"
-    />
-  </label>
+  <div class="min-w-0 flex-1">
+    <!-- label / input -->
+    <label>
+      <div class="font-semibold text-neutral-950">Enter RGB hex</div>
+      <input
+        class="mt-2 max-w-sm border px-2 py-1 text-neutral-950"
+        type="text"
+        placeholder="#8caaee"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+    </label>
 
-  <!-- results -->
-  <div class="mt-4 flex max-w-2xl flex-col gap-5">
-    <!-- original -->
-    <NearestSection title="you entered" swatch="input">
-      <code data-field="inputHex"></code>
-    </NearestSection>
+    <!-- results -->
+    <div class="mt-4 flex max-w-2xl flex-col gap-5">
+      <!-- original -->
+      <NearestSection title="you entered" swatch="input">
+        <code data-field="inputHex"></code>
+      </NearestSection>
 
-    <!-- 256 -->
-    <NearestSection title="closest ANSI 256 color" swatch="ansi">
-      <span class="flex flex-wrap items-baseline gap-2">
-        <code data-field="ansiHex"></code>
-        <strong>color #<span data-field="ansiIndex"></span></strong>
-        <strong data-field="ansiName"></strong>
-      </span>
-    </NearestSection>
+      <!-- 256 -->
+      <NearestSection title="closest ANSI 256 color" swatch="ansi">
+        <span class="flex flex-wrap items-baseline gap-2">
+          <code data-field="ansiHex"></code>
+          <strong>color #<span data-field="ansiIndex"></span></strong>
+          <strong data-field="ansiName"></strong>
+        </span>
+      </NearestSection>
 
-    <!-- tailwind -->
-    <NearestSection title="closest Tailwind color" swatch="tailwind">
-      <span class="flex flex-wrap items-baseline gap-2">
-        <code data-field="tailwindHex"></code>
-        <strong data-field="tailwindName"></strong>
-      </span>
-    </NearestSection>
+      <!-- tailwind -->
+      <NearestSection title="closest Tailwind color" swatch="tailwind">
+        <span class="flex flex-wrap items-baseline gap-2">
+          <code data-field="tailwindHex"></code>
+          <strong data-field="tailwindName"></strong>
+        </span>
+      </NearestSection>
+    </div>
   </div>
+
+  <figure class="mt-4 flex shrink-0 flex-col">
+    <canvas
+      data-color-wheel
+      width="320"
+      height="320"
+      aria-hidden="true"
+      class="size-24 cursor-crosshair touch-none rounded-full sm:size-64"></canvas>
+    <figcaption
+      class="text-2xs order-last mt-2 mb-1 border-t border-neutral-200 text-center text-neutral-500 sm:pt-2 sm:text-xs">
+      <span class="sm:hidden">Touch me</span>
+      <span class="hidden sm:inline">Move your mouse here</span>
+    </figcaption>
+  </figure>
 </div>
 
 <script>

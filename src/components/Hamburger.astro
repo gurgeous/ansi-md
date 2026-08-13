@@ -1,0 +1,90 @@
+<button data-hamburger type="button" aria-label="Toggle table of contents" aria-expanded="false">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+
+<style>
+  button {
+    @apply bg-brand fixed top-4 right-5 z-30 hidden size-10 cursor-pointer flex-col items-center justify-center border-0;
+  }
+
+  .hamburger-box {
+    @apply relative inline-block h-4 w-6;
+  }
+
+  .hamburger-inner {
+    top: 50%;
+    margin-top: -1px;
+    transition-duration: 220ms;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+    &,
+    &::before,
+    &::after {
+      @apply absolute block h-0.5 w-6 rounded bg-white;
+      content: "";
+    }
+
+    &::before {
+      top: -7px;
+      transition:
+        top 100ms 250ms ease-in,
+        opacity 100ms ease-in;
+    }
+
+    &::after {
+      bottom: -7px;
+      transition:
+        bottom 100ms 250ms ease-in,
+        transform 220ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+  }
+
+  button.is-active .hamburger-inner {
+    transform: rotate(225deg);
+    transition-delay: 120ms;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    &::before {
+      top: 0;
+      @apply opacity-0;
+      transition:
+        top 100ms ease-out,
+        opacity 100ms 120ms ease-out;
+    }
+
+    &::after {
+      bottom: 0;
+      transform: rotate(-90deg);
+      transition:
+        bottom 100ms ease-out,
+        transform 220ms 120ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+  }
+
+  @media (max-width: calc(theme(--breakpoint-lg) - 1px)) {
+    button {
+      @apply flex;
+    }
+  }
+</style>
+
+<script>
+  const $hamburger = document.querySelector<HTMLButtonElement>("[data-hamburger]")!;
+  const $sidebar = document.querySelector<HTMLElement>("[data-sidebar]")!;
+
+  $hamburger.addEventListener("click", () => {
+    const active = $sidebar.classList.toggle("is-active");
+    $hamburger.classList.toggle("is-active", active);
+    $hamburger.setAttribute("aria-expanded", String(active));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Node)) return;
+    if ($sidebar.contains(event.target) || $hamburger.contains(event.target)) return;
+    $hamburger.classList.remove("is-active");
+    $hamburger.setAttribute("aria-expanded", "false");
+    $sidebar.classList.remove("is-active");
+  });
+</script>

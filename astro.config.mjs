@@ -198,13 +198,10 @@ export default defineConfig({
   devToolbar: { enabled: false },
   fonts: [
     {
-      provider: fontProviders.google(),
+      provider: fontProviders.fontsource(),
       name: "IBM Plex Mono",
       cssVariable: "--font-ibm-plex-mono",
-      weights: [400, 700],
-      styles: ["normal", "italic"],
-      subsets: ["latin"],
-      fallbacks: ["monospace"],
+      weights: ["400 700"],
     },
   ],
   integrations: [autoImportVite, mdx(), icon()],

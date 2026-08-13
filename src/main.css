@@ -5,7 +5,6 @@
   --color-brand-bright: theme("colors.sky.500");
   --color-brand-dark: theme("colors.sky.900");
   --color-muted: theme("colors.neutral.400");
-  --font-brand: var(--font-ibm-plex-mono), var(--font-mono);
   --default-font-family: var(--font-ibm-plex-mono), var(--font-mono);
 }
 
