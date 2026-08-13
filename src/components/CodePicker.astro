@@ -83,7 +83,7 @@ const serializedSnippets = JSON.stringify(snippets).replaceAll("</", "<\\/");
       }
 
       &[data-copy] {
-        @apply ml-auto hidden sm:block;
+        @apply ml-auto hidden shrink-0 whitespace-nowrap sm:inline-flex;
 
         &.is-copied {
           @apply border-green-300 bg-green-600 text-white;
