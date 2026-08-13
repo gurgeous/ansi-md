@@ -30,25 +30,23 @@ I do not recommend `-v` for verbose, instead I prefer `-v` for version coupled w
 
 1. For **--help**, print help on stdout and exit 0. Let me pipe it into my pager! Try not to commingle stdout and stderr, this is difficult to untangle.
 
-   ```sh
-   $ myapp --help       # print help on stdout, exit 0
-   $ myapp cmd --help   # print help for this subcmd, exit 0
+```sh
+$ myapp --help       # print help on stdout, exit 0
+$ myapp cmd --help   # print help for this subcmd, exit 0
 
-   $ myapp --bogus      # print error on stderr, exit 1
-   $ myapp bogus        # print error on stderr, exit 1
-   $ myapp cmd --bogus  # print error on stderr, exit 1
-   ```
+$ myapp --bogus      # print error on stderr, exit 1
+$ myapp bogus        # print error on stderr, exit 1
+$ myapp cmd --bogus  # print error on stderr, exit 1
+```
 
-1. **Naked niceness** - What happens if a user runs your app without any flags, arguments or input at all? I call this the `naked` case and usually you want to print a short hint message and exit 0. For example, with tennis:
+3. **Naked niceness** - What happens if a user runs your app without any flags, arguments or input at all? I call this the `naked` case and usually you want to print a short hint message and exit 0. If your app supports stdin as input, don't go naked in that case. Tricky! Tennis:
 
-   ```sh
-   $ tennis
-   tennis: try 'tennis --help' for more information
-   ```
+```sh
+$ tennis
+tennis: try 'tennis --help' for more information
+```
 
-   If your app supports stdin as input, don't go naked in that case. Tricky!
-
-1. **Fail fast** - Don't try to recover from strange errors. Humans and LLMs are both perfectly capable of learning and trying again. Also, it's easier to write great software that fails fast, since you don't burn dev time on lightly tested edge cases.
+4. **Fail fast** - Don't try to recover from strange errors. Humans and LLMs are both perfectly capable of learning and trying again. Also, it's easier to write great software that fails fast, since you don't burn dev time on lightly tested edge cases.
 
 1. **Fail loud** - Print errors right away and never silently fail. This is a personal pet peeve, software that fails silently in strange ways. At one point I submitted numerous PRs to a vscode extension that failed silently when misconfigured. Be loud.
 
