@@ -9,6 +9,7 @@ export const chapters: Section[] = [
       { name: "Color Depth", url: "/colors", phrase: "all about color palettes" },
       { name: "CLI Best Practices", url: "/cli", phrase: "the difference between meh and awesome cli" },
       { name: "Progress Bars & Spinners", url: "/progress", phrase: "the fun stuff" },
+      { name: "The TUI", url: "/tui", phrase: "pretty apps" },
       { name: "ANSI Escape Codes", url: "/escapes", phrase: "just the basics, ha" },
       { name: "Advanced ANSI Stuff", url: "/advanced", phrase: "don't read this" },
       { name: "Recommended CLI Apps", url: "/apps", phrase: "stuff I personally like" },
