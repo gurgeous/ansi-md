@@ -10,39 +10,44 @@ Disclaimer - I've only written a handful of TUI apps, mostly unreleased. My favo
 
 ### TUI Libraries
 
-Every TUI is built on a TUI library. If you think about it, you'll realize that each TUI must include the crude equivalent of a web browser - event loop, layout engine, and many widgets. These libs are powerful and complicated, and I wouldn't try to create a TUI without one. Some of them feel a bit like react, with nested components and props. Some use flexbox for layout. Some suggestions depending on your language of choice.
+Every TUI is built on a TUI library. If you think about it, each TUI must include the crude equivalent of a web browser - event loop, layout engine, and widgets. These libs are powerful and complicated. Some of them are a bit like react, with nested components and props. Some use flexbox.
 
 Rather than listing out the TUI libraries, let's look at some popular TUI apps:
 
-| app                              |  lang  | ⭐ stars | tui                            | what              |
-| -------------------------------- | :----: | :------: | ------------------------------ | ----------------- |
-| github/yorukot/superfile         |   go   |   23k    | github/charmbracelet/bubbletea | file manager      |
-| github/twpayne/chezmoi           |   go   |   21k    | github/charmbracelet/bubbletea | dotfile manager   |
-| github/dlvhdr/gh-dash            |   go   |   12k    | github/charmbracelet/bubbletea | GitHub dashboard  |
+| app                              | lang | ⭐ stars | tui                            | what              |
+| -------------------------------- | :--: | :------: | ------------------------------ | ----------------- |
+| github/twpayne/chezmoi           |  go  |   21k    | github/charmbracelet/bubbletea | dotfiles          |
+| github/dlvhdr/gh-dash            |  go  |   12k    | github/charmbracelet/bubbletea | GitHub dashboard  |
+| github/yorukot/superfile         |  go  |   23k    | github/charmbracelet/bubbletea | file manager      |
 |                                  |
-| github/hrkfdn/ncspot             |  rust  |    7k    | github/gyscos/cursive          | Spotify client    |
-| github/arxanas/git-branchless    |  rust  |    4k    | github/gyscos/cursive          | Git workflow      |
+| github/atuinsh/atuin             |  rs  |   31k    | github/ratatui/ratatui         | sh history        |
+| github/imsnif/bandwhich          |  rs  |   12k    | github/ratatui/ratatui         | bandwidth monitor |
+| github/ClementTsang/bottom       |  rs  |   14k    | github/ratatui/ratatui         | system monitor    |
+| github/gitui-org/gitui           |  rs  |   22k    | github/ratatui/ratatui         | git client        |
+| github/mfontanini/presenterm     |  rs  |    9k    | github/ratatui/ratatui         | slides            |
+| github/alexpasmantier/television |  rs  |    6k    | github/ratatui/ratatui         | fuzzy finder      |
+| github/sxyazi/yazi               |  rs  |   41k    | github/ratatui/ratatui         | file manager      |
 |                                  |
-| github/sxyazi/yazi               |  rust  |   41k    | github/ratatui/ratatui         | file manager      |
-| github/atuinsh/atuin             |  rust  |   31k    | github/ratatui/ratatui         | shell history     |
-| github/gitui-org/gitui           |  rust  |   22k    | github/ratatui/ratatui         | Git client        |
-| github/ClementTsang/bottom       |  rust  |   14k    | github/ratatui/ratatui         | system monitor    |
-| github/imsnif/bandwhich          |  rust  |   12k    | github/ratatui/ratatui         | bandwidth monitor |
-| github/mfontanini/presenterm     |  rust  |    9k    | github/ratatui/ratatui         | slide presenter   |
-| github/alexpasmantier/television |  rust  |    6k    | github/ratatui/ratatui         | fuzzy finder      |
+| github/charles-001/dolphie       |  py  |    1k    | github/Textualize/textual      | db monitor        |
+| github/tconbeer/harlequin        |  py  |    6k    | github/Textualize/textual      | sql               |
+| github/bloomberg/memray          |  py  |   15k    | github/Textualize/textual      | memory prof       |
+| github/darrenburns/posting       |  py  |   12k    | github/Textualize/textual      | API client        |
 |                                  |
-| github/bloomberg/memray          | python |   15k    | github/Textualize/textual      | memory profiler   |
-| github/darrenburns/posting       | python |   12k    | github/Textualize/textual      | API client        |
-| github/tconbeer/harlequin        | python |    6k    | github/Textualize/textual      | SQL IDE           |
-| github/charles-001/dolphie       | python |    1k    | github/Textualize/textual      | database monitor  |
+| github/anthropics/claude-code    |  ts  |   140k   | github/vadimdemedes/ink        | agent             |
+| github/github/copilot-cli        |  ts  |   11k    | github/vadimdemedes/ink        | agent             |
+| github/google-gemini/gemini-cli  |  ts  |   106k   | github/vadimdemedes/ink        | agent             |
 |                                  |
-| github/anthropics/claude-code    |   ts   |   140k   | github/vadimdemedes/ink        | coding agent      |
-| github/google-gemini/gemini-cli  |   ts   |   106k   | github/vadimdemedes/ink        | coding agent      |
-| github/github/copilot-cli        |   ts   |   11k    | github/vadimdemedes/ink        | coding agent      |
-|                                  |
-| github/anomalyco/opencode        |   ts   |   191k   | github/anomalyco/opentui       | coding agent      |
-| github/cline/cline               |   ts   |   65k    | github/anomalyco/opentui       | coding agent      |
-| github/modem-dev/hunk            |   ts   |    8k    | github/anomalyco/opentui       | diff reviewer     |
+| github/cline/cline               |  ts  |   65k    | github/anomalyco/opentui       | agent             |
+| github/modem-dev/hunk            |  ts  |    8k    | github/anomalyco/opentui       | diffs             |
+| github/anomalyco/opencode        |  ts  |   191k   | github/anomalyco/opentui       | agent             |
+
+---
+
+---
+
+---
+
+---
 
 | lib                            |  lang  | ⭐ stars | what                         |
 | ------------------------------ | :----: | :------: | ---------------------------- |
