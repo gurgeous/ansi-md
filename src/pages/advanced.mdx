@@ -16,7 +16,7 @@ BTW Ghostty has a neat feature that quietly injects a new "ghostty" terminfo ent
 
 ### Obscure Yet Handy
 
-- **clear, reset** - These are ansi escape codes, and all cli utils! "Clear" wipes the current screen and "reset" resets the terminal entirely, including scrollback. Remember that these are just magic strings sent to your terminal, which must react accordingly. The escape codes are mostly standardized these dats, but if you run the `clear` or `reset` utils they will lookup the escape code from terminfo and echo it to your terminal. You can also try `stty sane`, which attempts to restore some defaults to your terminal using escape codes. `reset` mostly does the same thing, but also sends the reset escape code. Typing `ctrl+l` into bash/zsh/etc usually ends up sending the `clear` ansi escape code as well.
+- **clear, reset** - These are ansi escape codes, and all cli utils! "Clear" wipes the current screen and "reset" resets the terminal entirely, including scrollback. Remember that these are just magic strings sent to your terminal, which must react accordingly. The escape codes are mostly standardized these days, but if you run the `clear` or `reset` utils they will look up the escape code from terminfo and echo it to your terminal. You can also try `stty sane`, which attempts to restore some defaults to your terminal using escape codes. `reset` mostly does the same thing, but also sends the reset escape code. Typing `ctrl+l` into bash/zsh/etc usually ends up sending the `clear` ansi escape code as well.
 
   Sometimes my terminal is too borked to accept commands. This happens surprisingly often when working on cli apps. In that case I use the ghostty command palette to **Reset Terminal**, which is just like running `reset`.
 
@@ -30,7 +30,7 @@ BTW Ghostty has a neat feature that quietly injects a new "ghostty" terminfo ent
 
 ### Video Playback
 
-These days terminals are fast enough to play videos as streams of bg colors. I'm not talking about ascii art (which is a whole separator thing) but pixelated full-color video. I have a half-baked cli app that shows a looping video as an intro screen. The app itself is a crappy subset of github/openclaw/gogcli, but I wanted it to be more exciting:
+These days terminals are fast enough to play videos as streams of bg colors. I'm not talking about ascii art (which is a whole separate thing) but pixelated full-color video. I have a half-baked cli app that shows a looping video as an intro screen. The app itself is a crappy subset of github/openclaw/gogcli, but I wanted it to be more exciting:
 
 ![](../assets/vid.gif)
 

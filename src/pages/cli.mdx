@@ -2,7 +2,7 @@
 title: CLI Best Practices
 ---
 
-This page is about building delightful command line apps, which is a deep topic. [Color/visual design](/colors) is carved out separately, this page focuses on the basic principles of cli design. We're talking stdout vs stderr, exit code, args, flags, subcommands, etc.
+This page is about building delightful command line apps, which is a deep topic. [Color](/colors) is carved out separately, this page focuses on the basic principles of cli design. We're talking stdout vs stderr, exit code, args, flags, subcommands, etc.
 
 CLI apps are having a bit of a renaissance with the rise of LLMs. Turbocharged by righteous backlash against the plodding, buggy nature of websites. You personally can contribute to the renaissance by building delightful apps.
 
@@ -13,6 +13,8 @@ I wanted to call out the two main cli guides that made an impact on me:
 
 ### Standard Flags
 
+Where useful, support these standard flags and don't use them for anything else. Consistency helps on the command line.
+
 | flag          | behavior                                |
 | ------------- | --------------------------------------- |
 | -h, --help    | show help, then exit 0                  |
@@ -22,13 +24,13 @@ I wanted to call out the two main cli guides that made an impact on me:
 | --dry-run     | don't do anything, just preview         |
 | --json        | output JSON only (for LLMs)             |
 
-I do not recommend `-v` for verbose, instead I prefer `-v` for version coupled with an ENV var like `$MYAPP_DEBUG=1` for debug output.
+I do not recommend `-v` for verbose, `-v` means somethign else on CLI. Instead I like to use an ENV var like `$MYAPP_DEBUG=1` for extra debug output.
 
 ### CLI Golden Rules
 
 1. **`stdout` is for output, `stderr` is <span class="text-red-500">only for errors</span>**. <span class="text-green-500">Exit 0 on success</span>, <span class="text-red-500">1 on failure</span>.
 
-1. For **--help**, print help on stdout and exit 0. Let me pipe it into my pager! Try not to commingle stdout and stderr, this is difficult to untangle.
+1. Print **--help** to stdout and exit 0. Let me pipe it into my pager! Try not to commingle stdout and stderr, this is difficult to untangle.
 
 ```sh
 $ myapp --help       # print help on stdout, exit 0
@@ -46,13 +48,13 @@ $ tennis
 tennis: try 'tennis --help' for more information
 ```
 
-4. **Fail fast** - Don't try to recover from strange errors. Humans and LLMs are both perfectly capable of learning and trying again. Also, it's easier to write great software that fails fast, since you don't burn dev time on lightly tested edge cases.
+4. **Fail fast** - Don't try to recover from strange errors. Humans and LLMs are both perfectly capable of learning and trying again. Also, it's easier to write great software that fails fast, since you don't burn dev time on lightly tested edge cases. I'M TALKING TO YOU, CLAUDE
 
-1. **Fail loud** - Print errors right away and never silently fail. This is a personal pet peeve, software that fails silently in strange ways. At one point I submitted numerous PRs to a vscode extension that failed silently when misconfigured. Be loud.
+1. **Fail loud** - Print errors right away and never silently fail. This is a personal pet peeve, software that fails silently in strange ways. At one point I submitted numerous PRs to a vscode extension that failed silently when misconfigured. Loud and proud, please.
 
-1. **Don't prompt** - Except maybe for destructive actions. Always support `--force` or maybe `--yes` to skip.
+1. **Don't prompt** - Except maybe for destructive actions. Always support `--force` or perhaps `--yes` to skip.
 
-1. **Use XDG** - [XDG](https://specifications.freedesktop.org/basedir/latest/) is an overly complicated spec that helps you figure out where to read/write user settings, app cache, etc. You don't have to follow the whole spec, just avoid writing directly into $HOME. I may uninstall your app if it writes straight into $HOME. For real, and I'm not alone.
+1. **Use XDG** - [XDG](https://specifications.freedesktop.org/basedir/latest/) is an overly hectoring spec that helps you figure out where to read/write user settings, app cache, etc. You don't have to follow the whole spec, just avoid writing directly into $HOME. I may uninstall your app if it writes straight into $HOME. For real, and I'm not alone.
 
 1. **Errors** - Guys, it's not that complicated. Make sure your error includes enough detail! Here is a handy chart that illustrates the problem. Some libraries and languages make this quite difficult, unfortunately. I am sending [Zig](https://ziglang.org) the stink eye right now.
 
@@ -64,7 +66,7 @@ tennis: try 'tennis --help' for more information
 
 1. **--flag > $env > config file** - If your app is successful, users will want to configure it in a more permanent fashion. Some flags will be very popular. Users will setup aliases. They will want ENV variables. They will want config files. You can add support for all this stuff, but remember the priority of each mechanism.
 
-1. **ENV is great for spelunking** - I love it when apps & libs support special environment variables that modify behavior. `--help` is the public face of your app, but it doesn't have to end there. I love love love when I find a $MYAPP_DEBUG=1 env var. As a cli author I hesitate to add fringe flags that increase verbosity, turn off the cache, disable retries, etc. Each supported flag increases my engineering burden, including --help text, man page, README, and shell completions. ENV flags mostly sidestep that burden. Add 'em!
+1. **ENV is great for spelunking** - I love it when apps & libs support special environment variables that modify behavior. `--help` is the public face of your app, but it doesn't have to end there. I love love love when I find a $MYAPP_DEBUG=1 env var. As a cli author I hesitate to add full flags that increase verbosity, turn off the cache, disable retries, etc. Each supported flag increases my engineering burden, including --help text, man page, README, and shell completions. ENV flags sidestep that burden. Add 'em!
 
 ## Example - gum
 

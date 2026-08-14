@@ -2,31 +2,37 @@ import HomePages from "@/components/HomePages.astro";
 
 # About
 
-Ansi.md is my brain dump for creating modern command line apps. My intent is to gradually expand this guide with hard-won tricks, recommended apps and homegrown tools. Design inspo from Fil's lovely [Fil-C](https://fil-c.org) doc site. My name is Adam Doppelt, feedback welcome at hello@ansi.md.
+Ansi.md is my brain dump for creating modern command line apps. My intent is to gradually expand this guide with hard-won tricks, recommended apps and homegrown tools. My name is Adam Doppelt, feedback welcome at hello@ansi.md.
 
 AI statement: I like my writing voice and I do not use LLMs to write.
 
 ## Why
 
-I don't claim to be an expert on command line apps, but I've written a few popular tools (like github/gurgeous/tennis) and it's certainly not easy. I've also built literally hundreds of internal cli apps for various projects and I'm inordinately obsessed with color, progress bars, and spinners.
+I don't claim to be an expert on command line apps, but I've written a few popular tools (like github/gurgeous/tennis) and it's not easy. I've also built literally hundreds of internal cli apps for various projects and I'm inordinately obsessed with color, progress bars, and spinners.
 
-Why is this stuff so complicated? In order to answer this question, you have to dig into the history of the terminal. Your little cli app runs inside a terminal, something like Apple Terminal, Ghostty, iTerm, Alacritty, or even good ol' xterm. If you are using a web-based terminal like the thing inside Google Cloud, you are running a javascript terminal.
+Why is this stuff so complicated? In order to answer this question, you have to dig into the history of the terminals and text output. Your little cli app runs inside something like Apple Terminal, Ghostty, iTerm, Alacritty, or even good ol' xterm. If you are using a web-based terminal like the thing inside Google Cloud, you are running a javascript terminal.
 
-All terminals have a shared lineage, dating back to the [classic VT100](https://en.wikipedia.org/wiki/VT100) from 50 years ago. Your lovingly crafted app emits bytes like `"hello world"` and the terminal displays them.
+Terminals have a shared lineage dating back to the [classic VT100](https://en.wikipedia.org/wiki/VT100) from 50 years ago. My dorm room actually had one of these. Your lovingly crafted app emits bytes like `"hello world"` and the terminal displays them.
 
-Vintage hardware terminals were relatively straightforward, displaying text on screen and looking for `\n` to advance to the next line. Similar to typewriters of that era. But modern terminals are capable of more, so much more. Too much, probably.
+Vintage hardware terminals were relatively straightforward, displaying text on screen and looking for `\n` to advance to the next line. Similar to typewriters of that era. In the pre-internet days we used modems to access our apps and data remotely using new kinds of software terminals. But modern terminals are capable of more, so much more. Too much, probably.
 
 We've got truecolor RGB. We've got themes that are "light" and "dark". We've got mouse control, layout, and hints for double buffering. We've got window titles. We've got strange graphics protocols, built-in tiny progress bars, and hacks to make the icon bounce in [the Dock](<https://en.wikipedia.org/wiki/Dock_(macOS)>).
 
-Modern terminals carefully parse the stream of bytes printed from your app in order to support these features. Terminals also set environment variables to give hints to your app about what's supported. Tools like `ssh` or `tmux` have to understand these environment variables too, otherwise apps running over ssh have no idea what's supported. There are [huge databases](https://invisible-island.net/xterm/terminfo.html) that try to capture which features are supported by which terminals. Your app can also query the terminal directly using obscure invisible codes.
+Modern terminals carefully parse the stream of bytes printed from your app in order to support these features. Terminals also set environment variables to give hints to your app about what's supported. Tools like `ssh` or `tmux` have to understand these environment variables too, otherwise apps running over ssh have no idea what's supported. There are [huge databases](https://invisible-island.net/xterm/terminfo.html) that try to capture which features are supported by which terminals. Brave apps can also query the terminal directly using obscure invisible codes.
 
-I'll be honest with you, this system is a beautiful mess and probably should be burned in a fire. The complexity is made worse due to the various strata in the system - it's quite easy to encounter docs painstakingly written for older terminals, etc. but in many cases you won't need that stuff. Software evolves quickly, and devs are eager to move on to modern terminals.
+I'll be honest with you, this system is a beautiful mess and probably should be burned in a fire. The complexity is made worse due to the various strata in the system - it's quite easy to encounter docs painstakingly written for older terminals, but in many cases you won't need that stuff. Software evolves quickly, and devs are eager to move on to modern terminals.
 
-In the meantime, cli and library authors need to understand the ecosystem if they want to create nice cli apps.
+In the meantime, cli and library authors need to understand the ecosystem if they want to create nice cli apps. That's why I created ansi.md, to collect the latest and greated ansi knowledge in one place.
 
 <HomePages />
 
 ---
+
+#### Special Thanks
+
+- design inspo from Fil's lovely [Fil-C](https://fil-c.org) doc site
+- nak for reading early (bad) drafts
+- site built with [astro](https://astro.build), thanks guys
 
 #### Changelog
 

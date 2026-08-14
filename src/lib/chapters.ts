@@ -4,7 +4,7 @@ export const chapters: Section[] = [
   {
     name: "Pages",
     items: [
-      { name: "Home", url: "/", phrase: "start here" },
+      { name: "Home", url: "/", phrase: "you are here" },
       { name: "ENV & Capabilities", url: "/env", phrase: "OMG why is this so hard" },
       { name: "Color Depth", url: "/colors", phrase: "all about color palettes" },
       { name: "CLI Best Practices", url: "/cli", phrase: "the difference between meh and awesome cli" },

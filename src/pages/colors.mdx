@@ -10,11 +10,11 @@ Let me save you several man-years of effort with three simple suggestions.
 
 ### 1. Avoid ANSI 16 & ANSI 256 0-15 (usually)
 
-All modern terminals let the user customize the "theme", which in effect means customizing ANSI colors 0-16. We are stuck with a primitive system for communicating color between apps and the host terminal. App requests `color 4` and the terminal shows whatever the user picked for `blue`.
+All modern terminals let the user customize the "theme", which in effect means customizing ANSI colors 0-15. We are stuck with a primitive system for communicating color between apps and the host terminal. App requests `color 4` and the terminal shows whatever the user picked for `blue`.
 
-For example, I use the https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf theme, which is setup like so:
+For example, I use the https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf theme, which is set up like so:
 
-```
+```sh
 # catppuccin-frappe.conf ghostty theme
 palette = 0=#51576d
 palette = 1=#e78284
@@ -47,6 +47,7 @@ and the anachronistically named `bright` variants are part of the theme too:
 
 #### Helpful Illustration
 
+There are many, many apps that suffer from this problem because they try to use ansi 16 and make assumptions about the user's terminal theme.
 When we create UI with the user's colors, things can easily go astray. Just because the internet calls that ansi 16 color "white" doesn't mean it's going to look much like white:
 
 ```sh
@@ -62,19 +63,13 @@ printf '\e[38;5;255;48;5;40m 3. hello, world \e[0m\n'
 
 ![](../assets/three.png)
 
-There are many, many apps that suffer from this problem because they try to use ansi 16 and make assumptions about the user's terminal theme.
-
 ### 2. ANSI 256 (but only colors 16-255)
 
 **ANSI 256** is totally sufficient for most apps. Avoid colors 0-15, they lie. When I say WHITE, I mean WHITE. Not off white. WHITE.
 
-Feel free to go all the way to ANSI 16M, of course. As your app grows in popularity you will encounter oddball terminals that don't support it, so use a library that downsamples on your behalf.
+Feel free to go all the way to ANSI 16M, of course. As your app grows in popularity you many encounter oddball terminals that don't support it, so consider using a library that downsamples on your behalf.
 
-The [ANSI 256 Color Cube](https://jakob-bagterp.github.io/colorist-for-python/ansi-escape-codes/extended-256-colors/) is pretty neat. xterm added support way back in [1999](https://invisible-island.net/xterm/xterm.log.html#xterm_111). Thanks Todd!
-
-<div class="mt-1 w-16">![](../assets/cube.svg)</div>
-
-There have been several attempts to name the colors, including my own [modest proposal](/ansi256) right here on this site. BTW here is rb code to generate the cube:
+The ANSI 256 color cube is pretty neat. xterm added support way back in [1999](https://invisible-island.net/xterm/xterm.log.html#xterm_111). Thanks Todd! I have an entire page about the [ANSI 256 color cube](/ansi256) that you should read. BTW here is rb code to generate the cube:
 
 ```rb
 # Calculate ANSI 256 color cube
@@ -97,22 +92,12 @@ end
 ansi256 = (0..255).map { hex256(_1) if _1 >= 16 }
 ```
 
+<div class="mt-4 w-16">![](../assets/cube.svg)</div>
+
 ### 3. Be Thoughtful about Background
 
 Leave the background color alone most of the time. This is the #1 thing you can do to make your app play nicely with the terminal theme. On the other hand, I love drawing attention to headers or important information by inverting colors. On a dark terminal that means true white foreground on a pretty, saturated background color. Vice versa for light terminals.
 
 Special note on downsampling. It's easy to write a function that takes an RGB color and finds the closest ANSI 256 16-255 color using euclidean distance. Be careful - that approach completely fails to take actual human vision into account. You might want to read [this](https://github.com/charmbracelet/x/blob/main/ansi/color.go), or at least ask your llm to consider the problem.
 
-## Tools
-
-ansi.md has some dedicated tools for messing with color:
-
-<ul>
-  {(chapters.find((chapter) => chapter.name === "Tools")?.items ?? []).map((tool) => (
-    <li>
-      <a href={tool.url}>{tool.name}</a> - {tool.phrase}
-    </li>
-  ))}
-</ul>
-
-<a name="avoid" />
+The [Giant Contast Table](/giant) can help you pick high contrast color combinations for the terminal.
