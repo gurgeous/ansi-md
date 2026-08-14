@@ -80,9 +80,9 @@ These aren't necessary, but I think it's fun to see what you can build these day
 
 ### Ecosystem
 
-If you think about it, each TUI must include the crude equivalent of a web browser - event loop, layout engine, and widgets. TUI libs are powerful and complicated. Some of them are like react, with nested components and props. Some use flexbox. Let's start by checking out some popular TUI apps. Chicken emoji below means I've used and enjoyed. 🐔
+If you think about it, each TUI must include the crude equivalent of a web browser - event loop, layout engine, and widgets. TUI libs are powerful and complicated. Some of them are like react, with nested components and props. Some use flexbox. Let's start by checking out some popular TUI apps. I award a highly-coveted chicken emoji to apps I've used and enjoyed. 🐔
 
-| app                             | lang | ⭐ stars | tui                            | what              |
+| app                             | lang | ⭐ stars | tui lib                        | what              |
 | ------------------------------- | :--: | :------: | ------------------------------ | ----------------- |
 | 🐔 github/antonmedv/fx          |  go  |   21k    | github/charmbracelet/bubbletea | json viewer       |
 | github/dlvhdr/gh-dash           |  go  |   12k    | github/charmbracelet/bubbletea | gh dashboard      |
@@ -92,14 +92,14 @@ If you think about it, each TUI must include the crude equivalent of a web brows
 | github/bloomberg/memray         |  py  |   15k    | github/Textualize/textual      | py memory prof    |
 | github/darrenburns/posting      |  py  |   12k    | github/Textualize/textual      | like postman      |
 |                                 |
-| github/imsnif/bandwhich         |  rs  |   12k    | github/ratatui/ratatui         | bandwidth monitor |
-| github/ClementTsang/bottom      |  rs  |   14k    | github/ratatui/ratatui         | top               |
+| 🐔 github/imsnif/bandwhich      |  rs  |   12k    | github/ratatui/ratatui         | bandwidth monitor |
+| 🐔 github/ClementTsang/bottom   |  rs  |   14k    | github/ratatui/ratatui         | top               |
 | 🐔 github/elio-fm/elio          |  rs  |    1k    | github/ratatui/ratatui         | file manager      |
 | github/gitui-org/gitui          |  rs  |   22k    | github/ratatui/ratatui         | git               |
-| github/AlexsJones/llmfit        |  rs  |   31k    | github/ratatui/ratatui         | local LLM picker  |
+| 🐔 github/AlexsJones/llmfit     |  rs  |   31k    | github/ratatui/ratatui         | local LLM picker  |
 | github/mfontanini/presenterm    |  rs  |    9k    | github/ratatui/ratatui         | slides            |
 | github/aome510/spotify-player   |  rs  |    7k    | github/ratatui/ratatui         | spotify           |
-| github/fujiapple852/trippy      |  rs  |    7k    | github/ratatui/ratatui         | ping              |
+| 🐔 github/fujiapple852/trippy   |  rs  |    7k    | github/ratatui/ratatui         | ping              |
 | 🐔 github/sxyazi/yazi           |  rs  |   41k    | github/ratatui/ratatui         | file manager      |
 |                                 |
 | github/vincelwt/gloomberb       |  ts  |    1k    | github/anomalyco/opentui       | finance           |
@@ -112,12 +112,12 @@ If you think about it, each TUI must include the crude equivalent of a web brows
 |                                 |
 | github/derailed/k9s             |  go  |   34k    | github/derailed/tview          | kubernetes        |
 | github/jesseduffield/lazydocker |  go  |   52k    | github/jesseduffield/gocui     | docker            |
-| github/jesseduffield/lazygit    |  go  |   81k    | github/gdamore/tcell           | git               |
+| 🐔 github/jesseduffield/lazygit |  go  |   81k    | github/gdamore/tcell           | git               |
 | github/Rigellute/spotify-tui    |  rs  |   19k    | github/fdehau/tui-rs           | spotify           |
 
 And let's not forget the ai harnesses:
 
-| app                              | lang  | ⭐ stars | tui                      |
+| app                              | lang  | ⭐ stars | tui lib                  |
 | -------------------------------- | :---: | :------: | ------------------------ |
 | 🐔 github/anthropics/claude-code |  ts   |   140k   | github/vadimdemedes/ink  |
 | 🐔 github/openai/codex           |  rs   |   91k    | github/ratatui/ratatui   |
@@ -125,8 +125,7 @@ And let's not forget the ai harnesses:
 | github/google-gemini/gemini-cli  |  ts   |   106k   | github/vadimdemedes/ink  |
 | github/NousResearch/hermes-agent | py/ts |   222k   | github/vadimdemedes/ink  |
 | github/anomalyco/opencode        |  ts   |   191k   | github/anomalyco/opentui |
-
-Note that [pi](https://pi.dev) is the exception here, using its own TUI lib.
+| 🐔 github/earendil-works/pi      |  ts   |   90k    | custom                   |
 
 ### TUI Frameworks
 
