@@ -12,8 +12,7 @@ export const chapters: Section[] = [
       { name: "The TUI", url: "/tui", phrase: "pretty apps" },
       { name: "ANSI Escape Codes", url: "/escapes", phrase: "just the basics, ha" },
       { name: "Advanced ANSI Stuff", url: "/advanced", phrase: "don't read this" },
-      { name: "Recommended CLI Apps", url: "/apps", phrase: "stuff I personally like" },
-      { name: "Recommended CLI Libraries", url: "/libs", phrase: "stuff I personally like" },
+      { name: "Recommended Apps & Libs", url: "/recs", phrase: "stuff I personally like" },
     ],
   },
   {

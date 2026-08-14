@@ -1,16 +1,5 @@
 ### features
 
-- TUI section (vectro)
-- note about fil-c look and feel
--
-- turn around the draft
+- do we need italic?
 - turn on hello@ansi.md
 - deploy to ansi.md
-
-htop
-csvlens
-vd
-vectro
-gloomberb
-harnesses
-trippy

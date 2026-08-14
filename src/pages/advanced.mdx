@@ -2,21 +2,19 @@
 title: Advanced ANSI Stuff
 ---
 
-If you flipped through this site you probably learned something about ANSI. At the very least you've plumbed the depths of my modest brain, the limits of my personal knowledge. This chapter is for diehards needing a bit more. Also, in all honesty a dumping ground for topics that I would like to understand better. Pardon my ignorance.
+If you flipped through this guide you probably learned something about ANSI. At the very least you've plumbed the limits of my personal knowledge. This chapter is for diehards needing a bit more. Also, in all honesty a dumping ground for topics that I would like to understand better. Pardon my ignorance.
 
 ### terminfo
 
-[terminfo](https://invisible-island.net/ncurses/terminfo.src.html) is a giant database file that describes the specific capabilities of all the terminals that ever lived. How many colors? Which escape codes are supported? This is like cracking open a tomb, it's astonishing the sheer number of terminals that have come and gone. [termcap](https://github.com/sctg-development/termcap/blob/main/termcap.src)+curses did the same thing and were part of the original BSD release, way back in 1980. Eventually termcap was superseded by terminfo+ncurses.
+[terminfo](https://invisible-island.net/ncurses/terminfo.src.html) is a giant database that describes the specific capabilities of all the terminals that ever lived. How many colors? Which escape codes are supported? This is like cracking open a tomb, it's astonishing the sheer number of terminals that have come and gone. [termcap](https://github.com/sctg-development/termcap/blob/main/termcap.src)+curses did the same thing and were part of the original BSD release, way back in 1980. Eventually termcap was superseded by terminfo+ncurses.
 
-For fun, look in the terminfo file and search for something modern like `ghostty` or `warp`. "Its readme and man page begin with a lot of hype...". Good stuff. That file is so salty, I love it. "disregarding the reuse of colors 1-7 which is of interest only to the numerically illiterate..."
+For fun, look in the terminfo file and search for something modern like `ghostty` or `warp`. That file is so salty, I love it. "Its readme and man page begin with a lot of hype" or "of interest only to the numerically illiterate"
 
-Most modern libs DO NOT use terminfo. We have fewer terminals, and most terminals support a common subset of ANSI escapes. The stuff that most of us care about, the stuff on my [ANSI Escape Codes](/escapes) page. There's an [epic anti-terminfo rant](https://twoot.site/@bean/113056942625234032) which you may enjoy. The gist is that terminfo is out of date, overly fussy, and not really needed anymore.
-
-BTW Ghostty has a neat feature that quietly injects a new "ghostty" terminfo entry when you ssh to a machine. This sneaky feature is gradually becoming obsolete since newer versions of terminfo include an entry for ghostty.
+Most modern libs don't use terminfo. We have fewer terminals, and most terminals support a common subset of ANSI escapes. The stuff that most of us care about, the stuff on my [ANSI Escape Codes](/escapes) page. There's an [epic anti-terminfo rant](https://twoot.site/@bean/113056942625234032) which you may enjoy. The gist is that terminfo is out of date, overly fussy, and not really needed anymore.
 
 ### Obscure Yet Handy
 
-- **clear, reset** - These are ansi escape codes, and all cli utils! "Clear" wipes the current screen and "reset" resets the terminal entirely, including scrollback. Remember that these are just magic strings sent to your terminal, which must react accordingly. The escape codes are mostly standardized these days, but if you run the `clear` or `reset` utils they will look up the escape code from terminfo and echo it to your terminal. You can also try `stty sane`, which attempts to restore some defaults to your terminal using escape codes. `reset` mostly does the same thing, but also sends the reset escape code. Typing `ctrl+l` into bash/zsh/etc usually ends up sending the `clear` ansi escape code as well.
+- **clear, reset** - These are ansi escape codes and also corresponding cli commands. Remember that these are just magic strings sent to your terminal, which must react accordingly. **Clear** wipes the current screen and **reset** resets the terminal entirely, including scrollback. he escape codes are mostly standardized these days, but if you run the `clear` or `reset` utils they will look up the escape code from terminfo and echo it to your terminal. You can also try `stty sane`, which attempts to restore some defaults to your terminal using escape codes. `reset` mostly does the same thing, but also sends the reset escape code. Typing `ctrl+l` into bash/zsh/etc usually ends up sending the `clear` ansi escape code as well.
 
   Sometimes my terminal is too borked to accept commands. This happens surprisingly often when working on cli apps. In that case I use the ghostty command palette to **Reset Terminal**, which is just like running `reset`.
 

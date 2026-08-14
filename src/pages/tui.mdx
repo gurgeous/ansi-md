@@ -13,13 +13,13 @@ import spotifyPlayer from "@/assets/tuis/spotify-player.jpg";
 import superfile from "@/assets/tuis/superfile.jpg";
 import yazi from "@/assets/tuis/yazi.jpg";
 
-Most CLI apps run for a moment, write some output, and then exit. Think `ls`. But there's a category of full blown apps that hang around so you can interact with them. This kind of app is called a **Terminal User Interface**, or **TUI** for short. A broad definition includes stalwarts like `emacs` or `tmux`, but here we are mainly focused on newer TUIs that strive for beautiful design with advanced layouts.
+Most CLI apps run for a moment, write some output, and then exit. Think `ls`. But there's a category of full blown apps that hang around so you can interact with them. This kind of app is called a **Terminal User Interface**, or **TUI** for short. A broad definition would techincally include stalwarts like `emacs` or `tmux`, but here we are mainly focused on newer TUIs that strive for beautiful design with advanced layouts.
 
-Disclaimer - I've only written a handful of TUI apps, mostly unreleased. My favorite is probably my silly little RPN calculator github/gurgeous/vectro, built with github/charmbracelet/bubbletea. Also on web at [vectro.app](https://vectro.app). It's not that exciting, please ignore.
+Disclaimer - I've only written a handful of TUI apps, mostly unreleased. My favorite is probably my silly little RPN calculator github/gurgeous/vectro, built with github/charmbracelet/bubbletea. Also on web at [vectro.app](https://vectro.app), which nobody asked for. It's not that exciting, please ignore.
 
 ### Gratuitous Screenshots
 
-These aren't necessary, but I think it's fun to see what you can build these days. Let your imagination run wild.
+Let your imagination run wild, we can do a lot these days:
 
 <div class="mt-4 grid grid-cols-3 gap-x-1 gap-y-2 sm:gap-3">
   <figure>
@@ -94,6 +94,7 @@ If you think about it, each TUI must include the crude equivalent of a web brows
 |                                 |
 | 🐔 github/imsnif/bandwhich      |  rs  |   12k    | github/ratatui/ratatui         | bandwidth monitor |
 | 🐔 github/ClementTsang/bottom   |  rs  |   14k    | github/ratatui/ratatui         | top               |
+| github/YS-L/csvlens             |  rs  |    4k    | github/ratatui/ratatui         | csv viewer        |
 | 🐔 github/elio-fm/elio          |  rs  |    1k    | github/ratatui/ratatui         | file manager      |
 | github/gitui-org/gitui          |  rs  |   22k    | github/ratatui/ratatui         | git               |
 | 🐔 github/AlexsJones/llmfit     |  rs  |   31k    | github/ratatui/ratatui         | local LLM picker  |
@@ -129,12 +130,12 @@ And let's not forget the ai harnesses:
 
 ### TUI Frameworks
 
-Again, I haven't used all of these so I can't really provide a lot of guidance. The only one I've really poked at is bubbletea, which I found to be simple and productive. Personally I would avoid writing complicated TUIs in typescript. Use something native like go/rust, and probably bubbletea/ratatui if you have a choice.
+Again, I haven't used all of these so I can't really provide a lot of guidance. The only one I've shipped with is bubbletea, which I found to be fast and productive. Personally I would avoid writing complicated TUIs in typescript. Use something native like go/rust, and probably bubbletea/ratatui if you have a choice.
 
-| lib                            | lang | ⭐ stars | design            | layout            |
-| ------------------------------ | :--: | :------: | ----------------- | ----------------- |
-| github/charmbracelet/bubbletea |  go  |   44k    | model/update/view | manual / lipgloss |
-| github/vadimdemedes/ink        |  ts  |   40k    | react             | flexbox           |
-| github/anomalyco/opentui       |  ts  |   13k    | react/solid       | flexbox           |
-| github/ratatui/ratatui         |  rs  |   22k    | immediate mode    | constraints       |
-| github/Textualize/textual      |  py  |   37k    | reactive tree     | css-like          |
+| lib                            |  lang  | ⭐ stars | design            | layout            |
+| ------------------------------ | :----: | :------: | ----------------- | ----------------- |
+| github/charmbracelet/bubbletea |   go   |   44k    | model/update/view | lipgloss / manual |
+| github/vadimdemedes/ink        |   ts   |   40k    | react             | flexbox           |
+| github/anomalyco/opentui       |   ts   |   13k    | react/solid       | flexbox           |
+| github/ratatui/ratatui         |  rust  |   22k    | immediate mode    | constraints       |
+| github/Textualize/textual      | python |   37k    | react-like        | css-like          |

@@ -70,11 +70,11 @@ tennis: try 'tennis --help' for more information
 
 ## Example - gum
 
-github/charmbracelet/gum is a fun little tool from our friends at Charm. Like all charm apps, it is written in golang and uses github/alecthomas/kong for args. A fine example of what you get out-of-the-box with a proper library. This is why I highlight Kong and other stellar libraries on my [recommendations](/libs) page.
+github/charmbracelet/gum is a fun little tool from our friends at Charm. Like all charm apps, it is written in golang and uses github/alecthomas/kong for args. A fine example of what you get out-of-the-box with a proper library. This is why I highlight Kong and other stellar libraries on my [recommendations](/recs) page.
 
 #### 1. Naked gum
 
-Nice help message, and it goes to stdout. Only quibble is that naked `gum` exits with a non-zero code. I understand that this is technically an error ("the user didn't pass a subcommand") but this is unfriendly. With my personal shell this shows a <span class="text-red-500">nasty red ERROR indicator</span>. Why make me feel bad just for entering your command naked? This reminds me of web forms that display an error as soon as you focus the input, then the error disappears once the field is valid. Meanies.
+Nice help message, and it goes to stdout. Only quibble is that naked gum exits with a non-zero code. I understand that this is technically an error ("the user didn't pass a subcommand") but it feels unfriendly. My shell this shows a <span class="font-bold text-red-500">nasty ERROR indicator</span>. Why make me feel bad just for entering your command naked? This reminds me of web forms that blurt out an error as soon as you focus the input, then the error disappears once the field is valid. Meanies.
 
 ```
 $ gum

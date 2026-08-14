@@ -149,6 +149,7 @@ export default defineConfig({
       name: "IBM Plex Mono",
       cssVariable: "--font-ibm-plex-mono",
       weights: ["400 700"],
+      styles: ["normal"],
     },
   ],
   integrations: [autoImportVite, mdx(), icon()],

@@ -6,7 +6,7 @@ I'm hesitant to detail all the various ansi escape codes and protocols, many of 
 
 ### ESC
 
-Most useful ansi escape sequences begin with `\e[`. Usually followed by a series of semicolon delimited integers. For colors, use an `m` to end the sequence. `\e` is the ESC character, which is why we call these _escape codes_. The `\e[` text is the `CSI`, short for Control Sequence Introducer. ESC itself is ANSI character 27 (base 10), 0x1b (base 16) or 033 (octal). As you wander the internet you might see sample code using `\e` or `\033` or `\x1b` or `ESC`. These are all various ways to send an ESC char from your app to the terminal.
+Most useful ansi escape sequences begin with `\e[`. Usually followed by a series of semicolon delimited integers. For colors, use an `m` to end the sequence. `\e` is the ESC character, which is why we call these **escape codes**. The `\e[` text is the `CSI`, short for Control Sequence Introducer. ESC itself is ANSI character 27 (base 10), 0x1b (base 16) or 033 (octal). As you wander the internet you might see sample code using `\e` or `\033` or `\x1b` or `ESC`. These are all various ways to send an ESC char from your app to the terminal.
 
 ### Colors and Bold
 
@@ -59,7 +59,7 @@ I haven't used these personally but I want to. Just as soon as I find a reason..
 
 ### Terminal Queries
 
-If you think about it, there are many questions that your app might want to ask the terminal. A few hints for the curious:
+There are many questions that your app might need to ask the terminal. A few hints for the curious:
 
 - How big is the terminal, in chars? See ioctl TIOCGWINSZ.
 - What is the terminal's bg color? Critical info if your app supports both dark & light themes. Unfortunately [quite complicated](https://github.com/tautropfli/terminal-colorsaurus/blob/main/crates/terminal-colorsaurus/src/xterm.rs), danger, argh
