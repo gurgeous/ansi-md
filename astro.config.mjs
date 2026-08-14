@@ -3,6 +3,7 @@ import { parse as parseJs } from "acorn";
 import mdx from "@astrojs/mdx";
 import { unified } from "@astrojs/markdown-remark";
 import catppuccin from "@shikijs/themes/catppuccin-frappe";
+import { remarkGitHubRepoLinks } from "./src/lib/plugins/github.mjs";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
@@ -10,7 +11,6 @@ import { parse as parsePath, resolve } from "node:path";
 import { fileURLToPath, URL } from "node:url";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkGfm from "remark-gfm";
-import { visit } from "unist-util-visit";
 import AutoImportVite from "unplugin-auto-import/astro";
 
 //
@@ -35,64 +35,10 @@ const tailwindReference = () => ({
 });
 
 //
-// handle github repo urls
+// github repo labels
 //
 
-const repoLabelOverrides = {
-  "alecthomas/kong": "kong",
-  "anomalyco/opentui": "opentui",
-  "chalk/supports-color": "supports-color",
-  "charmbracelet/bubbletea": "bubbletea",
-  "charmbracelet/colorprofile": "colorprofile",
-  "charmbracelet/gum": "gum",
-  "charmbracelet/lipgloss": "lipgloss",
-  "crigler/dtach": "dtach",
-  "crossterm-rs/crossterm": "crossterm",
-  "dalance/termbg": "termbg",
-  "eza-community/eza": "eza",
-  "ghostty-org/ghostty": "ghostty",
-  "gurgeous/table_tennis": "table_tennis",
-  "gurgeous/tennis": "tennis",
-  "muesli/termenv": "termenv",
-  "neurosnap/zmx": "zmx",
-  "rust-cli/anstyle": "anstyle",
-  "tautropfli/terminal-colorsaurus": "terminal-colorsaurus",
-  "Textualize/rich": "rich",
-  "Textualize/textual": "Textual",
-};
-
-function repoPath(href) {
-  let url;
-  try {
-    url = new URL(href);
-  } catch {
-    return;
-  }
-  if (url.hostname !== "github.com") return;
-  const [owner, repo] = url.pathname.split("/").filter(Boolean);
-  if (!owner || !repo) return;
-  return `${owner}/${repo}`;
-}
-
-function rawHref(node) {
-  if (node.children.length !== 1) return;
-  const [child] = node.children;
-  if (child.type !== "text") return;
-  if (child.value !== node.url) return;
-  return child;
-}
-
-function remarkGitHubRepoLinks() {
-  return (tree) => {
-    visit(tree, "link", (node) => {
-      const child = rawHref(node);
-      if (!child) return;
-      const repo = repoPath(node.url);
-      if (!repo) return;
-      child.value = repoLabelOverrides[repo] ?? repo;
-    });
-  };
-}
+const repoLabelOverrides = {};
 
 //
 // default layout
@@ -209,7 +155,12 @@ export default defineConfig({
   markdown: {
     processor: unified({
       rehypePlugins: [[rehypeExternalLinks, { rel: ["noopener", "noreferrer"], target: "_blank" }]],
-      remarkPlugins: [remarkDefaultLayout, remarkGfm, remarkGitHubRepoLinks, mdxAutoImports(autoImports)],
+      remarkPlugins: [
+        remarkDefaultLayout,
+        remarkGfm,
+        [remarkGitHubRepoLinks, { overrides: repoLabelOverrides }],
+        mdxAutoImports(autoImports),
+      ],
       smartypants: false,
     }),
     shikiConfig: { theme: catppuccin },

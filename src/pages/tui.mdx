@@ -4,47 +4,62 @@ title: The TUI
 
 import vectro from "../assets/vectro.gif";
 
-Most CLI apps run for a moment, write some lines, and then exit. Our old friend `ls` (well, https://github.com/eza-community/eza) fires itself up, spits out a few lines, and then exits. But there's a whole other category of full blown apps that hang around so you can interact with them. This kind of app is called a **Terminal User Interface**, or TUI for short. A broad definition includes stalwarts like `emacs` or `tmux`, but here I'm mainly focused on newer TUIs that strive for beautiful design and advanced layout.
+Most CLI apps run for a moment, write some lines, and then exit. Our old friend `ls` (well, github/eza-community/eza) fires itself up, spits out a few lines, and then exits. But there's a whole other category of full blown apps that hang around so you can interact with them. This kind of app is called a **Terminal User Interface**, or TUI for short. A broad definition includes stalwarts like `emacs` or `tmux`, but here I'm mainly focused on newer TUIs that strive for beautiful design and advanced layout.
 
-Disclaimer - I've only written a handful of TUI apps, mostly unreleased. My favorite is probably [vectro](https://github.com/gurgeous/vectro). Unnecessary screenshot:
+Disclaimer - I've only written a handful of TUI apps, mostly unreleased. My favorite is probably my RPN calculator [vectro](github/gurgeous/vectro). Also at https://vectro.app.
 
-<div class="w-1/2">![](../assets/vectro.gif)</div>
+### TUI Libraries
 
-### TUI Library
+Every TUI is built on a TUI library. If you think about it, you'll realize that each TUI must include the crude equivalent of a web browser - event loop, layout engine, and many widgets. These libs are powerful and complicated, and I wouldn't try to create a TUI without one. Some of them feel a bit like react, with nested components and props. Some use flexbox for layout. Some suggestions depending on your language of choice.
 
-Almost every TUI uses a well known TUI library. If you think about it for a sec, you'll realize that every TUI includes the equivalent of a web browser - an event loop, layout engine, and widgets.
+Rather than listing out the TUI libraries, let's look at some popular TUI apps:
 
-The foundation of every TUI is a TUI library.
+| app                              |  lang  | ⭐ stars | tui                            | what              |
+| -------------------------------- | :----: | :------: | ------------------------------ | ----------------- |
+| github/yorukot/superfile         |   go   |   23k    | github/charmbracelet/bubbletea | file manager      |
+| github/twpayne/chezmoi           |   go   |   21k    | github/charmbracelet/bubbletea | dotfile manager   |
+| github/dlvhdr/gh-dash            |   go   |   12k    | github/charmbracelet/bubbletea | GitHub dashboard  |
+|                                  |
+| github/hrkfdn/ncspot             |  rust  |    7k    | github/gyscos/cursive          | Spotify client    |
+| github/arxanas/git-branchless    |  rust  |    4k    | github/gyscos/cursive          | Git workflow      |
+|                                  |
+| github/sxyazi/yazi               |  rust  |   41k    | github/ratatui/ratatui         | file manager      |
+| github/atuinsh/atuin             |  rust  |   31k    | github/ratatui/ratatui         | shell history     |
+| github/gitui-org/gitui           |  rust  |   22k    | github/ratatui/ratatui         | Git client        |
+| github/ClementTsang/bottom       |  rust  |   14k    | github/ratatui/ratatui         | system monitor    |
+| github/imsnif/bandwhich          |  rust  |   12k    | github/ratatui/ratatui         | bandwidth monitor |
+| github/mfontanini/presenterm     |  rust  |    9k    | github/ratatui/ratatui         | slide presenter   |
+| github/alexpasmantier/television |  rust  |    6k    | github/ratatui/ratatui         | fuzzy finder      |
+|                                  |
+| github/bloomberg/memray          | python |   15k    | github/Textualize/textual      | memory profiler   |
+| github/darrenburns/posting       | python |   12k    | github/Textualize/textual      | API client        |
+| github/tconbeer/harlequin        | python |    6k    | github/Textualize/textual      | SQL IDE           |
+| github/charles-001/dolphie       | python |    1k    | github/Textualize/textual      | database monitor  |
+|                                  |
+| github/anthropics/claude-code    |   ts   |   140k   | github/vadimdemedes/ink        | coding agent      |
+| github/google-gemini/gemini-cli  |   ts   |   106k   | github/vadimdemedes/ink        | coding agent      |
+| github/github/copilot-cli        |   ts   |   11k    | github/vadimdemedes/ink        | coding agent      |
+|                                  |
+| github/anomalyco/opencode        |   ts   |   191k   | github/anomalyco/opentui       | coding agent      |
+| github/cline/cline               |   ts   |   65k    | github/anomalyco/opentui       | coding agent      |
+| github/modem-dev/hunk            |   ts   |    8k    | github/anomalyco/opentui       | diff reviewer     |
 
-
-Building a TUI is incredibly complicated
-
-
-Almost all TUI apps c
-
-
+| lib                            |  lang  | ⭐ stars | what                         |
+| ------------------------------ | :----: | :------: | ---------------------------- |
+| github/charmbracelet/bubbletea |   go   |   44k    | Elm-style TUI framework      |
+|                                |
+| github/gyscos/cursive          |  rust  |    5k    | widget toolkit               |
+| github/ratatui/ratatui         |  rust  |   22k    | immediate-mode TUI framework |
+|                                |
+| github/Textualize/textual      | python |   37k    | app framework                |
+|                                |
+| github/vadimdemedes/ink        |   js   |   40k    | React TUI framework          |
+| github/anomalyco/opentui       |   js   |   13k    | renderer and components      |
 
 ### TUI Apps
 
-
+codex - uses ratatui
 
 lazygit
 nnn, yazi, eloi
 claude, codex
-
-
-
-
-
-Rust 	Ratatui, Cursive
-Go 	Bubble Tea, tview, termui
-Python 	Textual, Rich, urwid, prompt_toolkit, curses
-C 	ncurses, notcurses
-C++ 	FTXUI, ncurses
-C#/.NET 	Terminal.Gui, Spectre.Console
-JS/TS 	Ink, blessed, terminal-kit
-Java 	Lanterna, JLine
-Ruby 	TTY toolkit
-Haskell 	Brick
-Zig 	various emerging libraries
-Shell 	dialog, whiptail, gum, fzf
