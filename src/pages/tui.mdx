@@ -1,0 +1,140 @@
+---
+title: The TUI
+---
+
+import { Image } from "astro:assets";
+import elio from "@/assets/tuis/elio.jpg";
+import ghDash from "@/assets/tuis/gh-dash.jpg";
+import gloomberb from "@/assets/tuis/gloomberb.jpg";
+import k9s from "@/assets/tuis/k9s.jpg";
+import lazydocker from "@/assets/tuis/lazydocker.jpg";
+import posting from "@/assets/tuis/posting.jpg";
+import spotifyPlayer from "@/assets/tuis/spotify-player.jpg";
+import superfile from "@/assets/tuis/superfile.jpg";
+import yazi from "@/assets/tuis/yazi.jpg";
+
+Most CLI apps run for a moment, write some output, and then exit. Think `ls`. But there's a category of full blown apps that hang around so you can interact with them. This kind of app is called a **Terminal User Interface**, or **TUI** for short. A broad definition includes stalwarts like `emacs` or `tmux`, but here we are mainly focused on newer TUIs that strive for beautiful design with advanced layouts.
+
+Disclaimer - I've only written a handful of TUI apps, mostly unreleased. My favorite is probably my silly little RPN calculator github/gurgeous/vectro, built with github/charmbracelet/bubbletea. Also on web at [vectro.app](https://vectro.app). It's not that exciting, please ignore.
+
+### Gratuitous Screenshots
+
+These aren't necessary, but I think it's fun to see what you can build these days. Let your imagination run wild.
+
+<div class="mt-4 grid grid-cols-3 gap-x-1 gap-y-2 sm:gap-3">
+  <figure>
+    <a href="https://github.com/elio-fm/elio">
+      <Image class="aspect-video" src={elio} alt="" />
+      <figcaption>elio</figcaption>
+    </a>
+  </figure>
+  <figure>
+    <a href="https://github.com/dlvhdr/gh-dash">
+      <Image class="aspect-video" src={ghDash} alt="" />
+      <figcaption>gh-dash</figcaption>
+    </a>
+  </figure>
+  <figure>
+    <a href="https://github.com/vincelwt/gloomberb">
+      <Image class="aspect-video" src={gloomberb} alt="" />
+      <figcaption>gloomberb</figcaption>
+    </a>
+  </figure>
+  <figure>
+    <a href="https://github.com/derailed/k9s">
+      <Image class="aspect-video" src={k9s} alt="" />
+      <figcaption>k9s</figcaption>
+    </a>
+  </figure>
+  <figure>
+    <a href="https://github.com/jesseduffield/lazydocker">
+      <Image class="aspect-video" src={lazydocker} alt="" />
+      <figcaption>lazydocker</figcaption>
+    </a>
+  </figure>
+  <figure>
+    <a href="https://github.com/darrenburns/posting">
+      <Image class="aspect-video" src={posting} alt="" />
+      <figcaption>posting</figcaption>
+    </a>
+  </figure>
+  <figure>
+    <a href="https://github.com/aome510/spotify-player">
+      <Image class="aspect-video" src={spotifyPlayer} alt="" />
+      <figcaption>spotify-player</figcaption>
+    </a>
+  </figure>
+  <figure>
+    <a href="https://github.com/yorukot/superfile">
+      <Image class="aspect-video" src={superfile} alt="" />
+      <figcaption>superfile</figcaption>
+    </a>
+  </figure>
+  <figure>
+    <a href="https://github.com/sxyazi/yazi">
+      <Image class="aspect-video" src={yazi} alt="" />
+      <figcaption>yazi</figcaption>
+    </a>
+  </figure>
+</div>
+
+### Ecosystem
+
+If you think about it, each TUI must include the crude equivalent of a web browser - event loop, layout engine, and widgets. TUI libs are powerful and complicated. Some of them are like react, with nested components and props. Some use flexbox. Let's start by checking out some popular TUI apps. I award a highly-coveted chicken emoji to apps I've used and enjoyed. 🐔
+
+| app                             | lang | ⭐ stars | tui lib                        | what              |
+| ------------------------------- | :--: | :------: | ------------------------------ | ----------------- |
+| 🐔 github/antonmedv/fx          |  go  |   21k    | github/charmbracelet/bubbletea | json viewer       |
+| github/dlvhdr/gh-dash           |  go  |   12k    | github/charmbracelet/bubbletea | gh dashboard      |
+| github/maaslalani/slides        |  go  |   12k    | github/charmbracelet/bubbletea | slides            |
+| github/yorukot/superfile        |  go  |   23k    | github/charmbracelet/bubbletea | file manager      |
+|                                 |
+| github/bloomberg/memray         |  py  |   15k    | github/Textualize/textual      | py memory prof    |
+| github/darrenburns/posting      |  py  |   12k    | github/Textualize/textual      | like postman      |
+|                                 |
+| 🐔 github/imsnif/bandwhich      |  rs  |   12k    | github/ratatui/ratatui         | bandwidth monitor |
+| 🐔 github/ClementTsang/bottom   |  rs  |   14k    | github/ratatui/ratatui         | top               |
+| 🐔 github/elio-fm/elio          |  rs  |    1k    | github/ratatui/ratatui         | file manager      |
+| github/gitui-org/gitui          |  rs  |   22k    | github/ratatui/ratatui         | git               |
+| 🐔 github/AlexsJones/llmfit     |  rs  |   31k    | github/ratatui/ratatui         | local LLM picker  |
+| github/mfontanini/presenterm    |  rs  |    9k    | github/ratatui/ratatui         | slides            |
+| github/aome510/spotify-player   |  rs  |    7k    | github/ratatui/ratatui         | spotify           |
+| 🐔 github/fujiapple852/trippy   |  rs  |    7k    | github/ratatui/ratatui         | ping              |
+| 🐔 github/sxyazi/yazi           |  rs  |   41k    | github/ratatui/ratatui         | file manager      |
+|                                 |
+| github/vincelwt/gloomberb       |  ts  |    1k    | github/anomalyco/opentui       | finance           |
+| 🐔 github/modem-dev/hunk        |  ts  |    8k    | github/anomalyco/opentui       | diff viewer       |
+|                                 |
+| github/nicolargo/glances        |  py  |   33k    | ncurses                        | top               |
+| github/allinurl/goaccess        |  c   |   21k    | ncurses                        | log file viewer   |
+| github/jarun/nnn                |  c   |   22k    | ncurses                        | file manager      |
+| 🐔 github/jonas/tig             |  c   |   13k    | ncurses                        | git               |
+|                                 |
+| github/derailed/k9s             |  go  |   34k    | github/derailed/tview          | kubernetes        |
+| github/jesseduffield/lazydocker |  go  |   52k    | github/jesseduffield/gocui     | docker            |
+| 🐔 github/jesseduffield/lazygit |  go  |   81k    | github/gdamore/tcell           | git               |
+| github/Rigellute/spotify-tui    |  rs  |   19k    | github/fdehau/tui-rs           | spotify           |
+
+And let's not forget the ai harnesses:
+
+| app                              | lang  | ⭐ stars | tui lib                  |
+| -------------------------------- | :---: | :------: | ------------------------ |
+| 🐔 github/anthropics/claude-code |  ts   |   140k   | github/vadimdemedes/ink  |
+| 🐔 github/openai/codex           |  rs   |   91k    | github/ratatui/ratatui   |
+| github/github/copilot-cli        |  ts   |   11k    | github/vadimdemedes/ink  |
+| github/google-gemini/gemini-cli  |  ts   |   106k   | github/vadimdemedes/ink  |
+| github/NousResearch/hermes-agent | py/ts |   222k   | github/vadimdemedes/ink  |
+| github/anomalyco/opencode        |  ts   |   191k   | github/anomalyco/opentui |
+| 🐔 github/earendil-works/pi      |  ts   |   90k    | custom                   |
+
+### TUI Frameworks
+
+Again, I haven't used all of these so I can't really provide a lot of guidance. The only one I've really poked at is bubbletea, which I found to be simple and productive. Personally I would avoid writing complicated TUIs in typescript. Use something native like go/rust, and probably bubbletea/ratatui if you have a choice.
+
+| lib                            | lang | ⭐ stars | design            | layout            |
+| ------------------------------ | :--: | :------: | ----------------- | ----------------- |
+| github/charmbracelet/bubbletea |  go  |   44k    | model/update/view | manual / lipgloss |
+| github/vadimdemedes/ink        |  ts  |   40k    | react             | flexbox           |
+| github/anomalyco/opentui       |  ts  |   13k    | react/solid       | flexbox           |
+| github/ratatui/ratatui         |  rs  |   22k    | immediate mode    | constraints       |
+| github/Textualize/textual      |  py  |   37k    | reactive tree     | css-like          |
