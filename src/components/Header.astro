@@ -4,13 +4,12 @@ import Hamburger from "@/components/Hamburger.astro";
 
 <header>
   <a href="/">Ansi.md</a>
+  <Hamburger />
 </header>
-
-<Hamburger />
 
 <style>
   header {
-    @apply border-brand-dark bg-brand w-full border-b-4 px-6 py-4 text-3xl text-white sm:py-5 sm:text-4xl;
+    @apply border-brand-dark bg-brand flex w-full items-center justify-between border-b-4 px-6 py-4 text-3xl text-white sm:py-5 sm:text-4xl;
   }
   a {
     @apply font-bold hover:brightness-85;

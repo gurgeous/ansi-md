@@ -43,11 +43,11 @@ for (const [name, idx] of Object.entries(ansi256Table)) {
   .ansi256-full-chart {
     th:first-child,
     td:first-child {
-      @apply w-20 sm:w-28 text-center;
+      @apply w-20 text-center sm:w-28;
     }
 
     .swatch {
-      @apply block h-7 rounded bg-(--bg) text-center leading-7 font-semibold text-(--fg) text-xs sm:text-sm;
+      @apply block h-7 rounded bg-(--bg) text-center text-xs leading-7 font-semibold text-(--fg) sm:text-sm;
     }
   }
 </style>
