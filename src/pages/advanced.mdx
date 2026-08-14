@@ -22,7 +22,7 @@ Most modern libs don't use terminfo. We have fewer terminals, and most terminals
 
   There is a rich history here, but IMO these tools are going to be subsumed by next-gen terminals that have dtach-like behavior builtin. LLM usage is acting as a catalyst. At the moment I use ghostty+zmx.
 
-- **readline** - a gnu lib for reading a line of text from the user. Yes, there's an entire library for that and it supports things like customized keybindings (emacs/vim), copy and paste. For a long time this task (reading a line) was complicated enough that we needed dedicated, supported libraries to get it done. Still needed by many apps, and readline itself has been ported to many other languages at this point.
+- **readline** - a gnu lib for reading a line of text from the user. Yes, there's an entire library for that and it supports things like customized keybindings (emacs/vim), internal copy and paste, etc. For a long time this task (reading a line) was complicated enough that we needed dedicated, supported libraries to get it done. Still used by many apps, and readline has been ported to many other languages.
 
 - **tput** - A cli wrapper for terminfo. It can look things up, and print them too. For example, `tput reset` prints the reset string from terminfo.
 
