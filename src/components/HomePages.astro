@@ -24,25 +24,23 @@ import { chapters } from "@/lib/chapters";
     &:not(:first-child) {
       @apply mt-10;
     }
+  }
 
-    h2 {
-      @apply text-brand mt-0 text-3xl font-bold;
-    }
+  h2 {
+    @apply text-brand mt-0 text-3xl font-bold;
+  }
 
-    ol {
-      @apply mt-4;
+  ol {
+    @apply mt-4 text-sm;
 
-      li {
-        @apply text-sm/4 sm:text-sm;
-
-        &:not(:first-child) {
-          @apply mt-4 sm:mt-2;
-        }
+    li {
+      &:not(:first-child) {
+        @apply mt-4 sm:mt-2;
       }
     }
   }
 
   div {
-    @apply text-muted mt-1 sm:mt-0 sm:inline-block;
+    @apply mt-0.5 text-xs sm:mt-0 sm:inline-block sm:text-sm;
   }
 </style>

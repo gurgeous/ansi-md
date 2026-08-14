@@ -40,6 +40,7 @@ const tailwindReference = () => ({
 
 const repoLabelOverrides = {
   "alecthomas/kong": "kong",
+  "anomalyco/opentui": "opentui",
   "chalk/supports-color": "supports-color",
   "charmbracelet/bubbletea": "bubbletea",
   "charmbracelet/colorprofile": "colorprofile",
