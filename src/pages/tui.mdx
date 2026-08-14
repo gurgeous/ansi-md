@@ -14,57 +14,46 @@ Every TUI is built on a TUI library. If you think about it, each TUI must includ
 
 Rather than listing out the TUI libraries, let's look at some popular TUI apps:
 
-| app                              | lang | ⭐ stars | tui                            | what              |
-| -------------------------------- | :--: | :------: | ------------------------------ | ----------------- |
-| github/twpayne/chezmoi           |  go  |   21k    | github/charmbracelet/bubbletea | dotfiles          |
-| github/dlvhdr/gh-dash            |  go  |   12k    | github/charmbracelet/bubbletea | GitHub dashboard  |
-| github/yorukot/superfile         |  go  |   23k    | github/charmbracelet/bubbletea | file manager      |
-|                                  |
-| github/atuinsh/atuin             |  rs  |   31k    | github/ratatui/ratatui         | sh history        |
-| github/imsnif/bandwhich          |  rs  |   12k    | github/ratatui/ratatui         | bandwidth monitor |
-| github/ClementTsang/bottom       |  rs  |   14k    | github/ratatui/ratatui         | system monitor    |
-| github/gitui-org/gitui           |  rs  |   22k    | github/ratatui/ratatui         | git client        |
-| github/mfontanini/presenterm     |  rs  |    9k    | github/ratatui/ratatui         | slides            |
-| github/alexpasmantier/television |  rs  |    6k    | github/ratatui/ratatui         | fuzzy finder      |
-| github/sxyazi/yazi               |  rs  |   41k    | github/ratatui/ratatui         | file manager      |
-|                                  |
-| github/charles-001/dolphie       |  py  |    1k    | github/Textualize/textual      | db monitor        |
-| github/tconbeer/harlequin        |  py  |    6k    | github/Textualize/textual      | sql               |
-| github/bloomberg/memray          |  py  |   15k    | github/Textualize/textual      | memory prof       |
-| github/darrenburns/posting       |  py  |   12k    | github/Textualize/textual      | API client        |
-|                                  |
-| github/anthropics/claude-code    |  ts  |   140k   | github/vadimdemedes/ink        | agent             |
-| github/github/copilot-cli        |  ts  |   11k    | github/vadimdemedes/ink        | agent             |
-| github/google-gemini/gemini-cli  |  ts  |   106k   | github/vadimdemedes/ink        | agent             |
-|                                  |
-| github/cline/cline               |  ts  |   65k    | github/anomalyco/opentui       | agent             |
-| github/modem-dev/hunk            |  ts  |    8k    | github/anomalyco/opentui       | diffs             |
-| github/anomalyco/opencode        |  ts  |   191k   | github/anomalyco/opentui       | agent             |
+| app                             | lang | ⭐ stars | tui                            | what                |
+| ------------------------------- | :--: | :------: | ------------------------------ | ------------------- |
+| github/dlvhdr/gh-dash           |  go  |   12k    | github/charmbracelet/bubbletea | gh dashboard        |
+| github/antonmedv/fx             |  go  |   21k    | github/charmbracelet/bubbletea | json viewer         |
+| github/derailed/k9s             |  go  |   34k    | github/derailed/tview          | kubernetes          |
+| github/jesseduffield/lazydocker |  go  |   52k    | github/jesseduffield/gocui     | docker              |
+| github/jesseduffield/lazygit    |  go  |   81k    | github/gdamore/tcell           | git                 |
+| github/maaslalani/slides        |  go  |   12k    | github/charmbracelet/bubbletea | slide viewer        |
+| github/yorukot/superfile        |  go  |   23k    | github/charmbracelet/bubbletea | file manager        |
+|                                 |
+| github/nicolargo/glances        |  py  |   33k    | ncurses                        | system monitor      |
+| github/bloomberg/memray         |  py  |   15k    | github/Textualize/textual      | memory prof         |
+| github/darrenburns/posting      |  py  |   12k    | github/Textualize/textual      | API client          |
+|                                 |
+| github/atuinsh/atuin            |  rs  |   31k    | github/ratatui/ratatui         | sh history          |
+| github/imsnif/bandwhich         |  rs  |   12k    | github/ratatui/ratatui         | bandwidth monitor   |
+| github/ClementTsang/bottom      |  rs  |   14k    | github/ratatui/ratatui         | like top            |
+| github/gitui-org/gitui          |  rs  |   22k    | github/ratatui/ratatui         | git client          |
+| github/AlexsJones/llmfit        |  rs  |   31k    | github/ratatui/ratatui         | LLM matcher         |
+| github/mfontanini/presenterm    |  rs  |    9k    | github/ratatui/ratatui         | slides              |
+| github/aome510/spotify-player   |  rs  |    7k    | github/ratatui/ratatui         | Spotify client      |
+| github/Rigellute/spotify-tui    |  rs  |   19k    | github/fdehau/tui-rs           | Spotify client      |
+| github/fujiapple852/trippy      |  rs  |    7k    | github/ratatui/ratatui         | network diagnostics |
+| github/sxyazi/yazi              |  rs  |   41k    | github/ratatui/ratatui         | file manager        |
+|                                 |
+| github/modem-dev/hunk           |  ts  |    8k    | github/anomalyco/opentui       | diffs               |
+|                                 |
+| github/allinurl/goaccess        |  c   |   21k    | ncurses                        | web logs            |
+| github/jarun/nnn                |  c   |   22k    | ncurses                        | file manager        |
+| github/jonas/tig                |  c   |   13k    | ncurses                        | git browser         |
 
----
+And let's not forget the ai harnesses:
 
----
+| app                              | lang  | ⭐ stars | tui                      |
+| -------------------------------- | :---: | :------: | ------------------------ |
+| github/openai/codex              |  rs   |   91k    | github/ratatui/ratatui   |
+| github/github/copilot-cli        |  ts   |   11k    | github/vadimdemedes/ink  |
+| github/anthropics/claude-code    |  ts   |   140k   | github/vadimdemedes/ink  |
+| github/google-gemini/gemini-cli  |  ts   |   106k   | github/vadimdemedes/ink  |
+| github/NousResearch/hermes-agent | py/ts |   222k   | github/vadimdemedes/ink  |
+| github/anomalyco/opencode        |  ts   |   191k   | github/anomalyco/opentui |
 
----
-
----
-
-| lib                            |  lang  | ⭐ stars | what                         |
-| ------------------------------ | :----: | :------: | ---------------------------- |
-| github/charmbracelet/bubbletea |   go   |   44k    | Elm-style TUI framework      |
-|                                |
-| github/gyscos/cursive          |  rust  |    5k    | widget toolkit               |
-| github/ratatui/ratatui         |  rust  |   22k    | immediate-mode TUI framework |
-|                                |
-| github/Textualize/textual      | python |   37k    | app framework                |
-|                                |
-| github/vadimdemedes/ink        |   js   |   40k    | React TUI framework          |
-| github/anomalyco/opentui       |   js   |   13k    | renderer and components      |
-
-### TUI Apps
-
-codex - uses ratatui
-
-lazygit
-nnn, yazi, eloi
-claude, codex
+Note that [pi](https://pi.dev) is the exception here, using it's own TUI lib.
