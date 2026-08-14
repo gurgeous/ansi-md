@@ -28,7 +28,7 @@ fmt:
   prettier --list-different --write .
 
 links: build
-  linkinator dist --recurse --clean-urls --check-fragments
+  linkinator dist --recurse --clean-urls --check-fragments --verbosity error
 
 lint:
   eslint .

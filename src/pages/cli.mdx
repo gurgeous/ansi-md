@@ -24,7 +24,7 @@ Where useful, support these standard flags and don't use them for anything else.
 | --dry-run     | don't do anything, just preview         |
 | --json        | output JSON only (for LLMs)             |
 
-I do not recommend `-v` for verbose, `-v` means somethign else on CLI. Instead I like to use an ENV var like `$MYAPP_DEBUG=1` for extra debug output.
+I do not recommend `-v` for verbose, `-v` means something else on CLI. Instead I like to use an ENV var like `$MYAPP_DEBUG=1` for extra debug output.
 
 ### CLI Golden Rules
 
@@ -64,7 +64,7 @@ tennis: try 'tennis --help' for more information
    | invalid arg          | --bogus is not a valid flag  |
    | missing required arg | curl: no URL specified       |
 
-1. **--flag > $env > config file** - If your app is successful, users will want to configure it in a more permanent fashion. Some flags will be very popular. Users will setup aliases. They will want ENV variables. They will want config files. You can add support for all this stuff, but remember the priority of each mechanism.
+1. **--flag > $env > config file** - If your app is successful, users will want to configure it in a more permanent fashion. Some flags will be very popular. Users will set up aliases. They will want ENV variables. They will want config files. You can add support for all this stuff, but remember the priority of each mechanism.
 
 1. **ENV is great for spelunking** - I love it when apps & libs support special environment variables that modify behavior. `--help` is the public face of your app, but it doesn't have to end there. I love love love when I find a $MYAPP_DEBUG=1 env var. As a cli author I hesitate to add full flags that increase verbosity, turn off the cache, disable retries, etc. Each supported flag increases my engineering burden, including --help text, man page, README, and shell completions. ENV flags sidestep that burden. Add 'em!
 
@@ -74,7 +74,7 @@ github/charmbracelet/gum is a fun little tool from our friends at Charm. Like al
 
 #### 1. Naked gum
 
-Nice help message, and it goes to stdout. Only quibble is that naked gum exits with a non-zero code. I understand that this is technically an error ("the user didn't pass a subcommand") but it feels unfriendly. My shell this shows a <span class="font-bold text-red-500">nasty ERROR indicator</span>. Why make me feel bad just for entering your command naked? This reminds me of web forms that blurt out an error as soon as you focus the input, then the error disappears once the field is valid. Meanies.
+Nice help message, and it goes to stdout. Only quibble is that naked gum exits with a non-zero code. I understand that this is technically an error ("the user didn't pass a subcommand") but it feels unfriendly. My shell shows a <span class="font-bold text-red-500">nasty ERROR indicator</span>. Why make me feel bad just for entering your command naked? This reminds me of web forms that blurt out an error as soon as you focus the input, then the error disappears once the field is valid. Meanies.
 
 ```
 $ gum
