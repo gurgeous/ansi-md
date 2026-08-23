@@ -1,0 +1,52 @@
+---
+import { chapters } from "@/lib/chapters";
+---
+
+<nav data-sidebar aria-label="Table of contents">
+  {
+    chapters.map((section) => (
+      <section>
+        <h2 class="text-2xl font-bold">{section.name}</h2>
+        <ol>
+          {section.items.map((item) => (
+            <li>
+              <a href={item.url}>{item.name}</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+</nav>
+
+<style>
+  nav {
+    @apply border-brand w-64 shrink-0 border-r-2 px-6 py-10 leading-tight;
+
+    @media (max-width: calc(theme(--breakpoint-lg) - 1px)) {
+      @apply fixed top-0 -left-full z-20 h-full w-70 overflow-y-auto bg-white px-6 pt-16 pb-5 transition-[left] duration-300;
+
+      &.is-active {
+        @apply left-0;
+      }
+    }
+  }
+
+  section:not(:first-child) {
+    @apply mt-6;
+  }
+
+  ol {
+    @apply flex flex-col pt-1 pl-6 text-xs leading-tight;
+    li {
+      @apply mt-1.5;
+    }
+    li::marker {
+      @apply text-neutral-400;
+    }
+  }
+
+  a {
+    @apply font-semibold text-sky-600 hover:brightness-80;
+  }
+</style>

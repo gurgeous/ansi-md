@@ -1,0 +1,70 @@
+---
+title: ANSI Escape Codes
+---
+
+I'm hesitant to detail all the various ansi escape codes and protocols, many of which are ancient and unused. This is a deep topic and there are other sources, including sites that have been around for decades. Instead I will focus on the ansi escape codes which I personally have used when writing apps or libraries.
+
+### ESC
+
+Most useful ansi escape sequences begin with `\e[`. Usually followed by a series of semicolon delimited integers. For colors, use an `m` to end the sequence. `\e` is the ESC character, which is why we call these **escape codes**. The `\e[` text is the `CSI`, short for Control Sequence Introducer. ESC itself is ANSI character 27 (base 10), 0x1b (base 16) or 033 (octal). As you wander the internet you might see sample code using `\e` or `\033` or `\x1b` or `ESC`. These are all various ways to send an ESC char from your app to the terminal.
+
+### Colors and Bold
+
+In the table below, the chicken emoji \{🐔} is an ANSI 16 color index `0..7` for black, red, green, yellow, blue, magenta, cyan and white. Ignore what wikipedia says - users almost always use a terminal theme to customize the actual display colors. Note that `8` and `9` are also in use, but they mean something entirely different.
+
+`{256}` is an ansi 256 color index between 0-255.
+
+`{RR}`, `{GG}` and `{BB}` are red, green and blue channels as integers. CSS `rebeccapurple` `#663399` would be written as `102;51;153`.
+
+| what               | code                       |
+| ------------------ | -------------------------- |
+| set fg 16          | \e[3\{🐔}m                 |
+| set bg 16          | \e[4\{🐔}m                 |
+| set fg 16 "bright" | \e[9\{🐔}m                 |
+| set bg 16 "bright" | \e[10\{🐔}m                |
+| set fg 256         | \e[38;5;\{256}m            |
+| set bg 256         | \e[48;5;\{256}m            |
+| set fg truecolor   | \e[38;2;\{RR};\{GG};\{BB}m |
+| set bg truecolor   | \e[48;2;\{RR};\{GG};\{BB}m |
+| turn on bold       | \e[1m                      |
+| unset fg (default) | \e[39m                     |
+| unset bg (default) | \e[49m                     |
+| reset colors       | \e[0m                      |
+
+These codes are designed to be combined. For example, here is a super ugly `hello world` with bold and color:
+
+`$ printf "\e[1;31;42m hello world \e[0m"`
+
+### More Exotic (But Still Somehow Used By Me)
+
+These are less popular, but I've used all of these for various reasons. For example, `tennis` will helpfully interpret markdown links in csv files and emit hyperlink escape codes so your terminal can make them clickable. Super handy.
+
+| what                         | code                                    |
+| ---------------------------- | --------------------------------------- |
+| hide cursor ("low")          | \e[?25l                                 |
+| show cursor ("high")         | \e[?25h                                 |
+| move cursor                  | \e[\{row};\{col}H                       |
+| "clear" current screen       | \e[2J                                   |
+| "reset" including scrollback | \e[3J                                   |
+| set window title             | \e]2;\{title}\e\\                       |
+| hyperlink (so simple)        | \e]8;;\{url}\e\\\\\{anchor}\e]8;;\e\\\\ |
+
+### Novelty Escape Codes
+
+I haven't used these personally but I want to. Just as soon as I find a reason...
+
+- [bounce the dock icon](https://iterm2.com/documentation-escape-codes.html)
+- [progress bar](https://ghostty.org/docs/vt/osc/conemu)
+- [terminal graphics](https://sw.kovidgoyal.net/kitty/graphics-protocol/)
+
+### Terminal Queries
+
+There are many questions that your app might need to ask the terminal. A few hints for the curious:
+
+- How big is the terminal, in chars? See ioctl TIOCGWINSZ.
+- What is the terminal's bg color? Critical info if your app supports both dark & light themes. Unfortunately [quite complicated](https://github.com/tautropfli/terminal-colorsaurus/blob/main/crates/terminal-colorsaurus/src/xterm.rs), danger, argh
+- Using [raw vs cooked](https://en.wikipedia.org/wiki/Terminal_mode) modes for talking to the terminal directly.
+
+### Further Reading
+
+There's so much more, the fun never ends. See our [Advanced ANSI](/advanced) page.

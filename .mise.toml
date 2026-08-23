@@ -1,0 +1,11 @@
+[env]
+_.path = ["{{config_root}}/node_modules/.bin", "{{config_root}}/bin"]
+_.file = { path = ".env.local", redact = true }
+
+[hooks]
+postinstall = ["pnpm install"]
+
+[tools]
+just = "latest"
+node = "lts"
+pnpm = "latest"

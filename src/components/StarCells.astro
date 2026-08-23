@@ -1,0 +1,22 @@
+<style is:global>
+  td.k {
+    background: var(--color-sky-50);
+    color: var(--color-brand);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  for (const $table of document.querySelectorAll("table")) {
+    const $th = [...$table.querySelectorAll("th")];
+    const col = $th.findIndex(($header) => $header.textContent?.includes("stars"));
+    if (col < 0) continue;
+
+    for (const $tr of $table.querySelectorAll<HTMLTableRowElement>("tbody tr")) {
+      const $td = $tr.cells[col];
+      if ($td?.textContent?.trim().endsWith("k")) {
+        $td.classList.add("k");
+      }
+    }
+  }
+</script>

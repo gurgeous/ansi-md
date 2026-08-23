@@ -1,0 +1,12 @@
+---
+import CodePicker from "@/components/CodePicker.astro";
+import { languages, type LangKey } from "@/lib/code/code";
+import { ansi256Sections, ansi256View } from "@/lib/palettes/ansi256-view.ts";
+import { hex256 } from "@/lib/palettes";
+
+const snippets = Object.fromEntries(
+  languages.map((language) => [language.name, language.renderTable("ansi256", ansi256View, hex256, ansi256Sections)]),
+) as Record<LangKey, string>;
+---
+
+<CodePicker {languages} {snippets} class="mt-2! max-h-[60vh] overflow-y-auto" />

@@ -1,0 +1,53 @@
+---
+import { luma } from "@/lib/color";
+import { ansi256Table, hex256 } from "@/lib/palettes";
+
+const names: Record<number, string> = {};
+for (const [name, idx] of Object.entries(ansi256Table)) {
+  if (!names[idx] || (/\d/.test(names[idx]) && !/\d/.test(name))) names[idx] = name;
+}
+---
+
+<table class="ansi256-full-chart">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Color Name</th>
+      <th>Hex</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      range(16, 256).map((idx) => {
+        const hex = hex256(idx);
+        const fg = luma(hex) > 0.5 ? "#000" : "#fff";
+        return (
+          <tr>
+            <td>
+              <span class="swatch" style={`--fg: ${fg}; --bg: ${hex}`}>
+                {idx}
+              </span>
+            </td>
+            <td>{names[idx]}</td>
+            <td>
+              <code>{hex}</code>
+            </td>
+          </tr>
+        );
+      })
+    }
+  </tbody>
+</table>
+
+<style>
+  .ansi256-full-chart {
+    th:first-child,
+    td:first-child {
+      @apply w-20 text-center sm:w-28;
+    }
+
+    .swatch {
+      @apply block h-7 rounded bg-(--bg) text-center text-xs leading-7 font-semibold text-(--fg) sm:text-sm;
+    }
+  }
+</style>

@@ -1,0 +1,70 @@
+// Python palette renderer for generated code snippets.
+// It emits a typed dictionary so users can paste it into strict codebases.
+import type { Palette, Scales, Table, TableCommentFn, TableSections } from "@/lib/palettes";
+import {
+  Language,
+  colorNames,
+  constantName,
+  indent,
+  isNumberStr,
+  mustache,
+  renderFields,
+  renderScale,
+  renderTableFields,
+  tagline,
+} from "./base.ts";
+
+const TEMPLATE = `
+# {{ tagline }}
+{{ value }}: {{ dict }} = {
+{{ main }}
+}
+`;
+
+class PythonLanguage extends Language {
+  render0(name: string, palette: Palette) {
+    const tab = "    ";
+    const main = Object.entries(palette).map(([name, colors]) => {
+      const fields = renderFields('{{id}}: "{{v}}",', { colors, id, tab });
+      return indent(`"${name}": {\n${fields}\n},`, tab);
+    });
+    const dictkey = colorNames(palette).every(isNumberStr) ? "int" : "str";
+
+    return mustache(TEMPLATE, {
+      dict: `dict[str, dict[${dictkey}, str]]`,
+      main: main.join("\n"),
+      tagline: tagline(name),
+      value: constantName(name),
+    });
+  }
+
+  renderScales0(name: string, scales: Scales) {
+    const tab = "    ";
+    const main = Object.entries(scales).map(([name, scale]) => {
+      const values = renderScale('"{{v}}",', scale, tab);
+      return indent(`"${name}": [\n${values}\n],`, tab);
+    });
+
+    return mustache(TEMPLATE, {
+      dict: "dict[str, list[str]]",
+      main: main.join("\n"),
+      tagline: tagline(name),
+      value: constantName(name),
+    });
+  }
+
+  renderTable0(name: string, table: Table, comment?: TableCommentFn, sections?: TableSections) {
+    return mustache(TEMPLATE, {
+      dict: "dict[str, int]",
+      main: renderTableFields("{{id}}: {{v}},", { table, comment, id, marker: "#", sections, tab: "    " }),
+      tagline: tagline(name),
+      value: constantName(name),
+    });
+  }
+}
+
+function id(name: string) {
+  return JSON.stringify(name);
+}
+
+export default new PythonLanguage();
