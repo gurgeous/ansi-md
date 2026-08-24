@@ -39,7 +39,8 @@
 ## Tailwind
 
 - Use `src/main.css` `@apply` for repeated doc/site elements.
+- Prefer inline Tailwind utilities for one-off elements and short groups.
+- Use scoped `@apply` for repeated groups, generated collections, and state selectors.
 - Local component styles are okay; Vite adds `@reference`.
-- Put repeated/interesting Astro utility groups in scoped `<style>`.
 - CSS uses nesting; avoid arbitrary bracket utilities.
 - Responsive utilities: only `sm:` and `lg:`; never `md:`.

@@ -10,14 +10,14 @@ const backgrounds = [
   ["Blue", 4],
   ["Magenta", 5],
   ["Cyan", 6],
-];
+] as const;
 
 const foregrounds = [
   ["Foreground", "foreground"],
   ["Background", "background"],
   ["White", 7],
   ["Black", 0],
-];
+] as const;
 
 function splitCsvLine(line: string) {
   const cells: string[] = [];
@@ -88,8 +88,8 @@ const data = JSON.stringify({ colorOrders, themes });
 <section class="bad-colors mt-10">
   <script is:inline type="application/json" set:html={data} />
 
-  <div class="controls">
-    <label>
+  <div class="flex flex-wrap items-end gap-x-6 gap-y-3">
+    <label class="flex flex-col gap-1 font-semibold">
       <span>Foreground</span>
       <select data-foreground>
         {
@@ -102,7 +102,7 @@ const data = JSON.stringify({ colorOrders, themes });
       </select>
     </label>
 
-    <label>
+    <label class="flex flex-col gap-1 font-semibold">
       <span>Background</span>
       <select data-background>
         {
@@ -115,14 +115,16 @@ const data = JSON.stringify({ colorOrders, themes });
       </select>
     </label>
 
-    <label class="checkbox">
+    <label class="flex items-center gap-1 pb-1 font-semibold">
+      <span>Sort</span>
       <input data-sort-name type="checkbox" />
-      <span>Sort by theme name</span>
     </label>
   </div>
 
-  <div class="theme-name-slot">
-    <p class="theme-name">Theme: <strong data-theme-name>Move over or focus a cell</strong></p>
+  <div class="mt-4 h-6">
+    <p class="theme-name h-6 truncate bg-white text-sm text-neutral-600">
+      Theme: <strong data-theme-name>Move over or focus a cell</strong>
+    </p>
   </div>
 
   <div class="grid" data-grid role="list" aria-label={`${themes.length} Ghostty ANSI themes`}>
@@ -150,48 +152,25 @@ const data = JSON.stringify({ colorOrders, themes });
 </script>
 
 <style>
-  .controls {
-    @apply flex flex-wrap items-end gap-x-6 gap-y-3;
-  }
-
-  label {
-    @apply flex flex-col gap-1 font-semibold;
-
-    &.checkbox {
-      @apply flex-row items-center pb-1;
-    }
-  }
-
   select {
     @apply border border-neutral-300 bg-white px-2 py-1 font-normal text-neutral-950;
   }
 
-  .theme-name-slot {
-    @apply mt-4 h-6;
-  }
-
-  .theme-name {
-    @apply h-6 truncate bg-white text-sm text-neutral-600;
-  }
-
   .bad-colors:has(.grid:hover) .theme-name,
   .bad-colors:has(.grid:focus-within) .theme-name {
-    @apply pointer-events-none fixed bottom-4 left-1/2 z-30 h-auto -translate-x-1/2 bg-neutral-950 px-4 py-2 text-lg font-semibold text-white;
-    width: max-content;
+    @apply pointer-events-none fixed bottom-4 left-1/2 z-30 h-auto w-max -translate-x-1/2 bg-neutral-950 px-4 py-2 text-lg font-semibold text-white;
     max-width: calc(100vw - 2rem);
   }
 
   .grid {
-    display: grid;
+    @apply grid gap-0 overflow-hidden;
     grid-template-columns: repeat(auto-fill, minmax(3ch, 1fr));
-    gap: 0;
-    overflow: hidden;
 
     span {
       @apply block cursor-default text-center text-sm/6;
 
       &:focus-visible {
-        outline: 2px solid currentColor;
+        @apply outline-2 outline-current;
         outline-offset: -2px;
       }
     }
