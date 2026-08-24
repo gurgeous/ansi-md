@@ -1,9 +1,9 @@
 ---
 import Color from "colorjs.io";
-import themesCsv from "@/vendor/ghostty/themes.csv?raw";
+import themes from "@/vendor/ghostty/themes.json";
 
 const backgrounds = [
-  ["Background", "background"],
+  ["Bg", "background"],
   ["Red", 1],
   ["Green", 2],
   ["Yellow", 3],
@@ -13,35 +13,11 @@ const backgrounds = [
 ] as const;
 
 const foregrounds = [
-  ["Foreground", "foreground"],
-  ["Background", "background"],
+  ["Fg", "foreground"],
+  ["Bg", "background"],
   ["White", 7],
   ["Black", 0],
 ] as const;
-
-function splitCsvLine(line: string) {
-  const cells: string[] = [];
-  let cell = "";
-  let quoted = false;
-
-  for (let ii = 0; ii < line.length; ii++) {
-    const char = line[ii];
-    if (char === '"' && quoted && line[ii + 1] === '"') {
-      cell += '"';
-      ii++;
-    } else if (char === '"') {
-      quoted = !quoted;
-    } else if (char === "," && !quoted) {
-      cells.push(cell);
-      cell = "";
-    } else {
-      cell += char;
-    }
-  }
-
-  cells.push(cell);
-  return cells;
-}
 
 function colorKey(hex: string) {
   const [rawLightness, rawChroma, hue] = new Color(hex).to("oklch").coords;
@@ -51,14 +27,6 @@ function colorKey(hex: string) {
   const hueFamily = achromatic ? 0 : Math.floor(hue / 30);
   return [achromatic ? 0 : 1, hueFamily, lightness, hue ?? 0, chroma] as const;
 }
-
-const [header, ...lines] = themesCsv.trimEnd().split("\n");
-if (splitCsvLine(header).length !== 11) throw new Error("unexpected Ghostty theme CSV header");
-const themes = lines.map((line) => {
-  const [name, foreground, background, ...colors] = splitCsvLine(line);
-  if (!name || !foreground || !background || colors.length !== 8) throw new Error("invalid Ghostty theme CSV row");
-  return { name, foreground, background, colors };
-});
 
 const colorOrders: Record<string, number[]> = Object.fromEntries(
   backgrounds.map(([, background]) => {
@@ -121,11 +89,9 @@ const data = JSON.stringify({ colorOrders, themes });
     </label>
   </div>
 
-  <div class="mt-4 h-6">
-    <p class="theme-name h-6 truncate bg-white text-sm text-neutral-600">
-      Theme: <strong data-theme-name>Move over or focus a cell</strong>
-    </p>
-  </div>
+  <p class="theme-name hidden">
+    Theme: <strong data-theme-name>Move over or focus a cell</strong>
+  </p>
 
   <div class="grid" data-grid role="list" aria-label={`${themes.length} Ghostty ANSI themes`}>
     {
@@ -138,7 +104,7 @@ const data = JSON.stringify({ colorOrders, themes });
             tabindex="0"
             aria-label={theme.name}
             style={`color:${theme.foreground};background:${theme.colors[2]}`}>
-            txt
+            yo
           </span>
         );
       })
@@ -158,12 +124,12 @@ const data = JSON.stringify({ colorOrders, themes });
 
   .bad-colors:has(.grid:hover) .theme-name,
   .bad-colors:has(.grid:focus-within) .theme-name {
-    @apply pointer-events-none fixed bottom-4 left-1/2 z-30 h-auto w-max -translate-x-1/2 bg-neutral-950 px-4 py-2 text-lg font-semibold text-white;
+    @apply pointer-events-none fixed bottom-4 left-1/2 z-30 block h-auto w-max -translate-x-1/2 bg-neutral-950 px-4 py-2 text-lg font-semibold text-white;
     max-width: calc(100vw - 2rem);
   }
 
   .grid {
-    @apply grid gap-0 overflow-hidden;
+    @apply mt-6 grid gap-0 overflow-hidden;
     grid-template-columns: repeat(auto-fill, minmax(3ch, 1fr));
 
     span {
