@@ -10,13 +10,15 @@ const backgrounds = [
   ["Blue", 4],
   ["Magenta", 5],
   ["Cyan", 6],
-] as const;
+];
+
 const foregrounds = [
   ["Foreground", "foreground"],
   ["Background", "background"],
   ["White", 7],
   ["Black", 0],
-] as const;
+];
+
 function splitCsvLine(line: string) {
   const cells: string[] = [];
   let cell = "";
@@ -45,8 +47,9 @@ function colorKey(hex: string) {
   const [rawLightness, rawChroma, hue] = new Color(hex).to("oklch").coords;
   const lightness = rawLightness ?? 0;
   const chroma = rawChroma ?? 0;
-  const lightnessBand = Math.floor(lightness * 16);
-  return [lightnessBand, chroma < 0.0001 || hue === null ? -1 : hue, lightness, chroma] as const;
+  const achromatic = chroma < 0.02 || hue === null;
+  const hueFamily = achromatic ? 0 : Math.floor(hue / 30);
+  return [achromatic ? 0 : 1, hueFamily, lightness, hue ?? 0, chroma] as const;
 }
 
 const [header, ...lines] = themesCsv.trimEnd().split("\n");
@@ -71,6 +74,7 @@ const colorOrders: Record<string, number[]> = Object.fromEntries(
           left.key[1] - right.key[1] ||
           left.key[2] - right.key[2] ||
           left.key[3] - right.key[3] ||
+          left.key[4] - right.key[4] ||
           left.name.localeCompare(right.name, "en", { sensitivity: "base" })
         );
       })
