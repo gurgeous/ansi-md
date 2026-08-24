@@ -9,7 +9,7 @@ class BadColorsTool {
   $grid: HTMLElement;
   $bg: HTMLSelectElement;
   $fg: HTMLSelectElement;
-  $sort: HTMLInputElement;
+  $sort: HTMLSelectElement;
   $name: HTMLElement;
   $cells: HTMLElement[];
 
@@ -21,7 +21,7 @@ class BadColorsTool {
     this.$grid = $root.querySelector("[data-grid]")!;
     this.$fg = $root.querySelector("[data-foreground]")!;
     this.$bg = $root.querySelector("[data-background]")!;
-    this.$sort = $root.querySelector("[data-sort-name]")!;
+    this.$sort = $root.querySelector("[data-sort]")!;
     this.$name = $root.querySelector("[data-theme-name]")!;
 
     this.$cells = [];
@@ -39,7 +39,7 @@ class BadColorsTool {
   render() {
     const fg = this.$fg.value;
     const bg = this.$bg.value;
-    const order = this.$sort.checked ? this.nameOrder : this.colorOrders[bg];
+    const order = this.$sort.value === "name" ? this.nameOrder : this.colorOrders[bg];
     const $i = document.createDocumentFragment();
 
     for (const index of order) {

@@ -19,11 +19,6 @@ export const chapters: Section[] = [
     name: "Tools",
     items: [
       {
-        name: "Bad Colors",
-        url: "/bad-colors",
-        phrase: "see ANSI 16 fail across terminal themes",
-      },
-      {
         name: "Nearest Color",
         url: "/nearest",
         phrase: "nearest ANSI 256 and Tailwind matches",
@@ -32,6 +27,11 @@ export const chapters: Section[] = [
         name: "Giant Contrast Table",
         url: "/giant",
         phrase: "see lots of colors on light and dark",
+      },
+      {
+        name: "Bad Colors",
+        url: "/bad-colors",
+        phrase: "see ANSI 16 fail across terminal themes",
       },
     ],
   },

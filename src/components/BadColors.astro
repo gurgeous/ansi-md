@@ -83,9 +83,12 @@ const data = JSON.stringify({ colorOrders, themes });
       </select>
     </label>
 
-    <label class="flex! items-center gap-1 pb-1 font-semibold">
-      <span>Sort</span>
-      <input data-sort-name type="checkbox" />
+    <label class="flex! flex-col gap-1 font-semibold">
+      <span>Sort By</span>
+      <select data-sort>
+        <option value="color">Color</option>
+        <option value="name">Theme Name</option>
+      </select>
     </label>
   </div>
 
