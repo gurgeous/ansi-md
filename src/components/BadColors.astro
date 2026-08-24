@@ -1,0 +1,146 @@
+---
+import Color from "colorjs.io";
+import themes from "@/vendor/ghostty/themes.json";
+
+const foregrounds = [
+  ["Fg", "foreground"],
+  ["Bg", "background"],
+  ["White", 7],
+  ["Black", 0],
+] as const;
+
+const backgrounds = [
+  ["Red", 1],
+  ["Green", 2],
+  ["Yellow", 3],
+  ["Blue", 4],
+  ["Magenta", 5],
+  ["Cyan", 6],
+] as const;
+
+function colorKey(hex: string) {
+  const [rawLightness, rawChroma, hue] = new Color(hex).to("oklch").coords;
+  const lightness = rawLightness ?? 0;
+  const chroma = rawChroma ?? 0;
+  const achromatic = chroma < 0.02 || hue === null;
+  const hueFamily = achromatic ? 0 : Math.floor(hue / 30);
+  return [achromatic ? 0 : 1, hueFamily, lightness, hue ?? 0, chroma] as const;
+}
+
+const colorOrders: Record<string, number[]> = Object.fromEntries(
+  backgrounds.map(([, background]) => {
+    const order = themes
+      .map((theme, index) => ({
+        index,
+        key: colorKey(theme.colors[background]),
+        name: theme.name,
+      }))
+      .toSorted((left, right) => {
+        return (
+          left.key[0] - right.key[0] ||
+          left.key[1] - right.key[1] ||
+          left.key[2] - right.key[2] ||
+          left.key[3] - right.key[3] ||
+          left.key[4] - right.key[4] ||
+          left.name.localeCompare(right.name, "en", { sensitivity: "base" })
+        );
+      })
+      .map(({ index }) => index);
+    return [background, order];
+  }),
+);
+const data = JSON.stringify({ colorOrders, themes });
+---
+
+<section class="bad-colors mt-10">
+  <script is:inline type="application/json" set:html={data} />
+
+  <div class="flex flex-wrap items-end gap-x-6 gap-y-3">
+    <label class="flex! flex-col gap-1 font-semibold">
+      <span>Foreground</span>
+      <select data-foreground>
+        {
+          foregrounds.map(([name, color]) => (
+            <option value={color}>
+              {typeof color === "string" ? `"theme ${name.toLowerCase()}"` : `ANSI ${color} "${name.toLowerCase()}"`}
+            </option>
+          ))
+        }
+      </select>
+    </label>
+
+    <label class="flex! flex-col gap-1 font-semibold">
+      <span>Background</span>
+      <select data-background>
+        {
+          backgrounds.map(([name, color]) => (
+            <option value={color} selected={color === 2}>
+              {`ANSI ${color} "${name.toLowerCase()}"`}
+            </option>
+          ))
+        }
+      </select>
+    </label>
+
+    <label class="flex! flex-col gap-1 font-semibold">
+      <span>Sort By</span>
+      <select data-sort>
+        <option value="color">Color</option>
+        <option value="name">Theme Name</option>
+      </select>
+    </label>
+  </div>
+
+  <p class="theme-name hidden">
+    Theme: <strong data-theme-name>Move over or focus a cell</strong>
+  </p>
+
+  <div class="grid" data-grid role="list" aria-label={`${themes.length} Ghostty ANSI themes`}>
+    {
+      colorOrders[2].map((index) => {
+        const theme = themes[index];
+        return (
+          <span
+            data-index={index}
+            role="listitem"
+            tabindex="0"
+            aria-label={theme.name}
+            style={`color:${theme.foreground};background:${theme.colors[2]}`}>
+            yo
+          </span>
+        );
+      })
+    }
+  </div>
+</section>
+
+<script>
+  import { initBadColors } from "@/browser/bad-colors";
+  initBadColors();
+</script>
+
+<style>
+  select {
+    @apply border border-neutral-300 bg-white px-2 py-1 font-normal text-neutral-950;
+  }
+
+  .bad-colors:has(.grid:hover) .theme-name,
+  .bad-colors:has(.grid:focus-within) .theme-name {
+    @apply pointer-events-none fixed bottom-4 left-1/2 z-30 block h-auto w-max -translate-x-1/2 bg-neutral-950 px-4 py-2 text-lg font-semibold text-white;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .grid {
+    @apply mt-6 grid gap-0 overflow-hidden;
+    grid-template-columns: repeat(auto-fill, minmax(3ch, 1fr));
+
+    span {
+      @apply block cursor-default text-center text-sm/6;
+
+      &:focus-visible {
+        @apply outline-2 outline-current;
+        outline-offset: -2px;
+      }
+    }
+  }
+</style>

@@ -10,9 +10,9 @@ Let me save you several man-years of effort with three simple suggestions.
 
 ### 1. Avoid ANSI 16 & ANSI 256 0-15 (usually)
 
-All modern terminals let the user customize the "theme", which in effect means customizing ANSI colors 0-15. We are stuck with a primitive system for communicating color between apps and the host terminal. App requests `color 4` and the terminal shows whatever the user picked for `blue`.
+All modern terminals let the user customize the "theme", which means customizing ANSI colors 0-15 along with the fg and bg for the terminal. We are stuck with a primitive system for communicating color between apps and the host terminal. App requests `color 4` and the terminal shows whatever the user picked for `blue`.
 
-For example, I use the https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf theme, which is set up like so:
+For example, I use [Catppuccin Frappe](https://github.com/catppuccin/ghostty/blob/main/themes/catppuccin-frappe.conf), which is set up like so:
 
 ```sh
 # catppuccin-frappe.conf ghostty theme
@@ -32,23 +32,28 @@ palette = 12=#8caaee
 palette = 13=#f4b8e4
 palette = 14=#81c8be
 palette = 15=#b5bfe2
+
+foreground = #c6d0f5
+background = #303446
 ...
 ```
 
-#### Eight Normal Colors (Catppuccin Frappe)
+#### Normal Colors (Catppuccin Frappe)
 
-<AnsiThemeTable colors={ghostty16.normal} />
+<AnsiThemeTable colors={ghostty16.normal} defaults={ghostty16.defaults} />
 
 and the anachronistically named `bright` variants are part of the theme too:
 
-#### Eight "Bright" Colors (Catppuccin Frappe)
+#### "Bright" Colors (Catppuccin Frappe)
 
 <AnsiThemeTable colors={ghostty16.bright} bright />
 
 #### Helpful Illustration
 
 There are many, many apps that suffer from this problem because they try to use ansi 16 and make assumptions about the user's terminal theme.
-When we create UI with the user's colors, things can easily go astray. Just because the internet calls that ansi 16 color "white" doesn't mean it's going to look much like white:
+When we create UI with the user's colors, things can easily go astray. Just because the internet calls that ansi 16 color "white" doesn't mean it's going to look much like white.
+
+The [Bad Colors](/bad-colors) tool shows this failure across every theme bundled with Ghostty.
 
 ```sh
 # ansi16 white on ansi16 green (borked)

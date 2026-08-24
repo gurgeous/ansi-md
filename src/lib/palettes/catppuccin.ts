@@ -27,4 +27,8 @@ export const ghostty16: Palette = {
     cyan: "#81c8be",
     white: "#b5bfe2",
   },
+  defaults: {
+    foreground: "#c6d0f5",
+    background: "#303446",
+  },
 };

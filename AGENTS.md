@@ -1,9 +1,8 @@
 ## Critical
 
 - Ignore `old/`; it is inactive reference trash.
-- Use `just`: `build`, `lint`, `test`. `just llm` after code changes
-- Use `just`: `build`, `lint`, `test`. Use the narrowest relevant
-  check; reserve `just llm` for substantive changes.
+- Use `just`: `build`, `lint`, `test`. Use the narrowest relevant check.
+  Standalone script changes do not require `just llm`; reserve it for substantive changes.
 - Never add `package.json` scripts
 - Give PRs a descriptive title; never use `wip`.
 - Succintness/simplicity is a core value, don't add layers
@@ -40,7 +39,8 @@
 ## Tailwind
 
 - Use `src/main.css` `@apply` for repeated doc/site elements.
+- Prefer inline Tailwind utilities for one-off elements and short groups.
+- Use scoped `@apply` for repeated groups, generated collections, and state selectors.
 - Local component styles are okay; Vite adds `@reference`.
-- Put repeated/interesting Astro utility groups in scoped `<style>`.
 - CSS uses nesting; avoid arbitrary bracket utilities.
 - Responsive utilities: only `sm:` and `lg:`; never `md:`.

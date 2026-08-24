@@ -28,6 +28,11 @@ export const chapters: Section[] = [
         url: "/giant",
         phrase: "see lots of colors on light and dark",
       },
+      {
+        name: "Bad Colors",
+        url: "/bad-colors",
+        phrase: "see ANSI 16 fail across terminal themes",
+      },
     ],
   },
   {

@@ -1,0 +1,61 @@
+---
+import allThemes from "@/vendor/ghostty/themes.json";
+
+type Props = { names: string[] };
+
+const colors = [
+  ["red", 1],
+  ["green", 2],
+  ["yellow", 3],
+  ["blue", 4],
+  ["magenta", 5],
+  ["cyan", 6],
+] as const;
+const { names } = Astro.props;
+const themes = names.map((name) => {
+  const theme = allThemes.find((candidate) => candidate.name === name);
+  if (!theme) throw "impossible";
+  return theme;
+});
+---
+
+<table class="w-auto! bg-white text-xs!">
+  <colgroup>
+    <col />
+    {themes.map(() => <col class="w-20" />)}
+  </colgroup>
+  <thead>
+    <tr>
+      <th></th>
+      {
+        themes.map((theme) => (
+          <th>
+            <div class="text-center">{theme.name}</div>
+          </th>
+        ))
+      }
+    </tr>
+  </thead>
+  <tbody>
+    {
+      colors.map(([color, index]) => (
+        <tr>
+          <th>"{color}"</th>
+          {themes.map((theme) => (
+            <td class="h-8" style={`background:${theme.colors[index]}`}>
+              <span class="sr-only">
+                {theme.name} {color}
+              </span>
+            </td>
+          ))}
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<style>
+  th {
+    @apply bg-white;
+  }
+</style>
