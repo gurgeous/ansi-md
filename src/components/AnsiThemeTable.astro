@@ -24,33 +24,35 @@ const base = bright ? 8 : 0;
   </thead>
   <tbody>
     {
-      Object.entries(colors).map(([name, hex], i) => (
-        <tr>
-          <td>
-            <span class="inline-flex items-center gap-1.5">
-              <svg class="size-4 shrink-0 border border-neutral-400">
-                <rect width="16" height="16" fill={hex} />
-              </svg>
-              <span>{name}</span>
-            </span>
-          </td>
-          <td>
-            <code>{hex}</code>
-          </td>
-          <td>
-            <code>{Ansi.fg16(i, bright)}</code>
-          </td>
-          <td>
-            <code>{Ansi.bg16(i, bright)}</code>
-          </td>
-          <td>
-            <code>{Ansi.fg256(base + i)}</code>
-          </td>
-          <td>
-            <code>{Ansi.bg256(base + i)}</code>
-          </td>
-        </tr>
-      ))
+      Object.entries(colors).map(([name, hex], i) => {
+        const isForeground = name === "foreground";
+        const isBackground = name === "background";
+        return (
+          <tr>
+            <td>
+              <span class="inline-flex items-center gap-1.5">
+                <svg class="size-4 shrink-0 border border-neutral-400">
+                  <rect width="16" height="16" fill={hex} />
+                </svg>
+                <span>{name}</span>
+              </span>
+            </td>
+            <td>
+              <code>{hex}</code>
+            </td>
+            <td>{!isBackground && <code>{isForeground ? "\\e[39m" : Ansi.fg16(i, bright)}</code>}</td>
+            <td>{!isForeground && <code>{isBackground ? "\\e[49m" : Ansi.bg16(i, bright)}</code>}</td>
+            <td>{!isForeground && !isBackground && <code>{Ansi.fg256(base + i)}</code>}</td>
+            <td>{!isForeground && !isBackground && <code>{Ansi.bg256(base + i)}</code>}</td>
+          </tr>
+        );
+      })
     }
   </tbody>
 </table>
+
+<style>
+  td:empty::after {
+    content: "-";
+  }
+</style>
