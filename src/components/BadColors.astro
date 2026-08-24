@@ -89,7 +89,7 @@ const data = JSON.stringify({ colorOrders, themes });
   <script is:inline type="application/json" set:html={data} />
 
   <div class="flex flex-wrap items-end gap-x-6 gap-y-3">
-    <label class="flex flex-col gap-1 font-semibold">
+    <label class="flex! flex-col gap-1 font-semibold">
       <span>Foreground</span>
       <select data-foreground>
         {
@@ -102,7 +102,7 @@ const data = JSON.stringify({ colorOrders, themes });
       </select>
     </label>
 
-    <label class="flex flex-col gap-1 font-semibold">
+    <label class="flex! flex-col gap-1 font-semibold">
       <span>Background</span>
       <select data-background>
         {
@@ -115,7 +115,7 @@ const data = JSON.stringify({ colorOrders, themes });
       </select>
     </label>
 
-    <label class="flex items-center gap-1 pb-1 font-semibold">
+    <label class="flex! items-center gap-1 pb-1 font-semibold">
       <span>Sort</span>
       <input data-sort-name type="checkbox" />
     </label>
