@@ -19,6 +19,11 @@ export const chapters: Section[] = [
     name: "Tools",
     items: [
       {
+        name: "Bad Colors",
+        url: "/bad-colors",
+        phrase: "see ANSI 16 fail across terminal themes",
+      },
+      {
         name: "Nearest Color",
         url: "/nearest",
         phrase: "nearest ANSI 256 and Tailwind matches",

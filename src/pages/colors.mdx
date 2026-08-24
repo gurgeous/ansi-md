@@ -50,6 +50,8 @@ and the anachronistically named `bright` variants are part of the theme too:
 There are many, many apps that suffer from this problem because they try to use ansi 16 and make assumptions about the user's terminal theme.
 When we create UI with the user's colors, things can easily go astray. Just because the internet calls that ansi 16 color "white" doesn't mean it's going to look much like white:
 
+The [Bad Colors](/bad-colors) tool shows this failure across every theme bundled with Ghostty.
+
 ```sh
 # ansi16 white on ansi16 green (borked)
 printf '\e[37;42m 1. hello, world \e[0m\n'

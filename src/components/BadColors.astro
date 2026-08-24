@@ -1,0 +1,195 @@
+---
+import Color from "colorjs.io";
+import themesCsv from "@/vendor/ghostty/themes.csv?raw";
+
+const backgrounds = [
+  ["Background", "background"],
+  ["Red", 1],
+  ["Green", 2],
+  ["Yellow", 3],
+  ["Blue", 4],
+  ["Magenta", 5],
+  ["Cyan", 6],
+] as const;
+const foregrounds = [
+  ["Foreground", "foreground"],
+  ["Background", "background"],
+  ["White", 7],
+  ["Black", 0],
+] as const;
+function splitCsvLine(line: string) {
+  const cells: string[] = [];
+  let cell = "";
+  let quoted = false;
+
+  for (let ii = 0; ii < line.length; ii++) {
+    const char = line[ii];
+    if (char === '"' && quoted && line[ii + 1] === '"') {
+      cell += '"';
+      ii++;
+    } else if (char === '"') {
+      quoted = !quoted;
+    } else if (char === "," && !quoted) {
+      cells.push(cell);
+      cell = "";
+    } else {
+      cell += char;
+    }
+  }
+
+  cells.push(cell);
+  return cells;
+}
+
+function colorKey(hex: string) {
+  const [rawLightness, rawChroma, hue] = new Color(hex).to("oklch").coords;
+  const lightness = rawLightness ?? 0;
+  const chroma = rawChroma ?? 0;
+  const lightnessBand = Math.floor(lightness * 16);
+  return [lightnessBand, chroma < 0.0001 || hue === null ? -1 : hue, lightness, chroma] as const;
+}
+
+const [header, ...lines] = themesCsv.trimEnd().split("\n");
+if (splitCsvLine(header).length !== 11) throw new Error("unexpected Ghostty theme CSV header");
+const themes = lines.map((line) => {
+  const [name, foreground, background, ...colors] = splitCsvLine(line);
+  if (!name || !foreground || !background || colors.length !== 8) throw new Error("invalid Ghostty theme CSV row");
+  return { name, foreground, background, colors };
+});
+
+const colorOrders: Record<string, number[]> = Object.fromEntries(
+  backgrounds.map(([, background]) => {
+    const order = themes
+      .map((theme, index) => ({
+        index,
+        key: colorKey(background === "background" ? theme.background : theme.colors[background]),
+        name: theme.name,
+      }))
+      .toSorted((left, right) => {
+        return (
+          left.key[0] - right.key[0] ||
+          left.key[1] - right.key[1] ||
+          left.key[2] - right.key[2] ||
+          left.key[3] - right.key[3] ||
+          left.name.localeCompare(right.name, "en", { sensitivity: "base" })
+        );
+      })
+      .map(({ index }) => index);
+    return [background, order];
+  }),
+);
+const data = JSON.stringify({ colorOrders, themes });
+---
+
+<section class="bad-colors mt-10">
+  <script is:inline type="application/json" set:html={data} />
+
+  <div class="controls">
+    <label>
+      <span>Foreground</span>
+      <select data-foreground>
+        {
+          foregrounds.map(([name, color]) => (
+            <option value={color}>
+              {typeof color === "string" ? `"theme ${name.toLowerCase()}"` : `ANSI ${color} "${name.toLowerCase()}"`}
+            </option>
+          ))
+        }
+      </select>
+    </label>
+
+    <label>
+      <span>Background</span>
+      <select data-background>
+        {
+          backgrounds.map(([name, color]) => (
+            <option value={color} selected={color === 2}>
+              {color === "background" ? `"theme ${name.toLowerCase()}"` : `ANSI ${color} "${name.toLowerCase()}"`}
+            </option>
+          ))
+        }
+      </select>
+    </label>
+
+    <label class="checkbox">
+      <input data-sort-name type="checkbox" />
+      <span>Sort by theme name</span>
+    </label>
+  </div>
+
+  <div class="theme-name-slot">
+    <p class="theme-name">Theme: <strong data-theme-name>Move over or focus a cell</strong></p>
+  </div>
+
+  <div class="grid" data-grid role="list" aria-label={`${themes.length} Ghostty ANSI themes`}>
+    {
+      colorOrders[2].map((index) => {
+        const theme = themes[index];
+        return (
+          <span
+            data-index={index}
+            role="listitem"
+            tabindex="0"
+            aria-label={theme.name}
+            style={`color:${theme.foreground};background:${theme.colors[2]}`}>
+            txt
+          </span>
+        );
+      })
+    }
+  </div>
+</section>
+
+<script>
+  import { initBadColors } from "@/browser/bad-colors";
+  initBadColors();
+</script>
+
+<style>
+  .controls {
+    @apply flex flex-wrap items-end gap-x-6 gap-y-3;
+  }
+
+  label {
+    @apply flex flex-col gap-1 font-semibold;
+
+    &.checkbox {
+      @apply flex-row items-center pb-1;
+    }
+  }
+
+  select {
+    @apply border border-neutral-300 bg-white px-2 py-1 font-normal text-neutral-950;
+  }
+
+  .theme-name-slot {
+    @apply mt-4 h-6;
+  }
+
+  .theme-name {
+    @apply h-6 truncate bg-white text-sm text-neutral-600;
+  }
+
+  .bad-colors:has(.grid:hover) .theme-name,
+  .bad-colors:has(.grid:focus-within) .theme-name {
+    @apply pointer-events-none fixed bottom-4 left-1/2 z-30 h-auto -translate-x-1/2 bg-neutral-950 px-4 py-2 text-lg font-semibold text-white;
+    width: max-content;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(3ch, 1fr));
+    gap: 0;
+    overflow: hidden;
+
+    span {
+      @apply block cursor-default text-center text-sm/6;
+
+      &:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: -2px;
+      }
+    }
+  }
+</style>

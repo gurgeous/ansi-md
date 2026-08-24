@@ -1,0 +1,603 @@
+name,foreground,background,black,red,green,yellow,blue,magenta,cyan,white
+0x96f,#fcfcfa,#262427,#262427,#ff666d,#b3e03a,#ffc739,#00cde8,#a392e8,#9deaf6,#fcfcfa
+12-bit Rainbow,#feffff,#040404,#000000,#a03050,#40d080,#e09040,#3060b0,#603090,#0090c0,#dbded8
+3024 Day,#4a4543,#f7f7f7,#090300,#db2d20,#01a252,#caba00,#01a0e4,#a16a94,#8fbece,#a5a2a2
+3024 Night,#a5a2a2,#090300,#090300,#db2d20,#01a252,#fded02,#01a0e4,#a16a94,#b5e4f4,#a5a2a2
+Aardvark Blue,#dddddd,#102040,#191919,#aa342e,#4b8c0f,#dbba00,#1370d3,#c43ac3,#008eb0,#bebebe
+Aardvark Ink,#b4bcca,#0f141f,#222734,#c26265,#52aa60,#ad9b49,#487fd4,#af5bd1,#269d9a,#5a6377
+Abernathy,#eeeeec,#111416,#000000,#cd0000,#00cd00,#cdcd00,#1093f5,#cd00cd,#00cdcd,#faebd7
+Acid Lime,#d4efbc,#080c05,#131d0c,#ff3344,#97e63c,#eeff5c,#4deca0,#a6ff6b,#50ffb4,#bfe0a4
+Adventure,#feffff,#040404,#040404,#d84a33,#5da602,#eebb6e,#417ab3,#e5c499,#bdcfe5,#dbded8
+Adventure Time,#f8dcc0,#1f1d45,#050404,#bd0013,#4ab118,#e7741e,#0f4ac6,#665993,#70a598,#f8dcc0
+Adwaita,#1d1d20,#ffffff,#1d1d20,#c01c28,#26a269,#a2734c,#12488b,#a347ba,#2aa1b3,#c2c2c2
+Adwaita Dark,#ffffff,#1c1c1f,#241f31,#c01c28,#2ec27e,#f5c211,#1e78e4,#9841bb,#0ab9dc,#c0bfbc
+Afterglow,#d0d0d0,#212121,#151515,#ac4142,#7e8e50,#e5b567,#6c99bb,#9f4e85,#7dd6cf,#d0d0d0
+Aizen Dark,#d0d6f0,#1a1a1a,#1a1a1a,#f08898,#a4e09c,#f5dea4,#84b4f8,#c8a2f4,#90dcd0,#d0d6f0
+Aizen Light,#4a4d66,#f0f2f6,#f0f2f6,#d00c36,#3e9e28,#dd8c1a,#1c64f2,#8636ec,#159096,#4a4d66
+Alabaster,#000000,#f7f7f7,#000000,#aa3731,#448c27,#cb9000,#325cc0,#7a3e9d,#0083b2,#b7b7b7
+Alien Blood,#637d75,#0f1610,#112616,#7f2b27,#2f7e25,#717f24,#2f6a7f,#47587f,#327f77,#647d75
+Amber CRT Retro,#ffb000,#1a1200,#2a1e00,#ff6a00,#ffb000,#ffc742,#ff8c00,#ffa033,#ffd27f,#ffd9a0
+Andromeda,#e5e5e5,#262a33,#000000,#cd3131,#05bc79,#e5e512,#2472c8,#bc3fbc,#0fa8cd,#e5e5e5
+Apple Classic,#d5a200,#2c2b2b,#000000,#c91b00,#00c200,#c7c400,#1c3fe1,#ca30c7,#00c5c7,#c7c7c7
+Apple System Colors,#ffffff,#1e1e1e,#1a1a1a,#cc372e,#26a439,#cdac08,#0869cb,#9647bf,#479ec2,#98989d
+Apple System Colors Light,#000000,#feffff,#1a1a1a,#cc372e,#26a439,#cdac08,#0869cb,#9647bf,#479ec2,#98989d
+Arcoiris,#eee4d9,#201f1e,#333333,#da2700,#12c258,#ffc656,#518bfc,#e37bd9,#63fad5,#bab2b2
+Ardoise,#eaeaea,#1e1e1e,#2c2c2c,#d3322d,#588b35,#fca93a,#2465c2,#7332b4,#64e1b8,#f7f7f7
+Argonaut,#fffaf4,#0e1019,#232323,#ff000f,#8ce10b,#ffb900,#008df8,#6d43a6,#00d8eb,#ffffff
+Arthur,#ddeedd,#1c1c1c,#3d352a,#cd5c5c,#86af80,#e8ae5b,#6495ed,#deb887,#b0c4de,#bbaa99
+Atelier Sulphurpool,#979db4,#202746,#202746,#c94922,#ac9739,#c08b30,#3d8fd1,#6679cc,#22a2c9,#979db4
+Atlas Ragnarok,#ffffff,#000000,#000000,#ff8080,#99ffe4,#2563eb,#a0a0a0,#3b82f6,#99ffe4,#ffffff
+Atom,#c5c8c6,#161719,#000000,#fd5ff1,#87c38a,#ffd7b1,#85befd,#b9b6fc,#85befd,#e0e0e0
+Atom One Dark,#abb2bf,#21252b,#21252b,#e06c75,#98c379,#e5c07b,#61afef,#c678dd,#56b6c2,#abb2bf
+Atom One Light,#2a2c33,#f9f9f9,#000000,#de3e35,#3f953a,#d2b67c,#2f5af3,#950095,#3f953a,#bbbbbb
+Aubade,#3a3340,#fbf6fb,#33293f,#c0303a,#2e7d6e,#8c610c,#4a3cc0,#8a4bc0,#ae3f84,#b2b2b2
+Aura,#edecee,#15141b,#110f18,#ff6767,#61ffca,#ffca85,#a277ff,#a277ff,#61ffca,#edecee
+Aura Dark,#cdccce,#15141b,#15141b,#ff6767,#61ffca,#ffca85,#a277ff,#61ffca,#a277ff,#cdccce
+Aurora,#ffca28,#23262e,#23262e,#f0266f,#8fd46d,#ffe66d,#102ee4,#ee5d43,#03d6b8,#c74ded
+Ayu,#bfbdb6,#0b0e14,#11151c,#ea6c73,#7fd962,#f9af4f,#53bdfa,#cda1fa,#90e1c6,#c7c7c7
+Ayu Light,#5c6166,#f8f9fa,#000000,#ea6c6d,#6cbf43,#eca944,#3199e1,#9e75c7,#46ba94,#bababa
+Ayu Mirage,#cccac2,#1f2430,#171b24,#ed8274,#87d96c,#facc6e,#6dcbfa,#dabafa,#90e1c6,#c7c7c7
+Banana Blueberry,#cccccc,#191323,#17141f,#ff6b7f,#00bd9c,#e6c62f,#22e8df,#dc396a,#56b6c2,#f1f1f1
+base16-icy,#095b67,#021012,#021012,#16c2d9,#4dd0e1,#80deea,#00bcd4,#00adc1,#26c6d6,#095b67
+Batman,#6f6f6f,#1b1d1e,#1b1d1e,#e6dc44,#c8be46,#f4fd22,#737174,#747271,#62605f,#c6c5bf
+Belafonte Day,#45373c,#d5ccba,#20111b,#be100e,#858162,#d08b30,#426a79,#97522c,#989a9c,#968c83
+Belafonte Night,#968c83,#20111b,#20111b,#be100e,#858162,#eaa549,#426a79,#97522c,#989a9c,#968c83
+Birds Of Paradise,#e0dbb7,#2a1f1d,#573d26,#be2d26,#6ba18a,#e99d2a,#5a86ad,#ac80a6,#74a6ad,#e0dbb7
+Black Metal,#c1c1c1,#000000,#000000,#486e6f,#dd9999,#a06666,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Bathory),#c1c1c1,#000000,#000000,#5f8787,#fbcb97,#e78a53,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Burzum),#c1c1c1,#000000,#000000,#5f8787,#ddeecc,#99bbaa,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Dark Funeral),#c1c1c1,#000000,#000000,#5f8787,#d0dfee,#5f81a5,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Gorgoroth),#c1c1c1,#000000,#000000,#5f8787,#9b8d7f,#8c7f70,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Immortal),#c1c1c1,#000000,#000000,#5f8787,#7799bb,#556677,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Khold),#c1c1c1,#000000,#000000,#5f8787,#eceee3,#974b46,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Marduk),#c1c1c1,#000000,#000000,#5f8787,#a5aaa7,#626b67,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Mayhem),#c1c1c1,#000000,#000000,#5f8787,#f3ecd4,#eecc6c,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Nile),#c1c1c1,#000000,#000000,#5f8787,#aa9988,#777755,#888888,#999999,#aaaaaa,#c1c1c1
+Black Metal (Venom),#c1c1c1,#000000,#000000,#5f8787,#f8f7f2,#79241f,#888888,#999999,#aaaaaa,#c1c1c1
+Blazer,#d9e6f2,#0d1926,#000000,#b87a7a,#7ab87a,#b8b87a,#7a7ab8,#b87ab8,#7ab8b8,#d9d9d9
+Blue Berry Pie,#babab9,#1c0c28,#0a4c62,#99246e,#5cb1b3,#eab9a8,#90a5bd,#9d54a7,#7e83cc,#f0e8d6
+Blue Dolphin,#c5f2ff,#006984,#292d3e,#ff8288,#b4e88d,#f4d69f,#82aaff,#e9c1ff,#89ebff,#d0d0d0
+Blue Matrix,#00a2ff,#101116,#101116,#ff5680,#00ff9c,#fffc58,#00b0ff,#d57bff,#76c1ff,#c7c7c7
+Bluloco Dark,#b9c0cb,#282c34,#41444d,#fc2f52,#25a45c,#ff936a,#3476ff,#7a82da,#4483aa,#cdd4e0
+Bluloco Light,#373a41,#f9f9f9,#373a41,#d52753,#23974a,#df631c,#275fe4,#823ff1,#27618d,#babbc2
+Borland,#ffff4e,#0000a4,#4f4f4f,#ff6c60,#a8ff60,#ffffb6,#96cbfe,#ff73fd,#c6c5fe,#eeeeee
+Box,#9fef00,#141d2b,#000000,#cc0403,#19cb00,#cecb00,#0d73cc,#cb1ed1,#0dcdcd,#dddddd
+branch,#cfc1a9,#32221a,#35241c,#c2562d,#96a65e,#d29b5a,#3b8e8c,#c47e5b,#639a90,#cfc1a9
+Breadog,#362c24,#f1ebe6,#362c24,#b10b00,#007232,#8b4c00,#005cb4,#9b0097,#006a78,#baa99d
+Breeze,#eff0f1,#31363b,#31363b,#ed1515,#11d116,#f67400,#1d99f3,#9b59b6,#1abc9c,#eff0f1
+Bright Lights,#b3c9d7,#191919,#191919,#ff355b,#b7e876,#ffc251,#76d4ff,#ba76e7,#6cbfb5,#c2c8d7
+Broadcast,#e6e1dc,#2b2b2b,#000000,#da4939,#519f50,#ffd24a,#6d9cbe,#d0d0ff,#6e9cbe,#ffffff
+Brogrammer,#d6dbe5,#131313,#1f1f1f,#f81118,#2dc55e,#ecba0f,#2a84d2,#4e5ab7,#1081d6,#d6dbe5
+Builtin Dark,#bbbbbb,#000000,#000000,#bb0000,#00bb00,#bbbb00,#0d0dc8,#bb00bb,#00bbbb,#bbbbbb
+Builtin Light,#000000,#ffffff,#000000,#bb0000,#00bb00,#bbbb00,#0000bb,#bb00bb,#00bbbb,#bbbbbb
+Builtin Pastel Dark,#bbbbbb,#000000,#4f4f4f,#ff6c60,#a8ff60,#ffffb6,#96cbfe,#ff73fd,#c6c5fe,#eeeeee
+Builtin Tango Dark,#ffffff,#000000,#000000,#cc0000,#4e9a06,#c4a000,#3465a4,#75507b,#06989a,#d3d7cf
+Builtin Tango Light,#000000,#ffffff,#000000,#cc0000,#4e9a06,#c4a000,#3465a4,#75507b,#06989a,#b9bdb5
+C64,#7869c4,#40318d,#090300,#a2524c,#55a049,#bfce72,#6657b3,#984ca3,#67b6bd,#ffffff
+Calamity,#d5ced9,#2f2833,#2f2833,#fc644d,#a5f69c,#e9d7a5,#3b79c7,#f92672,#74d3de,#d5ced9
+Carbonfox,#f2f4f8,#161616,#282828,#ee5396,#25be6a,#08bdba,#78a9ff,#be95ff,#33b1ff,#dfdfe0
+Cassette Tape,#2b1b12,#fff7ed,#514339,#b91c1c,#3f6212,#be123c,#7c2d12,#0f766e,#b45309,#6b4f3f
+Catppuccin Frappe,#c6d0f5,#303446,#51576d,#e78284,#a6d189,#e5c890,#8caaee,#f4b8e4,#81c8be,#b5bfe2
+Catppuccin Latte,#4c4f69,#eff1f5,#bcc0cc,#d20f39,#40a02b,#df8e1d,#1e66f5,#ea76cb,#179299,#5c5f77
+Catppuccin Macchiato,#cad3f5,#24273a,#494d64,#ed8796,#a6da95,#eed49f,#8aadf4,#f5bde6,#8bd5ca,#b8c0e0
+Catppuccin Mocha,#cdd6f4,#1e1e2e,#45475a,#f38ba8,#a6e3a1,#f9e2af,#89b4fa,#f5c2e7,#94e2d5,#bac2de
+CGA,#aaaaaa,#000000,#000000,#aa0000,#00aa00,#aa5500,#0d0db7,#aa00aa,#00aaaa,#aaaaaa
+Chalk,#d2d8d9,#2b2d2e,#7d8b8f,#b23a52,#789b6a,#b9ac4a,#2a7fac,#bd4f5a,#44a799,#d2d8d9
+Chalkboard,#d9e6f2,#29262f,#000000,#c37372,#72c373,#c2c372,#7372c3,#c372c2,#72c2c3,#d9d9d9
+Challenger Deep,#cbe1e7,#1e1c31,#141228,#ff5458,#62d196,#ffb378,#65b2ff,#906cff,#63f2f1,#a6b3cc
+Chester,#ffffff,#2c3643,#080200,#fa5e5b,#16c98d,#ffc83f,#288ad6,#d34590,#28ddde,#e7e7e7
+Ciapre,#aea47a,#191c27,#181818,#8e0d16,#48513b,#cc8b3f,#576d8c,#724d7c,#5c4f4b,#aea47f
+Citrus Ink,#eaf0e2,#0b1413,#14201e,#ff6b5b,#5fd3a0,#e6c84a,#c2ef45,#f2b441,#cfe89a,#eaf0e2
+Citruszest,#bfbfbf,#121212,#404040,#ff5454,#00cc7a,#ffd400,#00bfff,#ff90fe,#48d1cc,#bfbfbf
+Claude,#141413,#faf9f5,#c15f3c,#788c5d,#b16803,#6a9bcc,#8b6cb0,#2e8b8b,#b5b3a9,#3d3d3c
+Claude Dark,#e5e4e1,#262624,#888681,#d47563,#9aca86,#e8c96b,#6a9bcc,#9b87f5,#3cbe8c,#e2e1da
+Claude Light,#141413,#faf9f5,#0a0a0a,#a84b3a,#2e7c4c,#8a6220,#184e95,#882b4d,#066049,#b6b5aa
+Clear Dark,#e6e6e6,#212734,#35424c,#b45648,#6caa71,#c4ac62,#6d96b4,#bd7bcd,#7ccbcd,#dee5eb
+Clear Light,#3a4851,#ffffff,#2d3840,#b45648,#6caa71,#c4ac62,#5685a8,#ad64be,#69c6c9,#b4bbbf
+CLRS,#262626,#ffffff,#000000,#f8282a,#328a5d,#fa701d,#135cd0,#9f00bd,#33c3c1,#b3b3b3
+Cobalt Neon,#8ff586,#142838,#142631,#ff2320,#3ba5ff,#e9e75c,#8ff586,#781aa0,#8ff586,#ba46b2
+Cobalt Next,#d7deea,#162c35,#000000,#ff527b,#8cc98f,#ffc64c,#409dd4,#cba3c7,#37b5b4,#d7deea
+Cobalt Next Dark,#d7deea,#0b1c24,#262f37,#f94967,#8cc98f,#ffc64c,#409dd4,#cba3c7,#37b5b4,#d7deea
+Cobalt Next Minimal,#d7deea,#0b1c24,#323d47,#ff657a,#8cc98f,#ffc64c,#409dd4,#cba3c7,#37b5b4,#d7deea
+Cobalt2,#ffffff,#132738,#000000,#ff0000,#38de21,#ffe50a,#1460d2,#ff005d,#00bbbb,#bbbbbb
+Coffee Theme,#000000,#f5deb3,#000000,#c91b00,#00c200,#adaa00,#0225c7,#ca30c7,#00b8ba,#a1a1a1
+Cool Night,#ecdef4,#010c18,#0b3b61,#ff3a3a,#52ffd0,#fff383,#1376f9,#c792ea,#ff5ed4,#16fda2
+Crayon Pony Fish,#68525a,#150707,#2b1b1d,#91002b,#579524,#ab311b,#8c87b0,#692f50,#e8a866,#68525a
+CRT Amber,#fff3c4,#1a1005,#4c422f,#ef4444,#84cc16,#fde68a,#c084fc,#f97316,#f59e0b,#d8a657
+Cursor Dark,#d4d4d4,#141414,#242424,#fc6b83,#3fa266,#d2943e,#81a1c1,#b48ead,#88c0d0,#e4e4e4
+Cursor Light,#252525,#f3f3f3,#252525,#cf2d56,#1f8a65,#a16900,#3c7cab,#b8448b,#4c7f8c,#afafaf
+Cutie Pro,#d5d0c9,#181818,#000000,#f56e7f,#bec975,#f58669,#42d9c5,#d286b7,#37cb8a,#d5c3c3
+Cyberdyne,#00ff92,#151144,#080808,#ff8373,#00c172,#d2a700,#0071cf,#ff90fe,#6bffdd,#f1f1f1
+Cyberpunk,#e5e5e5,#332a57,#000000,#ff7092,#00fbac,#fffa6a,#00bfff,#df95ff,#86cbfe,#ffffff
+Cyberpunk Scarlet Protocol,#e41951,#101116,#101116,#ff0051,#01dc84,#faf945,#0271b6,#c930c7,#00c5c7,#c7c7c7
+cyberpunk-icy,#d4b3f7,#0a0a0f,#1a1a2e,#ff0055,#00ff9f,#fffc00,#7b2fff,#ff00ff,#00ffff,#d4b3f7
+Dalton Dark,#c8c9cc,#1b1b1b,#282828,#d85050,#5b914e,#c4c40c,#7aa2f7,#a050d0,#56717f,#b8b8b8
+Dark Modern,#cccccc,#1f1f1f,#272727,#f74949,#2ea043,#9e6a03,#0078d4,#d01273,#1db4d6,#cccccc
+Dark Pastel,#ffffff,#000000,#000000,#ff5555,#55ff55,#ffff55,#5555ff,#ff55ff,#55ffff,#bbbbbb
+Dark+,#cccccc,#1e1e1e,#000000,#cd3131,#0dbc79,#e5e510,#2472c8,#bc3fbc,#11a8cd,#e5e5e5
+Darkermatrix,#35451a,#070c0e,#091013,#1a4831,#6fa64c,#595900,#00cb6b,#4e375a,#125459,#1a4833
+Darkmatrix,#3e5715,#070c0e,#091013,#006536,#6fa64c,#7e8000,#2c9a84,#523a60,#114d53,#006536
+Darkside,#bababa,#222324,#000000,#e8341c,#68c256,#f2d42c,#1c98e8,#8e69c9,#1c98e8,#bababa
+datum (dark),#dbe0e8,#0f1318,#2b2f35,#fe9864,#54dcaa,#e8df69,#69b9f7,#fa94cd,#6ae5ec,#dbe0e8
+datum (light),#292e35,#f1f6fd,#292e35,#a24500,#007553,#656023,#0176b8,#973070,#0d7a7f,#b4b9bf
+Dawnfox,#575279,#faf4ed,#575279,#b4637a,#618774,#ea9d34,#286983,#907aa9,#56949f,#b2b6bd
+Daybreak,#44413b,#f3efe8,#44413b,#af2817,#3c6a12,#795900,#186875,#754193,#006a62,#6e6b62
+Dayfox,#3d2b5a,#f6f2ee,#352c24,#a5222f,#396847,#ac5402,#2848a9,#6e33ce,#287980,#bfb6ae
+Deep,#cdcdcd,#090909,#000000,#d70005,#1cd915,#d9bd26,#5665ff,#b052da,#50d2da,#e0e0e0
+Desert,#ffffff,#333333,#4d4d4d,#ff2b2b,#98fb98,#f0e68c,#cd853f,#ffdead,#ffa0a0,#f5deb3
+Detuned,#c7c7c7,#000000,#171717,#fe4386,#a6e32d,#e6da73,#0094d9,#9b37ff,#50b7d9,#c7c7c7
+Dimidium,#bab7b6,#141414,#000000,#cf494c,#60b442,#db9c11,#0575d8,#af5ed2,#1db6bb,#bab7b6
+Dimmed Monokai,#b9bcba,#1f1f1f,#3a3d43,#be3f48,#879a3b,#c5a635,#4f76a1,#855c8d,#578fa4,#b9bcba
+Django,#f8f8f8,#0b2f20,#000000,#fd6209,#41a83e,#ffe862,#315d3f,#f8f8f8,#9df39f,#ffffff
+Django Reborn Again,#dadedc,#051f14,#000000,#fd6209,#41a83e,#ffe862,#245032,#f8f8f8,#9df39f,#ffffff
+Django Smooth,#f8f8f8,#245032,#000000,#fd6209,#41a83e,#ffe862,#989898,#f8f8f8,#9df39f,#e8e8e7
+Dogxi Misty,#eff0eb,#282a36,#000000,#ff5c57,#94e362,#eebd70,#99ecfe,#ff6ac1,#5fdeed,#f1f1f0
+Doom One,#bbc2cf,#282c34,#000000,#ff6c6b,#98be65,#ecbe7b,#a9a1e1,#c678dd,#51afef,#bbc2cf
+Doom Peacock,#ede0ce,#2b2a27,#1c1f24,#cb4b16,#26a6a6,#bcd42a,#2a6cc6,#a9a1e1,#5699af,#ede0ce
+Dot Gov,#ebebeb,#262c35,#191919,#bf091d,#3d9751,#f6bb34,#17b2e0,#7830b0,#8bd2ed,#ffffff
+Dracula,#f8f8f2,#282a36,#21222c,#ff5555,#50fa7b,#f1fa8c,#bd93f9,#ff79c6,#8be9fd,#f8f8f2
+Dracula+,#f8f8f2,#212121,#21222c,#ff5555,#50fa7b,#ffcb6b,#82aaff,#c792ea,#8be9fd,#f8f8f2
+Driftwood,#e6ddd0,#2a2622,#211d19,#e77467,#aab971,#e1b869,#78b3b5,#c9a0bd,#a5c4b1,#c2b7a6
+Duckbones,#ebefc0,#0e101a,#0e101a,#e03600,#5dcd97,#e39500,#00a3cb,#795ccc,#00a3cb,#ebefc0
+Duotone Dark,#b7a1ff,#1f1d27,#1f1d27,#d9393e,#2dcd73,#d9b76e,#ffc284,#de8d40,#2488ff,#b7a1ff
+Duskfox,#e0def4,#232136,#393552,#eb6f92,#a3be8c,#f6c177,#569fba,#c4a7e7,#9ccfd8,#e0def4
+Earthsong,#e5c7a9,#292520,#121418,#c94234,#85c54c,#f5ae2e,#1398b9,#d0633d,#509552,#e5c6aa
+Eclipse,#dce3ed,#0e1116,#0a0d12,#ff6366,#85df5e,#f1c655,#5fb9ff,#cea5ff,#3addc4,#b7c0ce
+Electron Highlighter,#a5b6d4,#23283d,#15161f,#ff6c8d,#00ffc3,#ffebb1,#77abff,#daa4f4,#00e5ff,#7187b7
+Electron Highlighter Day,#2f3b54,#eef0f5,#c2c6d4,#f52a65,#10a877,#df8e1d,#366ff0,#8b4fe0,#0a9fbf,#59647e
+Elegant,#ced2d6,#292b31,#0a1222,#ff0257,#85cc95,#ffcb8b,#8dabe1,#c792eb,#78ccf0,#ffffff
+Elemental,#807a74,#22211d,#3c3c30,#98290f,#479a43,#7f7111,#497f7d,#7f4e2f,#387f58,#807974
+Elementary,#efefef,#181818,#242424,#d71c15,#5aa513,#fdb40c,#134899,#e40038,#2595e1,#efefef
+Embark,#eeffff,#1e1c31,#1e1c31,#f0719b,#a1efd3,#ffe9aa,#57c7ff,#c792ea,#87dfeb,#f8f8f2
+Embers Dark,#a39a90,#16130f,#16130f,#826d57,#57826d,#6d8257,#6d5782,#82576d,#576d82,#a39a90
+Emerald Synth,#00ffcc,#0d0221,#0a0118,#ff2a6d,#00e67e,#ffcc66,#8b9cf7,#ff79c6,#4dd0e1,#f0e6ff
+ENCOM,#00a595,#000000,#000000,#9f0000,#008b00,#ffd000,#0081ff,#bc00ca,#008b8b,#bbbbbb
+Espresso,#ffffff,#323232,#353535,#d25252,#a5c261,#ffc66d,#6c99bb,#d197d9,#bed6ff,#eeeeec
+Espresso Libre,#b8a898,#2a211c,#000000,#cc0000,#1a921c,#f0e53a,#0066ff,#c5656b,#06989a,#d3d7cf
+Everblush,#dadada,#141b1e,#232a2d,#e57474,#8ccf7e,#e5c76b,#67b0e8,#c47fd5,#6cbfbf,#b3b9b8
+Everforest Dark Hard,#d3c6aa,#1e2326,#7a8478,#e67e80,#a7c080,#dbbc7f,#7fbbb3,#d699b6,#83c092,#f2efdf
+Everforest Dark Med,#d3c6aa,#232a2e,#7a8478,#e67e80,#a7c080,#dbbc7f,#7fbbb3,#d699b6,#83c092,#f2efdf
+Everforest Dark Soft,#d3c6aa,#293136,#7a8478,#e67e80,#a7c080,#dbbc7f,#7fbbb3,#d699b6,#83c092,#f2efdf
+Everforest Light Hard,#5c6a72,#f2efdf,#7a8478,#e67e80,#9ab373,#ceaf72,#7fbbb3,#d699b6,#83c092,#b2af9f
+Everforest Light Med,#5c6a72,#efebd4,#7a8478,#e67e80,#9ab373,#c1a266,#7fbbb3,#d699b6,#83c092,#b2af9f
+Everforest Light Soft,#5c6a72,#e5dfc5,#7a8478,#e67e80,#8da666,#c1a266,#72aea6,#c98ca9,#76b385,#a5a292
+Fahrenheit,#ffffce,#000000,#1d1d1d,#cda074,#9e744d,#fecf75,#7f0e0f,#734c4d,#979797,#ffffce
+Fairyfloss,#f8f8f2,#5a5475,#040303,#f92672,#c2ffdf,#e6c000,#c2ffdf,#ffb8d1,#c5a3ff,#f8f8f0
+Farmhouse Dark,#e8e4e1,#1d2027,#1d2027,#ba0004,#549d00,#c87300,#0049e6,#9f1b61,#1fb65c,#e8e4e1
+Farmhouse Light,#1d2027,#e8e4e1,#1d2027,#8d0003,#3a7d00,#a95600,#092ccd,#820046,#229256,#a8a4a1
+Fideloper,#dbdae0,#292f33,#292f33,#cb1e2d,#edb8ac,#b7ab9b,#2e78c2,#c0236f,#309186,#eae3ce
+Firefly Traditional,#f5f5f5,#000000,#000000,#c23720,#33bc26,#afad24,#5a63ff,#d53ad2,#33bbc7,#cccccc
+Firefox Dev,#7c8fa4,#0e1011,#002831,#e63853,#5eb83c,#a57706,#359ddf,#d75cff,#4b73a2,#dcdcdc
+Firewatch,#9ba2b2,#1e2027,#585f6d,#d95360,#5ab977,#dfb563,#4d89c4,#d55119,#44a8b6,#e6e5ff
+Fish Tank,#ecf0fe,#232537,#03073c,#c6004a,#acf157,#fecd5e,#525fb8,#986f82,#968763,#ecf0fc
+Flat,#2cc55d,#002240,#222d3f,#a82320,#32a548,#e58d11,#3167ac,#781aa0,#2c9370,#b0b6ba
+Flatland,#b8dbef,#1d1f21,#1d1d19,#f18339,#9fd364,#f4ef6d,#5096be,#695abc,#d63865,#ffffff
+Flexoki Dark,#cecdc3,#100f0f,#100f0f,#d14d41,#879a39,#d0a215,#4385be,#ce5d97,#3aa99f,#878580
+Flexoki Light,#100f0f,#fffcf0,#100f0f,#af3029,#66800b,#ad8301,#205ea6,#a02f6f,#24837b,#6f6e69
+Floraverse,#dbd1b9,#0e0d15,#08002e,#7e1a46,#5d731a,#cd751c,#1d6da1,#b7077e,#42a38c,#f3e0b8
+Forest Blue,#e2d8cd,#051519,#333333,#f8818e,#92d3a2,#1a8e63,#8ed0ce,#5e468c,#31658c,#e2d8cd
+Forge Ember,#f4e2c8,#140c07,#241810,#ff4733,#c4c24a,#ffb347,#f0a24f,#ff6a4d,#ffd27a,#e6d2b6
+Framer,#777777,#111111,#141414,#ff5555,#98ec65,#ffcc33,#00aaff,#aa88ff,#88ddff,#cccccc
+Front End Delight,#adadad,#1b1c1d,#242526,#f8511b,#565747,#fa771d,#2c70b7,#f02e4f,#3ca1a6,#adadad
+Frostbyte,#283645,#eef5fc,#283645,#c2384f,#2e7a56,#876010,#1a66be,#5552cc,#1a7e9e,#586878
+Fun Forrest,#dec165,#251200,#000000,#d6262b,#919c00,#be8a13,#4699a3,#8d4331,#da8213,#ddc265
+Galaxy,#ffffff,#1d2837,#000000,#f9555f,#21b089,#fef02a,#589df6,#944d95,#1f9ee7,#bbbbbb
+Galizur,#ddeeff,#071317,#223344,#aa1122,#33aa11,#ccaa22,#2255cc,#7755aa,#22bbdd,#8899aa
+Ghostty Default Style Dark,#ffffff,#282c34,#1d1f21,#cc6566,#b6bd68,#f0c674,#82a2be,#b294bb,#8abeb7,#c4c8c6
+GitHub,#3e3e3e,#f4f4f4,#3e3e3e,#970b16,#07962a,#c5bb94,#003e8a,#e94691,#7cc4df,#b2b2b2
+GitHub Dark,#8b949e,#101216,#000000,#f78166,#56d364,#e3b341,#6ca4f8,#db61a2,#2b7489,#ffffff
+GitHub Dark Colorblind,#c9d1d9,#0d1117,#484f58,#ec8e2c,#58a6ff,#d29922,#58a6ff,#bc8cff,#39c5cf,#b1bac4
+GitHub Dark Default,#e6edf3,#0d1117,#484f58,#ff7b72,#3fb950,#d29922,#58a6ff,#bc8cff,#39c5cf,#b1bac4
+GitHub Dark Dimmed,#adbac7,#22272e,#545d68,#f47067,#57ab5a,#c69026,#539bf5,#b083f0,#39c5cf,#909dab
+GitHub Dark High Contrast,#f0f3f6,#0a0c10,#7a828e,#ff9492,#26cd4d,#f0b72f,#71b7ff,#cb9eff,#39c5cf,#d9dee3
+GitHub Light Colorblind,#24292f,#ffffff,#24292f,#b35900,#0550ae,#4d2d00,#0969da,#8250df,#1b7c83,#6e7781
+GitHub Light Default,#1f2328,#ffffff,#24292f,#cf222e,#116329,#4d2d00,#0969da,#8250df,#1b7c83,#6e7781
+GitHub Light High Contrast,#0e1116,#ffffff,#0e1116,#a0111f,#024c1a,#3f2200,#0349b4,#622cbc,#1b7c83,#66707b
+GitLab Dark,#ffffff,#28262b,#000000,#f57f6c,#52b87a,#d99530,#7fb6ed,#f88aaf,#32c5d2,#ffffff
+GitLab Dark Grey,#ffffff,#222222,#000000,#f57f6c,#52b87a,#d99530,#7fb6ed,#f88aaf,#32c5d2,#ffffff
+GitLab Light,#303030,#fafaff,#303030,#a31700,#0a7f3d,#af551d,#006cd8,#583cac,#00798a,#303030
+Glacier,#ffffff,#0c1115,#2e343c,#bd0f2f,#35a770,#fb9435,#1f5872,#bd2523,#778397,#ffffff
+Gleam,#ffffff,#292d3e,#000000,#f44747,#aadd8b,#ffd596,#6796e6,#fe7ab2,#b181ec,#f7f7f7
+Gleam Classic,#ffffff,#1e1e1e,#000000,#f44747,#aadd8b,#ffd596,#6796e6,#fe7ab2,#b181ec,#f7f7f7
+Grape,#9f9fa1,#171423,#2d283f,#ed2261,#1fa91b,#8ddc20,#487df4,#8d35c9,#3bdeed,#9e9ea0
+Graphite,#d2d6dc,#1c1e22,#15171a,#e58888,#a7c59f,#cec59d,#8db4d0,#baabcb,#a8c6d4,#b4b9c0
+Grass,#fff0a5,#13773d,#000000,#ff5959,#00bb00,#e7b000,#0000a3,#ee59bb,#00bbbb,#bbbbbb
+Green Phosphor CRT,#33ff33,#0b0f0b,#002200,#00aa00,#33ff33,#66ff66,#00cc44,#00ff88,#66ffaa,#b6ffb6
+Grey Green,#ffffff,#002a1a,#000000,#fe1414,#74ff00,#f1ff01,#00deff,#ff00f0,#00ffbc,#ffffff
+Gruber Darker,#e4e4e4,#181818,#181818,#ff0a36,#42dc00,#ffdb00,#92a7cb,#a095cb,#90aa9e,#e4e4e4
+Gruvbox Dark,#ebdbb2,#282828,#282828,#cc241d,#98971a,#d79921,#458588,#b16286,#689d6a,#a89984
+Gruvbox Dark Hard,#ebdbb2,#1d2021,#1d2021,#cc241d,#98971a,#d79921,#458588,#b16286,#689d6a,#a89984
+Gruvbox Light,#3c3836,#fbf1c7,#fbf1c7,#cc241d,#98971a,#d79921,#458588,#b16286,#689d6a,#7c6f64
+Gruvbox Light Hard,#3c3836,#f9f5d7,#f9f5d7,#cc241d,#98971a,#d79921,#458588,#b16286,#689d6a,#7c6f64
+Gruvbox Material,#d4be98,#1d2021,#141617,#ea6926,#c1d041,#eecf75,#6da3ec,#fd9bc1,#fe9d6e,#ffffff
+Gruvbox Material Dark,#d4be98,#282828,#282828,#ea6962,#a9b665,#d8a657,#7daea3,#d3869b,#89b482,#d4be98
+Gruvbox Material Light,#654735,#fbf1c7,#fbf1c7,#c14a4a,#6c782e,#b47109,#45707a,#945e80,#4c7a5d,#654735
+Guezwhoz,#d9d9d9,#1d1d1d,#333333,#e85181,#7ad694,#b7d074,#5aa0d6,#9a90e0,#58d6ce,#d9d9d9
+Hacktober,#c9c9c9,#141414,#191918,#b34538,#587744,#d08949,#206ec5,#864651,#ac9166,#f1eee7
+Hardcore,#a0a0a0,#121212,#1b1d1e,#f92672,#a6e22e,#fd971f,#66d9ef,#9e6ffe,#5e7175,#ccccc6
+Harper,#a8a49d,#010101,#010101,#f8b63f,#7fb5e1,#d6da25,#489e48,#b296c6,#f5bfd7,#a8a49d
+Havn Daggry,#3b4a7a,#f8f9fb,#1f2842,#985248,#577159,#be6b00,#3a577d,#7c5c97,#925780,#b0b5c5
+Havn Skumring,#d6dbeb,#111522,#252c47,#ea563e,#6ead7b,#f8b330,#596cf7,#7c719e,#d588c1,#dce0ee
+HaX0R Blue,#11b7ff,#010515,#010921,#10b6ff,#10b6ff,#10b6ff,#10b6ff,#10b6ff,#10b6ff,#fafafa
+HaX0R Gr33N,#16b10e,#020f01,#001f0b,#15d00d,#15d00d,#15d00d,#15d00d,#15d00d,#15d00d,#fafafa
+HaX0R R3D,#b10e0e,#200101,#1f0000,#b00d0d,#b00d0d,#b00d0d,#b00d0d,#b00d0d,#b00d0d,#fafafa
+hazyland,#eee4ff,#171219,#7b7080,#ff8fc4,#b2ffe3,#f6e6a8,#96ccff,#b4b7f2,#8ff7f0,#eee4ff
+Heeler,#fdfdfd,#211f46,#000000,#e44c2e,#bdd100,#f4ce65,#5ba5f2,#ff95c2,#ff9763,#ffffff
+Highway,#ededed,#222225,#000000,#d00e18,#138034,#ffcb3e,#006bb3,#783482,#455271,#ededed
+Hipster Green,#84c138,#100b05,#000000,#b6214a,#00a600,#bfbf00,#246eb2,#b200b2,#00a6b2,#bfbfbf
+Hivacruz,#ede4e4,#132638,#202746,#c94922,#ac9739,#c08b30,#3d8fd1,#6679cc,#22a2c9,#979db4
+Homebrew,#00ff00,#000000,#000000,#990000,#00a600,#999900,#0d0dbf,#b200b2,#00a6b2,#bfbfbf
+Hopscotch,#b9b5b8,#322931,#322931,#dd464c,#8fc13e,#fdcc59,#1290bf,#c85e7c,#149b93,#b9b5b8
+Hopscotch.256,#b9b5b8,#322931,#322931,#dd464c,#8fc13e,#fdcc59,#1290bf,#c85e7c,#149b93,#b9b5b8
+Horizon,#d5d8da,#1c1e26,#000000,#e95678,#29d398,#fab795,#26bbd9,#ee64ac,#59e1e3,#e5e5e5
+Horizon Bright,#16161d,#fdf0ed,#16161d,#fc4777,#00ca86,#f2a682,#00bedd,#ff58b1,#00cdcb,#bfafac
+Hot Dog Stand,#ffffff,#ea3323,#000000,#ffff54,#ffff54,#ffff54,#000000,#ffff54,#ffffff,#c6c6c6
+Hot Dog Stand (Mustard),#000000,#ffff54,#000000,#ea3323,#ea3323,#ea3323,#000000,#ea3323,#000000,#b9b9b9
+Hurtado,#dbdbdb,#000000,#575757,#ff1b00,#a5e055,#fbe74a,#496487,#fd5ff1,#86e9fe,#cbcccb
+Hybrid,#b7bcba,#161719,#2a2e33,#b84d51,#b3bf5a,#e4b55e,#6e90b0,#a17eac,#7fbfb4,#b5b9b6
+IBM 5153 CGA,#cecece,#141414,#141414,#d03333,#1bd01b,#d08c1b,#1b1bd0,#d01bd0,#1bd0d0,#cecece
+IBM 5153 CGA (Black),#c4c4c4,#000000,#000000,#c40000,#00c400,#c47e00,#0000c4,#c400c4,#00c4c4,#c4c4c4
+IC Green PPL,#e0f1dc,#2c2c2c,#014401,#ff2736,#41a638,#76a831,#2ec3b9,#50a096,#3ca078,#e6fef2
+IC Orange PPL,#ffcb83,#262626,#000000,#c13900,#a4a900,#caaf00,#bd6d00,#fc5e00,#f79500,#ffc88a
+Iceberg Dark,#c6c8d1,#161821,#1e2132,#e27878,#b4be82,#e2a478,#84a0c6,#a093c7,#89b8c2,#c6c8d1
+Iceberg Light,#33374c,#e8e9ec,#dcdfe7,#cc517a,#668e3d,#c57339,#2d539e,#7759b4,#3f83a6,#33374c
+Idea,#adadad,#202020,#adadad,#fc5256,#98b61c,#ccb444,#437ee7,#9d74b0,#248887,#4b4b4b
+Idle Toes,#ffffff,#323232,#323232,#d25252,#7fe173,#ffc66d,#4099ff,#f680ff,#bed6ff,#eeeeec
+IR Black,#f1f1f1,#000000,#4f4f4f,#fa6c60,#a8ff60,#fffeb7,#96cafe,#fa73fd,#c6c5fe,#efedef
+IRIX Console,#f2f2f2,#0c0c0c,#1a1919,#d42426,#37a327,#c29d28,#0739e2,#911f9c,#4497df,#cccccc
+IRIX Terminal,#f2f2f2,#000043,#1a1919,#ff2b1e,#57ff3d,#ffff44,#0004ff,#ff2cff,#56ffff,#ffffff
+iTerm2 Dark Background,#c7c7c7,#000000,#000000,#c91b00,#00c200,#c7c400,#0225c7,#ca30c7,#00c5c7,#c7c7c7
+iTerm2 Default,#ffffff,#000000,#000000,#c91b00,#00c200,#c7c400,#2225c4,#ca30c7,#00c5c7,#ffffff
+iTerm2 Light Background,#000000,#ffffff,#000000,#c91b00,#00c200,#c7c400,#0225c7,#ca30c7,#00c5c7,#bababa
+iTerm2 Pastel Dark Background,#c7c7c7,#000000,#626262,#ff8373,#b4fb73,#fffdc3,#a5d5fe,#ff90fe,#d1d1fe,#f1f1f1
+iTerm2 Smoooooth,#dcdcdc,#15191f,#14191e,#b43c2a,#00c200,#c7c400,#2744c7,#c040be,#00c5c7,#c7c7c7
+iTerm2 Solarized Dark,#839496,#002b36,#073642,#dc322f,#859900,#b58900,#268bd2,#d33682,#2aa198,#eee8d5
+iTerm2 Solarized Light,#657b83,#fdf6e3,#073642,#dc322f,#859900,#b58900,#268bd2,#d33682,#2aa198,#bbb5a2
+iTerm2 Tango Dark,#ffffff,#000000,#000000,#d81e00,#5ea702,#cfae00,#427ab3,#89658e,#00a7aa,#dbded8
+iTerm2 Tango Light,#000000,#ffffff,#000000,#d81e00,#5ea702,#cfae00,#427ab3,#89658e,#00a7aa,#c1c4be
+Jackie Brown,#ffcc2f,#2c1d16,#2c1d16,#ef5734,#2baf2b,#bebf00,#246eb2,#d05ec1,#00acee,#bfbfbf
+Japanesque,#f7f6ec,#1e1e1e,#343935,#cf3f61,#7bb75b,#e9b32a,#4c9ad4,#a57fc4,#389aad,#fafaf6
+Jellybeans,#dedede,#121212,#929292,#e27373,#94b979,#ffba7b,#97bedc,#e1c0fa,#00988e,#dedede
+JetBrains Darcula,#adadad,#202020,#000000,#fa5355,#126e00,#c2c300,#4581eb,#fa54ff,#33c2c1,#adadad
+JetBrains Islands Dark,#bcbec4,#191a1c,#191a1c,#f75464,#6aab73,#cf8e6d,#56a8f5,#c77dbb,#2aacb8,#bcbec4
+JetCalm Light,#1c2410,#ededed,#383a42,#a52a2a,#556b2f,#5c3e00,#4682b4,#a626a4,#0997b3,#6b8e23
+Jubi,#c3d3de,#262b33,#3b3750,#cf7b98,#90a94b,#6ebfc0,#576ea6,#bc4f68,#75a7d2,#c3d3de
+Kanagawa Dragon,#c5c9c5,#181616,#0d0c0c,#c4746e,#8a9a7b,#c4b28a,#8ba4b0,#a292a3,#8ea4a2,#c8c093
+Kanagawa Lotus,#545464,#f2ecbc,#1f1f28,#c84053,#6f894e,#77713f,#4d699b,#b35b79,#597b75,#545464
+Kanagawa Wave,#dcd7ba,#1f1f28,#090618,#c34043,#76946a,#c0a36e,#7e9cd8,#957fb8,#6a9589,#c8c093
+Kanagawabones,#ddd8bb,#1f1f28,#1f1f28,#e46a78,#98bc6d,#e5c283,#7eb3c9,#957fb8,#7eb3c9,#ddd8bb
+Kanso Ink,#c5c9c7,#14171d,#14171d,#c4746e,#8a9a7b,#c4b28a,#8ba4b0,#a292a3,#8ea4a2,#c8c093
+Kanso Mist,#c5c9c7,#22262d,#22262d,#c4746e,#8a9a7b,#c4b28a,#8ba4b0,#a292a3,#8ea4a2,#a4a7a4
+Kanso Pearl,#22262d,#f2f1ef,#22262d,#c84053,#6f894e,#77713f,#4d699b,#b35b79,#597b75,#545464
+Kanso Zen,#c5c9c7,#090e13,#0d0c0c,#c4746e,#8a9a7b,#c4b28a,#8ba4b0,#a292a3,#8ea4a2,#c8c093
+Karasu Night,#e7e5e4,#0a0a0a,#0a0a0a,#e06c75,#8fbf7a,#d4b86a,#7aa2c8,#b4a1d8,#76b7b2,#f5f5f5
+Karasu Snow,#292524,#fafafa,#0a0a0a,#b84755,#3f7e4a,#8a6a1f,#2e5e9b,#6c4bb8,#2d7e7a,#b5b5b5
+Karma Dark,#f7f1ff,#0a0e14,#0a0e14,#fc618d,#7bd88f,#fce566,#5ad4e6,#af98e6,#5ad4e6,#bab6c0
+Karma Dark Dimmed,#e2def0,#14181f,#14181f,#e87691,#82c891,#ebd870,#6cc4d2,#a892d4,#6cc4d2,#a8a4ae
+Karma Dark HC,#ffffff,#000000,#000000,#ff5c87,#80e598,#fce566,#61dceb,#b9a3ee,#61dceb,#d6d2db
+Karma Light,#0a0e14,#ffffff,#0a0e14,#fc618d,#2d972f,#eeae11,#5688c7,#6f42c1,#5688c7,#525053
+Karma Light Dimmed,#1c1f24,#f5f3f7,#1c1f24,#e07a90,#4a9a4c,#d49a26,#6688b8,#7c5ab0,#6688b8,#5a5860
+Karma Light HC,#000000,#ffffff,#000000,#c01650,#1a6e1c,#9c6800,#2f5e9e,#4d2d9a,#2f5e9e,#2e2c30
+Keys Ocean Sunset,#b8c8dc,#0a1018,#101927,#e85a52,#4a9a72,#e89a2e,#5288b8,#bc5090,#5ec8c8,#a5b5d5
+Keys Ocean Sunset HC,#f0f4fa,#060910,#7a92a8,#ff6361,#4ad68a,#ffa600,#6aa8f0,#de72b0,#5edee8,#c8d8ec
+Kibble,#f7f7f7,#0e100a,#4d4d4d,#c70031,#29cf13,#d8e30e,#3449d1,#8400ff,#0798ab,#e2d1e3
+Kitty Default,#dddddd,#000000,#000000,#cc0403,#19cb00,#cecb00,#0d73cc,#cb1ed1,#0dcdcd,#dddddd
+Kitty Low Contrast,#ffffff,#333333,#000000,#cc0403,#19cb00,#cecb00,#0d73cc,#cb1ed1,#0dcdcd,#dddddd
+Klein Void,#ede6d3,#0b0d14,#1a1c24,#f09890,#a6c080,#e8bc75,#002fa7,#d49bb5,#9fc0e5,#cdc7b8
+Kolorit,#efecec,#1d1a1e,#1d1a1e,#ff5b82,#47d7a1,#e8e562,#5db4ee,#da6cda,#57e9eb,#ededed
+Konsolas,#c8c1c1,#060606,#000000,#aa1717,#18b218,#ebae1f,#2323a5,#ad1edc,#42b0c8,#c8c1c1
+Kurokula,#e0cfc2,#141515,#333333,#c35a52,#78b3a9,#e1b917,#5c91dd,#8b79a6,#867268,#e0cfc2
+Lab Fox,#ffffff,#2e2e2e,#2e2e2e,#fc6d26,#3eb383,#fca121,#db3b21,#6b40a8,#6e49cb,#ffffff
+Laser,#f106e3,#030d18,#626262,#ff8373,#b4fb73,#09b4bd,#fed300,#ff90fe,#d1d1fe,#f1f1f1
+Later This Evening,#959595,#222222,#2b2b2b,#d45a60,#afba67,#e5d289,#a0bad6,#c092d6,#91bfb7,#494a4a
+Lavandula,#736e7d,#050014,#230046,#7d1625,#337e6f,#7f6f49,#4f4a7f,#5a3f7f,#58777f,#736e7d
+Letterpress,#3a352c,#f3ecdf,#3a352c,#b0202a,#506b24,#8a5e0a,#2a5c8a,#6e4b2e,#176b5f,#aeaba4
+Light Owl,#403f53,#fbfbfb,#403f53,#de3d3b,#08916a,#e0af02,#288ed7,#d6438a,#2aa298,#bdbdbd
+Liquid Carbon,#afc2c2,#303030,#000000,#ff3030,#559a70,#ccac00,#0099cc,#cc69c8,#7ac4cc,#bccccc
+Liquid Carbon Transparent,#afc2c2,#000000,#000000,#ff3030,#559a70,#ccac00,#0099cc,#cc69c8,#7ac4cc,#bccccc
+London Bonfire Night,#e8e0c8,#0e0c0e,#1a1418,#d65a3a,#6a8a4a,#e8b048,#5a7ab8,#d76aa8,#88a8c8,#e8e0c8
+London Columbia Road,#1f3a2f,#f8f5ec,#2a2520,#c14a4a,#5a8a3a,#d4a82c,#3a7a8a,#c45f8a,#5fa89a,#1f3a2f
+London Embankment Dusk,#e8eef2,#161f2c,#1c2533,#c5573f,#6a8e85,#e2bd5c,#5e87b3,#9b86a8,#82a8b8,#e8eef2
+London Soho Night,#ebe0c8,#1a1612,#2a221a,#d4574a,#8fae5e,#e8b04a,#6a8fb5,#d96aa5,#9ab8a8,#ebe0c8
+Lovelace,#fdfdfd,#1d1f28,#282a36,#f37f97,#5adecd,#f2a272,#8897f4,#c574dd,#79e6f3,#fdfdfd
+Man Page,#000000,#fef49c,#000000,#cc0000,#00a600,#999900,#0000b2,#b200b2,#00a6b2,#b2b2b2
+Mariana,#d8dee9,#343d46,#000000,#ec5f66,#99c794,#f9ae58,#6699cc,#c695c6,#5fb4b4,#f7f7f7
+Matcha Zen,#354029,#f5f7ea,#354029,#c2452a,#4e8c2e,#927000,#2e7c78,#7e5ba6,#2a8585,#56664a
+Material,#232322,#eaeaea,#212121,#b7141f,#457b24,#f6981e,#134eb2,#560088,#0e717c,#afafaf
+Material Dark,#e5e5e5,#232322,#212121,#b7141f,#457b24,#f6981e,#134eb2,#701aa2,#0e717c,#efefef
+Material Darker,#eeffff,#212121,#000000,#ff5370,#c3e88d,#ffcb6b,#82aaff,#c792ea,#89ddff,#ffffff
+Material Design Colors,#e7ebed,#1d262a,#435b67,#fc3841,#5cf19e,#fed032,#37b6ff,#fc226e,#59ffd1,#ffffff
+Material Ocean,#8f93a2,#0f111a,#546e7a,#ff5370,#c3e88d,#ffcb6b,#82aaff,#c792ea,#89ddff,#ffffff
+Mathias,#bbbbbb,#000000,#000000,#e52222,#a6e32d,#fc951e,#c48dff,#fa2573,#67d9f0,#f2f2f2
+Matrix,#426644,#0f191c,#0f191c,#23755a,#82d967,#ffd700,#3f5242,#409931,#50b45a,#507350
+Matte Black,#bebebe,#121212,#333333,#d35f5f,#ffc107,#b91c1c,#e68e0d,#d35f5f,#bebebe,#bebebe
+Medallion,#cac296,#1d1908,#000000,#b64c00,#7c8b16,#d3bd26,#616bb0,#8c5a90,#916c25,#cac29a
+Melange Dark,#ece1d7,#292522,#34302c,#bd8183,#78997a,#e49b5d,#7f91b2,#b380b0,#7b9695,#c1a78e
+Melange Light,#54433a,#f1f1f1,#e9e1db,#c77b8b,#6e9b72,#bc5c00,#7892bd,#be79bb,#739797,#7d6658
+Mellifluous,#dadada,#1a1a1a,#1a1a1a,#d29393,#b3b393,#cbaa89,#a8a1be,#b39fb0,#c0af8c,#dadada
+Mellow,#c9c7cd,#161617,#27272a,#f5a191,#90b99f,#e6b99d,#aca1cf,#e29eca,#ea83a5,#c1c0d4
+Mesila One,#e9fae3,#1b1f23,#101418,#93867f,#5cc8ff,#ebb3a9,#dec1ff,#7d70ba,#5cc8ff,#e9fae3
+Miami Heat,#fce7ff,#120b2e,#2a1a4a,#ff3d7f,#2ee6b6,#ffcb52,#29b6ff,#b86bff,#18e0ff,#e6d4ff
+Miasma,#c2c2b0,#222222,#000000,#685742,#5f875f,#b36d43,#78824b,#bb7744,#c9a554,#d7c483
+Midnight Arcade,#f8fafc,#0b1220,#3f4550,#fb7185,#22c55e,#fbbf24,#60a5fa,#e879f9,#22d3ee,#b6c2d5
+Midnight In Mojave,#ffffff,#1e1e1e,#1e1e1e,#ff453a,#32d74b,#ffd60a,#0a84ff,#bf5af2,#5ac8fa,#ffffff
+Mirage,#a6b2c0,#1b2738,#011627,#ff9999,#85cc95,#ffd700,#7fb5ff,#ddb3ff,#21c7a8,#ffffff
+Misterioso,#e1e1e0,#2d3743,#000000,#ff4242,#74af68,#ffad29,#338f86,#9414e6,#23d7d7,#e1e1e0
+Modus Operandi,#000000,#ffffff,#000000,#a60000,#006800,#6f5500,#0031a9,#721045,#005e8b,#a6a6a6
+Modus Operandi Deuteranopia,#000000,#ffffff,#000000,#a60000,#006800,#695500,#0031a9,#721045,#005e8b,#a6a6a6
+Modus Operandi Tinted,#000000,#fbf7f0,#000000,#a60000,#006800,#6f5500,#0031a9,#721045,#005e8b,#a6a6a6
+Modus Operandi Tritanopia,#000000,#ffffff,#000000,#a60000,#006800,#695500,#0031a9,#721045,#005e8b,#a6a6a6
+Modus Vivendi,#ffffff,#000000,#000000,#ff5f59,#44bc44,#d0bc00,#2fafff,#feacd0,#00d3d0,#a6a6a6
+Modus Vivendi Deuteranopia,#ffffff,#000000,#000000,#ff5f59,#44bc44,#cabf00,#2fafff,#feacd0,#00d3d0,#a6a6a6
+Modus Vivendi Tinted,#ffffff,#0d0e1c,#0d0e1c,#ff5f59,#44bc44,#d0bc00,#2fafff,#feacd0,#00d3d0,#a6a6a6
+Modus Vivendi Tritanopia,#ffffff,#000000,#000000,#ff5f59,#44bc44,#cabf00,#2fafff,#feacd0,#00d3d0,#a6a6a6
+Molokai,#bbbbbb,#121212,#121212,#fa2573,#98e123,#dfd460,#1080d0,#8700ff,#43a8d0,#bbbbbb
+Mona Lisa,#f7d66a,#120b0d,#351b0e,#9b291c,#636232,#c36e28,#515c5d,#9b1d29,#588056,#f7d75c
+Monokai Classic,#fdfff1,#272822,#272822,#f92672,#a6e22e,#e6db74,#fd971f,#ae81ff,#66d9ef,#fdfff1
+Monokai Pro,#fcfcfa,#2d2a2e,#2d2a2e,#ff6188,#a9dc76,#ffd866,#fc9867,#ab9df2,#78dce8,#fcfcfa
+Monokai Pro Light,#29242a,#faf4f2,#faf4f2,#e14775,#269d69,#cc7a0a,#e16032,#7058be,#1c8ca8,#29242a
+Monokai Pro Light Sun,#2c232e,#f8efe7,#f8efe7,#ce4770,#218871,#b16803,#d4572b,#6851a2,#2473b6,#2c232e
+Monokai Pro Machine,#f2fffc,#273136,#273136,#ff6d7e,#a2e57b,#ffed72,#ffb270,#baa0f8,#7cd5f1,#f2fffc
+Monokai Pro Octagon,#eaf2f1,#282a3a,#282a3a,#ff657a,#bad761,#ffd76d,#ff9b5e,#c39ac9,#9cd1bb,#eaf2f1
+Monokai Pro Ristretto,#fff1f3,#2c2525,#2c2525,#fd6883,#adda78,#f9cc6c,#f38d70,#a8a9eb,#85dacc,#fff1f3
+Monokai Pro Spectrum,#f7f1ff,#222222,#222222,#fc618d,#7bd88f,#fce566,#fd9353,#948ae3,#5ad4e6,#f7f1ff
+Monokai Remastered,#d9d9d9,#0c0c0c,#1a1a1a,#f4005f,#98e024,#fd971f,#9d65ff,#f4005f,#58d1eb,#c4c5b5
+Monokai Soda,#c4c5b5,#1a1a1a,#1a1a1a,#f4005f,#98e024,#fa8419,#9d65ff,#f4005f,#58d1eb,#c4c5b5
+Monokai SublimeText,#f8f8f2,#272822,#333333,#c4265e,#86b42b,#b3b42b,#6a7ec8,#8c6bc8,#56adbc,#e3e3dd
+Monokai Vivid,#f9f9f9,#121212,#121212,#fa2934,#98e123,#fff30a,#0443ff,#f800f8,#01b6ed,#ffffff
+Monospace Dark,#a4afbd,#10151d,#738295,#f76769,#17b877,#ffa23e,#708fff,#a87ffb,#25a6e9,#a4afbd
+Monospace Light,#475365,#f4f7fd,#333e4f,#d03941,#007b49,#a65921,#3c60dd,#6f4cde,#0075a2,#5d6a7d
+Moonfly,#bdbdbd,#080808,#323437,#ff5454,#8cc85f,#e3c78a,#80a0ff,#cf87e8,#79dac8,#c6c6c6
+Moonwalk,#061f4a,#e4e2e0,#080808,#7a0047,#145b0e,#733a11,#002fa7,#5400a8,#00566b,#9c958d
+N0Tch2K,#a0a0a0,#222222,#383838,#a95551,#666666,#a98051,#657d3e,#767676,#c9c9c9,#d0b8a3
+Nebula Drift,#e2e0fa,#0a0420,#1a0e38,#ff5c8d,#66e6a8,#ffcb6b,#7c9bff,#c77dff,#57e6f0,#c8c6e8
+Neobones Dark,#c6d5cf,#0f191f,#0f191f,#de6e7c,#90ff6b,#b77e64,#8190d4,#b279a7,#66a5ad,#c6d5cf
+Neobones Light,#202e18,#e5ede6,#e5ede6,#a8334c,#567a30,#944927,#286486,#88507d,#3b8992,#202e18
+Neon,#00fffc,#14161a,#000000,#ff3045,#5ffa74,#fffc7e,#0f15d8,#f924e7,#00fffc,#c7c7c7
+Neon Purple,#e5e5e5,#291b47,#000000,#cd0d76,#03eba5,#fffa6a,#00bfff,#ff00e0,#9aa5ed,#ffffff
+Neopolitan,#ffffff,#271f19,#000000,#9a1a1a,#61ce3c,#fbde2d,#324883,#ff0080,#8da6ce,#f8f8f8
+Neutron,#e6e8ef,#1c1e22,#23252b,#b54036,#5ab977,#deb566,#6a7c93,#a4799d,#3f94a8,#e6e8ef
+Night Lion V1,#bbbbbb,#000000,#4c4c4c,#bb0000,#5fde8f,#f3f167,#276bd8,#bb00bb,#00dadf,#bbbbbb
+Night Lion V2,#bbbbbb,#171717,#4c4c4c,#bb0000,#04f623,#f3f167,#64d0f0,#ce6fdb,#00dadf,#bbbbbb
+Night Owl,#d6deeb,#011627,#011627,#ef5350,#22da6e,#addb67,#82aaff,#c792ea,#21c7a8,#ffffff
+Night Owlish Light,#403f53,#ffffff,#011627,#d3423e,#2aa298,#daaa01,#4876d6,#403f53,#08916a,#7a8181
+Nightfox,#cdcecf,#192330,#393b44,#c94f6d,#81b29a,#dbc074,#719cd6,#9d79d6,#63cdcf,#dfdfe0
+Niji,#ffffff,#141515,#333333,#d23e08,#54ca74,#fff700,#2ab9ff,#ff50da,#1ef9f5,#ddd0c4
+No Clown Fiesta,#e0e1e4,#101010,#151515,#b46958,#90a959,#f4bf75,#bad7ff,#aa759f,#88afa2,#e1e1e1
+No Clown Fiesta Light,#151515,#e1e1e1,#d6d6d6,#874e42,#677940,#b89058,#8ba1bf,#aa759f,#3e5f66,#151515
+Noctis,#b2cacd,#052529,#324a4d,#e66533,#49e9a6,#e4b781,#49ace9,#df769b,#49d6e9,#b2cacd
+Noctis Azureus,#becfda,#07273b,#28353e,#e66533,#49e9a6,#e4b781,#49ace9,#df769b,#49d6e9,#aec3d0
+Noctis Bordo,#cbbec2,#322a2d,#47393e,#e66533,#49e9a6,#e4b781,#49ace9,#df769b,#49d6e9,#b9acb0
+Noctis Hibernus,#005661,#f4f6f6,#003b42,#e34e1c,#00b368,#f49725,#0094f0,#ff5792,#00bdd6,#8ca6a6
+Noctis Lilac,#0c006b,#f2f1f8,#0c006b,#e34e1c,#00b368,#f49725,#0094f0,#ff5792,#00bdd6,#8ca6a6
+Noctis Lux,#005661,#fef8ec,#003b42,#e34e1c,#00b368,#f49725,#0094f0,#ff5792,#00bdd6,#8ca6a6
+Noctis Minimus,#c5cdd3,#1b2932,#182a35,#c08872,#72c09f,#c8a984,#6196b8,#c28097,#72b7c0,#c5cdd3
+Noctis Obscuro,#b2cacd,#031417,#324a4d,#e66533,#49e9a6,#e4b781,#49ace9,#df769b,#49d6e9,#b2cacd
+Noctis Sereno,#b2cacd,#062e32,#324a4d,#e66533,#49e9a6,#e4b781,#49ace9,#df769b,#49d6e9,#b2cacd
+Noctis Uva,#c5c2d6,#292640,#302f3d,#e66533,#49e9a6,#e4b781,#49ace9,#df769b,#49d6e9,#b6b3cc
+Noctis Viola,#ccbfd9,#30243d,#362f3d,#e66533,#49e9a6,#e4b781,#49ace9,#df769b,#49d6e9,#bfafcf
+Nocturnal Winter,#e6e5e5,#0d0d17,#4d4d4d,#f12d52,#09cd7e,#f5f17a,#3182e0,#ff2b6d,#09c87a,#fcfcfc
+Nord,#d8dee9,#2e3440,#3b4252,#bf616a,#a3be8c,#ebcb8b,#81a1c1,#b48ead,#88c0d0,#e5e9f0
+Nord Light,#414858,#e5e9f0,#3b4252,#bf616a,#96b17f,#c5a565,#81a1c1,#b48ead,#7bb3c3,#a5abb6
+Nord Wave,#d8dee9,#212121,#3b4252,#bf616a,#a3be8c,#ebcb8b,#81a1c1,#b48ead,#88c0d0,#e5e9f0
+Nordfox,#cdcecf,#2e3440,#3b4252,#bf616a,#a3be8c,#ebcb8b,#81a1c1,#b48ead,#88c0d0,#e5e9f0
+Novel,#3b2322,#dfdbc3,#000000,#cc0000,#009600,#d06b00,#0000cc,#cc00cc,#0087cc,#a6a6a6
+novmbr,#c7b8ac,#241d1a,#282a2e,#9f6434,#9dac5f,#cca75f,#2f7d7c,#b5896e,#52877f,#c7b8ac
+Nvim Dark,#e0e2ea,#14161b,#07080d,#ffc0b9,#b3f6c0,#fce094,#a6dbff,#ffcaff,#8cf8f7,#eef1f8
+Nvim Light,#14161b,#e0e2ea,#07080d,#590008,#005523,#6b5300,#004c73,#470045,#007373,#a1a4ab
+Obsidian,#cdcdcd,#283033,#000000,#b30d0e,#00bb00,#fecd22,#3a9bdb,#bb00bb,#00bbbb,#bbbbbb
+Ocean,#ffffff,#224fbc,#000000,#e64c4c,#00a600,#999900,#0000b2,#d826d8,#00a6b2,#bfbfbf
+Oceanic Material,#c2c8d7,#1c262b,#000000,#ee2b2a,#40a33f,#ffea2e,#1e80f0,#8800a0,#16afca,#a4a4a4
+Oceanic Next,#c0c5ce,#162c35,#162c35,#ec5f67,#99c794,#fac863,#6699cc,#c594c5,#5fb3b3,#ffffff
+Ollie,#8a8dae,#222125,#000000,#ac2e31,#31ac61,#ac4300,#2d57ac,#b08528,#1fa6ac,#8a8eac
+One Dark Two,#e6e6e6,#21252b,#1d1f23,#e27881,#98c379,#eac786,#71b9f4,#c88bda,#62bac6,#c9ccd3
+One Double Dark,#dbdfe5,#282c34,#3d4452,#f16372,#8cc570,#ecbe70,#3fb1f5,#d373e3,#17b9c4,#dbdfe5
+One Double Light,#383a43,#fafafa,#454b58,#f74840,#25a343,#cc8100,#0087c1,#b50da9,#009ab7,#c5b2b3
+One Half Dark,#dcdfe4,#282c34,#282c34,#e06c75,#98c379,#e5c07b,#61afef,#c678dd,#56b6c2,#dcdfe4
+One Half Light,#383a42,#fafafa,#383a42,#e45649,#50a14f,#c18401,#0184bc,#a626a4,#0997b3,#bababa
+Onenord,#e5e9f0,#2e3440,#3b4252,#e06c75,#9ec183,#ebcb8b,#81a1c1,#b988b0,#88c0d0,#e5e9f0
+Onenord Light,#2e3440,#f7f8fa,#2e3440,#cb4f53,#48a53d,#ee5e25,#3879c5,#9f4aca,#3ea1ad,#b2b6bd
+Opaline,#ece9f7,#131121,#201b33,#ff6b92,#86e6b4,#ffc2ae,#8fb4ff,#be9bff,#5fe3d8,#ece9f7
+Operator Mono Dark,#c3cac2,#191919,#5a5a5a,#ca372d,#4d7b3a,#d4d697,#4387cf,#b86cb4,#72d5c6,#ced4cd
+Outrun Electric,#f2f3f7,#0c0a20,#131033,#e61f44,#a7da1e,#ffd400,#1ea8fc,#ff2afc,#42c6ff,#f2f3f7
+Overnight Slumber,#ced2d6,#0e1729,#0a1222,#ffa7c4,#85cc95,#ffcb8b,#8dabe1,#c792eb,#78ccf0,#ffffff
+owl,#dedede,#2f2b2c,#302c2c,#5a5a5a,#989898,#cacaca,#656565,#b1b1b1,#7f7f7f,#dedede
+Oxblood,#e8d2d4,#140b0d,#231417,#ff4d54,#c9a24a,#e0b24a,#d9743f,#e0556b,#e0a36a,#e8d2d4
+Oxide,#cecece,#161616,#262626,#ed756e,#5bb661,#c39900,#3ba6f5,#968ff7,#00baaa,#cecece
+Oxocarbon,#f2f4f8,#161616,#161616,#00dfdb,#00b4ff,#ff4297,#00c15a,#c693ff,#ff74b8,#f2f4f8
+Pale Night Hc,#cccccc,#3e4251,#000000,#f07178,#c3e88d,#ffcb6b,#82aaff,#c792ea,#89ddff,#ffffff
+Pandora,#e1e1e1,#141e43,#000000,#ff4242,#74af68,#ffad29,#338f86,#9414e6,#23d7d7,#e2e2e2
+Paraiso Dark,#a39e9b,#2f1e2e,#2f1e2e,#ef6155,#48b685,#fec418,#06b6ef,#815ba4,#5bc4bf,#a39e9b
+Patina,#dce5de,#0e1613,#16201c,#d9603f,#9fc08c,#c8a24a,#5fc9b0,#d7b45a,#7fd0c0,#dce5de
+Patina Dark,#dbd7ca,#121212,#2e2e2e,#cb7676,#4d9375,#e6cc77,#6db3c2,#c98a7d,#5da9a7,#dbd7ca
+Patina Dark Soft,#dbd7ca,#1a1a1a,#2e2e2e,#cb7676,#549c7d,#e6cc77,#6db3c2,#c98a7d,#5da9a7,#dbd7ca
+Patina Lichen,#393a34,#cdd1c6,#393a34,#8b4646,#33644d,#7f5031,#35616d,#854b3f,#2a6361,#5a5248
+Patina Light,#2e2a24,#ddd7c4,#2e2a24,#9b3b3b,#34644c,#6e5817,#2f626f,#7a4f47,#2e6260,#5a5248
+Patina Moss,#dbd7ca,#20231f,#33362e,#c07878,#5ba886,#d4bf6e,#65a8b5,#c08a7d,#63a8a6,#dbd7ca
+Patina Stellar,#2e2a24,#f5f2ed,#2e2a24,#a84040,#3a7055,#6e5817,#2f626f,#8a5a50,#387775,#5a5248
+Paul Millr,#f2f2f2,#000000,#2a2a2a,#ff0000,#79ff0f,#e7bf00,#396bd7,#b449be,#66ccff,#bbbbbb
+Pencil Dark,#f1f1f1,#212121,#212121,#c30771,#10a778,#a89c14,#008ec4,#5f4986,#20a5ba,#d9d9d9
+Pencil Light,#424242,#f1f1f1,#212121,#c30771,#10a778,#a89c14,#008ec4,#523c79,#20a5ba,#b3b3b3
+Peppermint,#c8c8c8,#000000,#353535,#e74669,#89d287,#dab853,#449fd0,#da62dc,#65aaaf,#b4b4b4
+Phala Green Dark,#c1fc03,#000000,#000000,#ab1500,#00b100,#a9a700,#0223c0,#c22ec0,#00b4c0,#cbcbcb
+Piatto Light,#414141,#ffffff,#414141,#b23771,#66781e,#cd6f34,#3c5ea8,#a454b2,#66781e,#bfbfbf
+Pierre Dark,#fbfbfb,#070707,#141415,#ff2e3f,#0dbe4e,#ffca00,#009fff,#c635e4,#08c0ef,#c6c6c8
+Pierre Light,#070707,#ffffff,#1f1f21,#d52c36,#1d8138,#ac8816,#216cab,#a631be,#2182a1,#79797f
+Pnevma,#d0d0d0,#1c1c1c,#2f2e2d,#a36666,#90a57d,#d7af87,#7fa5bd,#c79ec4,#8adbb4,#d0d0d0
+Poimandres,#a6accd,#1a1e28,#1a1e28,#d0679d,#5de4c7,#fffac2,#89ddff,#fcc5e9,#add7ff,#ffffff
+Poimandres Darker,#a6accd,#16161e,#16161e,#d0679d,#5de4c7,#fffac2,#89ddff,#fcc5e9,#add7ff,#ffffff
+Poimandres Storm,#a6accd,#252b37,#252b37,#d0679d,#5de4c7,#fffac2,#89ddff,#f087bd,#89ddff,#ffffff
+Poimandres White,#969cbd,#fefeff,#fefeff,#ff2090,#01dab2,#e5ba4e,#8abacd,#eb8394,#8abacd,#000000
+Popping And Locking,#ebdbb2,#181921,#1d2021,#cc241d,#98971a,#d79921,#458588,#b16286,#689d6a,#a89984
+Porcelain,#2a2e37,#fbfbfd,#2a2e37,#c60018,#157424,#855700,#004cc8,#761bc3,#006873,#5a6170
+Powershell,#f6f6f7,#052454,#000000,#981a22,#098003,#c4a000,#4140c3,#d33682,#0e807f,#7f7c7f
+Primary,#000000,#ffffff,#000000,#db4437,#0f9d58,#f4b400,#4285f4,#db4437,#4285f4,#bfbfbf
+Prism,#d7e3f4,#0b1326,#060c18,#ff7192,#71e0b0,#fad77c,#47b3ff,#9da9ff,#31dcf2,#b6c4dc
+Pro,#f2f2f2,#000000,#000000,#990000,#00a600,#999900,#2009db,#b200b2,#00a6b2,#bfbfbf
+Pro Light,#191919,#ffffff,#000000,#e5492b,#50d148,#c6c440,#3b75ff,#ed66e8,#4ed2de,#c2c2c2
+Purple Portal,#faf5ff,#160528,#483a57,#fb7185,#34d399,#f472b6,#facc15,#38bdf8,#580ff0,#d8b4fe
+Purple Rain,#fffbf6,#21084a,#000000,#ff260e,#9be205,#ffc400,#00a2fa,#815bb5,#00deef,#ffffff
+Purplepeter,#ece7fa,#2a1a4a,#0a0520,#ff796d,#99b481,#efdfac,#66d9ef,#e78fcd,#ba8cff,#ffba81
+Pyrokai,#faf6f5,#151312,#242120,#ec6785,#75ad2f,#bb9500,#2aa0f9,#e76899,#00aebd,#b4afad
+Pyrokai Light,#242120,#faf6f5,#242120,#b84963,#568413,#8e7100,#0979c4,#b44a74,#008490,#b4afad
+Rapture,#c0c9e5,#111e2a,#000000,#fc644d,#7afde1,#fff09b,#6c9bf5,#ff4fa1,#64e0ff,#c0c9e5
+Raycast Dark,#ffffff,#1a1a1a,#000000,#ff5360,#59d499,#ffc531,#56c2ff,#cf2f98,#52eee5,#ffffff
+Raycast Light,#000000,#ffffff,#000000,#b12424,#006b4f,#f8a300,#138af2,#9a1b6e,#3eb8bf,#bfbfbf
+Rebecca,#e8e6ed,#292a44,#12131e,#dd7755,#04dbb5,#f2e7b7,#7aa5ff,#bf9cf9,#56d3c2,#e4e3e9
+Red Alert,#ffffff,#762423,#000000,#d62e4e,#71be6b,#beb86b,#489bee,#e979d7,#6bbeb8,#d6d6d6
+Red Planet,#c2b790,#222222,#202020,#8c3432,#728271,#e8bf6a,#69819e,#896492,#5b8390,#b9aa99
+Red Sands,#d7c9a7,#7a251e,#000000,#ff3f00,#00bb00,#e7b000,#0072ff,#bb00bb,#00bbbb,#bbbbbb
+Relaxed,#d9d9d9,#353a44,#151515,#bc5653,#909d63,#ebc17a,#6a8799,#b06698,#c9dfff,#d9d9d9
+Retro,#13a10e,#000000,#13a10e,#13a10e,#13a10e,#13a10e,#13a10e,#13a10e,#13a10e,#13a10e
+Retro Legends,#45eb45,#0d0d0d,#262626,#de5454,#45eb45,#f7bf2b,#4066f2,#bf4cf2,#40d9e6,#bfe6bf
+Rippedcasts,#ffffff,#2b2b2b,#000000,#cdaf95,#a8ff60,#bfbb1f,#75a5b0,#ff73fd,#5a647e,#bfbfbf
+Rose Pine,#e0def4,#191724,#26233a,#eb6f92,#31748f,#f6c177,#9ccfd8,#c4a7e7,#ebbcba,#e0def4
+Rose Pine Dawn,#575279,#faf4ed,#f2e9e1,#b4637a,#286983,#ea9d34,#56949f,#907aa9,#d7827e,#575279
+Rose Pine Moon,#e0def4,#232136,#393552,#eb6f92,#3e8fb0,#f6c177,#9ccfd8,#c4a7e7,#ea9a97,#e0def4
+Rouge 2,#a2a3aa,#17182b,#5d5d6b,#c6797e,#969e92,#dbcdab,#6e94b9,#4c4e78,#8ab6c1,#e8e8ea
+Royal,#514968,#100815,#241f2b,#91284c,#23801c,#b49d27,#6580b0,#674d96,#8aaabe,#524966
+Ryuuko,#ececec,#2c3941,#2c3941,#865f5b,#66907d,#b1a990,#6a8e95,#b18a73,#88b2ac,#ececec
+Sakura,#dd7bdc,#18131e,#000000,#d52370,#41af1a,#bc7053,#6964ab,#c71fbf,#939393,#998eac
+Sandstone Classic,#3d5259,#fdf6e3,#073642,#cf2522,#5d7b00,#865e00,#0d6eb2,#c42a78,#037a71,#6e6855
+Sandstone Ink,#2b3d45,#fdf6e3,#002b36,#cf2522,#4b7000,#906800,#0d6fa8,#b5006e,#00756d,#6e6855
+Sandstone Warm,#3e3220,#fdf6e3,#2e2010,#cf2522,#5d7b00,#865e00,#0d6eb2,#b52d6e,#037a71,#756c51
+Sauber,#1345f6,#ecffe5,#14191e,#b43c2a,#00c200,#c7c400,#2744c7,#c040be,#00c5c7,#bababa
+Scarlet Protocol,#e41951,#1c153d,#101116,#ff0051,#00dc84,#faf945,#0271b6,#ca30c7,#00c5c7,#c7c7c7
+Sea Shells,#deb88d,#09141b,#17384c,#d15123,#027c9b,#fca02f,#1e4950,#68d4f1,#50a3b5,#deb88d
+Seafoam Pastel,#d4e7d4,#243435,#757575,#825d4d,#728c62,#ada16d,#4d7b82,#8a7267,#729494,#e0e0e0
+SeedFlip Abyss,#e0e0f0,#050510,#030308,#d26060,#60d286,#d2bf60,#6090d2,#d260d2,#60d2d2,#f1f1f8
+SeedFlip Amethyst,#1a0a2e,#f8f7f6,#d7d1cb,#bd0f0f,#0fbd49,#bda00f,#0f58bd,#bd0fbd,#0fbdbd,#0e0519
+SeedFlip Canopy,#ededed,#0f1714,#0b110f,#d65c5c,#5cd685,#d6c25c,#5c8fd6,#d65cd6,#5cd6d6,#fafafa
+SeedFlip Carbon,#000000,#fafafa,#d4d4d4,#993333,#339955,#998833,#335d99,#993399,#339999,#000000
+SeedFlip Coral,#1d1d1d,#ffffff,#d9d9d9,#bd0f0f,#0fbd49,#bda00f,#0f58bd,#bd0fbd,#0fbdbd,#101010
+SeedFlip Ember,#ededed,#0a0a0a,#050505,#f04242,#42f07c,#f0d342,#428bf0,#f042f0,#42f0f0,#fafafa
+SeedFlip Glacier,#0f172a,#f8fafc,#c2d4e5,#bd0f0f,#0fbd49,#bda00f,#0f58bd,#bd0fbd,#0fbdbd,#080d17
+SeedFlip Inkwell,#e8e4df,#0a0a0a,#050505,#cc6666,#66cc88,#ccbb66,#6690cc,#cc66cc,#66cccc,#f3f1ee
+SeedFlip Ivory,#0a2540,#ffffff,#d9d9d9,#bd0f0f,#0fbd49,#bda00f,#0f58bd,#bd0fbd,#0fbdbd,#07182a
+SeedFlip Nightfall,#e4e4e7,#0a0a0f,#060609,#f04242,#42f07c,#f0d342,#428bf0,#f042f0,#42f0f0,#f2f2f3
+SeedFlip Phosphor,#b3ffb3,#0c0c0c,#070707,#f04242,#42f07c,#f0d342,#428bf0,#f042f0,#42f0f0,#cdffcd
+SeedFlip Pulse,#ffffff,#121212,#0d0d0d,#e34f4f,#4fe380,#e3cb4f,#4f8de3,#e34fe3,#4fe3e3,#ffffff
+SeedFlip Ultraviolet,#e8e0f5,#0b0014,#05000a,#f04242,#42f07c,#f0d342,#428bf0,#f042f0,#42f0f0,#f6f3fb
+SeedFlip Voltage,#f0f0f0,#0a0a0a,#050505,#f04242,#42f07c,#f0d342,#428bf0,#f042f0,#42f0f0,#fdfdfd
+SeedFlip Wavelength,#e6edf3,#0d1117,#090c10,#d55d5d,#5dd585,#d5c15d,#5d8fd5,#d55dd5,#5dd5d5,#f7f9fb
+Selenized Black,#b9b9b9,#181818,#252525,#ed4a46,#70b433,#dbb32d,#368aeb,#eb6eb7,#3fc5b7,#b9b9b9
+Selenized Dark,#adbcbc,#103c48,#184956,#fa5750,#75b938,#dbb32d,#4695f7,#f275be,#41c7b9,#adbcbc
+Selenized Light,#53676d,#fbf3db,#ece3cc,#d2212d,#489100,#ad8900,#0072d4,#ca4898,#009c8f,#53676d
+Seoulbones Dark,#dddddd,#4b4b4b,#4b4b4b,#e388a3,#98bd99,#ffdf9b,#97bdde,#a5a6c5,#6fbdbe,#dddddd
+Seoulbones Light,#555555,#e2e2e2,#e2e2e2,#dc5284,#628562,#c48562,#0084a3,#896788,#008586,#555555
+Sequoia Monochrome Dark,#868690,#0f1014,#131317,#999eb2,#626983,#d3d5de,#7c829d,#e2e4ed,#b6bac8,#868690
+Sequoia Monochrome Light,#282930,#edeef2,#d4d5dc,#525666,#2e3038,#50535e,#5f6370,#25262d,#454752,#282930
+Sequoia Moonlight Dark,#868690,#0f1014,#131317,#f58ee0,#8eb6f5,#9898a6,#c58fff,#fdfdfe,#ffbb88,#868690
+Sequoia Moonlight Light,#282930,#edeef2,#d4d5dc,#c94da8,#4a85d4,#6a6a78,#9a5fd9,#282930,#d9884a,#282930
+Sequoia Retro Dark,#868690,#0f1014,#131317,#829fa7,#648f68,#da674b,#5c87a4,#e8b246,#a27e57,#868690
+Sequoia Retro Light,#282930,#edeef2,#d4d5dc,#5f7982,#4a704e,#bf5238,#456a82,#c99730,#8a6539,#282930
+Serendipity Midnight,#dee0ef,#151726,#232534,#ee8679,#5ba2d0,#a78bfa,#94b8ff,#9ccfd8,#f8d2c9,#dee0ef
+Serendipity Morning,#3f4363,#f6f7fb,#ccd0dc,#c25a4d,#2f7aab,#785fd0,#6288d8,#629aa5,#e58678,#3f4363
+Serendipity Sunset,#dee0ef,#202231,#363847,#d1918f,#709bbd,#a392dc,#a0b6e8,#aac9d4,#d6b4b4,#dee0ef
+Seti,#cacecd,#111213,#323232,#c22832,#8ec43d,#e0c64f,#43a5d5,#8b57b5,#8ec43d,#eeeeee
+Shades Of Purple,#ffffff,#1e1d40,#000000,#d90429,#3ad900,#ffe700,#6943ff,#ff2c70,#00c5c7,#c7c7c7
+Shaman,#405555,#001015,#012026,#b2302d,#00a941,#5e8baa,#449a86,#00599d,#5d7e19,#405555
+Shokunin,#303841,#fcfaf2,#303841,#c84053,#157a5b,#9a6000,#006fae,#8f4155,#006c7f,#c2beb4
+Slate,#35b1d2,#222222,#222222,#e2a8bf,#81d778,#c4c9c0,#335856,#a481d3,#15ab9c,#02c5e0
+Sleepy Hollow,#af9a91,#121214,#572100,#ba3934,#91773f,#b55600,#5f63b4,#a17c7b,#8faea9,#af9a91
+Smyck,#f7f7f7,#1b1b1b,#000000,#b84131,#7da900,#c4a500,#62a3c4,#ba8acc,#207383,#a1a1a1
+Snazzy,#ebece6,#1e1f29,#000000,#fc4346,#50fb7c,#f0fb8c,#49baff,#fc4cb4,#8be9fe,#ededec
+Snazzy Soft,#eff0eb,#282a36,#000000,#ff5c57,#5af78e,#f3f99d,#57c7ff,#ff6ac1,#9aedfe,#f1f1f0
+Soft Server,#99a3a2,#242626,#000000,#a2686a,#9aa56a,#a3906a,#6b8fa3,#6a71a3,#6ba58f,#99a3a2
+Solarized Darcula,#d2d8d9,#3d3f41,#25292a,#f24840,#629655,#b68800,#2075c7,#797fd4,#15968d,#d2d8d9
+Solarized Dark Higher Contrast,#9cc2c3,#001e27,#002831,#d11c24,#6cbe6c,#a57706,#2176c7,#c61c6f,#259286,#eae3cb
+Solarized Dark Patched,#708284,#001e27,#002831,#d11c24,#738a05,#a57706,#2176c7,#c61c6f,#259286,#eae3cb
+Solarized Osaka Night,#c0caf5,#1a1b26,#15161e,#f7768e,#9ece6a,#e0af68,#7aa2f7,#bb9af7,#7dcfff,#a9b1d6
+Sonokai,#e2e2e3,#2c2e34,#181819,#fc5d7c,#9ed072,#e7c664,#76cce0,#b39df3,#f39660,#e2e2e3
+Spacedust,#ecf0c1,#0a1e24,#6e5346,#e35b00,#5cab96,#e3cd7b,#0f548b,#e35b00,#06afc7,#f0f1ce
+Spacegray,#b3b8c3,#20242d,#000000,#b04b57,#87b379,#e5c179,#7d8fa4,#a47996,#85a7a5,#b3b8c3
+Spacegray Bright,#f3f3f3,#2a2e3a,#080808,#bc5553,#a0b56c,#f6c987,#7baec1,#b98aae,#85c9b8,#d8d8d8
+Spacegray Eighties,#bdbaae,#222222,#15171c,#ec5f67,#81a764,#fec254,#5486c0,#bf83c1,#57c2c1,#efece7
+Spacegray Eighties Dull,#c9c6bc,#222222,#15171c,#b24a56,#92b477,#c6735a,#7c8fa5,#a5789e,#80cdcb,#b3b8c3
+Spiderman,#e3e3e3,#1b1d1e,#1b1d1e,#e60813,#e22928,#e24756,#2c3fff,#2435db,#3256ff,#fffef6
+Spring,#4d4d4c,#ffffff,#000000,#ff4d83,#1f8c3b,#1fc95b,#1dd3ee,#8959a8,#3e999f,#bfbfbf
+Square,#acacab,#1a1a1a,#050505,#e9897c,#b6377d,#ecebbe,#a9cdeb,#75507b,#c9caec,#f2f2f2
+Squintless,#3c3836,#f2e5bc,#f2e5bc,#9d0006,#79740e,#b57614,#076678,#8f3f71,#427b58,#7c6f64
+Squirrelsong Dark,#b19b89,#372920,#372920,#ba4138,#468336,#d4b139,#4395c6,#855fb8,#2f9794,#d3b9a2
+Srcery,#fce8c3,#1c1b19,#1c1b19,#ef2f27,#519f50,#fbb829,#2c78bf,#e02c6d,#0aaeb3,#baa67f
+Starlight,#ffffff,#242424,#242424,#f62b5a,#47b413,#e3c401,#24acd4,#f2affd,#13c299,#e6e6e6
+Sublette,#ccced0,#202535,#253045,#ee5577,#55ee77,#ffdd88,#5588ff,#ff77cc,#44eeee,#f5f5da
+Subliminal,#d4d4d4,#282c35,#7f7f7f,#e15a60,#a9cfa4,#ffe2a9,#6699cc,#f1a5ab,#5fb3b3,#d4d4d4
+Sugarplum,#db7ddd,#111147,#111147,#5ca8dc,#53b397,#249a84,#db7ddd,#d0beee,#f9f3f9,#a175d4
+Sumi Linen,#1c1814,#e6dfd0,#3a342c,#b83830,#2e8050,#a87820,#3060a0,#704890,#18786c,#5a5448
+Sumi Phosphor,#bab4a8,#12100e,#1e1a16,#d45848,#5ca868,#d4a03c,#5a82b8,#9870b0,#2ec4b6,#8a8478
+Sundried,#c9c9c9,#1a1818,#302b2a,#a7463d,#587744,#9d602a,#485b98,#864651,#9c814f,#c9c9c9
+Sunset Drive,#ededfe,#0f0f1a,#0a0a13,#ff0063,#00f992,#ffe900,#00a4ff,#ff57fd,#00ffed,#ededff
+Symfonic,#ffffff,#000000,#000000,#dc322f,#56db3a,#ff8400,#0084d4,#b729d9,#ccccff,#ffffff
+Synthwave,#dad9c7,#000000,#000000,#f6188f,#1ebb2b,#fdf834,#2186ec,#f85a21,#12c3e2,#ffffff
+Synthwave Alpha,#f2f2e3,#241b30,#241b30,#e60a70,#00986c,#adad3e,#6e29ad,#b300ad,#00b0b1,#b9b1bc
+Synthwave Everything,#f0eff1,#2a2139,#fefefe,#f97e72,#72f1b8,#fede5d,#6d77b3,#c792ea,#f772e0,#fefefe
+Tango Adapted,#000000,#ffffff,#000000,#ff0000,#59d600,#e3be00,#00a2ff,#c17ecc,#00d0d6,#c0c5bb
+Tango Half Adapted,#000000,#ffffff,#000000,#ff0000,#4cc300,#e2c000,#008ef6,#a96cb3,#00bdc3,#babfb5
+Tearout,#f4d2ae,#34392d,#685742,#cc967b,#97976d,#6c9861,#b5955e,#c9a554,#d7c483,#b5955e
+Teerb,#d0d0d0,#262626,#1c1c1c,#d68686,#aed686,#d7af87,#86aed6,#d6aed6,#8adbb4,#d0d0d0
+Terafox,#e6eaea,#152528,#2f3239,#e85c51,#7aa4a1,#fda47f,#5a93aa,#ad5c7c,#a1cdd8,#ebebeb
+Terminal Basic,#000000,#ffffff,#000000,#990000,#00a600,#999900,#0000b2,#b200b2,#00a6b2,#bfbfbf
+Terminal Basic Dark,#ffffff,#1d1e1d,#000000,#c65339,#6ac44b,#b8b74a,#6444ed,#d357db,#69c1cf,#d1d1d1
+Terminal Green 1999,#d8ffe6,#03120a,#32463a,#ff5c7a,#22c55e,#00d26a,#7dd3fc,#9dff57,#39ff88,#8fd6a9
+Thayer Bright,#f8f8f8,#1b1d1e,#1b1d1e,#f92672,#4df840,#f4fd22,#2757d6,#8c54fe,#38c8b5,#ccccc6
+The Hulk,#b5b5b5,#1b1d1e,#1b1d1e,#269d1b,#13ce30,#63e457,#2525f5,#712c81,#378ca9,#d9d8d1
+Tinacious Design Dark,#cbcbf0,#1d1d26,#1d1d26,#ff3399,#00d364,#ffcc66,#00cbff,#cc66ff,#00ceca,#cbcbf0
+Tinacious Design Light,#1d1d26,#f8f8ff,#1d1d26,#ff3399,#00d364,#e5b24d,#00cbff,#cc66ff,#00ceca,#b1b1d6
+Token Dark,#e8e4dc,#262624,#1d1d1c,#c67777,#7da47a,#c4a855,#7b9ebd,#a68bbf,#6ba8a8,#d4cfc6
+Token Light,#2a2920,#faf9f5,#2a2920,#b05555,#3f643c,#6e5c20,#527594,#7c619a,#2d6c6c,#b5b2ab
+TokyoNight,#c0caf5,#1a1b26,#15161e,#f7768e,#9ece6a,#e0af68,#7aa2f7,#bb9af7,#7dcfff,#a9b1d6
+TokyoNight Day,#3760bf,#e1e2e7,#e9e9ed,#f52a65,#587539,#8c6c3e,#2e7de9,#9854f1,#007197,#6172b0
+TokyoNight Moon,#c8d3f5,#222436,#1b1d2b,#ff757f,#c3e88d,#ffc777,#82aaff,#c099ff,#86e1fc,#828bb8
+TokyoNight Night,#c0caf5,#1a1b26,#15161e,#f7768e,#9ece6a,#e0af68,#7aa2f7,#bb9af7,#7dcfff,#a9b1d6
+TokyoNight Storm,#c0caf5,#24283b,#1d202f,#f7768e,#9ece6a,#e0af68,#7aa2f7,#bb9af7,#7dcfff,#a9b1d6
+Tomorrow,#4d4d4c,#ffffff,#000000,#c82829,#718c00,#eab700,#4271ae,#8959a8,#3e999f,#bfbfbf
+Tomorrow Night,#c5c8c6,#1d1f21,#000000,#cc6666,#b5bd68,#f0c674,#81a2be,#b294bb,#8abeb7,#ffffff
+Tomorrow Night Blue,#ffffff,#002451,#000000,#ff9da4,#d1f1a9,#ffeead,#bbdaff,#ebbbff,#99ffff,#ffffff
+Tomorrow Night Bright,#eaeaea,#000000,#000000,#d54e53,#b9ca4a,#e7c547,#7aa6da,#c397d8,#70c0b1,#ffffff
+Tomorrow Night Burns,#a1b0b8,#151515,#252525,#832e31,#a63c40,#d3494e,#fc595f,#df9395,#ba8586,#f5f5f5
+Tomorrow Night Eighties,#cccccc,#2d2d2d,#000000,#f2777a,#99cc99,#ffcc66,#6699cc,#cc99cc,#66cccc,#ffffff
+Toy Chest,#31d07b,#24364b,#2c3f58,#be2d26,#1a9172,#db8e27,#325d96,#8a5edc,#35a08f,#23d183
+traffic,#cfb9a8,#272c30,#282d31,#934e46,#637268,#c79e84,#515e67,#715f5e,#5c6f7d,#cfb9a8
+Trapped in Amber,#f0a020,#0a1017,#4a3220,#e05c1c,#7a9c4a,#f0a020,#4a7ec9,#c95a8c,#7a9ea8,#ffd9a0
+Treehouse,#786b53,#191919,#321300,#b2270e,#44a900,#aa820c,#58859a,#97363d,#b25a1e,#786b53
+Twilight,#ffffd4,#141414,#141414,#c06d44,#afb97a,#c2a86c,#44474a,#b4be7c,#778385,#ffffd4
+Ubuntu,#eeeeec,#300a24,#2e3436,#cc0000,#4e9a06,#c4a000,#3465a4,#75507b,#06989a,#d3d7cf
+Ultra Dark,#ffffff,#000000,#000000,#f07178,#c3e88d,#ffcb6b,#82aaff,#c792ea,#89ddff,#cccccc
+Ultra Violent,#c1c1c1,#242728,#242728,#ff0090,#b6ff00,#fff727,#47e0fb,#d731ff,#0effbb,#e1e1e1
+Under The Sea,#ffffff,#011116,#022026,#b2302d,#00a941,#59819c,#459a86,#00599d,#5d7e19,#405555
+Unikitty,#0b0b0b,#ff8cd9,#0c0c0c,#a80f20,#c7ff98,#fff964,#145fcd,#ffe9ff,#9effef,#fcf1fb
+urban,#c0a79a,#312e39,#33303b,#87404f,#74934e,#ae835a,#615772,#854b64,#625464,#c0a79a
+Urple,#877a9b,#1b1b23,#000000,#b0425b,#37a415,#ad5c42,#564d9b,#6c3ca1,#808080,#87799c
+Vague,#cdcdcd,#141415,#252530,#d8647e,#7fa563,#f3be7c,#6e94b2,#bb9dbd,#aeaed1,#cdcdcd
+Vaporwave Sunset,#fff7ed,#180827,#4b3d53,#fb7185,#2dd4bf,#fb923c,#a78bfa,#22d3ee,#ff4fd8,#f0abfc
+Vaughn,#dcdccc,#25234f,#25234f,#705050,#60b48a,#dfaf8f,#5555ff,#f08cc3,#8cd0d3,#709080
+Velvet Court,#f2dcea,#1f0e1c,#2f1629,#ee5c82,#9ad08a,#f0c44e,#b392e8,#d087e0,#6fd0c8,#e2c8d8
+Vercel,#fafafa,#101010,#000000,#fc0036,#29a948,#ffae00,#006aff,#f32882,#00ac96,#feffff
+Verdigris,#e8dcc6,#14110b,#221c12,#d9604f,#a8b86a,#d9a441,#5fbfb0,#b98fb0,#8fd6b0,#bfb29a
+Vesper,#ffffff,#101010,#101010,#f5a191,#90b99f,#e6b99d,#aca1cf,#e29eca,#ea83a5,#a0a0a0
+Vibrant Ink,#ffffff,#000000,#878787,#ff6600,#ccff04,#ffcc00,#44b4cc,#9933cc,#44b4cc,#f5f5f5
+Vimbones,#353535,#f0f0ca,#f0f0ca,#a8334c,#4f6c31,#944927,#286486,#88507d,#3b8992,#353535
+Violet Dark,#708284,#1c1d1f,#56595c,#c94c22,#85981c,#b4881d,#2e8bce,#d13a82,#32a198,#c9c6bd
+Violet Light,#536870,#fcf4dc,#56595c,#c94c22,#85981c,#b4881d,#2e8bce,#d13a82,#32a198,#b9b6af
+Violite,#eef4f6,#241c36,#241c36,#ec7979,#79ecb3,#ece279,#a979ec,#ec79ec,#79ecec,#eef4f6
+Warm Neon,#afdab6,#404040,#000000,#e24346,#39b13a,#dae145,#4261c5,#f920fb,#2abbd4,#d0b8a3
+Wez,#b3b3b3,#000000,#000000,#cc5555,#55cc55,#cdcd55,#5555cc,#cc55cc,#7acaca,#cccccc
+Whimsy,#b3b0d6,#29283b,#535178,#ef6487,#5eca89,#fdd877,#65aef7,#aa7ff0,#43c1be,#ffffff
+Wild Cherry,#dafaff,#1f1726,#000507,#d94085,#2ab250,#ffd16f,#883cdc,#ececec,#c1b8b7,#fff8de
+Wilmersdorf,#c6c6c6,#282b33,#34373e,#e06383,#7ebebd,#cccccc,#a6c1e0,#e1c1ee,#5b94ab,#ababab
+Wombat,#dedacf,#171717,#000000,#ff615a,#b1e969,#ebd99c,#5da9f6,#e86aff,#82fff7,#dedacf
+Wryan,#999993,#101010,#333333,#8c4665,#287373,#7c7c99,#395573,#5e468c,#31658c,#899ca1
+Xcode Dark,#dfdfe0,#292a30,#414453,#ff8170,#78c2b3,#d9c97c,#4eb0cc,#ff7ab2,#b281eb,#dfdfe0
+Xcode Dark hc,#ffffff,#1f1f24,#43454b,#ff8a7a,#83c9bc,#d9c668,#4ec4e6,#ff85b8,#cda1ff,#ffffff
+Xcode Light,#262626,#ffffff,#b4d8fd,#d12f1b,#3e8087,#78492a,#0f68a0,#ad3da4,#804fb8,#262626
+Xcode Light hc,#000000,#ffffff,#b4d8fd,#ad1805,#355d61,#78492a,#0058a1,#9c2191,#703daa,#000000
+Xcode WWDC,#e7e8eb,#292c36,#494d5c,#bb383a,#94c66e,#d28e5d,#8884c5,#b73999,#00aba4,#e7e8eb
+Y2K Chrome,#0f172a,#f1f5f9,#383f4f,#dc2626,#15803d,#0891b2,#f97316,#7c3aed,#2563eb,#475569
+Zenbones,#2c363c,#f0edec,#f0edec,#a8334c,#4f6c31,#944927,#286486,#88507d,#3b8992,#2c363c
+Zenbones Dark,#b4bdc3,#1c1917,#1c1917,#de6e7c,#819b69,#b77e64,#6099c0,#b279a7,#66a5ad,#b4bdc3
+Zenbones Light,#2c363c,#f0edec,#f0edec,#a8334c,#4f6c31,#944927,#286486,#88507d,#3b8992,#2c363c
+Zenburn,#dcdccc,#3f3f3f,#4d4d4d,#7d5d5d,#60b48a,#f0dfaf,#5d6d7d,#dc8cc3,#8cd0d3,#dcdccc
+Zenburned,#f0e4cf,#404040,#404040,#e3716e,#819b69,#b77e64,#6099c0,#b279a7,#66a5ad,#f0e4cf
+Zenwritten Dark,#bbbbbb,#191919,#191919,#de6e7c,#819b69,#b77e64,#6099c0,#b279a7,#66a5ad,#bbbbbb
+Zenwritten Light,#353535,#eeeeee,#eeeeee,#a8334c,#4f6c31,#944927,#286486,#88507d,#3b8992,#353535
