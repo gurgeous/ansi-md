@@ -3,17 +3,23 @@ title: Bad Colors
 ---
 
 import BadColors from "@/components/BadColors.astro";
+import { Image } from "astro:assets";
+import materialDark from "@/assets/MaterialDark.png";
+import spiderman from "@/assets/Spiderman.png";
 
-ANSI 16 colors can be literally anything. Each palette has slots for the `theme fg`, the `theme bg`, `Black`, `Red`, `Green`, `Yellow`, `Blue`, `Magenta`, `Cyan` & `White`. There's also a tricky and rarely used `reverse` ansi escape code which swaps fg & bg, so it is technically possible to use the `theme bg` as the fg. Confusing!
+ANSI 16 colors can be literally anything. Each palette has slots for `theme fg`, `theme bg`, `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan` & `white`. There's also a tricky `reverse` ansi escape code which swaps fg/bg, so it is technically possible to use `theme bg` as the fg. Confusing!
 
-Your Mental Model
+<div class="mt-4 flex">
+  <figure class="w-1/2">
+    <figcaption>Your Mental Model, Material Theme</figcaption>
+    <Image src={materialDark} alt="" />
+  </figure>
+  <figure class="w-1/2">
+    <figcaption>Your User, Spiderman Theme</figcaption>
+    <Image src={spiderman} alt="" />
+  </figure>
+</div>
 
-![](../assets/MaterialDark.png)
-
-Your User
-
-![](../assets/Spiderman.png)
-
-The tool below shows what your text might look like for the various Ghostty color themes. Hover a cell to see the theme name. As you can tell, there's really no combination that works for all themes apart from `theme fg` on `theme bg`. If you want a nice background color, you probably need to use ANSI 256 or truecolor.
+The tool below shows what text looks like for the various Ghostty themes. Hover to see theme name. As you can tell, there's really no combo that works reliably. If you want a colorful banner, you probably need to use ANSI 256 or truecolor.
 
 <BadColors />
