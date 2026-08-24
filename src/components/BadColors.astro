@@ -2,21 +2,20 @@
 import Color from "colorjs.io";
 import themes from "@/vendor/ghostty/themes.json";
 
-const backgrounds = [
+const foregrounds = [
+  ["Fg", "foreground"],
   ["Bg", "background"],
+  ["White", 7],
+  ["Black", 0],
+] as const;
+
+const backgrounds = [
   ["Red", 1],
   ["Green", 2],
   ["Yellow", 3],
   ["Blue", 4],
   ["Magenta", 5],
   ["Cyan", 6],
-] as const;
-
-const foregrounds = [
-  ["Fg", "foreground"],
-  ["Bg", "background"],
-  ["White", 7],
-  ["Black", 0],
 ] as const;
 
 function colorKey(hex: string) {
@@ -33,7 +32,7 @@ const colorOrders: Record<string, number[]> = Object.fromEntries(
     const order = themes
       .map((theme, index) => ({
         index,
-        key: colorKey(background === "background" ? theme.background : theme.colors[background]),
+        key: colorKey(theme.colors[background]),
         name: theme.name,
       }))
       .toSorted((left, right) => {
@@ -76,7 +75,7 @@ const data = JSON.stringify({ colorOrders, themes });
         {
           backgrounds.map(([name, color]) => (
             <option value={color} selected={color === 2}>
-              {color === "background" ? `"theme ${name.toLowerCase()}"` : `ANSI ${color} "${name.toLowerCase()}"`}
+              {`ANSI ${color} "${name.toLowerCase()}"`}
             </option>
           ))
         }

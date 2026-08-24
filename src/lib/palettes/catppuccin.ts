@@ -16,8 +16,6 @@ export const ghostty16: Palette = {
     magenta: "#f4b8e4",
     cyan: "#81c8be",
     white: "#a5adce",
-    foreground: "#c6d0f5",
-    background: "#303446",
   },
   bright: {
     black: "#626880",
@@ -28,5 +26,9 @@ export const ghostty16: Palette = {
     magenta: "#f4b8e4",
     cyan: "#81c8be",
     white: "#b5bfe2",
+  },
+  defaults: {
+    foreground: "#c6d0f5",
+    background: "#303446",
   },
 };

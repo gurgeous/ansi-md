@@ -3,22 +3,11 @@ title: Bad Colors
 ---
 
 import BadColors from "@/components/BadColors.astro";
-import { Image } from "astro:assets";
-import materialDark from "@/assets/MaterialDark.png";
-import spiderman from "@/assets/Spiderman.png";
+import AnsiThemeSwatches from "@/components/AnsiThemeSwatches.astro";
 
 ANSI 16 colors can be literally anything. Each palette has slots for `theme fg`, `theme bg`, `black`, `red`, `green`, `yellow`, `blue`, `magenta`, `cyan` & `white`. There's also a tricky `reverse` ansi escape code which swaps fg/bg, so it is technically possible to use `theme bg` as the fg. Confusing!
 
-<div class="mt-4 flex">
-  <figure class="w-1/2">
-    <figcaption>Your Mental Model, Material Theme</figcaption>
-    <Image src={materialDark} alt="" />
-  </figure>
-  <figure class="w-1/2">
-    <figcaption>Your User, Spiderman Theme</figcaption>
-    <Image src={spiderman} alt="" />
-  </figure>
-</div>
+<AnsiThemeSwatches names={["Material", "Spiderman"]} />
 
 The tool below shows what text looks like for the various Ghostty themes. Hover to see theme name. As you can tell, there's really no combo that works reliably. If you want a colorful banner, you probably need to use ANSI 256 or truecolor.
 

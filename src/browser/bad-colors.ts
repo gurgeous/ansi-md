@@ -34,6 +34,7 @@ class BadColorsTool {
     this.$sort.addEventListener("change", this.render.bind(this));
     this.$grid.addEventListener("pointerover", this.onUpdate.bind(this));
     this.$grid.addEventListener("focusin", this.onUpdate.bind(this));
+    this.render();
   }
 
   render() {

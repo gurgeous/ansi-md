@@ -4,11 +4,63 @@ import type { Colors } from "@/lib/palettes";
 
 type Props = {
   colors: Colors;
+  defaults?: { foreground: string; background: string };
   bright?: boolean;
 };
 
-const { colors, bright = false } = Astro.props;
+type Row = {
+  name: string;
+  hex: string;
+  fg16: string | null;
+  bg16: string | null;
+  fg256: string | null;
+  bg256: string | null;
+};
+
+const indices: Record<string, number> = {
+  black: 0,
+  red: 1,
+  green: 2,
+  yellow: 3,
+  blue: 4,
+  magenta: 5,
+  cyan: 6,
+  white: 7,
+};
+const { colors, defaults, bright = false } = Astro.props;
 const base = bright ? 8 : 0;
+const rows: Row[] = Object.entries(colors).map(([name, hex]) => {
+  const index = indices[name];
+  if (index === undefined) throw "impossible";
+  return {
+    name,
+    hex,
+    fg16: Ansi.fg16(index, bright),
+    bg16: Ansi.bg16(index, bright),
+    fg256: Ansi.fg256(base + index),
+    bg256: Ansi.bg256(base + index),
+  };
+});
+if (defaults) {
+  rows.push(
+    {
+      name: "foreground",
+      hex: defaults.foreground,
+      fg16: Ansi.fgDefault(),
+      bg16: null,
+      fg256: null,
+      bg256: null,
+    },
+    {
+      name: "background",
+      hex: defaults.background,
+      fg16: null,
+      bg16: Ansi.bgDefault(),
+      fg256: null,
+      bg256: null,
+    },
+  );
+}
 ---
 
 <table>
@@ -24,29 +76,25 @@ const base = bright ? 8 : 0;
   </thead>
   <tbody>
     {
-      Object.entries(colors).map(([name, hex], i) => {
-        const isForeground = name === "foreground";
-        const isBackground = name === "background";
-        return (
-          <tr>
-            <td>
-              <span class="inline-flex items-center gap-1.5">
-                <svg class="size-4 shrink-0 border border-neutral-400">
-                  <rect width="16" height="16" fill={hex} />
-                </svg>
-                <span>{name}</span>
-              </span>
-            </td>
-            <td>
-              <code>{hex}</code>
-            </td>
-            <td>{!isBackground && <code>{isForeground ? "\\e[39m" : Ansi.fg16(i, bright)}</code>}</td>
-            <td>{!isForeground && <code>{isBackground ? "\\e[49m" : Ansi.bg16(i, bright)}</code>}</td>
-            <td>{!isForeground && !isBackground && <code>{Ansi.fg256(base + i)}</code>}</td>
-            <td>{!isForeground && !isBackground && <code>{Ansi.bg256(base + i)}</code>}</td>
-          </tr>
-        );
-      })
+      rows.map(({ name, hex, fg16, bg16, fg256, bg256 }) => (
+        <tr>
+          <td>
+            <span class="inline-flex items-center gap-1.5">
+              <svg class="size-4 shrink-0 border border-neutral-400">
+                <rect width="16" height="16" fill={hex} />
+              </svg>
+              <span>{name}</span>
+            </span>
+          </td>
+          <td>
+            <code>{hex}</code>
+          </td>
+          <td>{fg16 && <code>{fg16}</code>}</td>
+          <td>{bg16 && <code>{bg16}</code>}</td>
+          <td>{fg256 && <code>{fg256}</code>}</td>
+          <td>{bg256 && <code>{bg256}</code>}</td>
+        </tr>
+      ))
     }
   </tbody>
 </table>

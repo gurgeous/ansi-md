@@ -6,4 +6,9 @@ describe("ansi", () => {
     expect(Ansi.fg256(40)).toBe("\\e[38;5;40m");
     expect(Ansi.bg256(40)).toBe("\\e[48;5;40m");
   });
+
+  it("formats default color escape sequences", () => {
+    expect(Ansi.fgDefault()).toBe("\\e[39m");
+    expect(Ansi.bgDefault()).toBe("\\e[49m");
+  });
 });
