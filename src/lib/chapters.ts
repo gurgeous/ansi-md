@@ -29,8 +29,8 @@ export const chapters: Section[] = [
         phrase: "see lots of colors on light and dark",
       },
       {
-        name: "Bad Colors",
-        url: "/bad-colors",
+        name: "ANSI 16 Paradox",
+        url: "/ansi16-paradox",
         phrase: "see ANSI 16 fail across terminal themes",
       },
     ],
